@@ -6,15 +6,18 @@ export const MenuHead = () => {
   return (
    
 		<>
-    
-			<div className="aside-dropdown">
+        <link rel="preconnect" href="https://fonts.googleapis.com"/>
+        <link rel="preconnect" href="https://fonts.gstatic.com"/>
+        <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@319;400;600;700&display=swap" rel="stylesheet"></link>
+                    
+            <div className="aside-dropdown">
 				<div className="aside-dropdown__inner"><span className="aside-dropdown__close">
 					<svg className="icon">
                     
 					</svg></span>
 				<div className="aside-dropdown__item d-lg-none d-block">
 					<ul className="aside-menu">
-						<li className="aside-menu__item"><a className="aside-menu__link" href="index.php"><span>Inicio </span></a></li>
+						<li className="aside-menu__item"><a className="aside-menu__link" href="index"><span>Inicio </span></a></li>
 						
 						
 						<li className="aside-menu__item aside-menu__item--has-child"><a className="aside-menu__link" href="javascript:void(0);"><span>Pacientes</span></a>
@@ -67,9 +70,8 @@ export const MenuHead = () => {
                         <div className="header-logo">
                             <a className="header-logo__link" href="index.php">
                                 
-                                <Image className="header-logo__img logo--light" src={LogoWhite} alt="logo"/>
-                                <Image className="header-logo__img logo--dark" src={LogoDark} alt="logo"/>
-                               
+                          
+                             
                                 </a>
                                 
                         </div>
@@ -78,7 +80,7 @@ export const MenuHead = () => {
                       
                         <nav>
                             <ul className="main-menu">
-                                <li className="main-menu__item main-menu__item--active"><a className="main-menu__link" href="index.php"><span>Inicio </span></a></li>
+                                <li className="main-menu__item main-menu__item--active"><a className="main-menu__link" href="/"><span>Inicio </span></a></li>
                                 
                 
                                     <li className="main-menu__item main-menu__item--has-child"><a className="main-menu__link" href="javascript:void(0);"><span>Pacientes</span></a>
