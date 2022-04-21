@@ -1,118 +1,126 @@
 import Image from 'next/image';
+import {useState} from 'react'
 import LogoDark from '../../assets/images/logo_dark.png';
 import LogoWhite from '../../assets/images/logo_white.png';
+import Link from 'next/link'
+
 
 export const MenuHead = () => {
+    const [open, setOpen] = useState(false)
   return (
    
 		<>
         <link rel="preconnect" href="https://fonts.googleapis.com"/>
         <link rel="preconnect" href="https://fonts.gstatic.com"/>
         <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@319;400;600;700&display=swap" rel="stylesheet"></link>
-                    
-            <div className="aside-dropdown">
-				<div className="aside-dropdown__inner"><span className="aside-dropdown__close">
-					<svg className="icon">
-                    
-					</svg></span>
-				<div className="aside-dropdown__item d-lg-none d-block">
-					<ul className="aside-menu">
-						<li className="aside-menu__item"><a className="aside-menu__link" href="index"><span>Inicio </span></a></li>
-						
-						
-						<li className="aside-menu__item aside-menu__item--has-child"><a className="aside-menu__link" href="javascript:void(0);"><span>Pacientes</span></a>
-							
-                            
-							<ul className="aside-menu__sub-list">
-							    	
-                                    
-				                    		<li><a href="#"  className="btn_IniciarUsaurio"><span> Inicio de sesi&oacute;n</span></a></li>
-											<li><a href="registrarme.php"><span> Registrarme</span></a></li>'
-                                            
-											   
-							                	<li><a href="tuhistoria.php"><span> Tu historia</span></a></li>
-							                	<li><a href="clases/Cerrar_Session.php"><span> Cerrar sesi&oacute;n </span></a></li>
-					
-							
-							
-							</ul>
-							
-						</li>
-							<li className="aside-menu__item aside-menu__item--has-child"><a className="aside-menu__link" href="javascript:void(0);"><span>Comunidades E Instituciones</span></a>
-							
-							<ul className="aside-menu__sub-list">
-								<li><a href="#"><span>Registro</span></a></li>
-								<li><a href="#"><span>Inscribir Comunidad</span></a></li>
-								<li><a href="#"><span>Inscribir InstituciÃ³n</span></a></li>
-								<li><a href="#"> <span>Preleccionar Beneficiarios</span></a></li>
-								<li><a href="#"> <span>Seguimiento de Servicios</span></a></li>
-							
-							
-							</ul>
-							
-						</li>
-						<li className="aside-menu__item"><a className="aside-menu__link" href="#"><span>Filantropos</span></a></li>
-				
-				    	<li className="aside-menu__item"><a className="aside-menu__link" href="historias.php"><span>Casos de Exito</span></a></li>
-					</ul>
-				</div>
-			
-				</div>
-			</div>
 
+        {/* barra oculta */}
+        {/* {open?(
+            <div>
+                    <h1>oe</h1>
+                    <h1>oe</h1>
+            </div>
+        ):null} */}
             <header className="header header--front">
             <div className="container-fluid">
                 <div className="row no-gutters justify-content-between">
-                    <div className="col-auto d-flex align-items-center">
-                        <div className="dropdown-trigger d-none d-sm-block">
+                    <div className="col-auto d-flex align-items-center" >
+                        <div className="dropdown-trigger d-none d-sm-block" >
                             <div className=""></div>
                         </div>
                         <div className="header-logo">
-                            <a className="header-logo__link" href="index.php">
-                                
-                          
-                             
-                                </a>
-                                
+                            <a className="header-logo__link" href="index.php"></a>
                         </div>
                     </div>
                     <div className="col-auto">
-                      
                         <nav>
                             <ul className="main-menu">
-                                <li className="main-menu__item main-menu__item--active"><a className="main-menu__link" href="/"><span>Inicio </span></a></li>
-                                
+                                <li className="main-menu__item main-menu__item--active">
+                                    <Link href="/tuhistoria" > 
+                                    <a className="main-menu__link">Inicio</a>
+                                    </Link>
+                                </li>
+                               
                 
-                                    <li className="main-menu__item main-menu__item--has-child"><a className="main-menu__link" href="javascript:void(0);"><span>Pacientes</span></a>
-                                   
-                                    <ul className="main-menu__sub-list">
+                                    <li className="main-menu__item main-menu__item--has-child">
+                                            <Link href="/" > 
+                                                <a className="main-menu__link">Pacientes</a>
+                                            </Link> 
+                                            <ul className="main-menu__sub-list">
                                         
-                                            <li><a  href="#"  className="btn_IniciarUsaurio"><span> Inicio de sesi&oacute;n</span></a></li>
-                                            <li><a href="registrarme.php"><span> Registrarme</span></a></li>
+                                            <li>    
+                                                <Link href="/" > 
+                                                    <a>Inicio de sessión</a>
+                                                </Link>
+                                               
+                                            </li>
+                                            <li>    
+                                                <Link href="/" > 
+                                                    <a>Registrarme</a>
+                                                </Link>
+                                               
+                                            </li>
+                                            <li>    
+                                                <Link href="/" > 
+                                                    <a>Tu historia</a>
+                                                </Link>
+                                               
+                                            </li>
+                                            <li>    
+                                                <Link href="/" > 
+                                                    <a>Cerrar sesisión</a>
+                                                </Link>
+                                               
+                                            </li>                                       
                                             
                                           
-                                            <li><a href="tuhistoria.php"><span> Tu historia</span></a></li>
-                                            <li><a href="clases/Cerrar_Session.php"><span> Cerrar sesi&oacute;n </span></a></li>
-                                            
                                             </ul>
-                                            </li>	
-                                                    <li className="main-menu__item main-menu__item--has-child"><a className="main-menu__link" href="javascript:void(0);"><span>Comunidades E Instituciones</span></a>
+                                    </li>	
+                                            
+                                            <li className="main-menu__item main-menu__item--has-child">
+                                            <Link href="/" > 
+                                                            <a className="main-menu__link">Comunidades E Instituciones</a>
+                                            </Link> 
+                                               
                                     
-                                    <ul className="main-menu__sub-list">
-                                        <li><a href="#"><span>Registro</span></a></li>
-                                        <li><a href="#"><span>Inscribir Comunidad</span></a></li>
-                                        <li><a href="#"><span>Inscribir InstituciÃ³n</span></a></li>
-                                        <li><a href="#"> <span>Preleccionar Beneficiarios</span></a></li>
-                                        <li><a href="#"> <span>Seguimiento de Servicios</span></a></li>
-                                        
-                                    </ul>
+                                            <ul className="main-menu__sub-list">
+                                                    <li>    
+                                                        <Link href="/" > 
+                                                            <a>Registro</a>
+                                                        </Link>   
+                                                    </li> 
+                                                    <li>    
+                                                        <Link href="/" > 
+                                                            <a>Inscribir Comunidad</a>
+                                                        </Link>   
+                                                    </li> 
+                                                    <li>    
+                                                        <Link href="/" > 
+                                                            <a>Inscribir Institución</a>
+                                                        </Link>   
+                                                    </li> 
+                                                    <li>    
+                                                        <Link href="/" > 
+                                                            <a>Preleccionar Beneficiarios</a>
+                                                        </Link>   
+                                                    </li> 
+                                                    <li>    
+                                                        <Link href="/" > 
+                                                            <a>Seguimiento de Servicios</a>
+                                                        </Link>   
+                                                    </li> 
+                                                                                    
+                                                
+                                            </ul>
                                   
                                 </li>
                                 
                                 
-                                <li className="main-menu__item"><a className="main-menu__link" href=""><span>Filantropos</span></a></li>
-                                
-                                <li className="main-menu__item"><a className="main-menu__link" href="historias.php"><span>Casos de Exito</span></a></li>
+                                <li className="main-menu__item">
+                                           <Link href="/" > 
+                                                <a className="main-menu__link">Filantropos</a>
+                                            </Link>                                                           
+                                </li>
                                 
                             </ul>
                         </nav>
@@ -129,9 +137,9 @@ export const MenuHead = () => {
                             </li>
                         </ul>
                        
-                        <div className="dropdown-trigger d-block d-sm-none">
+                        {/* <div className="dropdown-trigger d-block d-sm-none" onClick={()=>setOpen(!open)}>
                             <div className="dropdown-trigger__item"></div>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>

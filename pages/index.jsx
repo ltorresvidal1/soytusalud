@@ -10,7 +10,12 @@ import AboutLayout from '../assets/images/about_layout.png';
 import Gallery2 from '../assets/images/gallery_2.jpg';
 import Promo1 from '../assets/images/promo_1.jpg';
 
+const img_layout={
+  position:"absolute",
 
+  height:"850px",
+  with:"850px",
+  pointerEvents:"none"}
 
 
 export default function Home() {
@@ -18,12 +23,12 @@ export default function Home() {
 
     <>
       
-      <main className="main">
+      <div>
 				               
 			   
                        <section className="promo-primary">
-                       <picture>
-                         <Image className="img--bg" src={Promo1} alt="img"/>
+                       <picture  className="img--bg ">
+                         <Image src={Promo1} alt="img"/>
                          </picture>
                          <div className="container">
                            <div className="row">
@@ -36,9 +41,7 @@ export default function Home() {
                                </div>
                              </div>
                            </div>
-                         </div>
-
-                        
+                         </div>                  
                        </section>
                        
                                
@@ -65,7 +68,9 @@ export default function Home() {
                                  <a className="button button--primary" href="#">Más sobre nosotros</a>
                              </div>
                              <div className="col-lg-6 col-xl-5 offset-xl-1">
-                               <div className="info-box"><Image className="img--layout" src={AboutLayout} alt="img"/><Image className="img--bg" src={Gallery2} alt="img"/>
+                               <div className="info-box">
+                                 <Image style={img_layout} src={AboutLayout} alt="img"/>
+                                 <Image style={"img--bg"} src={Gallery2} alt="img"/>
                                </div>
                              </div>
                            </div>
@@ -112,7 +117,7 @@ export default function Home() {
                      
                
                  
-                     </main>
+                     </div>
 
         </>
   )
