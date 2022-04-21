@@ -30,6 +30,7 @@ export const MenuHead = () => {
                         </div>
                         <div className="header-logo">
                             <a className="header-logo__link" href="index.php"></a>
+                            <Image className="header-logo__img logo--light" src={LogoWhite} alt="logo"/>
                         </div>
                     </div>
                     <div className="col-auto">

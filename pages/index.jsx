@@ -24,11 +24,9 @@ export default function Home() {
     <>
       
       <div>
-				               
-			   
                        <section className="promo-primary">
                        <picture  className="img--bg ">
-                         <Image src={Promo1} alt="img"/>
+                         <Image src={Promo1} alt="img" width={"3000vw"}  layout="responsive"/>
                          </picture>
                          <div className="container">
                            <div className="row">
@@ -68,9 +66,16 @@ export default function Home() {
                                  <a className="button button--primary" href="#">Más sobre nosotros</a>
                              </div>
                              <div className="col-lg-6 col-xl-5 offset-xl-1">
-                               <div className="info-box">
-                                 <Image style={img_layout} src={AboutLayout} alt="img"/>
-                                 <Image style={"img--bg"} src={Gallery2} alt="img"/>
+                               <div className="">
+                                 <div className="absolute">
+                                    <Image  src={AboutLayout} alt="img" />
+                                 </div>
+                                 <div className=" info-box">
+                                    <Image src={Gallery2} alt="img" />
+
+                                 </div>
+                                 
+                                
                                </div>
                              </div>
                            </div>
