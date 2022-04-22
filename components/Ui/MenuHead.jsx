@@ -5,6 +5,7 @@ import LogoWhite from '../../assets/images/logo_white.png';
 import Link from 'next/link'
 
 
+
 export const MenuHead = () => {
     const [open, setOpen] = useState(false)
   return (
@@ -38,7 +39,7 @@ export const MenuHead = () => {
                             <ul className="main-menu">
                                 <li className="main-menu__item main-menu__item--active">
                                     <Link href="/tuhistoria" > 
-                                    <a className="main-menu__link">Inicio</a>
+                                    <a className="main-menu__link font-black">Inicio</a>
                                     </Link>
                                 </li>
                                
@@ -129,7 +130,7 @@ export const MenuHead = () => {
                     </div>
                     <div className="col-auto d-flex align-items-center">
                         <ul className="lang-select lang-select--inner">
-                            <li className="lang-select__item lang-select__item--active"><span data-lang="idioma">Es</span>
+                            <li className="lang-select__item lang-select__item--active"><span className="text-white" data-lang="idioma">Es</span>
                                 <ul className="lang-select__sub-list">
                                     
                                         <li><a href="#" id="translate" data-text="English,Espa&ntilde;ol" data-file="es,en" data-index="1">English</a></li>
