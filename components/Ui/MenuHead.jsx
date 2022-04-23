@@ -29,7 +29,7 @@ export const MenuHead = () => {
                         <div className="dropdown-trigger d-none d-sm-block" >
                             <div className=""></div>
                         </div>
-                        <div className="header-logo">
+                        <div className="w-7/12 pt-3">
                             <a className="header-logo__link" href="index.php"></a>
                             <Image className="header-logo__img logo--light" src={LogoWhite} alt="logo"/>
                         </div>
@@ -42,103 +42,83 @@ export const MenuHead = () => {
                                     <a className="main-menu__link font-black">Inicio</a>
                                     </Link>
                                 </li>
-                               
-                
-                                    <li className="main-menu__item main-menu__item--has-child">
-                                            <Link href="/" > 
-                                                <a className="main-menu__link">Pacientes</a>
-                                            </Link> 
-                                            <ul className="main-menu__sub-list">
-                                        
-                                            <li>    
-                                                <Link href="/" > 
-                                                    <a>Inicio de sessión</a>
-                                                </Link>
-                                               
-                                            </li>
-                                            <li>    
-                                                <Link href="/" > 
-                                                    <a>Registrarme</a>
-                                                </Link>
-                                               
-                                            </li>
-                                            <li>    
-                                                <Link href="/" > 
-                                                    <a>Tu historia</a>
-                                                </Link>
-                                               
-                                            </li>
-                                            <li>    
-                                                <Link href="/" > 
-                                                    <a>Cerrar sesisión</a>
-                                                </Link>
-                                               
-                                            </li>                                       
+                                <li className="main-menu__item main-menu__item--has-child">
+                                    <Link href="/" > 
+                                        <a className="main-menu__link">Pacientes</a>
+                                    </Link> 
+                                    <ul className="main-menu__sub-list">
+                                        <li>
+                                            <Link href="/" >
+                                                <a>Inicio de sessión</a>
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link href="/" >
+                                                <a>Registrarme</a>
+                                            </Link>
                                             
-                                          
-                                            </ul>
-                                    </li>	
+                                        </li>
+                                        <li>
+                                            <Link href="/" >
+                                                <a>Tu historia</a>
+                                            </Link>
                                             
-                                            <li className="main-menu__item main-menu__item--has-child">
-                                            <Link href="/" > 
-                                                            <a className="main-menu__link">Comunidades E Instituciones</a>
-                                            </Link> 
-                                               
-                                    
-                                            <ul className="main-menu__sub-list">
-                                                    <li>    
-                                                        <Link href="/" > 
-                                                            <a>Registro</a>
-                                                        </Link>   
-                                                    </li> 
-                                                    <li>    
-                                                        <Link href="/" > 
-                                                            <a>Inscribir Comunidad</a>
-                                                        </Link>   
-                                                    </li> 
-                                                    <li>    
-                                                        <Link href="/" > 
-                                                            <a>Inscribir Institución</a>
-                                                        </Link>   
-                                                    </li> 
-                                                    <li>    
-                                                        <Link href="/" > 
-                                                            <a>Preleccionar Beneficiarios</a>
-                                                        </Link>   
-                                                    </li> 
-                                                    <li>    
-                                                        <Link href="/" > 
-                                                            <a>Seguimiento de Servicios</a>
-                                                        </Link>   
-                                                    </li> 
-                                                                                    
-                                                
-                                            </ul>
-                                  
+                                        </li>
+                                        <li>
+                                            <Link href="/" >
+                                                <a>Cerrar sesisión</a>
+                                            </Link>
+                                        </li>
+                                    </ul>
                                 </li>
-                                
-                                
+                                <li className="main-menu__item main-menu__item--has-child">
+                                    <Link href="/" >
+                                        <a className="main-menu__link">Comunidades E Instituciones</a>
+                                    </Link>
+                                    <ul className="main-menu__sub-list">
+                                        <li>
+                                            <Link href="/" >
+                                                <a>Registro</a>
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link href="/" > 
+                                                <a>Inscribir Comunidad</a>
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link href="/" > 
+                                                <a>Inscribir Institución</a>
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link href="/" > 
+                                                <a>Preleccionar Beneficiarios</a>
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link href="/" >
+                                                <a>Seguimiento de Servicios</a>
+                                            </Link>
+                                        </li>
+                                    </ul>
+                                </li>
                                 <li className="main-menu__item">
-                                           <Link href="/" > 
-                                                <a className="main-menu__link">Filantropos</a>
-                                            </Link>                                                           
+                                    <Link href="/" > 
+                                        <a className="main-menu__link">Filantropos</a>
+                                    </Link>
                                 </li>
-                                
                             </ul>
                         </nav>
-                       
                     </div>
                     <div className="col-auto d-flex align-items-center">
                         <ul className="lang-select lang-select--inner">
-                            <li className="lang-select__item lang-select__item--active"><span className="text-white" data-lang="idioma">Es</span>
+                            <li className="lang-select__item lang-select__item--active"><span className="text-white font-semibold" data-lang="idioma">Es</span>
                                 <ul className="lang-select__sub-list">
-                                    
-                                        <li><a href="#" id="translate" data-text="English,Espa&ntilde;ol" data-file="es,en" data-index="1">English</a></li>
-                                    
+                                    <li><a href="#" id="translate" data-text="English,Espa&ntilde;ol" data-file="es,en" data-index="1">English</a></li>
                                 </ul>
                             </li>
                         </ul>
-                       
                         {/* <div className="dropdown-trigger d-block d-sm-none" onClick={()=>setOpen(!open)}>
                             <div className="dropdown-trigger__item"></div>
                         </div> */}
@@ -147,6 +127,6 @@ export const MenuHead = () => {
             </div>
         </header>
         </>
-  )
+)
 }
 

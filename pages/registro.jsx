@@ -7,15 +7,15 @@ const registro = () => {
     <>
     <div>
     <section className="promo-primary">
-            <picture  className="img--bg">
-              <Image src={Promo1} alt="img" width={"3000vw"}  layout="responsive"/>
+            <picture className="img--bg">
+              <Image src={Promo1} alt="img" width={"3000vw"} layout="responsive"/>
               </picture>
               <div className="container">
                 <div className="row">
                   <div className="col-auto">
                     <div className="align-container">
                       <div className="align-container__item">
-                        <h1 className="promo-primary__title"><span data-lang="eslogan1">Mejoramos la Salud de personas en situación de vulnerabilidad </span> <span data-lang="eslogan2">con recursos de Responsabilidad Social</span></h1>
+                        <h1 className="pt-8 promo-primary__title">Regístrate</h1>
                       </div>
                     </div>
                   </div>
