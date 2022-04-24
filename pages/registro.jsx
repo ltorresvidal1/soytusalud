@@ -6,7 +6,7 @@ const registro = () => {
   return (
     <>
     <div>
-    <section className="promo-primary">
+          <section className="promo-primary">
             <picture className="img--bg">
               <Image src={Promo1} alt="img" width={"3000vw"} layout="responsive"/>
               </picture>
@@ -22,27 +22,40 @@ const registro = () => {
                 </div>
               </div>
           </section>
-            
-        <form>
-          <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"></input>
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-          </div>
-          <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"></input>
-          </div>
-          <div class="form-group form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1"></input>
-            <label class="form-check-label" for="exampleCheck1">Check me out</label>
-          </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
 
+          <section className="mx-auto mt-12 mb-12 bg-white drop-shadow-xl w-2/5">
+          <form className="p-4">
+              <div className="form-group">
+                <select class="w-full h-10 border-2 form-control" aria-label="Default select example">
+                  <option selected>Tipo de documento</option>
+                  <option value="1">One</option>
+                  <option value="2">Two</option>
+                  <option value="3">Three</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <input type="" class="form-control" id="" aria-describedby="" placeholder="Documento"></input>
+              </div>
+              <div class="form-group">
+                <input type="" class="form-control" id="" aria-describedby="" placeholder="Nombre Completo"></input>
+              </div>
+              <div class="form-group">
+                <input type="" class="form-control" id="" aria-describedby="" placeholder="Celular"></input>
+              </div>
+              <div class="form-group">
+                <input type="email" class="form-control" id="" aria-describedby="" placeholder="Email"></input>
+                {/* <small>Por favor ingresa un correo electrónico válido</small> */}
+              </div>
+              <div class="form-group">
+                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Contraseña"></input>
+              </div>
+              <div class="form-group">
+                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Confirmar Contraseña"></input>
+              </div>
+              <button type="submit" class="my-8 mx-auto btn btn-primary">Enviar</button>
+            </form>
+          </section>
     </div>
-       
-        
     </>
   )
 }
