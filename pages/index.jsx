@@ -98,15 +98,7 @@ export default function Home() {
             </div>
           </section>
             
-          <section className="bottom-background">
-            <div className="container">
-              <div className="row">
-                <div className="col-12">
-                  <div className="bottom-background__img"><Image src={ImagenBarraInferior} alt="img"/></div>
-                </div>
-              </div>
-            </div>
-          </section>
+        
       </div>
     </>
   )

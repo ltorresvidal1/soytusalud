@@ -38,7 +38,7 @@ export const MenuHead = () => {
                         <nav>
                             <ul className="main-menu">
                                 <li className="main-menu__item main-menu__item--active">
-                                    <Link href="/tuhistoria" > 
+                                    <Link href="/" > 
                                     <a className="main-menu__link font-black">Inicio</a>
                                     </Link>
                                 </li>
@@ -59,7 +59,7 @@ export const MenuHead = () => {
                                             
                                         </li>
                                         <li>
-                                            <Link href="/" >
+                                            <Link href="/tuhistoria" >
                                                 <a>Tu historia</a>
                                             </Link>
                                             
@@ -104,8 +104,13 @@ export const MenuHead = () => {
                                     </ul>
                                 </li>
                                 <li className="main-menu__item">
-                                    <Link href="/" > 
+                                    <Link href="/historias" > 
                                         <a className="main-menu__link">Filantropos</a>
+                                    </Link>
+                                </li>
+                                <li className="main-menu__item">
+                                    <Link href="/aliados" > 
+                                        <a className="main-menu__link">Aliados</a>
                                     </Link>
                                 </li>
                             </ul>

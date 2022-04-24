@@ -1,8 +1,19 @@
 import Image from 'next/image';
 import LogoInferior from '../../assets/images/Logo_P4.png';
-
+import ImagenBarraInferior from '../../assets/images/bottom-bg.png';
 export const MenuFooter = () => {
   return (
+
+<>
+    <section className="bottom-background">
+    <div className="container">
+      <div className="row">
+        <div className="col-12">
+          <div className="bottom-background__img"> <Image src={ImagenBarraInferior} layout="responsive"/></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
     <footer className="footer">
     <div className="container">
@@ -50,5 +61,7 @@ export const MenuFooter = () => {
         </div>
     </div>
 </footer>
+
+</>
   )
 }
