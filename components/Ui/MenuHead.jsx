@@ -53,7 +53,7 @@ export const MenuHead = () => {
                                             </Link>
                                         </li>
                                         <li>
-                                            <Link href="/" >
+                                            <Link href="/registro" >
                                                 <a>Registrarme</a>
                                             </Link>
                                             

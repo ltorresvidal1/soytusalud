@@ -1,61 +1,111 @@
 import React from 'react'
 import Promo1 from '../assets/images/promo_1.jpg';
 import Image from 'next/image'
+import ImagenBarraInferior from '../assets/images/bottom-bg.png';
 
 const registro = () => {
   return (
     <>
-    <div>
-          <section className="promo-primary">
-            <picture className="img--bg">
-              <Image src={Promo1} alt="img" width={"3000vw"} layout="responsive"/>
+    		
+			<main className="main">
+				<section className="promo-primary promo-primary--shop">
+					<picture>
+						<source srcSet="img/counter.jpg" media="(min-width: 992px)"/>
+            <picture  className="img--bg">
+              <Image src={Promo1} alt="img" width={"3000vw"}  layout="responsive"/>
               </picture>
-              <div className="container">
-                <div className="row">
-                  <div className="col-auto">
-                    <div className="align-container">
-                      <div className="align-container__item">
-                        <h1 className="pt-8 promo-primary__title">Regístrate</h1>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-          </section>
+					</picture>
+					<div className="promo-primary__description"> <span></span></div>
+					<div className="container">
+						<div className="row">
+							<div className="col-auto">
+								<div className="align-container">
+												<div className="align-container__item"><span className="promo-primary__pre-title">Soy Tú Salud</span>
+										<h1 className="promo-primary__title"><span>Registrate</span><span></span></h1>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+				{/* <!-- section start--> */}
+				<section className="section background--brown">
+					<div className="container">
+						<div className="row offset-margin">
+							<div className="col-md-8 offset-md-2 col-lg-6 offset-lg-0 col-xl-2 margin-bottom">
+						
+						
+							</div>
+							<div className="col-md-8 offset-md-2 col-lg-6 offset-lg-0 col-xl-6 margin-bottom">
+							    
+								<form className="form account-form sign-up-form"  id="Form_RegistroPaciente">
+								        <input type='hidden' id='opcion' name='opcion' value='nuevo'/>   
+                               <input type='hidden' id='ventana' name='ventana' value='AddPaciente'/>    
+								  	<div className="form__fieldset">
+										<h6 className="form__title">Registrate</h6>
+										<div className="row">
+											<div className="col-12">
+											    	<div className="row">
+												<select className="form__field" name="idtipodocumento" id="idtipodocumento">
+															<option value="0">Tipo Documento</option>
+															<option value="1">CC</option>
+															<option value="2">CE</option>
+															<option value="3">TI</option>
+															<option value="4">PA</option>
+															<option value="5">RC</option>
+                                                            <option value="6">CD</option>
+															<option value="7">PT</option>
+															<option value="8">MS</option>
+															<option value="9">AS</option>
+															<option value="10">CN</option>
+															<option value="11">SC</option>
 
-          <section className="mx-auto mt-12 mb-12 bg-white drop-shadow-xl w-2/5">
-          <form className="p-4">
-              <div className="form-group">
-                <select class="w-full h-10 border-2 form-control" aria-label="Default select example">
-                  <option selected>Tipo de documento</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <input type="" class="form-control" id="" aria-describedby="" placeholder="Documento"></input>
-              </div>
-              <div class="form-group">
-                <input type="" class="form-control" id="" aria-describedby="" placeholder="Nombre Completo"></input>
-              </div>
-              <div class="form-group">
-                <input type="" class="form-control" id="" aria-describedby="" placeholder="Celular"></input>
-              </div>
-              <div class="form-group">
-                <input type="email" class="form-control" id="" aria-describedby="" placeholder="Email"></input>
-                {/* <small>Por favor ingresa un correo electrónico válido</small> */}
-              </div>
-              <div class="form-group">
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Contraseña"></input>
-              </div>
-              <div class="form-group">
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Confirmar Contraseña"></input>
-              </div>
-              <button type="submit" class="my-8 mx-auto btn btn-primary">Enviar</button>
-            </form>
-          </section>
-    </div>
+														</select>
+												 
+												 </div>
+												 	<div className="row">
+												<input className="form__field" type="text" name="documento"  id="documento"  placeholder="Documento"/>
+												
+												</div>
+				                                	<div className="row">								
+												<input className="form__field" type="text" name="nombre"  id="nombre" placeholder="Nombre Completo"/>
+												</div>
+													<div className="row">
+												<input className="form__field" type="text" name="celular"   id="celular"  placeholder="Celular"/>
+												</div>
+													<div className="row">
+												<input className="form__field" type="correo" name="correo"  id="correo" placeholder="Correo"/>
+												</div>
+													<div className="row">
+												<input className="form__field" type="password" name="password" id="password" placeholder="Contraseña" autoComplete="on"/>
+												</div>
+													<div className="row">
+												<input className="form__field" type="password" name="password2" id="password2" placeholder="Confirmar Contraseña"  autoComplete="on"/>
+												 
+												</div>
+											
+											</div>
+										
+											<div className="col-12 text-center">
+												<button className="form__submit" type="submit">Registrar</button>
+											
+											</div>
+											<div className="col-12 text-center"><strong><a className="form__link btn_IniciarUsaurio2" href="#">Inicia sesión</a> si tienes una cuenta</strong></div>
+												
+										</div>
+									</div>
+								</form>
+									<button type="submit"  id="showtoast" style={{display: "none"}}></button>
+                                    <button type="submit"  id="showtoast2" style={{display: "none"}}></button>
+							</div>
+							<div className="col-md-8 offset-md-2 col-lg-6 offset-lg-0 col-xl-2 margin-bottom">
+						
+						
+							</div>
+						</div>
+					</div>
+				</section>
+			</main>
     </>
   )
 }
