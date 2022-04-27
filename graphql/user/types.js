@@ -3,14 +3,13 @@ import {  gql } from 'apollo-server-micro'
 
 export const typesUsuario = gql`
     type Usuario{
-        _id: ID!
-        nombre: String
+        uid: ID!
+        identificacion:String!
+        nombre: String!
         apellidos: String!
-        identificacion: String!
         tipoDocumento: String!
         celular:String!
         correo: String!
-        uid: String!
         foto:String
         genero: String
         fechaNacimiento: String
@@ -32,14 +31,13 @@ export const typesUsuario = gql`
 
     type Mutation {
     crearUsuario(
-        _id: ID!
-        nombre: String
-        apellidos: String!
+        uid: ID!
         identificacion: String!
+        nombre: String!
+        apellidos: String!
         tipoDocumento: String!
         celular:String!
         correo: String!
-        uid: String!
     ): Usuario
 
     }

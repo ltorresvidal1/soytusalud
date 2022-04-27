@@ -5,7 +5,11 @@ export const resolversUsuario = {
 
     Query: {
         Usuarios: async (parent, args) => { // es el usuario que se creó en query en types
-            const usuarios = await getDocs(collection(db, "users"));
+            const querySnapshot  = await getDocs(collection(db, "users"));
+            let usuarios =[]
+            querySnapshot.forEach((doc) => {
+                usuarios.push(doc.data());
+            });
             return usuarios;
         },
     },
@@ -14,19 +18,17 @@ export const resolversUsuario = {
     Mutation : {
         crearUsuario: async (parent, args) => {
             const usersRef = collection(db,"users")
-            const docRef =  doc(db, "users", args._id)
-            await setDoc(doc(usersRef,args._id), {
-                _id: args._id,
+            const usuarioCreado = {
                 nombre: args.nombre,
+                uid: args.uid,
                 apellidos: args.apellidos,
                 identificacion: args.identificacion,
                 tipoDocumento: args.tipoDocumento,
                 celular:args.celular,
                 correo: args.correo,
-                uid: args.uid
-            });
-            const docSnap = await getDoc(docRef)
-            return docSnap.data();
+            }
+            await setDoc(doc(usersRef,args.uid),usuarioCreado);
+            return usuarioCreado;
         },
     }
 }

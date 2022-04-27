@@ -1,25 +1,15 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import Link from 'next/link'
-import { LayaoutMain } from '../components/layaouts'
-import styles from '../styles/Home.module.css'
-
+import { client } from '../graphql/initClientSide';
 import InconoServicio1 from '../assets/images/icon_1-1.png';
-import ImagenBarraInferior from '../assets/images/bottom-bg.png';
 import AboutLayout from '../assets/images/about_layout.png';
 import Gallery2 from '../assets/images/gallery_2.jpg';
 import Promo1 from '../assets/images/promo_1.jpg';
+import { usuarios } from '../graphql/user/queries';
 
-const img_layout={
-  position:"absolute",
-  height:"850px",
-  with:"850px",
-  pointerEvents:"none"}
+export default function Home({data}) {
 
-
-export default function Home() {
   return (
-
     <>
       <div>
           <section className="promo-primary">
@@ -97,9 +87,19 @@ export default function Home() {
               </div>
             </div>
           </section>
-            
-        
       </div>
     </>
   )
+}
+
+
+export const getStaticProps = async (ctx) => {
+  const { data } = await client.query({
+    query: usuarios
+  })
+  return {
+    props: {
+      data  
+    }
+  }
 }
