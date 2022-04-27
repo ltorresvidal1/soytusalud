@@ -1,7 +1,7 @@
 import { MenuHead,MenuFooter } from "../Ui"
 
 
-export const LayaoutMain = ({children}) => {
+export const LayoutMain = ({children}) => {
   return (
     <div>
         <MenuHead></MenuHead>

@@ -1,12 +1,47 @@
-import React from 'react'
+import { signInWithPopup , signInWithEmailAndPassword ,signOut } from "firebase/auth";
+import { collection, addDoc } from "firebase/firestore"; 
+
+import {  auth , googleProvider,db  } from '../firebase/initConfig'
+
 import Promo1 from '../assets/images/promo_1.jpg';
 import Image from 'next/image'
-import ImagenBarraInferior from '../assets/images/bottom-bg.png';
+import useFormData from '../hooks/useFormData';
 
-const registro = () => {
+const Registro = () => {
+
+	const { form, formData, updateFormData } =useFormData();
+	const handlerGoogle =()=>{
+		signInWithPopup(auth, googleProvider)
+		.then((user) => {
+			console.log(user.user);
+		})
+		.catch((error) => {
+			console.log(error);
+			// navigate('crear-cuenta')
+		});
+	};
+
+	const handlerLogout = () =>{
+		signOut(auth)
+	}
+
+
+	const submitForm = async (e) => {
+		e.preventDefault();
+		await signInWithEmailAndPassword(auth,formData.correo, formData.password)
+		.then((user) => {
+			console.log(user)
+		})
+		.catch((error)=>{
+			console.log(error)
+
+		})
+	  }
+
+
+
   return (
     <>
-    		
 			<main className="main">
 				<section className="promo-primary promo-primary--shop">
 					<picture>
@@ -38,7 +73,7 @@ const registro = () => {
 							</div>
 							<div className="col-md-8 offset-md-2 col-lg-6 offset-lg-0 col-xl-6 margin-bottom">
 							    
-								<form className="form account-form sign-up-form"  id="Form_RegistroPaciente">
+								<form ref={form} onChange={updateFormData} onSubmit={submitForm} className="form account-form sign-up-form"  id="Form_RegistroPaciente" >
 								        <input type='hidden' id='opcion' name='opcion' value='nuevo'/>   
                                <input type='hidden' id='ventana' name='ventana' value='AddPaciente'/>    
 								  	<div className="form__fieldset">
@@ -67,27 +102,28 @@ const registro = () => {
 												<input className="form__field" type="text" name="documento"  id="documento"  placeholder="Documento"/>
 												
 												</div>
-				                                	<div className="row">								
-												<input className="form__field" type="text" name="nombre"  id="nombre" placeholder="Nombre Completo"/>
+				                				<div className="row">								
+												  <input className="form__field" type="text" name="nombre"  id="nombre" placeholder="Nombre Completo"/>
 												</div>
 													<div className="row">
 												<input className="form__field" type="text" name="celular"   id="celular"  placeholder="Celular"/>
 												</div>
-													<div className="row">
-												<input className="form__field" type="correo" name="correo"  id="correo" placeholder="Correo"/>
+												<div className="row">
+												  <input className="form__field" type="correo" name="correo"  id="correo" placeholder="Correo"/>
 												</div>
-													<div className="row">
-												<input className="form__field" type="password" name="password" id="password" placeholder="Contraseña" autoComplete="on"/>
+												<div className="row">
+												  <input className="form__field" type="password" name="password" id="password" placeholder="Contraseña" autoComplete="on"/>
 												</div>
-													<div className="row">
-												<input className="form__field" type="password" name="password2" id="password2" placeholder="Confirmar Contraseña"  autoComplete="on"/>
-												 
+												<div className="row">
+												  <input className="form__field" type="password" name="password2" id="password2" placeholder="Confirmar Contraseña"  autoComplete="on"/>
 												</div>
 											
 											</div>
 										
 											<div className="col-12 text-center">
 												<button className="form__submit" type="submit">Registrar</button>
+                        						<button className="form__submit" type="button" onClick={handlerGoogle}>Google</button>
+												<button className="form__submit" type="button" onClick={handlerLogout}>cerrar</button>
 											
 											</div>
 											<div className="col-12 text-center"><strong><a className="form__link btn_IniciarUsaurio2" href="#">Inicia sesión</a> si tienes una cuenta</strong></div>
@@ -96,11 +132,9 @@ const registro = () => {
 									</div>
 								</form>
 									<button type="submit"  id="showtoast" style={{display: "none"}}></button>
-                                    <button type="submit"  id="showtoast2" style={{display: "none"}}></button>
+                  					<button type="submit"  id="showtoast2" style={{display: "none"}}></button>
 							</div>
-							<div className="col-md-8 offset-md-2 col-lg-6 offset-lg-0 col-xl-2 margin-bottom">
-						
-						
+							  <div className="col-md-8 offset-md-2 col-lg-6 offset-lg-0 col-xl-2 margin-bottom">
 							</div>
 						</div>
 					</div>
@@ -110,4 +144,4 @@ const registro = () => {
   )
 }
 
-export default registro
+export default Registro
