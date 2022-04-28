@@ -4,12 +4,12 @@ import { getAuth , GoogleAuthProvider } from "firebase/auth";
 import { getFirestore ,  collection, addDoc } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDal7rcOVzjHkxZPAbNBOEED77AsqaABNk",
-  authDomain: "quetions-app.firebaseapp.com",
-  projectId: "quetions-app",
-  storageBucket: "quetions-app.appspot.com",
-  messagingSenderId: "1088315107365",
-  appId: "1:1088315107365:web:8c2e1b99a45bfdcf4737cc"
+  apiKey: process.env.NEXT_PUBLIC_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_APP_ID
 };
 
 // Initialize Firebase

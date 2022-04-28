@@ -2,6 +2,7 @@ import { signInWithPopup ,createUserWithEmailAndPassword ,signOut } from "fireba
 import { useMutation } from "@apollo/client";
 import { registrarUsuario } from "../graphql/user/mutations";
 import { auth , googleProvider } from '../firebase/initConfig'
+import { useRouter } from 'next/router'
 
 import Promo1 from '../assets/images/promo_1.jpg';
 import Image from 'next/image'
@@ -10,6 +11,7 @@ import useFormData from '../hooks/useFormData';
 
 const RegistroUsuarios = () => {
 
+    const router = useRouter()
     const [crearUsuario] = useMutation(registrarUsuario)
 
 	const { form, formData, updateFormData } =useFormData();
@@ -37,6 +39,7 @@ const RegistroUsuarios = () => {
             formData["uid"] = user.user.uid
             console.log(formData)
             crearUsuario({variables: formData})
+            router.push("/")
 		})
 		.catch((error)=>{
 			console.log(error)
