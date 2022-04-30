@@ -1,4 +1,6 @@
 import Image from 'next/image';
+import { auth } from '../../firebase/initConfig';
+import { signOut } from 'firebase/auth';
 import {useState} from 'react'
 import LogoDark from '../../assets/images/logo_dark.png';
 import LogoWhite from '../../assets/images/logo_white.png';
@@ -6,8 +8,19 @@ import Link from 'next/link'
 
 
 
+
 export const MenuHead = () => {
     const [open, setOpen] = useState(false)
+
+    const handlerLogOut=()=>{
+        signOut(auth)
+        .then(
+            console.log("salio")
+        ).catch(error=>{
+            console(error)
+        })
+
+    }
   return (
    
 		<>
@@ -65,9 +78,7 @@ export const MenuHead = () => {
                                             
                                         </li>
                                         <li>
-                                            <Link href="/" >
-                                                <a>Cerrar sesisión</a>
-                                            </Link>
+                                            <button onClick={handlerLogOut}>Cerrar sesisión</button>
                                         </li>
                                     </ul>
                                 </li>

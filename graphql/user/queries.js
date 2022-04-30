@@ -13,3 +13,16 @@ query Query {
   }
 }   
 `;
+export const authUser = gql`
+  query AuthUser($uid: String!) {
+    Usuario(uid: $uid) {
+      identificacion
+      nombre
+      apellidos
+      tipoDocumento
+      celular
+      correo
+      uid
+    }
+  }
+`

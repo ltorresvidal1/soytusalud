@@ -26,7 +26,8 @@ export const typesUsuario = gql`
         recopilacionDatos:Boolean
     }
     type Query{
-            Usuarios: [Usuario]
+        Usuarios: [Usuario]
+        Usuario(uid: String!): Usuario
     }
 
     type Mutation {

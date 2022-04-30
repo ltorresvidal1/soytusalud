@@ -8,7 +8,8 @@ import Promo1 from '../assets/images/promo_1.jpg';
 import { usuarios } from '../graphql/user/queries';
 
 export default function Home({data}) {
-
+  
+ 
   return (
     <>
       <div>
@@ -28,7 +29,6 @@ export default function Home({data}) {
                 </div>
               </div>
           </section>
-            
           <section className="section about-us" id="about">
             <div className="container mt-6">
               <div className="row align-items-center">

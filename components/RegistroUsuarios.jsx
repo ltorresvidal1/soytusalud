@@ -10,7 +10,6 @@ import useFormData from '../hooks/useFormData';
 
 
 const RegistroUsuarios = () => {
-
     const router = useRouter()
     const [crearUsuario] = useMutation(registrarUsuario)
 

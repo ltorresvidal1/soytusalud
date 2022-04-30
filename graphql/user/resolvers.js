@@ -12,9 +12,12 @@ export const resolversUsuario = {
             });
             return usuarios;
         },
+        Usuario: async (parent, args) => {
+            const docRef = doc(db, "users", args.uid);
+            const docSnap = await getDoc(docRef);
+            return docSnap.data();
+        },
     },
-
-
     Mutation : {
         crearUsuario: async (parent, args) => {
             const usersRef = collection(db,"users")
