@@ -22,17 +22,7 @@ const Aliados= () => {
 					<Image src={Promo1} alt="img" width={"3000vw"}  layout="responsive"/>
 					</picture>
 					<div className="promo-primary__description"> <span>Aliados</span></div>
-					<div className="container">
-						<div className="row">
-							<div className="col-auto">
-								<div className="align-container">
-									<div className="align-container__item"><span className="promo-primary__pre-title">Helpo</span>
-										<h1 className="promo-primary__title"><span>About</span><span>Organization</span></h1>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
+			
 			</section>	
 			
 				
@@ -42,7 +32,7 @@ const Aliados= () => {
 						<div className="row margin-bottom">
 							<div className="col-12">
 								<div className="heading heading--primary heading--center">
-								<h2 className="heading__title no-margin-bottom"><span>Aliados</span></h2>
+								<h2 className="heading__title no-margin-bottom"><span>Instituciones</span></h2>
 								</div>
 							</div>
 						</div>
