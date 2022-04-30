@@ -114,16 +114,56 @@ export const MenuHead = () => {
                                         </li>
                                     </ul>
                                 </li>
-                                <li className="main-menu__item">
-                                    <Link href="/historias" > 
+                                <li className="main-menu__item main-menu__item--has-child">
+                                    <Link href="/" > 
                                         <a className="main-menu__link">Filantropos</a>
-                                    </Link>
+                                    </Link> 
+                                    <ul className="main-menu__sub-list">
+                                        <li>
+                                            <Link href="/historias" >
+                                                <a>Pacientes Clasificados</a>
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            
+                                        <Link href="/trasabilidad" >
+                                                <a>Trasabilidad Pacientes</a>
+                                            </Link>
+                                                                                    
+                                        </li>
+                                        <li>
+                                        <Link href="/donaciones" >
+                                                <a>Donaciones</a>
+                                            </Link>
+                                        </li>
+                                    </ul>
                                 </li>
-                                <li className="main-menu__item">
-                                    <Link href="/aliados" > 
+                              
+                                <li className="main-menu__item main-menu__item--has-child">
+                                    <Link href="/" > 
                                         <a className="main-menu__link">Aliados</a>
-                                    </Link>
+                                    </Link> 
+                                    <ul className="main-menu__sub-list">
+                                        <li>
+                                            <Link href="/instituciones" >
+                                                <a>Instituciones</a>
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link href="/empresasconproposito" >
+                                                <a>Empresas Con Propositos</a>
+                                            </Link>
+                                            
+                                        </li>
+                                        <li>
+                                            <Link href="/personasconproposito" >
+                                                <a>Personas Con Propositos</a>
+                                            </Link>
+                                            
+                                        </li>
+                                    </ul>
                                 </li>
+                              
                             </ul>
                         </nav>
                     </div>
