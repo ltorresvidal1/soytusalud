@@ -113,7 +113,7 @@ export const MenuHead = () => {
                                 </li>
                                 <li className="main-menu__item main-menu__item--has-child">
                                     <Link href="/" > 
-                                        <a className="main-menu__link">Filantropos</a>
+                                        <a className="main-menu__link">Filántropos</a>
                                     </Link> 
                                     <ul className="main-menu__sub-list">
                                         <li>

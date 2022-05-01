@@ -4,7 +4,7 @@ import { client } from '../graphql/initClientSide';
 //import InconoServicio1 from '../assets/images/icon_1-1.png';
 import AboutLayout from '../assets/images/about_layout.png';
 import Gallery2 from '../assets/images/gallery_2.jpg';
-import Promo1 from '../assets/images/promo_c1.jpg';
+import Promo1 from '../assets/images/promo_c1.png';
 import { usuarios } from '../graphql/user/queries';
 
 import InconoServicio1 from '../assets/images/Logo_servicios1.png';
@@ -25,7 +25,7 @@ export default function Home({data}) {
                   <div className="col-auto">
                     <div className="align-container">
                       <div className="align-container__item">
-                        <h1 className="promo-primary__title">
+                        <h1 className="promo-primary__title pt-2 mb-4">
                           <span className='' data-lang="eslogan1">Mejoramos la Salud de personas en situación de vulnerabilidad </span> 
                           <span data-lang="eslogan2">con recursos de Responsabilidad Social</span>
                         </h1>
@@ -61,7 +61,7 @@ export default function Home({data}) {
                     <div className="absolute">
                       <Image  src={AboutLayout} alt="img" />
                     </div>
-                    <div className=" info-box">
+                    <div className="info-box rounded-full">
                       <Image src={Gallery2} alt="img" />
                     </div>
                   </div>

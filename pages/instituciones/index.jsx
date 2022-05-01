@@ -5,10 +5,10 @@ import Image from 'next/image'
 import Aliado1 from '../../assets/images/aliados/1.jpeg';
 import Aliado2 from '../../assets/images/aliados/2.jpeg';
 import Aliado3 from '../../assets/images/aliados/3.jpeg';
-import Aliado4 from '../../assets/images/aliados/4.jpeg';
+import Aliado4 from '../../assets/images/aliados/4.png';
 import Aliado5 from '../../assets/images/aliados/5.jpeg';
 import Aliado6 from '../../assets/images/aliados/6.jpeg';
-import Promo1 from '../../assets/images/promo_4.jpg';
+import Promo1 from '../../assets/images/promo_4.png';
 
 
 const Aliados= () => {
