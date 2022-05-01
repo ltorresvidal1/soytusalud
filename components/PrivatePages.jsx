@@ -4,17 +4,17 @@ import { useRouter } from 'next/router'
 
 const PrivatePages = ({children}) => {
     const router = useRouter()
-    const { authUser } = useAuth()
+    const { authUser,auth } = useAuth()
     useEffect(() =>{
-        if(authUser){
+        if(!authUser){
             router.push("/")
         }
-    },[])
+    },[auth, authUser, router])
 
     
   return (
       <>
-      {authUser?null:(<>{children}</>)}
+      {authUser?(<>{children}</>):null}
       </>
   )
 }

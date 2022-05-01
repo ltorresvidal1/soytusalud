@@ -6,19 +6,23 @@ import { useAuth } from '../../context/useAuth';
 import LogoDark from '../../assets/images/logo_dark.png';
 import LogoWhite from '../../assets/images/logo_white.png';
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import LoginModal from '../LoginModal';
 
 
 
 
 export const MenuHead = () => {
+    const router = useRouter()
     const { authUser ,setAuthUser } = useAuth()
     const [open, setOpen] = useState(false)
 
     const handlerLogOut=()=>{
         signOut(auth)
-        .then(
-            setAuthUser(null)
+        .then(()=>{
+            router.push("/")
+            setAuthUser(null) 
+        }  
         ).catch(error=>{
             console(error)
         })
@@ -62,7 +66,7 @@ export const MenuHead = () => {
                                             
                                         </li>
                                         <li>
-                                            <button onClick={handlerLogOut}>Cerrar sesisión</button>
+                                            <a className='text-white' onClick={handlerLogOut}>Cerrar sesisión</a>
                                         </li>
                                     </>):(
                                     <>

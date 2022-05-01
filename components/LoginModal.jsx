@@ -1,35 +1,34 @@
 import { useState , useEffect , useRef } from 'react';
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from '../firebase/initConfig';
+import { useLazyQuery } from '@apollo/client';
+import { authUser } from '../graphql/user/queries';
+import { useAuth } from '../context/useAuth';
+import  useFormData  from '../hooks/useFormData'
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import Typography from '@mui/material/Typography';
-import Avatar from '@mui/material/Avatar';
-import { Box } from '@mui/system';
-import { InputBase } from '@mui/material';
-import { useMutation } from '@apollo/client';
 
 
 
-
-
-const LoginModal=({avance})=>{
-
+const LoginModal=()=>{
+  const { setAuthUser } = useAuth()
+  const [ getUser,{loading, error, data} ] = useLazyQuery(authUser);
+  const { form, formData, updateFormData } =useFormData();
   const [open, setOpen] = useState(false);
   const [scroll, setScroll] = useState('paper');
   const descriptionElementRef = useRef(null);
 
-
-//   const [observaciones, setObservaciones] = useState({
-//     idAvance: avance._id,
-//     observaciones: avance.observaciones})
-
-//   useEffect(() => {
-//     if(observaciones.observaciones){
-//       crearObservacion({variables: observaciones})
-    
-//     }
-   
-//   }, [observaciones]);
+  const handleSubmit = (e)=>{
+    e.preventDefault();
+    signInWithEmailAndPassword(auth, formData.email , formData.password)
+      .then(user=>{
+        getUser({variables:{uid:user.uid}})
+          .then(response =>{
+          setAuthUser(response.data.Usuario)})
+      })
+  }
  
   const handleClickOpen = (scrollType) => () => {
     setOpen(true);
@@ -50,7 +49,6 @@ const LoginModal=({avance})=>{
     }
   }, [open]);
 
-//   const[crearObservacion]=useMutation( MutationCrearObservacion);
   
 
   return (
@@ -70,12 +68,12 @@ const LoginModal=({avance})=>{
                 </Typography>
             </DialogTitle>
             <DialogContent>
-            <form className="p-4">
+            <form className="p-4" ref={form} onChange={updateFormData} onSubmit={handleSubmit}>
                 <div className="form-group">
-                    <input type="email" className="form-control" id="email" placeholder="Correo electrónico"></input>
+                    <input type="email" className="form-control" id="email" name='email' placeholder="Correo electrónico"></input>
                 </div>
                 <div className="form-group">
-                    <input type="password" className="form-control" id="contraseña" placeholder="Contraseña"></input>
+                    <input type="password" className="form-control" id="password" name='password' placeholder="Contraseña"></input>
                 </div>
                 <button type="submit" className="my-8 mx-auto btn btn-primary">Enviar</button>
             </form>
