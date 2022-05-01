@@ -4,7 +4,7 @@ import { registrarUsuario } from "../graphql/user/mutations";
 import { auth , googleProvider } from '../firebase/initConfig'
 import { useRouter } from 'next/router'
 
-import Promo1 from '../assets/images/promo_1.jpg';
+import Promo1 from '../assets/images/promo_c1.jpg';
 import Image from 'next/image'
 import useFormData from '../hooks/useFormData';
 import PrivatePages from "../components/PrivatePages";
@@ -55,7 +55,7 @@ const Registro = () => {
                 <picture>
                     <source srcSet="img/counter.jpg" media="(min-width: 992px)"/>
         <picture  className="img--bg">
-        <Image src={Promo1} alt="img" width={"3000vw"}  layout="responsive"/>
+            <Image src={Promo1} alt="img"  layout="fill" objectFit='cover' objectPosition="50% 25%"/>
         </picture>
                 </picture>
                 <div className="promo-primary__description"> <span></span></div>

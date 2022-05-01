@@ -14,7 +14,7 @@ const Aliados= () => {
 
 			<section className="promo-primary">
 					<picture>
-					<Image src={Promo1} alt="img" width={"3000vw"}  layout="responsive"/>
+					<Image src={Promo1} alt="img" layout="fill" objectFit='cover' objectPosition="50% 50%"/>
 					</picture>
 					<div className="promo-primary__description"> <span>Aliados</span></div>
 			

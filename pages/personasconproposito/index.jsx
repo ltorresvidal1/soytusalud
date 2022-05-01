@@ -14,7 +14,7 @@ const Aliados= () => {
 
 			<section className="promo-primary">
 					<picture>
-					<Image src={Promo1} alt="img" width={"3000vw"}  layout="responsive"/>
+						<Image src={Promo1} alt="img" layout="fill" objectFit='cover' objectPosition="50% 50%"/>
 					</picture>
 					<div className="promo-primary__description"> <span>Aliados</span></div>
 			
@@ -35,7 +35,7 @@ const Aliados= () => {
 						<div className="row offset-margin">
 							<div className="col-sm-6 col-lg-12">
 								<div className="icon-item">
-								<table id="Tabla_EmpresasConPropositos" class="table table-hover ">
+								<table id="Tabla_EmpresasConPropositos" className="table table-hover ">
                                    <thead>
                                         <tr>
                                             <th>Nombre</th>

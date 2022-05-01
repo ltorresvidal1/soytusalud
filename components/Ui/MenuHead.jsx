@@ -27,7 +27,7 @@ export const MenuHead = () => {
 
   return (
    
-		<>
+		<>  
             <header className="header header--front">
             <div className="container-fluid">
                 <div className="row no-gutters justify-content-between">
@@ -181,6 +181,7 @@ export const MenuHead = () => {
 
             
         </header>
+        
         </>
 )
 }
