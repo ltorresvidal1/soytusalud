@@ -2,39 +2,32 @@ import Image from 'next/image';
 import { auth } from '../../firebase/initConfig';
 import { signOut } from 'firebase/auth';
 import {useState} from 'react'
+import { useAuth } from '../../context/useAuth';
 import LogoDark from '../../assets/images/logo_dark.png';
 import LogoWhite from '../../assets/images/logo_white.png';
 import Link from 'next/link'
+import LoginModal from '../LoginModal';
 
 
 
 
 export const MenuHead = () => {
+    const { authUser ,setAuthUser } = useAuth()
     const [open, setOpen] = useState(false)
 
     const handlerLogOut=()=>{
         signOut(auth)
         .then(
-            console.log("salio")
+            setAuthUser(null)
         ).catch(error=>{
             console(error)
         })
 
     }
+
   return (
    
 		<>
-        <link rel="preconnect" href="https://fonts.googleapis.com"/>
-        <link rel="preconnect" href="https://fonts.gstatic.com"/>
-        <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@319;400;600;700&display=swap" rel="stylesheet"></link>
-
-        {/* barra oculta */}
-        {/* {open?(
-            <div>
-                    <h1>oe</h1>
-                    <h1>oe</h1>
-            </div>
-        ):null} */}
             <header className="header header--front">
             <div className="container-fluid">
                 <div className="row no-gutters justify-content-between">
@@ -44,7 +37,7 @@ export const MenuHead = () => {
                         </div>
                         <div className="w-7/12 pt-3">
                             <a className="header-logo__link" href="index.php"></a>
-                            <Image className="header-logo__img logo--light" src={LogoWhite} alt="logo"/>
+                            <Image className="header-logo__img logo--light" src={LogoWhite} width={'150px'} height={'50px'} alt="logo"/>
                         </div>
                     </div>
                     <div className="col-auto">
@@ -58,19 +51,10 @@ export const MenuHead = () => {
                                 <li className="main-menu__item main-menu__item--has-child">
                                     <Link href="/" > 
                                         <a className="main-menu__link">Pacientes</a>
-                                    </Link> 
+                                    </Link>
+
                                     <ul className="main-menu__sub-list">
-                                        <li>
-                                            <Link href="/" >
-                                                <a>Inicio de sessión</a>
-                                            </Link>
-                                        </li>
-                                        <li>
-                                            <Link href="/registro" >
-                                                <a>Registrarme</a>
-                                            </Link>
-                                            
-                                        </li>
+                                    {authUser?(<>
                                         <li>
                                             <Link href="/tuhistoria" >
                                                 <a>Tu historia</a>
@@ -80,6 +64,19 @@ export const MenuHead = () => {
                                         <li>
                                             <button onClick={handlerLogOut}>Cerrar sesisión</button>
                                         </li>
+                                    </>):(
+                                    <>
+                                        <li>
+                                            <LoginModal/>
+                                        </li>
+                                        <li>
+                                            <Link href="/registro" >
+                                                <a>Registrarme</a>
+                                            </Link>
+                                            
+                                        </li>
+                                    </>)} 
+
                                     </ul>
                                 </li>
                                 <li className="main-menu__item main-menu__item--has-child">
@@ -181,6 +178,8 @@ export const MenuHead = () => {
                     </div>
                 </div>
             </div>
+
+            
         </header>
         </>
 )

@@ -4,7 +4,7 @@ import { client } from '../graphql/initClientSide';
 //import InconoServicio1 from '../assets/images/icon_1-1.png';
 import AboutLayout from '../assets/images/about_layout.png';
 import Gallery2 from '../assets/images/gallery_2.jpg';
-import Promo1 from '../assets/images/promo_1.jpg';
+import Promo1 from '../assets/images/promo_c1.jpg';
 import { usuarios } from '../graphql/user/queries';
 
 import InconoServicio1 from '../assets/images/Logo_servicios1.png';
@@ -17,14 +17,17 @@ export default function Home({data}) {
       <div>
           <section className="promo-primary">
             <picture  className="img--bg">
-              <Image src={Promo1} alt="img" width={"3000vw"}  layout="responsive"/>
+              <Image src={Promo1} alt="img"  layout="responsive"/>
               </picture>
               <div className="container">
                 <div className="row">
                   <div className="col-auto">
                     <div className="align-container">
                       <div className="align-container__item">
-                        <h1 className="promo-primary__title"><span data-lang="eslogan1">Mejoramos la Salud de personas en situación de vulnerabilidad </span> <span data-lang="eslogan2">con recursos de Responsabilidad Social</span></h1>
+                        <h1 className="promo-primary__title">
+                          <span data-lang="eslogan1">Mejoramos la Salud de personas en situación de vulnerabilidad </span> 
+                          <span data-lang="eslogan2">con recursos de Responsabilidad Social</span>
+                        </h1>
                       </div>
                     </div>
                   </div>
@@ -74,27 +77,26 @@ export default function Home({data}) {
                     <h2 className="heading__title"><span>Lo que hacemos</span> <span>para todas las personas</span> </h2>
                   </div>
                 </div>
-              </div>  <div className="row">
-                             <div className="col-12 col-lg-12">
-                               <div className="icon-item">
-                                 <div className="icon-item__img">
-                                 <div className="icon icon-item__icon icon--red"> 
-                                 <Image src={InconoServicio1} alt="img"/>
-                                 </div>
-                                 
-                                  <div  className="img--layout" >
-                                   <Image src={FondoInconoServicio} alt="img"/>
-                                   </div>
-                                                                 
-                                     
-                                  
-                                 </div>
-                                 <div className="icon-item__text">
-                                   <p>Ayuda Medica</p>
-                                 </div>
-                               </div>
-                             </div>                             
-                           </div>
+              </div>
+              <div className="row">
+                <div className="col-12 col-lg-12">
+                  <div className="icon-item">
+                    <div className="icon-item__img">
+                    <div className="icon icon-item__icon icon--red"> 
+                    <Image src={InconoServicio1} alt="img"/>
+                    </div>
+                    
+                    <div  className="img--layout" >
+                      <Image src={FondoInconoServicio} alt="img"/>
+                      </div>
+                                                  
+                    </div>
+                    <div className="icon-item__text">
+                      <p>Ayuda Medica</p>
+                    </div>
+                  </div>
+                </div>                             
+              </div>
             </div>
           </section>
       </div>

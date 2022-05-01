@@ -2,21 +2,22 @@ import {useEffect} from 'react';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../../firebase/initConfig';
 import { useAuth } from '../../context/useAuth'
+import { authUser } from '../../graphql/user/queries';
 import { MenuHead,MenuFooter } from "../Ui"
-
+import { useLazyQuery } from '@apollo/client';
 
 export const LayoutMain = ({children}) => {
-  const {setAuthUser} = useAuth()
+  const { setAuthUser } = useAuth()
+  const [ getUser,{loading, error, data} ] = useLazyQuery(authUser);
 
   useEffect(()=>{
     onAuthStateChanged(auth,(user)=>{
       if(user){
-        setAuthUser(user)
-        const { data } = client.query({
-          query: usuarios
+        getUser({variables:{uid:user.uid}}).then(response =>{
+          setAuthUser(response.data.Usuario)
         })
       }else{
-        console.log("no esta logueado")
+        setAuthUser(null)
       }
     })
   },[])
