@@ -10,7 +10,7 @@ import { useLazyQuery } from '@apollo/client';
 export const LayoutMain = ({children}) => {
   const router = useRouter()
   const { setAuthUser } = useAuth()
-  const [ getUser ] = useLazyQuery(authUser);
+  const [ getUser,{loading, error, data} ] = useLazyQuery(authUser);
 
   useEffect(()=>{
     onAuthStateChanged(auth,(user)=>{
