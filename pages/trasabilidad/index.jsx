@@ -1,9 +1,6 @@
 
 import Head from 'next/head'
 import Image from 'next/image'
-import Promo1 from '../../assets/images/promo_5.png';
-import FotoHistoria1 from '../../assets/images/historias/1.jpg';
-import FotoHistoria2 from '../../assets/images/historias/2.jpg';
 
 
 const Historia = () => {
@@ -14,7 +11,7 @@ const Historia = () => {
 
 				<section className="promo-primary">
 					<picture>
-					<Image src={Promo1} alt="img" layout="fill" objectFit='cover' objectPosition="30% 40%"/>
+					<Image src="/promo_5.png" alt="img" layout="fill" objectFit='cover' objectPosition="30% 40%"/>
 					</picture>
 					<div className="promo-primary__description"> <span className="self ">Filantropos</span></div>
 				

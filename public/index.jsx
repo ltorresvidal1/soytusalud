@@ -11,7 +11,7 @@ export default function Home() {
           <section className="promo-primary">
               <div className="container">
               <picture  className="img--bg">
-                <Image src="/promo_c1.png" alt="img" layout="fill" objectFit='cover' objectPosition="50% 25%"/>
+                <Image src='/images/promo_c1.png' alt="img" layout="fill" objectFit='cover' objectPosition="50% 25%"/>
               </picture>
                 <div className="row">
                   <div className="col-auto">
@@ -51,10 +51,10 @@ export default function Home() {
                 <div className="col-lg-6 col-xl-5 offset-xl-1">
                   <div className="info-box flex items-center">
                     <div className="absolute">
-                      <Image  src="/about_layout.png" alt="img" width={700} height={700}/>
+                      <Image  src='/images/about_layout.png' alt="img" width={700} height={700}/>
                     </div>
                     <div className="relative box-content m-auto">
-                      <Image src="/gallery_2.png" alt="img" width={350} height={350}/>
+                      <Image src='/images/gallery_2.png' alt="img" width={350} height={350}/>
                     </div>
                   </div>
                 </div>
@@ -76,11 +76,11 @@ export default function Home() {
                   <div className="icon-item">
                     <div className="icon-item__img">
                     <div className="icon icon-item__icon icon--red"> 
-                    <Image src="/Logo_servicios1.png" alt="img"  width={300} height={300}/>
+                    <Image src='../assets/images/Logo_servicios1.png' alt="img"/>
                     </div>
                     
                     <div  className="img--layout" >
-                      <Image src="/icon_1-1.png" alt="img" width={200} height={200}/>
+                      <Image src='../assets/images/icon_1-1.png' alt="img"/>
                       </div>
                                                   
                     </div>

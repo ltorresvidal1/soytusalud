@@ -2,9 +2,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
 
-;
-import Promo1 from '../../assets/images/promo_4.jpg';
-
 
 const Aliados= () => {
   return (
@@ -14,7 +11,7 @@ const Aliados= () => {
 
 			<section className="promo-primary">
 					<picture>
-						<Image src={Promo1} alt="img" layout="fill" objectFit='cover' objectPosition="50% 50%"/>
+						<Image src="/promo_4.png" alt="img" layout="fill" objectFit='cover' objectPosition="50% 50%"/>
 					</picture>
 					<div className="promo-primary__description"> <span>Aliados</span></div>
 			

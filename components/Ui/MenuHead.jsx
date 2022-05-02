@@ -3,8 +3,6 @@ import { auth } from '../../firebase/initConfig';
 import { signOut } from 'firebase/auth';
 import {useState, useEffect} from 'react'
 import { useAuth } from '../../context/useAuth';
-import LogoDark from '../../assets/images/logo_dark.png';
-import LogoWhite from '../../assets/images/logo_white.png';
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import LoginModal from '../LoginModal';
@@ -59,7 +57,7 @@ export const MenuHead = () => {
                         </div>
                         <div className="w-7/12 pt-3">
                             <a className="header-logo__link" href="index.php"></a>
-                            <Image className="header-logo__img logo--light" src={LogoWhite} width={'150px'} height={'50px'} alt="logo"/>
+                            <Image className="header-logo__img logo--light" src="/logo_white.png" width={'150px'} height={'50px'} alt="logo"/>
                         </div>
                     </div>
                     <div className="col-auto">

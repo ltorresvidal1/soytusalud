@@ -1,9 +1,7 @@
 
 import Head from 'next/head'
 import Image from 'next/image'
-import Promo1 from '../../assets/images/promo_5.jpg';
-import FotoHistoria1 from '../../assets/images/historias/1.jpg';
-import FotoHistoria2 from '../../assets/images/historias/2.jpg';
+
 
 
 const Historia = () => {
@@ -14,7 +12,7 @@ const Historia = () => {
 
 				<section className="promo-primary">
 					<picture>
-					<Image src={Promo1} alt="img" layout="fill" objectFit='cover' objectPosition="50% 40%"/>
+					<Image src="/promo_5.png" alt="img" layout="fill" objectFit='cover' objectPosition="50% 40%"/>
 					</picture>
 					<div className="promo-primary__description"> <span>Te Escuchamos</span></div>
 					<div className="container">
@@ -40,7 +38,7 @@ const Historia = () => {
 											<div className='col-lg-5 col-xl-4'>
 												<div className='causes-item__img'>
 													<div className='img--bg' >
-														<Image src={FotoHistoria1} alt="img" layout="responsive"/>
+														<Image src="/historias/1.jpg" alt="img" layout="fill" objectFit='cover'/>
 													</div>
 												</div>
 											</div>
@@ -80,7 +78,7 @@ const Historia = () => {
 											<div className='col-lg-5 col-xl-4'>
 												<div className='causes-item__img'>
 													<div className='img--bg' >
-														<Image src={FotoHistoria2} alt="img" layout="responsive"/>
+														<Image src="/historias/2.jpg" alt="img" layout="fill" objectFit='cover'/>
 													</div>
 												</div>
 											</div>
