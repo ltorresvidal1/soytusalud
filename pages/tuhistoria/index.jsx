@@ -2,7 +2,6 @@
 import Head from 'next/head'
 import { useEffect, useState } from 'react';
 import Image from 'next/image'
-import Foto from '../../assets/images/Foto.png';
 import PrivatePages from '../../components/PrivatePages';
 import useFormData from '../../hooks/useFormData';
 
@@ -13,7 +12,6 @@ const Tuhistoria = () => {
 		let  reader = new FileReader()
 		setReader(reader)
 	},[])
-	const [photo,setPhoto] = useState(Foto)
 	const [reader,setReader] = useState({})
 
 	const { form, formData, updateFormData } =useFormData();
