@@ -28,7 +28,7 @@ export const LayoutMain = ({children}) => {
 
 
   return (
-    <div>
+    <div onScroll={()=> console.log("hola")}>
         <MenuHead ></MenuHead>
           {children}
         <MenuFooter></MenuFooter>
