@@ -38,7 +38,7 @@ const Historia = () => {
 											<div className='col-lg-5 col-xl-4'>
 												<div className='causes-item__img'>
 													<div className='img--bg' >
-														<Image src="/historias/1.jpg" alt="img" layout="fill" objectFit='cover'/>
+														<Image src="/1.jpg" alt="img" layout="fill" objectFit='cover'/>
 													</div>
 												</div>
 											</div>
@@ -78,7 +78,7 @@ const Historia = () => {
 											<div className='col-lg-5 col-xl-4'>
 												<div className='causes-item__img'>
 													<div className='img--bg' >
-														<Image src="/historias/2.jpg" alt="img" layout="fill" objectFit='cover'/>
+														<Image src="/2.jpg" alt="img" layout="fill" objectFit='cover'/>
 													</div>
 												</div>
 											</div>
