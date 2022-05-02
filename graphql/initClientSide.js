@@ -2,6 +2,6 @@ import { ApolloClient , InMemoryCache } from "@apollo/client";
 
 
 export const client = new ApolloClient({
-    uri: "https://soytusalud.vercel.app/api/graphql",
+    uri: process.env.NEXT_PUBLIC_API_GRPAPHQL,
     cache: new InMemoryCache(),
 });
