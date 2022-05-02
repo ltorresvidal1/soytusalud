@@ -1,12 +1,5 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import { client } from '../graphql/initClientSide';
-//import InconoServicio1 from '../assets/images/icon_1-1.png';
-import AboutLayout from '../assets/images/about_layout.png';
-import Gallery2 from '../assets/images/gallery_2.png';
-import Promo1 from '../assets/images/promo_c1.png';
-import { usuarios } from '../graphql/user/queries';
-
 import InconoServicio1 from '../assets/images/Logo_servicios1.png';
 import FondoInconoServicio from '../assets/images/icon_1-1.png';
 export default function Home() {
@@ -19,7 +12,7 @@ export default function Home() {
           <section className="promo-primary">
               <div className="container">
               <picture  className="img--bg">
-                <Image src={Promo1} alt="img" layout="fill" objectFit='cover' objectPosition="50% 25%"/>
+                <Image src="https://firebasestorage.googleapis.com/v0/b/quetions-app.appspot.com/o/promo_c1.png?alt=media&token=31fd0e9e-d9eb-4dda-90ab-5c558ab844eb" alt="img" layout="fill" objectFit='cover' objectPosition="50% 25%"/>
               </picture>
                 <div className="row">
                   <div className="col-auto">
@@ -59,10 +52,10 @@ export default function Home() {
                 <div className="col-lg-6 col-xl-5 offset-xl-1">
                   <div className="info-box flex items-center">
                     <div className="absolute">
-                      <Image  src={AboutLayout} alt="img" width={700} height={700}/>
+                      <Image  src="https://firebasestorage.googleapis.com/v0/b/quetions-app.appspot.com/o/about_layout.png?alt=media&token=d61d32ae-1c14-4e1f-8da6-e7c4b616591e"alt="img" width={700} height={700}/>
                     </div>
                     <div className="relative box-content m-auto">
-                      <Image src={Gallery2} alt="img" width={350} height={350}/>
+                      <Image src="https://firebasestorage.googleapis.com/v0/b/quetions-app.appspot.com/o/gallery_2.png?alt=media&token=80683ced-2bdd-4b71-b2b3-be2ea98c774f" alt="img" width={350} height={350}/>
                     </div>
                   </div>
                 </div>
@@ -84,11 +77,11 @@ export default function Home() {
                   <div className="icon-item">
                     <div className="icon-item__img">
                     <div className="icon icon-item__icon icon--red"> 
-                    <Image src={InconoServicio1} alt="img"/>
+                    <Image src="https://firebasestorage.googleapis.com/v0/b/quetions-app.appspot.com/o/Logo_servicios1.png?alt=media&token=5eed9f8b-d302-4b15-989b-cd101e7c93a6" width={300} height={300} alt="img"/>
                     </div>
                     
                     <div  className="img--layout" >
-                      <Image src={FondoInconoServicio} alt="img"/>
+                      <Image src="https://firebasestorage.googleapis.com/v0/b/quetions-app.appspot.com/o/icon_1-1.png?alt=media&token=c3388582-3f56-45db-ab13-9c6fb8904c2b" alt="img"  width={200} height={200}/>
                       </div>
                                                   
                     </div>
