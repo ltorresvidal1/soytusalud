@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import InconoServicio1 from '../assets/images/Logo_servicios1.png';
 import FondoInconoServicio from '../assets/images/icon_1-1.png';
-export default function Home({data}) {
+export default function Home() {
   
  
   return (

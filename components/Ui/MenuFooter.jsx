@@ -9,7 +9,7 @@ export const MenuFooter = () => {
     <div className="container">
       <div className="row">
         <div className="col-12">
-          <div className="bottom-background__img"> <Image src={ImagenBarraInferior} alt="oe" layout="responsive"/></div>
+          <div className="bottom-background__img"> <Image alt="footerLogo" src="https://firebasestorage.googleapis.com/v0/b/quetions-app.appspot.com/o/bottom-bg.png?alt=media&token=46761428-fe6e-478d-af6f-54e32aa0603a" width={500} height={100}  layout="responsive"/></div>
         </div>
       </div>
     </div>
