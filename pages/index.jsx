@@ -9,7 +9,7 @@ import { usuarios } from '../graphql/user/queries';
 
 import InconoServicio1 from '../assets/images/Logo_servicios1.png';
 import FondoInconoServicio from '../assets/images/icon_1-1.png';
-export default function Home({data}) {
+export default function Home() {
   
  
   return (
@@ -105,14 +105,3 @@ export default function Home({data}) {
   )
 }
 
-
-export const getStaticProps = async (ctx) => {
-  const { data } = await client.query({
-    query: usuarios
-  })
-  return {
-    props: {
-      data  
-    }
-  }
-}

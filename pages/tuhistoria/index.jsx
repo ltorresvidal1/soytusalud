@@ -293,7 +293,7 @@ const Tuhistoria = () => {
 														<option value="106">FONDO PASIVO SOCIAL DE LOS FERROCARRILES NACIONALES</option>
 														<option value="107">FUERZAS MILITARES</option>
 														<option value="108">GENERALI COLOMBIA-SEGUROS GENERALES S.A. SIGLA: GENERALI COLOMBIA</option>
-														<option value="109">JMALUCELLITRAVELERS SEGUROS S.A. (EN ADELANTE LA COMPAÑÍA ASEGURADORA O LA SOCIEDAD) SIGLA: JMALUCELLITRAVELERS SEGUROS S.A.</option>"
+														<option value="109">JMALUCELLITRAVELERS SEGUROS S.A. (EN ADELANTE LA COMPAÑÍA ASEGURADORA O LA SOCIEDAD) SIGLA: JMALUCELLITRAVELERS SEGUROS S.A.</option>
 														<option value="110">LA PREVISORA S.A. COMPAÑÍA DE SEGUROS</option>
 														<option value="111">LIBERTY SEGUROS S.A., PUDIENDO UTILIZAR COMERCIALMENTE LIBERTY SEGUROS O LIBERTY</option>
 														<option value="112">MAGISTERIO</option>
