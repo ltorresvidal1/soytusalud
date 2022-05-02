@@ -38,7 +38,7 @@ const Historia = () => {
 											<div className='col-lg-5 col-xl-4'>
 												<div className='causes-item__img'>
 													<div className='img--bg' >
-														<Image src="/1.jpg" alt="img" layout="fill" objectFit='cover'/>
+														<Image src="https://firebasestorage.googleapis.com/v0/b/quetions-app.appspot.com/o/1.JPG?alt=media&token=0864a1e7-ffbd-4446-a998-546c7d112fd7" alt="img" layout="fill" objectFit='cover'/>
 													</div>
 												</div>
 											</div>
@@ -78,7 +78,7 @@ const Historia = () => {
 											<div className='col-lg-5 col-xl-4'>
 												<div className='causes-item__img'>
 													<div className='img--bg' >
-														<Image src="/2.jpg" alt="img" layout="fill" objectFit='cover'/>
+														<Image src="https://firebasestorage.googleapis.com/v0/b/quetions-app.appspot.com/o/2.JPG?alt=media&token=cd585020-3196-4cb5-a4f6-96a139e2cbf3" alt="img" layout="fill" objectFit='cover'/>
 													</div>
 												</div>
 											</div>
