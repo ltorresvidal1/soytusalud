@@ -4,9 +4,11 @@ import { auth } from '../../firebase/initConfig';
 import { useAuth } from '../../context/useAuth'
 import { authUser } from '../../graphql/user/queries';
 import { MenuHead,MenuFooter } from "../Ui"
+import { useRouter } from 'next/router'
 import { useLazyQuery } from '@apollo/client';
 
 export const LayoutMain = ({children}) => {
+  const router = useRouter()
   const { setAuthUser } = useAuth()
   const [ getUser,{loading, error, data} ] = useLazyQuery(authUser);
 
@@ -18,6 +20,7 @@ export const LayoutMain = ({children}) => {
         })
       }else{
         setAuthUser(null)
+        router.push("/")
       }
     })
   },[])
@@ -25,7 +28,7 @@ export const LayoutMain = ({children}) => {
 
 
   return (
-    <div>
+    <div onScroll={()=> console.log("hola")}>
         <MenuHead ></MenuHead>
           {children}
         <MenuFooter></MenuFooter>

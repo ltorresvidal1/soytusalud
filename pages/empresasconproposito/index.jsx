@@ -35,7 +35,7 @@ const Aliados= () => {
 						<div className="row offset-margin">
 							<div className="col-sm-6 col-lg-12">
 								<div className="icon-item">
-								<table id="Tabla_EmpresasConPropositos" class="table table-hover ">
+								<table id="Tabla_EmpresasConPropositos" className="table table-hover ">
                                    <thead>
                                         <tr>
                                             <th>Nombre</th>

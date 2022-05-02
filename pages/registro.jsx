@@ -1,7 +1,7 @@
-import { signInWithPopup ,createUserWithEmailAndPassword ,signOut } from "firebase/auth"; 
+import { createUserWithEmailAndPassword } from "firebase/auth"; 
 import { useMutation } from "@apollo/client";
 import { registrarUsuario } from "../graphql/user/mutations";
-import { auth , googleProvider } from '../firebase/initConfig'
+import { auth  } from '../firebase/initConfig'
 import { useRouter } from 'next/router'
 
 import Promo1 from '../assets/images/promo_c1.jpg';
@@ -15,20 +15,20 @@ const Registro = () => {
     const [crearUsuario] = useMutation(registrarUsuario)
 
     const { form, formData, updateFormData } =useFormData();
-    const handlerGoogle =()=>{
-        signInWithPopup(auth, googleProvider)
-        .then((user) => {
-        console.log(user.user);
-        })
-        .catch((error) => {
-        console.log(error);
-        // navigate('crear-cuenta')
-        });
-    };
+    // const handlerGoogle =()=>{
+    //     signInWithPopup(auth, googleProvider)
+    //     .then((user) => {
+    //     console.log(user.user);
+    //     })
+    //     .catch((error) => {
+    //     console.log(error);
+    //     // navigate('crear-cuenta')
+    //     });
+    // };
 
-  const handlerLogout = () =>{
-    signOut(auth)
-  }
+//   const handlerLogout = () =>{
+//     signOut(auth)
+//   }
 
 
   const submitForm = async (e) => {
@@ -127,10 +127,7 @@ const Registro = () => {
                                         </div>
                                     
                                         <div className="col-12 text-center">
-                                            <button className="form__submit" type="submit">Registrar</button>
-                                            <button className="form__submit" type="button" onClick={handlerGoogle}>Google</button>
-                                            <button className="form__submit" type="button" onClick={handlerLogout}>cerrar</button>
-                                        
+                                            <button className="form__submit" type="submit">Registrar</button>                 
                                         </div>
                                         <div className="col-12 text-center"><strong><a className="form__link btn_IniciarUsaurio2" href="#">Inicia sesión</a> si tienes una cuenta</strong></div>
                                             

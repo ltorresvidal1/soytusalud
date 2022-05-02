@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { client } from '../graphql/initClientSide';
 //import InconoServicio1 from '../assets/images/icon_1-1.png';
 import AboutLayout from '../assets/images/about_layout.png';
-import Gallery2 from '../assets/images/gallery_2.jpg';
+import Gallery2 from '../assets/images/gallery_2.png';
 import Promo1 from '../assets/images/promo_c1.png';
 import { usuarios } from '../graphql/user/queries';
 
@@ -19,7 +19,7 @@ export default function Home({data}) {
           <section className="promo-primary">
               <div className="container">
               <picture  className="img--bg">
-                <Image src={Promo1} alt="img"  layout="fill" objectFit='cover' objectPosition="50% 25%"/>
+                <Image src={Promo1} alt="img" layout="fill" objectFit='cover' objectPosition="50% 25%"/>
               </picture>
                 <div className="row">
                   <div className="col-auto">
@@ -57,12 +57,12 @@ export default function Home({data}) {
                     <a className="button button--primary" href="#">Más sobre nosotros</a>
                 </div>
                 <div className="col-lg-6 col-xl-5 offset-xl-1">
-                  <div className="">
+                  <div className="info-box flex items-center">
                     <div className="absolute">
-                      <Image  src={AboutLayout} alt="img" />
+                      <Image  src={AboutLayout} alt="img" width={700} height={700}/>
                     </div>
-                    <div className="info-box rounded-full">
-                      <Image src={Gallery2} alt="img" />
+                    <div className="relative box-content m-auto">
+                      <Image src={Gallery2} alt="img" width={350} height={350}/>
                     </div>
                   </div>
                 </div>

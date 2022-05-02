@@ -1,19 +1,35 @@
 
 import Head from 'next/head'
+import { useEffect, useState } from 'react';
 import Image from 'next/image'
 import Promo1 from '../../assets/images/promo_3.jpg';
 import Foto from '../../assets/images/Foto.png';
 import PrivatePages from '../../components/PrivatePages';
+import useFormData from '../../hooks/useFormData';
 
 
 const Tuhistoria = () => {
+
+	useEffect(()=>{
+		let  reader = new FileReader()
+		setReader(reader)
+	},[])
+	const [photo,setPhoto] = useState(Foto)
+	const [reader,setReader] = useState({})
+
+	const { form, formData, updateFormData } =useFormData();
+	const handleSubmit =(e)=>{
+		e.preventDefault();
+	}
+
+
   return (
     <>
 	<PrivatePages>
 		<main className="main">
 					<section className="promo-primary">
 						<picture>
-						<Image src={Promo1} alt="img" width={"3000vw"}  layout="responsive"/>
+						<Image src={Promo1} alt="img" layout="fill" objectFit='cover' objectPosition="50% 25%"/>
 						</picture>
 						<div className="promo-primary__description"> <span>Te Escuchamos</span></div>
 						<div className="container">
@@ -28,15 +44,14 @@ const Tuhistoria = () => {
 							</div>
 						</div>
 					</section>
-
 					<section className="section contacts no-padding-top">
 						<div className="contacts-wrapper">
 							<div className="container">
 								<div>
 									<div className="col-xl-12">
-										<form className="form message-form" id="Form_TuHistoria" method="POST"  action="">
+										<form className="form message-form" ref={form} onChange={updateFormData} onSubmit={handleSubmit}  id="Form_TuHistoria" >
 													
-												<h6 className="form__title">Si consideras que eres una persona o que conoces a alguna persona en situación de vulnerabilidad, que esté enfermo(a) y esté necesitando servicios médicos, ingresa tus o sus datos, foto, historia y documentos; te conseguiremos quien te pueda ayudar y acompañar a mejorar tu estado de salud.</h6>
+												<h6 className="form__title">Si consideras que eres una persona en situación de vulnerabilidad, que padece una enfermedad y necesita servicios médicos (o conoces a alguien en esta condición), diligencia este formulario y te pondremos en contacto con un especialista que te ayude a mejorar su estado de salud.</h6>
 												<label className="control-label mb-1">Por favor, verifique los campos obligatorios marcados con un (*) </label>   
 										
 													<div className="row">
@@ -47,9 +62,13 @@ const Tuhistoria = () => {
 																
 															
 																	<div className="FotoHistoria">
-																		<Image className="profile-pic" id='perfil' name='perfil' src={Foto} height="150"    width="180"/>
+																		<Image alt='defaultPhoto' className="profile-pic" id='perfil' name='perfil' src={photo} height="150"    width="180"/>
 																		<label className="centrado" htmlFor="logo"><span className="badge badge-primary r-3">Subir Foto</span></label>   
-																		<input type="file"   id="logo"  name="logo" accept="image/jpeg,.doc, .docx,.pdf"  className="custom-file-input" />
+																		<input type="file" onChange={(e)=>{
+																			reader.onload= function(){
+																				setPhoto(reader.result)
+																			}
+																		}}   id="logo"  name="logo" accept="image/jpeg,.doc, .docx,.pdf"  className="custom-file-input" />
 																		
 																	</div>
 															</div>
@@ -118,7 +137,7 @@ const Tuhistoria = () => {
 															<option value="0">Seleccionar</option>
 															<option value="1">Permanente</option>
 															<option value="2">Temporal</option>
-															</select>
+														</select>
 															
 													</div>
 													
@@ -428,7 +447,7 @@ const Tuhistoria = () => {
 												
 												<input type="file" className="form-control" id="sisben" name="sisben" accept="image/jpeg,.doc, .docx,.pdf"/>
 												<br/>
-												<a className="centrado" href="https://www.sisben.gov.co/Paginas/consulta-tu-grupo.aspx" target="_blank">Consulta Tu Sisben</a>
+												<a className="centrado" href="https://www.sisben.gov.co/Paginas/consulta-tu-grupo.aspx" target="_blank" rel="noreferrer">Consulta Tu Sisben</a>
 												</div>
 												</div>
 												
@@ -453,20 +472,9 @@ const Tuhistoria = () => {
 													
 													<button className="form__submit" type="submit">Enviar Informacion</button>
 												</div>
-											</div>	
-
-
-
-
-
-
-
+											</div>
 										</form>
-
-
-
 										<br/>
-
 									</div>
 								</div>
 							</div>

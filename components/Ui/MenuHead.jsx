@@ -1,34 +1,56 @@
 import Image from 'next/image';
 import { auth } from '../../firebase/initConfig';
 import { signOut } from 'firebase/auth';
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import { useAuth } from '../../context/useAuth';
 import LogoDark from '../../assets/images/logo_dark.png';
 import LogoWhite from '../../assets/images/logo_white.png';
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import LoginModal from '../LoginModal';
 
 
 
 
 export const MenuHead = () => {
+    const router = useRouter()
     const { authUser ,setAuthUser } = useAuth()
     const [open, setOpen] = useState(false)
 
     const handlerLogOut=()=>{
         signOut(auth)
-        .then(
-            setAuthUser(null)
+        .then(()=>{
+            router.push("/")
+            setAuthUser(null) 
+        }  
         ).catch(error=>{
             console(error)
         })
 
     }
 
+    const [navbar, setNavbar] = useState(false);
+    const [color, setColor] = useState(false);
+  
+    const changeBackground = () => {
+      if (window.scrollY >= 2) {
+        setNavbar(true);
+        setColor('black');
+      } else {
+        setNavbar(false);
+        setColor('white');
+      }
+    };
+  
+    useEffect(() => {
+      window.addEventListener('scroll', changeBackground, true);
+      return () => window.removeEventListener('scroll', changeBackground);
+    }, []);
+
   return (
    
 		<>  
-            <header className="header header--front">
+            <header className={navbar? "backgroundNav w-full header  ":"header header--front"}>
             <div className="container-fluid">
                 <div className="row no-gutters justify-content-between">
                     <div className="col-auto d-flex align-items-center" >
@@ -43,9 +65,9 @@ export const MenuHead = () => {
                     <div className="col-auto">
                         <nav>
                             <ul className="main-menu">
-                                <li className="main-menu__item main-menu__item--active">
+                                <li className="text-black main-menu__item main-menu__item--active">
                                     <Link href="/" > 
-                                    <a className="main-menu__link font-black">Inicio</a>
+                                    <a className="text-black main-menu__link font-black">Inicio</a>
                                     </Link>
                                 </li>
                                 <li className="main-menu__item main-menu__item--has-child">
@@ -62,7 +84,7 @@ export const MenuHead = () => {
                                             
                                         </li>
                                         <li>
-                                            <button onClick={handlerLogOut}>Cerrar sesisión</button>
+                                            <a className='text-white' onClick={handlerLogOut}>Cerrar sesisión</a>
                                         </li>
                                     </>):(
                                     <>
