@@ -4,7 +4,7 @@ import { registrarUsuario } from "../graphql/user/mutations";
 import { auth  } from '../firebase/initConfig'
 import { useRouter } from 'next/router'
 
-
+import Promo1 from '../assets/images/promo_c1.jpg';
 import Image from 'next/image'
 import useFormData from '../hooks/useFormData';
 import PrivatePages from "../components/PrivatePages";
@@ -49,12 +49,13 @@ const Registro = () => {
 
   return (
     <>
+    <PrivatePages>
     <main className="main">
             <section className="promo-primary promo-primary--shop">
                 <picture>
                     <source srcSet="img/counter.jpg" media="(min-width: 992px)"/>
         <picture  className="img--bg">
-            <Image src="https://firebasestorage.googleapis.com/v0/b/quetions-app.appspot.com/o/promo_c1.png?alt=media&token=31fd0e9e-d9eb-4dda-90ab-5c558ab844eb" alt="img"  layout="fill" objectFit='cover' objectPosition="50% 25%"/>
+            <Image src={Promo1} alt="img"  layout="fill" objectFit='cover' objectPosition="50% 25%"/>
         </picture>
                 </picture>
                 <div className="promo-primary__description"> <span></span></div>
@@ -142,6 +143,7 @@ const Registro = () => {
                 </div>
             </section>
         </main>
+    </PrivatePages>
        
     </>
   )

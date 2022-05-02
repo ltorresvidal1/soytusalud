@@ -3,6 +3,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 
 ;
+import Promo1 from '../../assets/images/promo_4.jpg';
 
 
 const Aliados= () => {
@@ -13,7 +14,7 @@ const Aliados= () => {
 
 			<section className="promo-primary">
 					<picture>
-					<Image src="https://firebasestorage.googleapis.com/v0/b/quetions-app.appspot.com/o/promo_4.png?alt=media&token=52394262-8895-45e5-9828-c1501c04df30" alt="img" layout="fill" objectFit='cover' objectPosition="50% 50%"/>
+					<Image src={Promo1} alt="img" layout="fill" objectFit='cover' objectPosition="50% 50%"/>
 					</picture>
 					<div className="promo-primary__description"> <span>Aliados</span></div>
 			

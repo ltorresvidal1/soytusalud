@@ -1,8 +1,9 @@
 
 import Head from 'next/head'
 import Image from 'next/image'
-
-
+import Promo1 from '../../assets/images/promo_5.png';
+import FotoHistoria1 from '../../assets/images/historias/1.jpg';
+import FotoHistoria2 from '../../assets/images/historias/2.jpg';
 
 
 const Historia = () => {
@@ -13,7 +14,7 @@ const Historia = () => {
 
 				<section className="promo-primary">
 					<picture>
-					<Image src="https://firebasestorage.googleapis.com/v0/b/quetions-app.appspot.com/o/promo_5.png?alt=media&token=0467c6f3-2653-4b54-ab33-4dbeb4b59f9b" alt="img" layout="fill" objectFit='cover' objectPosition="30% 40%"/>
+					<Image src={Promo1} alt="img" layout="fill" objectFit='cover' objectPosition="30% 40%"/>
 					</picture>
 					<div className="promo-primary__description"> <span className="self ">Filantropos</span></div>
 				

@@ -2,6 +2,8 @@
 import Head from 'next/head'
 import { useEffect, useState } from 'react';
 import Image from 'next/image'
+import Promo1 from '../../assets/images/promo_3.jpg';
+import Foto from '../../assets/images/Foto.png';
 import PrivatePages from '../../components/PrivatePages';
 import useFormData from '../../hooks/useFormData';
 
@@ -12,6 +14,7 @@ const Tuhistoria = () => {
 		let  reader = new FileReader()
 		setReader(reader)
 	},[])
+	const [photo,setPhoto] = useState(Foto)
 	const [reader,setReader] = useState({})
 
 	const { form, formData, updateFormData } =useFormData();
@@ -26,7 +29,7 @@ const Tuhistoria = () => {
 		<main className="main">
 					<section className="promo-primary">
 						<picture>
-						<Image src="https://firebasestorage.googleapis.com/v0/b/quetions-app.appspot.com/o/promo_3.jpg?alt=media&token=06eb5bc4-fed2-4917-b137-061925d3ed10" alt="img" layout="fill" objectFit='cover' objectPosition="50% 25%"/>
+						<Image src={Promo1} alt="img" layout="fill" objectFit='cover' objectPosition="50% 25%"/>
 						</picture>
 						<div className="promo-primary__description"> <span>Te Escuchamos</span></div>
 						<div className="container">
@@ -59,7 +62,7 @@ const Tuhistoria = () => {
 																
 															
 																	<div className="FotoHistoria">
-																		<Image alt='defaultPhoto' className="profile-pic" id='perfil' name='perfil' src="https://firebasestorage.googleapis.com/v0/b/quetions-app.appspot.com/o/foto.png?alt=media&token=a23582a7-4a3e-48b1-9c9a-a13754f6701c" height="150"    width="180"/>
+																		<Image alt='defaultPhoto' className="profile-pic" id='perfil' name='perfil' src={photo} height="150"    width="180"/>
 																		<label className="centrado" htmlFor="logo"><span className="badge badge-primary r-3">Subir Foto</span></label>   
 																		<input type="file" onChange={(e)=>{
 																			reader.onload= function(){

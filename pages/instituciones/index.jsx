@@ -2,6 +2,13 @@
 import Head from 'next/head'
 import Image from 'next/image'
 
+import Aliado1 from '../../assets/images/aliados/1.jpeg';
+import Aliado2 from '../../assets/images/aliados/2.jpeg';
+import Aliado3 from '../../assets/images/aliados/3.jpeg';
+import Aliado4 from '../../assets/images/aliados/4.png';
+import Aliado5 from '../../assets/images/aliados/5.jpeg';
+import Aliado6 from '../../assets/images/aliados/6.jpeg';
+import Promo1 from '../../assets/images/promo_4.png';
 
 
 const Aliados= () => {
@@ -12,7 +19,7 @@ const Aliados= () => {
 
 			<section className="promo-primary">
 					<picture>
-						<Image src="https://firebasestorage.googleapis.com/v0/b/quetions-app.appspot.com/o/promo_4.png?alt=media&token=52394262-8895-45e5-9828-c1501c04df30" alt="img" layout="fill" objectFit='cover' objectPosition="50% 50%"/>
+						<Image src={Promo1} alt="img" layout="fill" objectFit='cover' objectPosition="50% 50%"/>
 					</picture>
 					<div className="promo-primary__description"> <span>Aliados</span></div>
 			
@@ -34,7 +41,7 @@ const Aliados= () => {
 								<div className="icon-item">
 									<div className="icon-item__img">
 									<div className="aliados">
-									<Image src="https://firebasestorage.googleapis.com/v0/b/quetions-app.appspot.com/o/1.jpeg?alt=media&token=7d17c206-90f2-41af-af05-59400d29f393" width={500} height={300} alt="img"/>
+									<Image src={Aliado1} alt="img"/>
 									</div>
 									</div>
 								
@@ -44,7 +51,7 @@ const Aliados= () => {
 								<div className="icon-item">
 									<div className="icon-item__img">
 									<div className="aliados">
-									<Image src="https://firebasestorage.googleapis.com/v0/b/quetions-app.appspot.com/o/2.jpeg?alt=media&token=f4933ced-1b69-465e-80e0-8ab5ab68e3f2" width={500} height={300} alt="img"/>
+									<Image src={Aliado2} alt="img"/>
 									</div>
 									</div>
 								
@@ -54,7 +61,7 @@ const Aliados= () => {
 								<div className="icon-item">
 									<div className="icon-item__img">
 									<div className="aliados">
-									<Image src="https://firebasestorage.googleapis.com/v0/b/quetions-app.appspot.com/o/3.jpeg?alt=media&token=e54e6133-94d3-4644-8f38-9720c86212c2" width={500} height={300} alt="img"/>
+									<Image src={Aliado3} alt="img"/>
 									</div>	</div>
 								</div>
 							</div>
@@ -62,7 +69,7 @@ const Aliados= () => {
 								<div className="icon-item">
 									<div className="icon-item__img">
 									<div className="aliados">
-										<Image src="https://firebasestorage.googleapis.com/v0/b/quetions-app.appspot.com/o/4.png?alt=media&token=0ee8ef93-6932-4027-8922-c24d3a839a8d" width={500} height={300} alt="img"/>
+										<Image src={Aliado4} alt="img"/>
 									</div>	</div>
 								</div>
 							</div>
@@ -70,7 +77,7 @@ const Aliados= () => {
 								<div className="icon-item">
 									<div className="icon-item__img">
 									<div className="aliados">
-										<Image src="https://firebasestorage.googleapis.com/v0/b/quetions-app.appspot.com/o/5.jpeg?alt=media&token=b5a4cd43-4a18-4047-a435-4d7a05aba360" width={500} height={300} alt="img"/>
+										<Image src={Aliado5} alt="img"/>
 									</div>
 									</div>
 								</div>
@@ -79,7 +86,7 @@ const Aliados= () => {
 								<div className="icon-item">
 									<div className="icon-item__img">
 										<div className="aliados">
-										<Image src="https://firebasestorage.googleapis.com/v0/b/quetions-app.appspot.com/o/6.jpeg?alt=media&token=1e315f85-f188-4115-8998-2f19106a45c4" width={500} height={300} alt="img"/>
+										<Image src={Aliado6} alt="img"/>
 										</div>
 									</div>
 								</div>
