@@ -30,15 +30,12 @@ export const MenuHead = () => {
     }
 
     const [navbar, setNavbar] = useState(false);
-    const [color, setColor] = useState(false);
   
     const changeBackground = () => {
       if (window.scrollY >= 2) {
         setNavbar(true);
-        setColor('black');
       } else {
         setNavbar(false);
-        setColor('white');
       }
     };
   
@@ -59,7 +56,7 @@ export const MenuHead = () => {
                         </div>
                         <div className="w-7/12 pt-3">
                             <a className="header-logo__link" href="index.php"></a>
-                            <Image className="header-logo__img logo--light" src={LogoWhite} width={'150px'} height={'50px'} alt="logo"/>
+                            <Image className="header-logo__img logo--light" src="https://firebasestorage.googleapis.com/v0/b/quetions-app.appspot.com/o/logo_white.png?alt=media&token=1a5d0cd7-7550-47ee-b612-620954c08cc8" width={'150px'} height={'50px'} alt="logo"/>
                         </div>
                     </div>
                     <div className="col-auto">
@@ -194,9 +191,6 @@ export const MenuHead = () => {
                                 </ul>
                             </li>
                         </ul>
-                        {/* <div className="dropdown-trigger d-block d-sm-none" onClick={()=>setOpen(!open)}>
-                            <div className="dropdown-trigger__item"></div>
-                        </div> */}
                     </div>
                 </div>
             </div>
