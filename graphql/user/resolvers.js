@@ -1,5 +1,6 @@
 import { db } from "../../firebase/initConfig";
-import { addDoc, collection , getDocs , getDoc , setDoc , doc } from "firebase/firestore"; 
+import { addDoc, collection , getDocs , getDoc , setDoc , doc , updateDoc } from "firebase/firestore"; 
+
 
 export const resolversUsuario = {
 
@@ -33,5 +34,27 @@ export const resolversUsuario = {
             await setDoc(doc(usersRef,args.uid),usuarioCreado);
             return usuarioCreado;
         },
+        tuHistoria: async(parent, args) => {
+            const usersRef = collection(db,"users")
+            let dataUserUpdate = {
+                genero: args.genero,
+                fechaNacimiento: args.fechaNacimiento,
+                direccion: args.direccion,
+                foto: args.foto,
+                sisben: args.sisben,
+                historiaClinica: args.historiaClinica,
+                discapacitado: args.discapacitado,
+                grupoPoblacional: args.grupoPoblacional,
+                EPS:args.EPS,
+                tuHistoria:args.tuHistoria,
+                serviciosSolicitado: args.serviciosSolicitado,
+                autorizacionFoto:args.autorizacionFoto,
+                recopilacionDatos:args.recopilacionDatos,
+            }
+            await updateDoc(doc(usersRef,args.uid),dataUserUpdate);
+            const docRef = doc(db, "users", args.uid);
+            const docSnap = await getDoc(docRef);
+            return docSnap.data();
+        }
     }
 }

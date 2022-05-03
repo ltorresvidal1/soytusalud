@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth"; 
 import { useMutation } from "@apollo/client";
 import { registrarUsuario } from "../graphql/user/mutations";
@@ -12,23 +13,9 @@ const Registro = () => {
 
     const router = useRouter()
     const [crearUsuario] = useMutation(registrarUsuario)
+    // const [login , setLogin] = useState(false)
 
     const { form, formData, updateFormData } =useFormData();
-    // const handlerGoogle =()=>{
-    //     signInWithPopup(auth, googleProvider)
-    //     .then((user) => {
-    //     console.log(user.user);
-    //     })
-    //     .catch((error) => {
-    //     console.log(error);
-    //     // navigate('crear-cuenta')
-    //     });
-    // };
-
-//   const handlerLogout = () =>{
-//     signOut(auth)
-//   }
-
 
   const submitForm = async (e) => {
     e.preventDefault();
@@ -48,13 +35,13 @@ const Registro = () => {
 
   return (
     <>
-    <PrivatePages>
+    <PrivatePages login={false}>
     <main className="main">
             <section className="promo-primary promo-primary--shop">
                 <picture>
                     <source srcSet="img/counter.jpg" media="(min-width: 992px)"/>
         <picture  className="img--bg">
-            <Image src="promo_c1.jpg" alt="img"  layout="fill" objectFit='cover' objectPosition="50% 25%"/>
+            <Image src="/promo_c1.png" alt="img"  layout="fill" objectFit='cover' objectPosition="50% 25%"/>
         </picture>
                 </picture>
                 <div className="promo-primary__description"> <span></span></div>

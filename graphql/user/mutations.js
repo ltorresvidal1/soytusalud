@@ -13,3 +13,14 @@ mutation Mutation($uid: ID!, $identificacion: String!, $nombre: String!, $apelli
   }
 }
 `;
+
+export const tuHistoriaUpdate = gql`
+mutation TuHistoria($uid: ID!, $foto: String!, $genero: String!, $fechaNacimiento: String!, $direccion: String!, $discapacitado: String!, $grupoPoblacional: String!, $EPS: String!, $serviciosSolicitado: String!, $historiaClinica: String!, $sisben: String!, $autorizacionFoto: String!, $recopilacionDatos: String!, $tipoDiscapacidad: String, $tuHistoria: String) {
+  tuHistoria(uid: $uid, foto: $foto, genero: $genero, fechaNacimiento: $fechaNacimiento, direccion: $direccion, discapacitado: $discapacitado, grupoPoblacional: $grupoPoblacional, EPS: $EPS, serviciosSolicitado: $serviciosSolicitado, historiaClinica: $historiaClinica, sisben: $sisben, autorizacionFoto: $autorizacionFoto, recopilacionDatos: $recopilacionDatos, tipoDiscapacidad: $tipoDiscapacidad, tuHistoria: $tuHistoria) {
+    identificacion
+    nombre
+    apellidos
+  }
+}
+
+`

@@ -14,16 +14,16 @@ export const typesUsuario = gql`
         genero: String
         fechaNacimiento: String
         direccion: String
-        discapacitado: Boolean
+        discapacitado: String
         tipoDiscapacidad: String
         grupoPoblacional: String
         EPS:String
         tuHistoria:String
-        serviciosSolicitado: [String]
+        serviciosSolicitado: String
         historiaClinica: String
         sisben: String
-        autorizacionFoto:Boolean
-        recopilacionDatos:Boolean
+        autorizacionFoto:String
+        recopilacionDatos:String
     }
     type Query{
         Usuarios: [Usuario]
@@ -40,7 +40,23 @@ export const typesUsuario = gql`
         celular:String!
         correo: String!
     ): Usuario
-
+    tuHistoria(
+        uid:ID!
+        foto:String!
+        genero: String!
+        fechaNacimiento: String!
+        direccion: String!
+        discapacitado: String!
+        tipoDiscapacidad: String
+        grupoPoblacional: String!
+        EPS:String!
+        tuHistoria:String
+        serviciosSolicitado: String!
+        historiaClinica: String!
+        sisben: String!
+        autorizacionFoto:String!
+        recopilacionDatos:String!
+        ):Usuario
     }
     
 

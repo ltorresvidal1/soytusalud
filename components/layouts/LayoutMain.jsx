@@ -15,8 +15,9 @@ export const LayoutMain = ({children}) => {
   useEffect(()=>{
     onAuthStateChanged(auth,(user)=>{
       if(user){
-        getUser({variables:{uid:user.uid}}).then(response =>{
-          setAuthUser(response.data.Usuario)
+          getUser({variables:{uid:user.uid}})
+            .then(response =>{
+            setAuthUser(response.data.Usuario)
         })
       }else{
         setAuthUser(null)
@@ -28,7 +29,7 @@ export const LayoutMain = ({children}) => {
 
 
   return (
-    <div onScroll={()=> console.log("hola")}>
+    <div>
         <MenuHead ></MenuHead>
           {children}
         <MenuFooter></MenuFooter>

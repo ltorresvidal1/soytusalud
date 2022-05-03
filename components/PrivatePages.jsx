@@ -1,12 +1,22 @@
-import {useEffect} from 'react'
+import {useEffect , useState} from 'react'
 import { useAuth } from '../context/useAuth'
 import { useRouter } from 'next/router'
 
-const PrivatePages = ({children}) => {
+const PrivatePages = ({children , login }) => {
+    const [render,setRender] = useState(true)
     const router = useRouter()
     const { authUser,auth } = useAuth()
+
     useEffect(() =>{
-        if(!authUser){
+        if(authUser && login){
+            setRender(true)
+        }else if (authUser && !login){
+            setRender(false)
+            router.push("/")
+        }else if (!authUser && !login){
+            setRender(true)
+        }else if(!authUser && login){
+            setRender(false)
             router.push("/")
         }
     },[auth, authUser, router])
@@ -14,7 +24,7 @@ const PrivatePages = ({children}) => {
     
   return (
       <>
-      {authUser?(<>{children}</>):null}
+        {render?children:null}
       </>
   )
 }
