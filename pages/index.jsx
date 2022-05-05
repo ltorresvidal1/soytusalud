@@ -11,7 +11,7 @@ export default function Home() {
         
           <section className="promo-primary">
               <div className="container">
-              <picture  className="img--bg">
+              <picture className="img--bg">
                 <Image src="/promo_c1.png" alt="img" layout="fill" objectFit='cover' objectPosition="50% 25%" priority={true}/>
               </picture>
                 <div className="row">

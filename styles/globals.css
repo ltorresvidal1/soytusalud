@@ -112,7 +112,9 @@ border-color: red;
   background-color: #343878 !important;
 }
 
-
+registro-text{
+  color: #343878;
+}
 
 @charset "UTF-8";
 
