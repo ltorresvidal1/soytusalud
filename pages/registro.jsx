@@ -4,6 +4,7 @@ import { useMutation } from "@apollo/client";
 import { registrarUsuario } from "../graphql/user/mutations";
 import { auth  } from '../firebase/initConfig'
 import { useRouter } from 'next/router'
+import {LayoutMain} from '../components/layouts/LayoutMain'
 
 import Image from 'next/image'
 import useFormData from '../hooks/useFormData';
@@ -34,7 +35,7 @@ const Registro = () => {
     }
 
   return (
-    <>
+    <LayoutMain>
     <PrivatePages login={false}>
     <main className="main">
             <section className="promo-primary promo-primary--shop">
@@ -131,7 +132,7 @@ const Registro = () => {
         </main>
     </PrivatePages>
        
-    </>
+    </LayoutMain>
   )
 }
 

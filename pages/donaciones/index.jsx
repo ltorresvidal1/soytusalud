@@ -1,13 +1,14 @@
 
 import Head from 'next/head'
 import Image from 'next/image'
+import { LayoutMain } from '../../components/layouts/LayoutMain'
 
 
 const Historia = () => {
   return (
-    <>
+    <LayoutMain>
 
-<main className="main">
+				<main className="main">
 
 				<section className="promo-primary">
 					<picture>
@@ -108,7 +109,7 @@ const Historia = () => {
 				
 			</main>
 
-    </>
+    </LayoutMain>
 
   )
 }

@@ -1,17 +1,18 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import { LayoutMain } from '../components/layouts/LayoutMain'
 
 export default function Home() {
   
  
   return (
-    <>
+    <LayoutMain>
       <div>
         
           <section className="promo-primary">
               <div className="container">
               <picture  className="img--bg">
-                <Image src="/promo_c1.png" alt="img" layout="fill" objectFit='cover' objectPosition="50% 25%"/>
+                <Image src="/promo_c1.png" alt="img" layout="fill" objectFit='cover' objectPosition="50% 25%" priority={true}/>
               </picture>
                 <div className="row">
                   <div className="col-auto">
@@ -93,7 +94,7 @@ export default function Home() {
             </div>
           </section>
       </div>
-    </>
+    </LayoutMain>
   )
 }
 

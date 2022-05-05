@@ -9,6 +9,7 @@ import { useMutation } from '@apollo/client';
 import PrivatePages from '../../components/PrivatePages';
 import useFormData from '../../hooks/useFormData';
 import { useAuth } from '../../context/useAuth';
+import { LayoutMain } from '../../components/layouts/LayoutMain';
 
 
 const Tuhistoria = () => {
@@ -51,7 +52,7 @@ const Tuhistoria = () => {
 	
 
   return (
-    <>
+    <LayoutMain>
 	<PrivatePages login={true}>
 		<main className="main">
 					<section className="promo-primary">
@@ -78,7 +79,7 @@ const Tuhistoria = () => {
 									<div className="col-xl-12">
 										<form className="form message-form" ref={form} onChange={updateFormData} onSubmit={handleSubmit}  id="Form_TuHistoria" >
 													
-												<h6 className="form__title">Si consideras que eres una persona en situación de vulnerabilidad, que padece una enfermedad y necesita servicios médicos (o conoces a alguien en esta condición), diligencia este formulario y te pondremos en contacto con un especialista que te ayude a mejorar su estado de salud.</h6>
+												<h6 className="form__title">Si consideras que eres una persona en situación de vulnerabilidad, que padece una enfermedad y necesita servicios médicos, diligencia este formulario y te pondremos en contacto con un especialista que te ayude a mejorar su estado de salud.</h6>
 												<label className="control-label mb-1">Por favor, verifique los campos obligatorios marcados con un (*) </label>   
 										
 													<div className="row">
@@ -121,25 +122,6 @@ const Tuhistoria = () => {
 														</div>
 													</div>  
 									
-
-													{/* <div className="row">
-													
-														<div className="col-lg-3">
-																<label>Telefono *</label>
-																<input className="form-control" type="text" name="telefono"  id="telefono"/>
-														</div>
-
-														<div className="col-lg-3">
-															<label>Celular *</label>
-															<input className="form-control" type="text" name="celular"  id="celular"/>
-														</div>
-
-														<div className="col-lg-6">
-														<label>Correo *</label>
-														<input className="form-control" type="email" name="correo"  id="correo"/>
-														</div>
-													</div> */}
-
 													
 											<div className="row">
 													
@@ -512,7 +494,7 @@ const Tuhistoria = () => {
 
 	</PrivatePages>
 
-    </>
+    </LayoutMain>
 
   )
 }

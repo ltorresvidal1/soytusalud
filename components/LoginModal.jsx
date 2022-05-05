@@ -63,7 +63,7 @@ const LoginModal=()=>{
         aria-describedby="scroll-dialog-description"
       > 
             <DialogTitle align='center' sx={{}}>
-                <Typography id="modal-modal-title" variant="h5" component="h2">
+                <Typography id="modal-modal-title" variant="h5" component="div">
                     Iniciar sesión
                 </Typography>
             </DialogTitle>

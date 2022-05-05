@@ -21,7 +21,6 @@ export const LayoutMain = ({children}) => {
         })
       }else{
         setAuthUser(null)
-        router.push("/")
       }
     })
   },[])

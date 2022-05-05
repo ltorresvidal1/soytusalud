@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { LayoutMain } from '../components/layouts'
 import '../styles/globals.css'
 import { client } from '../graphql/initClientSide';
 import { ApolloProvider} from "@apollo/client";
@@ -12,9 +11,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <ApolloProvider client={client}>
       <AuthContext.Provider value={{authUser,setAuthUser}}>
-        <LayoutMain>
           <Component {...pageProps} />
-        </LayoutMain>
       </AuthContext.Provider>
     </ApolloProvider>
 

@@ -1,10 +1,11 @@
 
 import Head from 'next/head'
 import Image from 'next/image'
+import { LayoutMain } from '../../components/layouts/LayoutMain'
 
 const Aliados= () => {
   return (
-    <>
+    <LayoutMain>
 
 			<main className="main">
 
@@ -88,7 +89,7 @@ const Aliados= () => {
 
 			</main>
 
-    </>
+    </LayoutMain>
 
   )
 }
