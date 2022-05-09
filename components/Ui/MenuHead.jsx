@@ -136,6 +136,11 @@ export const MenuHead = () => {
                                         <a className="main-menu__link">Filántropos</a>
                                     </Link> 
                                     <ul className="main-menu__sub-list">
+                                          <li>
+                                            <Link href="/filatroposregistro" >
+                                                <a>Registrarme</a>
+                                            </Link>
+                                        </li>
                                         <li>
                                             <Link href="/historias" >
                                                 <a>Pacientes Clasificados</a>

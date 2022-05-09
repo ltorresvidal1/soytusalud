@@ -142,6 +142,63 @@ const Tuhistoria = () => {
 															<option value="0">Seleccionar</option>
 															<option value="1">Permanente</option>
 															<option value="2">Temporal</option>
+															<option value="3">Auditiva</option>
+															<option value="4">Cognitiva</option>
+															<option value="5">Física</option>
+															<option value="6">Mental</option>
+															<option value="7">Visual</option>
+															<option value="8">Múltiple</option>
+															 
+														</select>
+															
+													</div>
+													
+													<div className="col-lg-4">
+													
+															<label>Victima de Violencia *</label>
+															
+															<select className="form-control" name="victimaviolencia" id="victimaviolencia">
+															<option value="0">Seleccionar</option>
+															<option value="1">Si</option>
+															<option value="2">No</option>
+
+
+														</select> 
+															
+													
+													</div>
+											</div>
+										
+
+											<div className="row">
+											
+											
+													<div className="col-lg-4">
+															<label>Identidad de Genero *</label>
+														<select className="form-control" name="identidadgenero" id="identidadgenero">
+															<option value="0">Seleccionar</option>
+															<option value="1">Masculino</option>
+															<option value="2">Femenino</option>
+															<option value="3">Travesti</option>
+															<option value="4">Transexual</option>
+															<option value="5">Transgénero</option>
+															<option value="6">Ninguna</option>
+															<option value="7">No Binario</option>
+														</select>
+														
+													</div>
+													
+													<div className="col-lg-4">
+													<label>Orientacion Sexual *</label>
+														<select className="form-control" name="orientacionsexial" id="orientacionsexial">
+															<option value="0">Seleccionar</option>
+															<option value="1">Heterosexual</option>
+															<option value="2">Lesbiana</option>
+															<option value="3">Bisexual</option>
+															<option value="4">Gay</option>
+															<option value="5">Asexual</option>
+															<option value="6">Ninguna</option>
+															 
 														</select>
 															
 													</div>
@@ -153,28 +210,28 @@ const Tuhistoria = () => {
 															<select className="form-control" name="grupoPoblacional" id="grupoPoblacional">
 															<option value="0">Seleccionar</option>
 															<option value="1">Habitantes de la calle</option>
-															<option value="3">Creador o gestor cultural decreto 2283 de 2010</option>
-															<option value="4">Población sisbenizada</option>
-															<option value="5">Menores desvinculados del conflicto armado, a cargo del ICBF (subsidiado)</option>
-															<option value="6">Población desmovilizada (subsidiado)</option>
-															<option value="7">Víctima del conflicto armado interno ley 1448 de 2011</option>
-															<option value="8">Población infantil vulnerable bajo protección de instituciones diferentes al ICBF (Subsidiado)</option>
-															<option value="9">Población en programas de protección a testigos (subsidiado)</option>
-															<option value="10">Población en centros psiquiátricos</option>
-															<option value="11">Población rural migratoria</option>
-															<option value="12">Población reclusa</option>
-															<option value="13">Población rural migratoria</option>
-															<option value="14">Población tercera edad en protección de ancianatos</option>
-															<option value="15">Comunidades indígenas</option>
-															<option value="16">Comunidad ROM (Gitanos)</option>
-															<option value="17">Población carcelaria del INPEC decreto 277 de 2010</option>
-															<option value="18">Personas que dejen de ser madres comunitarias y sean beneficiarias del subsidio de la Subcuenta de Subsistencia del Fondo de Solidaridad Pensional (subsidiado)</option>
-															<option value="19">Personas damnificadas por deportación expulsión repatriación desde Venezuela (subsidiado)</option>
-															<option value="20">Población infantil vulnerable bajo protección en instituciones diferentes al ICBF (subsidiado)</option>
-															<option value="21">Adultos mayores en centros de protección (subsidiado)</option>
-															<option value="22">Miembros de los grupos armados al margen de la ley que celebren acuerdos de paz con el Gobierno</option>
-															<option value="23">Migrante Venezolano con PEP e hijos menores de edad con documento válido</option>
-															<option value="24">Afiliado de oficio sin encuesta Sisbén ni población especial</option>
+															<option value="2">Creador o gestor cultural decreto 2283 de 2010</option>
+															<option value="3">Población sisbenizada</option>
+															<option value="4">Menores desvinculados del conflicto armado, a cargo del ICBF (subsidiado)</option>
+															<option value="5">Población desmovilizada (subsidiado)</option>
+															<option value="6">Víctima del conflicto armado interno ley 1448 de 2011</option>
+															<option value="7">Población infantil vulnerable bajo protección de instituciones diferentes al ICBF (Subsidiado)</option>
+															<option value="8">Población en programas de protección a testigos (subsidiado)</option>
+															<option value="9">Población en centros psiquiátricos</option>
+															<option value="10">Población rural migratoria</option>
+															<option value="11">Población reclusa</option>
+															<option value="12">Población rural migratoria</option>
+															<option value="13">Población tercera edad en protección de ancianatos</option>
+															<option value="14">Comunidades indígenas</option>
+															<option value="15">Comunidad ROM (Gitanos)</option>
+															<option value="16">Población carcelaria del INPEC decreto 277 de 2010</option>
+															<option value="17">Personas que dejen de ser madres comunitarias y sean beneficiarias del subsidio de la Subcuenta de Subsistencia del Fondo de Solidaridad Pensional (subsidiado)</option>
+															<option value="18">Personas damnificadas por deportación expulsión repatriación desde Venezuela (subsidiado)</option>
+															<option value="19">Población infantil vulnerable bajo protección en instituciones diferentes al ICBF (subsidiado)</option>
+															<option value="20">Adultos mayores en centros de protección (subsidiado)</option>
+															<option value="21">Miembros de los grupos armados al margen de la ley que celebren acuerdos de paz con el Gobierno</option>
+															<option value="22">Migrante Venezolano con PEP e hijos menores de edad con documento válido</option>
+															<option value="23">Afiliado de oficio sin encuesta Sisbén ni población especial</option>
 
 
 														</select> 
@@ -182,8 +239,6 @@ const Tuhistoria = () => {
 													
 													</div>
 											</div>
-										
-
 
 											<div className="row">
 												
@@ -491,9 +546,9 @@ const Tuhistoria = () => {
 					</section>
 					
 		</main>
-
+	
+		
 	</PrivatePages>
-
     </LayoutMain>
 
   )
