@@ -113,6 +113,161 @@ border-color: red;
 }
 
 
+.fondoLogin{
+  background-color: #0a0b0b;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.427);
+}
+
+.modal-login{
+  width: 400px;
+  height: 600px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.427);
+  font-weight: 200;
+}
+
+.submitButton{
+  background-color: #A5143A;
+}
+
+
+.signUpButton{
+  border-color:#A5143A;
+  color: #A5143A;
+}
+
+.submitButton:hover{
+  background-color: #CF254D;
+  box-shadow: 0px 1px 4px rgba(33, 33, 33, 0.5)
+}
+
+
+.signUpButton:hover{
+  border-color:#CF254D;
+  color: #CF254D;
+  background-color: #cf254d2c;
+}
+
+.back-button{
+  background-color: #7e7e7e;
+
+}
+
+.back-button:hover{
+  background-color: #acacac;
+}
+
+.sidebar {
+  background-color: #343879;
+  border-radius: 19.3103px;
+  
+}
+
+.sidebar-route {
+  @apply flex w-full cursor-pointer items-center pl-4 py-1;
+}
+
+
+.sidebar-route-active{
+  background-color: #1c2064;
+}
+
+.sidebar-route-disable:hover{
+  background-color:#444343
+}
+
+.tabs{
+  font-size: 18px;
+  border-bottom: 2px solid white;
+  font-weight: 500;
+  color: #d0d0d0;
+  padding: 6px;
+}
+
+.tabs:hover{
+  font-size: 18px;
+  font-weight: 500;
+  border-bottom: 2px solid;
+  color: #A5143A;
+  padding: 6px;
+}
+
+
+.tabs:active{
+  color: #A5143A;
+  font-weight: 500;
+  padding: 6px;
+}
+
+.status-button {
+  color: #28B446;
+  background-color: #C0EA7D;
+  border-radius: 8rem;
+}
+
+.inactivo-button {
+  color: #A5143A;
+  background-color: #EA7D7D;
+  border-radius: 8rem;
+}
+
+.status-button:hover {
+  background-color: #afe05f;
+}
+
+progress {
+  border-radius: 7px; 
+  width: 50%;
+  height: 22px;
+}
+
+progress::-webkit-progress-bar {
+  background-color: #DBDBDB;
+  border-radius: 100px;
+}
+
+progress::-webkit-progress-value {
+  background-color: #A5143A;
+  border-radius: 100px;
+}
+
+
+.sidebar-li:active{
+  background-color: #c5ebff;
+}
+
+.thead-color{
+  background-color: #F4F4F4;
+}
+
+.tbody-border{
+  border-bottom: 1px solid;
+  border-color: #ebebeb;
+}
+
+.encabezado-tablas{
+  color: #252323;
+}
+
+.texto-tablas{
+  color: #252323;
+  font-size: 14px;
+}
+
+/*PROYECTO*/
+.date-budget{
+  color: #A5143A;
+  font-size: 14px;
+}
+
+.border-tripulantes{
+  border-bottom: 0.5px solid rgba(0, 0, 0, 0.14);
+}
+
+.btn-estado-proyecto {
+  color: #343434;
+  background-color: #DBDBDB;
+  border-radius: 8rem;
+}
 
 @charset "UTF-8";
 

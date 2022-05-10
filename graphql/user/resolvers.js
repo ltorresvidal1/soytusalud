@@ -1,11 +1,11 @@
 import { db } from "../../firebase/initConfig";
-import { addDoc, collection , getDocs , getDoc , setDoc , doc , updateDoc } from "firebase/firestore"; 
+import { collection , getDocs , getDoc , setDoc , doc , updateDoc } from "firebase/firestore"; 
 
 
 export const resolversUsuario = {
 
     Query: {
-        Usuarios: async (parent, args) => { // es el usuario que se creó en query en types
+        UsuariosTabla: async (parent, args) => { // es el usuario que se creó en query en types
             const querySnapshot  = await getDocs(collection(db, "users"));
             let usuarios =[]
             querySnapshot.forEach((doc) => {
@@ -53,6 +53,7 @@ export const resolversUsuario = {
                 serviciosSolicitado: args.serviciosSolicitado,
                 autorizacionFoto:args.autorizacionFoto,
                 recopilacionDatos:args.recopilacionDatos,
+                comunidad:"",
             }
             await updateDoc(doc(usersRef,args.uid),dataUserUpdate);
             const docRef = doc(db, "users", args.uid);
