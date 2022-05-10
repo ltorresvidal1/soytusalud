@@ -24,9 +24,10 @@ export const typesUsuario = gql`
         sisben: String
         autorizacionFoto:String
         recopilacionDatos:String
+        comunidad:String!
     }
     type Query{
-        Usuarios: [Usuario]
+        UsuariosTabla: [Usuario]
         Usuario(uid: String!): Usuario
     }
 

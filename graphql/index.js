@@ -3,4 +3,4 @@ import {typesUsuario} from './user/types'
 
 
 export const resolvers = [resolversUsuario];
-export const typeDefs=[typesUsuario] ;
+export const typeDefs  = [typesUsuario] ;
