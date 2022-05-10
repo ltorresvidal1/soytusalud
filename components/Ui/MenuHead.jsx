@@ -176,13 +176,13 @@ export const MenuHead = () => {
                             </ul>
                         </nav>
                     </div>
-                    <div className="space-x-4">
-                        {authUser?<a className="main-menu__link text-white" onClick={handlerLogOut}>Cerrar sesión</a>
+                    <div className="flex space-x-5">
+                        {authUser?<a className="text-white mt-8 underline underline-offset-4" onClick={handlerLogOut}>Salir</a>
                         :(
                             <>
                                 <LoginModal/>
                                 <Link href="/registro">
-                                    <button className='text-white border rounded-md h-8 mt-8 px-2'>Registrarme</button>
+                                    <button className='bg-white text-red-900 border rounded-md h-8 mt-8 px-2'>Registrarme</button>
                                 </Link>
                             </>
                         )}
