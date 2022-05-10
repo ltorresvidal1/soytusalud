@@ -16,9 +16,9 @@ export const typesUsuario = gql`
         direccion: String
         discapacitado: String
         tipoDiscapacidad: String
-        victimaviolencia: String
-        identidadgenero: String
-        orientacionsexial:a String
+        victimaViolencia: String
+        identidadGenero: String
+        orientacionSexual: String
         grupoPoblacional: String
         EPS:String
         tuHistoria:String
@@ -51,12 +51,12 @@ export const typesUsuario = gql`
         direccion: String!
         discapacitado: String!
         tipoDiscapacidad: String
-        victimaviolencia: String!
-        identidadgenero: String!
-        orientacionsexial:a String!
+        victimaViolencia: String!
+        identidadGenero: String!
+        orientacionSexual:String!
         grupoPoblacional: String!
         EPS:String!
-        tuHistoria:String
+        tuHistoria:String!
         serviciosSolicitado: String!
         historiaClinica: String!
         sisben: String!

@@ -157,7 +157,7 @@ const Tuhistoria = () => {
 													
 															<label>Victima de Violencia *</label>
 															
-															<select className="form-control" name="victimaviolencia" id="victimaviolencia">
+															<select className="form-control" name="victimaViolencia" id="victimaViolencia">
 															<option value="0">Seleccionar</option>
 															<option value="1">Si</option>
 															<option value="2">No</option>
@@ -175,7 +175,7 @@ const Tuhistoria = () => {
 											
 													<div className="col-lg-4">
 															<label>Identidad de Genero *</label>
-														<select className="form-control" name="identidadgenero" id="identidadgenero">
+														<select className="form-control" name="identidadGenero" id="identidadGenero">
 															<option value="0">Seleccionar</option>
 															<option value="1">Masculino</option>
 															<option value="2">Femenino</option>
@@ -190,7 +190,7 @@ const Tuhistoria = () => {
 													
 													<div className="col-lg-4">
 													<label>Orientacion Sexual *</label>
-														<select className="form-control" name="orientacionsexial" id="orientacionsexial">
+														<select className="form-control" name="orientacionSexual" id="orientacionSexual">
 															<option value="0">Seleccionar</option>
 															<option value="1">Heterosexual</option>
 															<option value="2">Lesbiana</option>
