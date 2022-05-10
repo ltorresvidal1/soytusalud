@@ -1,6 +1,6 @@
 import { Divider, List, ListItem, ListItemIcon, ListItemText, Toolbar } from '@mui/material'
 import Image from 'next/image'
-import { Inbox,Mail } from '@mui/icons-material'
+
 import Link from 'next/link'
 
 const NewSidebar = () => {

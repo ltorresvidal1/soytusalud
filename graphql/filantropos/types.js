@@ -26,7 +26,7 @@ export const typesFilantropo = gql`
         direccion:String!
         correo: String!
     
-    )
+    ):Filantropo
     }
 
 `
