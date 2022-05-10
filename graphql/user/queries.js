@@ -1,17 +1,16 @@
 import {gql} from '@apollo/client';
 
-export const usuarios = gql`
+export const usuariosTablas = gql`
 query Query {
-  Usuarios {
-    uid
+  UsuariosTabla {
     identificacion
     nombre
     apellidos
-    tipoDocumento
-    celular
-    correo
+    comunidad
+    grupoPoblacional
   }
-}   
+}
+ 
 `;
 export const authUser = gql`
   query AuthUser($uid: String!) {
