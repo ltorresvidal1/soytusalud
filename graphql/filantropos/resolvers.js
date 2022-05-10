@@ -11,7 +11,7 @@ export const resolversFilantropos = {
             querySnapshot.forEach((doc) => {
                 filantropos.push(doc.data());
             });
-            return usuarios;
+            return filantropos;
         },
         Filantropo: async (parent, args) => {
             const docRef = doc(db, "filantropos", args.uid);
