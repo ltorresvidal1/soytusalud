@@ -51,9 +51,9 @@ const LoginModal=()=>{
 
   
 
-  return (
+  return (   
     <div>
-       <span className='text-white cursor-pointer' onClick={handleClickOpen('paper')} >Iniciar sesión</span>
+       <button className='text-white border rounded-md h-8 mt-8 px-2' onClick={handleClickOpen('paper')} >Iniciar sesión</button>
       <Dialog
         className= "bg-black bg-opacity-50"
         open={open}

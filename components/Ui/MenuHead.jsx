@@ -80,37 +80,21 @@ export const MenuHead = () => {
                                     <a className="text-black main-menu__link font-black">Inicio</a>
                                     </Link>
                                 </li>
+                                {authUser?(<>
                                 <li className="main-menu__item main-menu__item--has-child">
                                     <Link href="/" > 
                                         <a className="main-menu__link">Pacientes</a>
                                     </Link>
-
                                     <ul className="main-menu__sub-list">
-                                    {authUser?(<>
                                         <li>
                                             <Link href="/tuhistoria" >
                                                 <a>Tu historia</a>
                                             </Link>
                                             
                                         </li>
-                                        <li>
-                                            <a className='text-white' onClick={handlerLogOut}>Cerrar sesisión</a>
-                                        </li>
-                                    </>):(
-                                    <>
-                                        <li>
-                                            <LoginModal/>
-                                        </li>
-                                        <li>
-                                            <Link href="/registro" >
-                                                <a>Registrarme</a>
-                                            </Link>
-                                            
-                                        </li>
-                                    </>)} 
-
                                     </ul>
                                 </li>
+                                </>): null} 
                                 <li className="main-menu__item main-menu__item--has-child">
                                     <Link href="/" >
                                         <a className="main-menu__link">Comunidades E Instituciones</a>
@@ -167,7 +151,7 @@ export const MenuHead = () => {
                                     </ul>
                                 </li>
                                 <li className="main-menu__item main-menu__item--has-child">
-                                    <Link href="/" > 
+                                    <Link href="/" >
                                         <a className="main-menu__link">Aliados</a>
                                     </Link> 
                                     <ul className="main-menu__sub-list">
@@ -186,7 +170,6 @@ export const MenuHead = () => {
                                             <Link href="/personasconproposito" >
                                                 <a>Personas Con Propósitos</a>
                                             </Link>
-                                            
                                         </li>
                                     </ul>
                                 </li>
@@ -194,8 +177,15 @@ export const MenuHead = () => {
                         </nav>
                     </div>
                     <div className="space-x-4">
-                        <button className="text-white border rounded-md h-8 mt-8 px-2">Iniciar sesión</button>
-                        <button className="registro-text bg-white rounded-md h-8 mt-8 px-2">Registrarse</button> 
+                        {authUser?<a className="main-menu__link text-white" onClick={handlerLogOut}>Cerrar sesión</a>
+                        :(
+                            <>
+                                <LoginModal/>
+                                <Link href="/registro">
+                                    <button className='text-white border rounded-md h-8 mt-8 px-2'>Registrarme</button>
+                                </Link>
+                            </>
+                        )}
                     </div>
                 </div>
             </div>
@@ -204,6 +194,6 @@ export const MenuHead = () => {
         </header>
         
         </>
+        
 )
 }
-
