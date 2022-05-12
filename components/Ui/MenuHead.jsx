@@ -59,6 +59,18 @@ export const MenuHead = () => {
                             <a className="header-logo__link" href="index.php"></a>
                             <Image className="header-logo__img logo--light" src="/logo_white.png" width={'150px'} height={'50px'} alt="logo"/>
                         </div>
+                        <div className="col-auto d-flex align-items-center">
+                            <ul className="lang-select lang-select--inner">
+                                <li className="lang-select__item lang-select__item--active"><span className="text-white font-semibold" data-lang="idioma">Es</span>
+                                    <ul className="lang-select__sub-list">
+                                        <li><a href="#" id="translate" data-text="English,Espa&ntilde;ol" data-file="es,en" data-index="1">English</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            {/* <div className="dropdown-trigger d-block d-sm-none" onClick={()=>setOpen(!open)}>
+                                <div className="dropdown-trigger__item"></div>
+                            </div> */}
+                        </div>
                     </div>
                     <div className="col-auto">
                         <nav>
@@ -68,37 +80,21 @@ export const MenuHead = () => {
                                     <a className="text-black main-menu__link font-black">Inicio</a>
                                     </Link>
                                 </li>
+                                {authUser?(<>
                                 <li className="main-menu__item main-menu__item--has-child">
                                     <Link href="/" > 
                                         <a className="main-menu__link">Pacientes</a>
                                     </Link>
-
                                     <ul className="main-menu__sub-list">
-                                    {authUser?(<>
                                         <li>
                                             <Link href="/tuhistoria" >
                                                 <a>Tu historia</a>
                                             </Link>
                                             
                                         </li>
-                                        <li>
-                                            <a className='text-white' onClick={handlerLogOut}>Cerrar sesisión</a>
-                                        </li>
-                                    </>):(
-                                    <>
-                                        <li>
-                                            <LoginModal/>
-                                        </li>
-                                        <li>
-                                            <Link href="/registro" >
-                                                <a>Registrarme</a>
-                                            </Link>
-                                            
-                                        </li>
-                                    </>)} 
-
                                     </ul>
                                 </li>
+                                </>): null} 
                                 <li className="main-menu__item main-menu__item--has-child">
                                     <Link href="/" >
                                         <a className="main-menu__link">Comunidades E Instituciones</a>
@@ -151,7 +147,6 @@ export const MenuHead = () => {
                                         <Link href="/trasabilidad" >
                                                 <a>Trasabilidad Pacientes</a>
                                             </Link>
-                                                                                    
                                         </li>
                                         <li>
                                         <Link href="/donaciones" >
@@ -160,9 +155,8 @@ export const MenuHead = () => {
                                         </li>
                                     </ul>
                                 </li>
-                              
                                 <li className="main-menu__item main-menu__item--has-child">
-                                    <Link href="/" > 
+                                    <Link href="/" >
                                         <a className="main-menu__link">Aliados</a>
                                     </Link> 
                                     <ul className="main-menu__sub-list">
@@ -173,33 +167,30 @@ export const MenuHead = () => {
                                         </li>
                                         <li>
                                             <Link href="/empresasconproposito" >
-                                                <a>Empresas Con Propositos</a>
+                                                <a>Empresas Con Propósitos</a>
                                             </Link>
                                             
                                         </li>
                                         <li>
                                             <Link href="/personasconproposito" >
-                                                <a>Personas Con Propositos</a>
+                                                <a>Personas Con Propósitos</a>
                                             </Link>
-                                            
                                         </li>
                                     </ul>
                                 </li>
-                              
                             </ul>
                         </nav>
                     </div>
-                    <div className="col-auto d-flex align-items-center">
-                        <ul className="lang-select lang-select--inner">
-                            <li className="lang-select__item lang-select__item--active"><span className="text-white font-semibold" data-lang="idioma">Es</span>
-                                <ul className="lang-select__sub-list">
-                                    <li><a href="#" id="translate" data-text="English,Espa&ntilde;ol" data-file="es,en" data-index="1">English</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                        {/* <div className="dropdown-trigger d-block d-sm-none" onClick={()=>setOpen(!open)}>
-                            <div className="dropdown-trigger__item"></div>
-                        </div> */}
+                    <div className="space-x-4">
+                        {authUser?<a className="main-menu__link text-white" onClick={handlerLogOut}>Cerrar sesión</a>
+                        :(
+                            <>
+                                <LoginModal/>
+                                <Link href="/registro">
+                                    <button className='text-white border rounded-md h-8 mt-8 px-2'>Registrarme</button>
+                                </Link>
+                            </>
+                        )}
                     </div>
                 </div>
             </div>
@@ -208,6 +199,6 @@ export const MenuHead = () => {
         </header>
         
         </>
+        
 )
 }
-
