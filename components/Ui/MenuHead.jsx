@@ -48,7 +48,7 @@ export const MenuHead = () => {
   return (
    
 		<>  
-            <header className={navbar? "backgroundNav w-full header  ":"header header--front"}>
+            <header className={navbar? "backgroundNav w-full header ":"header header--front"}>
             <div className="container-fluid">
                 <div className="row no-gutters justify-content-between">
                     <div className="col-auto d-flex align-items-center" >
@@ -173,20 +173,21 @@ export const MenuHead = () => {
                                         </li>
                                     </ul>
                                 </li>
+                                <li className="main-menu__item main-menu__item--has-child">
+                                    {authUser?<span className="text-white mt-8 underline" onClick={handlerLogOut}>Salir</span>
+                                    :(
+                                        <>
+                                            <LoginModal/>
+                                            <Link href="/registro">
+                                                <button className='bg-white text-red-900 border rounded-md h-8 mt-8 px-2'>Registrarme</button>
+                                            </Link>
+                                        </>
+                                    )}
+                                </li>
                             </ul>
                         </nav>
                     </div>
-                    <div className="flex space-x-5">
-                        {authUser?<a className="text-white mt-8 underline underline-offset-4" onClick={handlerLogOut}>Salir</a>
-                        :(
-                            <>
-                                <LoginModal/>
-                                <Link href="/registro">
-                                    <button className='bg-white text-red-900 border rounded-md h-8 mt-8 px-2'>Registrarme</button>
-                                </Link>
-                            </>
-                        )}
-                    </div>
+                    
                 </div>
             </div>
 

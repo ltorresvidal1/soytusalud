@@ -6,6 +6,8 @@ import { authUser } from '../../graphql/user/queries';
 import { MenuHead,MenuFooter } from "../Ui"
 import { useRouter } from 'next/router'
 import { useLazyQuery } from '@apollo/client';
+import NewNavbarPublic from '../Ui/NewNavbarPublic';
+import { Box } from '@mui/material';
 
 export const LayoutMain = ({children}) => {
   const router = useRouter()
@@ -28,10 +30,10 @@ export const LayoutMain = ({children}) => {
 
 
   return (
-    <div>
-        <MenuHead ></MenuHead>
+    <Box>
+        <MenuHead></MenuHead>
           {children}
         <MenuFooter></MenuFooter>
-    </div>
+    </Box>
   )
 }
