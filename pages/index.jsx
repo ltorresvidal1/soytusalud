@@ -16,16 +16,15 @@ export default function Home() {
                   <span className='text-gray-400 font-semibold text-xl'>Sobre Nosotros</span>
                       <Typography fontFamily={'Quicksand'} sx={{color:'#4A4C70'}} className='text-5xl font-extrabold'>Soy Tú Salud</Typography>
                     <div>
-                      <p className="max-w-2xl mt-8">Conoces a algún familiar, amigo, persona o tú que necesite algún servicio médico y se encuentre en situación de vulnerabilidad? En www.soytusalud.org informa tu historia o su historia, aplica y Listo!!.<p> <br/>En la Fundación <a href="">www.soytusalud.org</a> una vez has demostrado que estás en una situación de vulnerabilidad, podrás acceder :</p></p>
+                      <p className="max-w-2xl mt-8 mb-4">Conoces a algún familiar, amigo, persona o tú que necesite algún servicio médico y se encuentre en situación de vulnerabilidad? En www.soytusalud.org informa tu historia o su historia, aplica y Listo!!.<p> <br/>En la Fundación <a href="">www.soytusalud.org</a> una vez has demostrado que estás en una situación de vulnerabilidad, podrás acceder :</p></p>
                         <ul className="">
                           <li>Consulta Médica General por Telemedicina.</li>
                           <li>Consulta Médica Especializada por Telemedicina.</li>
                           <li>Medicamentos para enfermedades no crónicas.</li>
                           <li>Exámenes de Laboratorio Domiciliarios.</li>
                           <li>Otros servicios para su salud, que estén disponibles.</li>
-                          <br/>
-                          <a className="bg-amber-300 rounded-full p-4" href="#">Más sobre nosotros</a>
                         </ul>
+                        <button className="mt-10 bg-amber-300 rounded-full p-4" href="#">Más sobre nosotros</button>
                     </div>
                   </div>
                   <div className="flex-col">
