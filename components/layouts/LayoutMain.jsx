@@ -3,9 +3,13 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../../firebase/initConfig';
 import { useAuth } from '../../context/useAuth'
 import { authUser } from '../../graphql/user/queries';
-import { MenuHead,MenuFooter } from "../Ui"
 import { useRouter } from 'next/router'
 import { useLazyQuery } from '@apollo/client';
+
+import { Navbar,ImageBackground,MenuFooter } from '../Ui/public';
+import { Box, Container } from '@mui/material';
+
+
 
 export const LayoutMain = ({children}) => {
   const router = useRouter()
@@ -28,10 +32,11 @@ export const LayoutMain = ({children}) => {
 
 
   return (
-    <div>
-        <MenuHead ></MenuHead>
+    <Container >
+        <Navbar></Navbar>
+        <ImageBackground></ImageBackground>
           {children}
-        <MenuFooter></MenuFooter>
-    </div>
+        {/* <MenuFooter></MenuFooter> */}
+    </Container>
   )
 }

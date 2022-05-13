@@ -1,13 +1,35 @@
+import { Box, Container } from '@mui/material'
+import Head from 'next/head'
+import NewPrivateLayout from '../../../../components/layouts/NewPrivateLayout/NewPrivateLayout'
 import PrivateLayout from '../../../../components/layouts/PrivateLayout'
+import { PacientesToolbar } from '../../../../components/pacientes/PacientesToolbar'
 import TablaPacientes from '../../../../components/Ui/private/TablaPacientes'
 import { client } from '../../../../graphql/initClientSide' 
 import { usuariosTablas } from '../../../../graphql/user/queries' 
 
 const PacientesPage = ({data}) => {
   return (
-    <PrivateLayout>
-        <TablaPacientes data={data}/>
-    </PrivateLayout>  
+    <NewPrivateLayout>
+            <Head>
+      <title>
+        Customers | Material Kit
+      </title>
+    </Head>
+    <Box
+      component="main"
+      sx={{
+        flexGrow: 1,
+        py: 8
+      }}
+    >
+      <Container maxWidth={false}>
+        <PacientesToolbar />
+        <Box sx={{ mt: 3 }}>
+          {/* <CustomerListResults customers={customers} /> */}
+        </Box>
+      </Container>
+    </Box>
+    </NewPrivateLayout>  
   )
 }
 

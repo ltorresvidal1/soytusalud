@@ -1,10 +1,11 @@
+import NewPrivateLayout from '../../../components/layouts/NewPrivateLayout/NewPrivateLayout'
 import PrivateLayout from '../../../components/layouts/PrivateLayout'
 
 const index = () => {
   return (
-      <PrivateLayout>
+      <NewPrivateLayout>
           <div>index</div>
-      </PrivateLayout>
+      </NewPrivateLayout>
   )
 }
 
