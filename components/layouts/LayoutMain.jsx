@@ -32,11 +32,11 @@ export const LayoutMain = ({children}) => {
 
 
   return (
-    <Container >
+    <Box sx={{backgroundColor:'#F9F7F6'}} >
         <Navbar></Navbar>
         <ImageBackground></ImageBackground>
           {children}
         {/* <MenuFooter></MenuFooter> */}
-    </Container>
+    </Box>
   )
 }

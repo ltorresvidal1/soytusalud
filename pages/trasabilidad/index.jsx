@@ -8,7 +8,7 @@ const Historia = () => {
   return (
     <LayoutMain>
 
-<main className="main">
+{/* <main className="main">
 
 				<section className="promo-primary">
 					<picture>
@@ -55,7 +55,7 @@ const Historia = () => {
 						</div>
 					</div>
 				</section>
-			</main>
+			</main> */}
 
     </LayoutMain>
 

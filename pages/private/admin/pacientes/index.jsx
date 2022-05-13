@@ -1,7 +1,6 @@
 import { Box, Container } from '@mui/material'
 import Head from 'next/head'
 import NewPrivateLayout from '../../../../components/layouts/NewPrivateLayout/NewPrivateLayout'
-import PrivateLayout from '../../../../components/layouts/PrivateLayout'
 import { PacientesToolbar } from '../../../../components/pacientes/PacientesToolbar'
 import TablaPacientes from '../../../../components/Ui/private/TablaPacientes'
 import { client } from '../../../../graphql/initClientSide' 

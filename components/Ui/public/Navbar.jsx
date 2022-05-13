@@ -6,14 +6,11 @@ import {
     Typography, 
     Menu, 
     Container, 
-    Avatar, 
     Button,
-    Tooltip,
     MenuItem,
     IconButton
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import AdbIcon from '@mui/icons-material/Adb';
 import styled from '@emotion/styled';
 import Image from 'next/image'
 
@@ -67,7 +64,7 @@ export const Navbar = () => {
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Box sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }}>
-            <Image src="/logo_white.png" width={156.25} height={50} alt='logoFundacionSoyTuSalud'  />
+            <Image src="/logo_white.png" width={156.25} quality="100" height={50} alt='logoFundacionSoyTuSalud'  />
           </Box>
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
@@ -106,17 +103,11 @@ export const Navbar = () => {
             </Menu>
           </Box>
           <Box sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }}>
-            <Image src="/logo_white.png" width={156.25} height={50} alt='logoFundacionSoyTuSalud'  />
+            <Image src="/logo_white.png" width={156.25} quality="100" height={50} alt='logoFundacionSoyTuSalud'  />
           </Box>
           <Box sx={{flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent:{md:'Center'} }}>
             {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block',fontFamily:'Quicksand'}}
-              >
-                {page}
-              </Button>
+                <ButtonWithText handleCloseNavMenu={handleCloseNavMenu} page={page} key={page} />
             ))}
           </Box>
 
@@ -125,3 +116,34 @@ export const Navbar = () => {
     </NavBarStyles>
   );
 };
+
+const ButtonWithText =({page , handleCloseNavMenu})=>{
+    const [open,setOpen] = useState(false)
+
+    const handleOpenTab =() =>{
+        setOpen(true)
+    }
+    const handleCloseTab =() =>{
+        setOpen(false)
+    }
+
+    return (
+        <>
+            <Button
+            onMouseOver={handleOpenTab}
+            onMouseLeave={handleCloseTab}
+            onClick={handleCloseNavMenu}
+            sx={{ my: 2, color: 'white', display: 'block',fontFamily:'Quicksand'}}
+        >
+            {page}
+        </Button>
+        {open?
+            (<>
+                <h1 className='absolute'>Open</h1>
+            </>)
+            :
+            null
+        }
+      </>
+      )
+}

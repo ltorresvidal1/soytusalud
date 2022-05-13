@@ -1,3 +1,4 @@
+import { Box, Container, Typography } from '@mui/material'
 import Head from 'next/head'
 import Image from 'next/image'
 import { LayoutMain } from '../components/layouts/LayoutMain'
@@ -7,41 +8,38 @@ export default function Home() {
  
   return (
     <LayoutMain>
-      {/* <div>
-          <section className="section about-us" id="about">
-            <div className="container mt-6">
-              <div className="row align-items-center">
-                <div className="col-lg-6">
-                  <div className="heading heading--primary"><span className="heading__pre-title" data-lang="nostros">Sobre Nosotros</span>
-                    <h2 className="heading__title"><span>Soy Tú Salud</span></h2>
-                  </div>
+      <div>
+          <Box sx={{backgroundColor:"#F9F7F6"}}id="about">
+            <Container maxWidth="xl">
+              <div className="flex ">
+                <div className="col-lg-6 flex-grow">
+                    <span className='text-gray-400 font-semibold text-xl'>Sobre Nosotros</span>
+                    <Typography fontFamily={'Quicksand'} sx={{color:'#4A4C70'}} className='text-5xl font-extrabold'>Soy Tú Salud</Typography>
+                  <div>
                   <p>Conoces a algún familiar, amigo, persona o tú que necesite algún servicio médico y se encuentre en situación de vulnerabilidad? En www.soytusalud.org informa tu historia o su historia, aplica y Listo!!.</p><p> En la Fundación <a href="">www.soytusalud.org</a> una vez has demostrado que estás en una situación de vulnerabilidad, podrás acceder :</p>
-                <div className="row">
-                <div className="col-md-6 col-lg-12">
-                  <ul className="unordered-list">
-                    <li>Consulta Médica General por Telemedicina.</li>
-                    <li>Consulta Médica Especializada por Telemedicina.</li>
-                    <li>Medicamentos para enfermedades no crónicas.</li>
-                    <li>Exámenes de Laboratorio Domiciliarios.</li>
-                    <li>Otros servicios para su salud, que estén disponibles.</li>
-                  </ul>
+                    <ul className="">
+                      <li>Consulta Médica General por Telemedicina.</li>
+                      <li>Consulta Médica Especializada por Telemedicina.</li>
+                      <li>Medicamentos para enfermedades no crónicas.</li>
+                      <li>Exámenes de Laboratorio Domiciliarios.</li>
+                      <li>Otros servicios para su salud, que estén disponibles.</li>
+                      <a className="" href="#">Más sobre nosotros</a>
+                    </ul>
+                  </div>
                 </div>
-                </div>
-                    <a className="button button--primary" href="#">Más sobre nosotros</a>
-                </div>
-                <div className="col-lg-6 col-xl-5 offset-xl-1">
-                  <div className="info-box flex items-center">
+                <div className="">
+                  <div className="">
                     <div className="absolute">
                       <Image  src="/about_layout.png" alt="img" width={700} height={700}/>
                     </div>
-                    <div className="relative box-content m-auto">
+                    <div className="">
                       <Image src="/gallery_2.png" alt="img" width={350} height={350}/>
                     </div>
                   </div>
+                </div>  
                 </div>
-              </div>
-            </div>
-          </section>
+            </Container>
+          </Box>
                     
           <section className="section icons-section no-padding-top">
             <div className="container">
@@ -73,7 +71,7 @@ export default function Home() {
               </div>
             </div>
           </section>
-      </div> */}
+      </div>
     </LayoutMain>
   )
 }
