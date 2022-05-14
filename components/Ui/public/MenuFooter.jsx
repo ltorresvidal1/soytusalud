@@ -14,33 +14,35 @@ export const MenuFooter = () => {
       </div>
     </div>
   </section>
-
 </Box>
- <Box>
- <footer className='bg-zinc-800 flex justify-center space-x-60'>
-              <div className='flex'>
-                <div>
-                    <div className="footer-logo"><a className="footer-logo__link"><Image className="" src="/Logo_P4.png"  width="150" height="150" alt="logo"/></a></div>
-                </div>
-                <div>
-                  <span className='text-white font-bold text-lg'>Contáctanos</span>
-                  <div className="flex flex-col text-gray-500 tracking-tight font-semibold">
-                      <span className="footer-contacts__address">Medellín</span>
-                      <span className="footer-contacts__phone">Teléfono: <a href="tel:+3207148401">+57 320 702 3823</a></span>
-                      <span className="footer-contacts__mail">Email: <a href="mailto:soutu@soutu.org">info@soytusalud.org</a></span>
-                  </div>
 
+ <Box>
+ <footer className='bg-gray-900 flex justify-center items-center space-x-60 h-80'>
+          <div className='flex justify-between space-x-80'>
+            <div className='flex space-x-12'>
+              <div>
+                  <div><Image className="" src="/Logo_P4.png"  width="150" height="150" alt="logo"/></div>
+              </div>
+              <div className='flex flex-col text-gray-500 tracking-tight font-semibold'>
+                <div className='flex flex-col'>
+                  <span className='text-white font-bold text-lg'>Contáctanos</span>
+                  <span className="mt-6">Medellín</span>
+                  <span>Teléfono: <a href="tel:+3207148401">+57 320 702 3823</a></span>
+                  <span>Email: <a href="mailto:soutu@soutu.org">info@soytusalud.org</a></span>
                 </div>
-                
               </div>
-              <div className="flex flex-col">
+            </div>
+              <div className="flex flex-col w-64">
                 <span className='text-white font-bold text-lg'>Te acompaño</span>
-                <span className='text-gray-500 tracking-tight font-semibold'>Ayúdanos a cambiar la vida de los menos favorecidos en Colombia</span>
-                <button className="mt-10 bg-amber-300 hover:drop-shadow-md rounded-full p-4 cursor-pointer px-12 uppercase text-xs font-bold" href="#">Más sobre nosotros</button>
+                <span className='text-gray-500 tracking-tight font-semibold mt-6'>Ayúdanos a cambiar la vida de los menos favorecidos en Colombia</span>
+              <div>
+                  <button className="mt-10 bg-amber-300 hover:drop-shadow-md rounded-full p-4 cursor-pointer px-16 uppercase text-xs font-bold" href="#">Te acompaño</button>
               </div>
+              </div>
+          </div>
   </footer>
-  <div className="col-md-6">
-      <span className="footer-copyright">Copyrights Soy Tú © 2022. Todos los derechos reservado.</span>
+  <div className="col-md-6 bg-gray-900 text-center h-12">
+      <span className='text-gray-500'>Copyrights Soy Tú © 2022. Todos los derechos reservado.</span>
   </div>
  </Box>
     
