@@ -24,7 +24,7 @@ export default function Home() {
                           <li>Exámenes de Laboratorio Domiciliarios.</li>
                           <li>Otros servicios para su salud, que estén disponibles.</li>
                         </ul>
-                        <button className="mt-10 bg-amber-300 rounded-full p-4" href="#">Más sobre nosotros</button>
+                        <button className="mt-10 border-2 border-amber-300 rounded-full p-4 cursor-pointer px-12 uppercase text-xs font-bold" href="#">Más sobre nosotros</button>
                     </div>
                   </div>
                   <div className="flex-col">
@@ -42,10 +42,11 @@ export default function Home() {
             <div className="col-12">
               <div className="icon icon-item__icon icon--red"> 
                 <div className="img--layout" >
+                  <span className="heading__pre-title">Servicios</span>
                 </div>
-                <Image src="/Logo_servicios1.png" alt="img" width={200} height={200}/>
+                <Image src="/Logo_servicios1.png" alt="img" width={200} height={180}/>
                 </div>
-                <div className="heading heading--center"><span className="heading__pre-title">Servicios</span>
+                <div className="heading heading--center">
                   <h2 className="heading__title"><span>Lo que hacemos</span> <span>para todas las personas</span> </h2>
                 </div>
                 <div className="icon-item__text">
