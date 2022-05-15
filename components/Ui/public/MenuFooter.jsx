@@ -1,4 +1,4 @@
-import { Box } from '@mui/material';
+import { Box, Grid } from '@mui/material';
 import Image from 'next/image';
 export const MenuFooter = () => {
   return (
@@ -16,10 +16,9 @@ export const MenuFooter = () => {
   </section>
 </Box>
 
- <Box>
  <footer className='bg-gray-900 flex justify-center items-center space-x-60 h-80'>
-          <div className='flex justify-between space-x-80'>
-            <div className='flex space-x-12'>
+          <Grid container className='justify-between space-x-80'>
+            <Box sx={{display:{xs:'none' , md: 'flex', xl:'flex'}}} className='space-x-12'>
               <div>
                   <div><Image className="" src="/Logo_P4.png"  width="150" height="150" alt="logo"/></div>
               </div>
@@ -31,7 +30,7 @@ export const MenuFooter = () => {
                   <span>Email: <a href="mailto:soutu@soutu.org">info@soytusalud.org</a></span>
                 </div>
               </div>
-            </div>
+            </Box>
               <div className="flex flex-col w-64">
                 <span className='text-white font-bold text-lg'>Te acompaño</span>
                 <span className='text-gray-500 tracking-tight font-semibold mt-6'>Ayúdanos a cambiar la vida de los menos favorecidos en Colombia</span>
@@ -39,12 +38,11 @@ export const MenuFooter = () => {
                   <button className="mt-10 bg-amber-300 hover:drop-shadow-md rounded-full p-4 cursor-pointer px-16 uppercase text-xs font-bold" href="#">Te acompaño</button>
               </div>
               </div>
-          </div>
+          </Grid>
   </footer>
   <div className="col-md-6 bg-gray-900 text-center h-12">
       <span className='text-gray-500'>Copyrights Soy Tú © 2022. Todos los derechos reservado.</span>
   </div>
- </Box>
     
 
 </>
