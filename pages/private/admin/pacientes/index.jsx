@@ -10,7 +10,7 @@ const PacientesPage = ({data}) => {
   const {UsuariosTabla} = data
   return (
     <NewPrivateLayout>
-            <Head>
+    <Head>
       <title>
         Pacientes
       </title>

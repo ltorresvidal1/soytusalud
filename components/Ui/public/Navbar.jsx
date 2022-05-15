@@ -105,9 +105,9 @@ export const Navbar = () => {
           <Box sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }}>
             <Image src="/logo_white.png" width={156.25} quality="100" height={50} alt='logoFundacionSoyTuSalud'  />
           </Box>
-          <Box sx={{flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent:{md:'Center'} }}>
+          <Box className="nav space-x-7" sx={{flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent:{md:'Center'} }}>
             {pages.map((page) => (
-                <ButtonWithText handleCloseNavMenu={handleCloseNavMenu} page={page} key={page} />
+                <ButtonWithText page={page} key={page} />
             ))}
           </Box>
 
@@ -117,33 +117,24 @@ export const Navbar = () => {
   );
 };
 
-const ButtonWithText =({page , handleCloseNavMenu})=>{
-    const [open,setOpen] = useState(false)
+const ButtonWithText =({page })=>{
 
-    const handleOpenTab =() =>{
-        setOpen(true)
-    }
-    const handleCloseTab =() =>{
-        setOpen(false)
-    }
 
-    return (
-        <>
-            <Button
-            onMouseOver={handleOpenTab}
-            onMouseLeave={handleCloseTab}
-            onClick={handleCloseNavMenu}
-            sx={{ my: 2, color: 'white', display: 'block',fontFamily:'Quicksand'}}
-        >
+  return (
+      <ul>
+        <li>
             {page}
-        </Button>
-        {open?
-            (<>
-                <h1 className='absolute'>Open</h1>
-            </>)
-            :
-            null
-        }
-      </>
-      )
+            <ul className="bg-sky-600">
+              <li>
+                <Button>
+                  oe
+                </Button>
+              </li>
+              <li>oe</li>
+              <li>oe</li>
+              <li>oe</li>
+            </ul>
+        </li>
+    </ul>
+    )
 }
