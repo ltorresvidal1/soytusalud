@@ -36,7 +36,7 @@ export const LayoutMain = ({children}) => {
         <Navbar></Navbar>
         <ImageBackground></ImageBackground>
           {children}
-        {/* <MenuFooter></MenuFooter> */}
+        <MenuFooter></MenuFooter>
     </Box>
   )
 }
