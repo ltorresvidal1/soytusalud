@@ -1,11 +1,11 @@
-import React from 'react'
-import PrivateLayout from '../../../../components/layouts/PrivateLayout'
+import NewPrivateLayout from "../../../../components/layouts/NewPrivateLayout/NewPrivateLayout"
+
 
 const index = () => {
   return (
-    <PrivateLayout>
+    <NewPrivateLayout>
         <div>index</div>
-    </PrivateLayout>
+    </NewPrivateLayout>
   )
 }
 

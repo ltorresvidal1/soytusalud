@@ -30,9 +30,9 @@ const items = [
     title: 'Pacientes'
   },
   {
-    href: '/products',
+    href: '/private/admin/servicios',
     icon: (<ShoppingBagIcon fontSize="small" />),
-    title: 'Products'
+    title: 'Servicios'
   },
   {
     href: '/account',

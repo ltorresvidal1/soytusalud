@@ -30,7 +30,7 @@ export const ImageBackground = () => {
            
             <Box className="pb-20" sx={{overflow:'hidden', backgroundSize:"contain", textAlign: "center" }} position="relative">
                 <Image src={ImagePath} alt="img" layout="fill" objectFit='cover' quality={100} objectPosition="50% 25%" priority={true}/>     
-                <Container maxWidth="xl" className="pt-32">
+                <Container className="pt-32">
                     <div className="align-container__item">
                         <Box position={'relative'} className="text-white text-3xl md:text-4xl lg:text-6xl xl:text-6xl tracking-tight text-left">
                             <span className='font-bold' data-lang="eslogan1">Mejoramos la Salud de personas en situación de vulnerabilidad </span> 

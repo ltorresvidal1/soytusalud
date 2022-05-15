@@ -61,7 +61,7 @@ export const Navbar = () => {
 
   return (
     <NavBarStyles position="fixed" sx={navbar?{backgroundColor: '#343878'}:{backgroundColor:'transparent'}}>
-      <Container maxWidth="xl">
+      <Container>
         <Toolbar disableGutters>
           <Box sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }}>
             <Image src="/logo_white.png" width={156.25} quality="100" height={50} alt='logoFundacionSoyTuSalud'  />
