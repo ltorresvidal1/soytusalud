@@ -1,5 +1,5 @@
 import NewPrivateLayout from "../../../../components/layouts/NewPrivateLayout/NewPrivateLayout"
-import Head from 'next/Head'
+import Head from 'next/head'
 import { Box, Container } from "@mui/material"
 import { ServiciosToolbar } from "../../../../components/servicios/ServiciosToolbar"
 import { ServiciosTablas } from "../../../../components/servicios/ServiciosTablas"

@@ -22,12 +22,16 @@ const LoginModal=()=>{
 
   const handleSubmit = (e)=>{
     e.preventDefault();
-    signInWithEmailAndPassword(auth, formData.email , formData.password)
+    Promise.all([
+      signInWithEmailAndPassword(auth, formData.email , formData.password)
       .then(user=>{
         getUser({variables:{uid:user.uid}})
           .then(response =>{
           setAuthUser(response.data.Usuario)})
       })
+
+    ])
+ 
   }
  
   const handleClickOpen = (scrollType) => () => {
@@ -53,7 +57,7 @@ const LoginModal=()=>{
 
   return (   
     <div>
-       <button className='text-white border rounded-md h-8 mt-8 px-2' onClick={handleClickOpen('paper')} >Iniciar sesión</button>
+       <button className='text-white border rounded-md h-8 px-2' onClick={handleClickOpen('paper')} >Iniciar sesión</button>
       <Dialog
         className= "bg-black bg-opacity-50"
         open={open}

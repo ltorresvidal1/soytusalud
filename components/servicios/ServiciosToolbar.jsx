@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
     Box,
     Button,
@@ -9,7 +10,10 @@ import {
   } from '@mui/material';
   import { Search as SearchIcon } from '../icons/search';
   
-  export const ServiciosToolbar = (props) => (
+  export const ServiciosToolbar = (props) => {
+
+    
+    return(
     <Box {...props}>
       <Box
         sx={{
@@ -51,7 +55,7 @@ import {
                     </InputAdornment>
                   )
                 }}
-                placeholder="Buscar Paciente"
+                placeholder="Buscar Servicio"
                 variant="outlined"
               />
             </Box>
@@ -59,5 +63,6 @@ import {
         </Card>
       </Box>
     </Box>
-  );
+  )
+}
   
