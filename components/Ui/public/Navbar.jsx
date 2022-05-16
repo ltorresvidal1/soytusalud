@@ -1,4 +1,7 @@
 import { useState, useEffect } from 'react';
+import Link from 'next/link'
+import { useAuth } from '../../../context/useAuth';
+import { useRouter } from 'next/dist/client/router';
 import { 
     AppBar, 
     Box, 
@@ -13,6 +16,7 @@ import {
 import MenuIcon from '@mui/icons-material/Menu';
 import styled from '@emotion/styled';
 import Image from 'next/image'
+import LoginModal from '../../LoginModal';
 
 const pages = ['INICIO', 'COMUNIDADES E INSTITUCIONES', 'FILÁNTROPOS','ALIADOS'];
 
@@ -21,6 +25,21 @@ const NavBarStyles = styled(AppBar)(({ theme }) => ({
 }));
 
 export const Navbar = () => {
+
+  const router = useRouter()
+  const { authUser ,setAuthUser } = useAuth()
+
+  const handlerLogOut=()=>{
+      signOut(auth)
+      .then(()=>{
+          router.push("/")
+          setAuthUser(null) 
+      }  
+      ).catch(error=>{
+          console(error)
+      })
+
+  }
 
 
   const [anchorElNav, setAnchorElNav] = useState(null);
@@ -61,7 +80,7 @@ export const Navbar = () => {
 
   return (
     <NavBarStyles position="fixed" sx={navbar?{backgroundColor: '#343878'}:{backgroundColor:'transparent'}}>
-      <Container maxWidth="xl">
+      <Container>
         <Toolbar disableGutters>
           <Box sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }}>
             <Image src="/logo_white.png" width={156.25} quality="100" height={50} alt='logoFundacionSoyTuSalud'  />
@@ -105,10 +124,84 @@ export const Navbar = () => {
           <Box sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }}>
             <Image src="/logo_white.png" width={156.25} quality="100" height={50} alt='logoFundacionSoyTuSalud'  />
           </Box>
-          <Box sx={{flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent:{md:'Center'} }}>
-            {pages.map((page) => (
-                <ButtonWithText handleCloseNavMenu={handleCloseNavMenu} page={page} key={page} />
-            ))}
+          <Box className="nav space-x-7 w-full" sx={{flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent:{md:'Center'} }}>
+          <ul className="self-center">
+              <li>
+                Hola
+                <ul className="bg-sky-600">
+                <li>
+                    <Button>
+                          oe
+                    </Button>
+                      </li>
+                      <li>oe</li>
+                      <li>oe</li>
+                      <li>oe</li>
+                    </ul>
+                    
+              </li>
+            </ul>
+            <ul className="self-center">
+              <li>
+                Hola
+                <ul className="bg-sky-600">
+                <li>
+                    <Button>
+                          oe
+                    </Button>
+                      </li>
+                      <li>oe</li>
+                      <li>oe</li>
+                      <li>oe</li>
+                    </ul>
+                    
+              </li>
+            </ul>
+            <ul className="self-center" >
+              <li>
+                Hola
+                <ul className="bg-sky-600">
+                <li>
+                    <Button>
+                          oe
+                    </Button>
+                      </li>
+                      <li>oe</li>
+                      <li>oe</li>
+                      <li>oe</li>
+                    </ul>
+                    
+              </li>
+            </ul>
+            <ul className="self-center">
+              <li>
+                Hola
+                <ul className="bg-sky-600">
+                <li>
+                    <Button>
+                          oe
+                    </Button>
+                      </li>
+                      <li>oe</li>
+                      <li>oe</li>
+                      <li>oe</li>
+                    </ul>
+                    
+              </li>
+            </ul>
+            <ul className="self-center" >
+              <li className="flex space-x-5 w-full justify-end ">
+                {authUser?<a className="text-white  underline underline-offset-4" onClick={handlerLogOut}>Salir</a>
+                  :(
+                      <>
+                          <LoginModal/>
+                          <Link href="/registro" passHref>
+                              <button className='bg-white text-red-900 border rounded-md h-8  px-2'>Registrarme</button>
+                          </Link>
+                      </>
+                  )}
+              </li>
+            </ul>
           </Box>
 
         </Toolbar>
@@ -116,34 +209,3 @@ export const Navbar = () => {
     </NavBarStyles>
   );
 };
-
-const ButtonWithText =({page , handleCloseNavMenu})=>{
-    const [open,setOpen] = useState(false)
-
-    const handleOpenTab =() =>{
-        setOpen(true)
-    }
-    const handleCloseTab =() =>{
-        setOpen(false)
-    }
-
-    return (
-        <>
-            <Button
-            onMouseOver={handleOpenTab}
-            onMouseLeave={handleCloseTab}
-            onClick={handleCloseNavMenu}
-            sx={{ my: 2, color: 'white', display: 'block',fontFamily:'Quicksand'}}
-        >
-            {page}
-        </Button>
-        {open?
-            (<>
-                <h1 className='absolute'>Open</h1>
-            </>)
-            :
-            null
-        }
-      </>
-      )
-}

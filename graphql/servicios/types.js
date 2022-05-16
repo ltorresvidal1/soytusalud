@@ -2,7 +2,7 @@ import {  gql } from 'apollo-server-micro'
 
 
 export const typesUsuario = gql`
-    type Usuario{
+    type Servicio{
         uid: ID!
         identificacion:String!
         nombre: String!
@@ -27,12 +27,7 @@ export const typesUsuario = gql`
         sisben: String
         autorizacionFoto:String
         recopilacionDatos:String
-        direccion: String
-        municipio: String
-        departamento: String
-        comunidad:String
-        fechaDeSolicitud:String
-
+        comunidad:String!
     }
     type Query{
         UsuariosTabla: [Usuario]
@@ -68,9 +63,6 @@ export const typesUsuario = gql`
         sisben: String!
         autorizacionFoto:String!
         recopilacionDatos:String!
-        direccion: String
-        municipio: String
-        departamento: String
         ):Usuario
     }
     

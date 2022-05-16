@@ -2,16 +2,17 @@ import { Box, Container } from '@mui/material'
 import Head from 'next/head'
 import NewPrivateLayout from '../../../../components/layouts/NewPrivateLayout/NewPrivateLayout'
 import { PacientesToolbar } from '../../../../components/pacientes/PacientesToolbar'
-import TablaPacientes from '../../../../components/Ui/private/TablaPacientes'
 import { client } from '../../../../graphql/initClientSide' 
-import { usuariosTablas } from '../../../../graphql/user/queries' 
+import { usuariosTablas } from '../../../../graphql/user/queries'
+import { PacientesTablas } from '../../../../components/pacientes/PacientesTablas'
 
 const PacientesPage = ({data}) => {
+  const {UsuariosTabla} = data
   return (
     <NewPrivateLayout>
-            <Head>
+    <Head>
       <title>
-        Customers | Material Kit
+        Pacientes
       </title>
     </Head>
     <Box
@@ -24,7 +25,7 @@ const PacientesPage = ({data}) => {
       <Container maxWidth={false}>
         <PacientesToolbar />
         <Box sx={{ mt: 3 }}>
-          {/* <CustomerListResults customers={customers} /> */}
+          <PacientesTablas UsuariosTabla={UsuariosTabla} />
         </Box>
       </Container>
     </Box>
