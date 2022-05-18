@@ -27,12 +27,7 @@ export const typesUsuario = gql`
         sisben: String
         autorizacionFoto:String
         recopilacionDatos:String
-        direccion: String
-        municipio: String
-        departamento: String
         comunidad:String
-        fechaDeSolicitud:String
-
     }
     type Query{
         UsuariosTabla: [Usuario]
@@ -68,9 +63,6 @@ export const typesUsuario = gql`
         sisben: String!
         autorizacionFoto:String!
         recopilacionDatos:String!
-        direccion: String
-        municipio: String
-        departamento: String
         ):Usuario
     }
     

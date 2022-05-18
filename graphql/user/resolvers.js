@@ -54,7 +54,6 @@ export const resolversUsuario = {
                 autorizacionFoto:args.autorizacionFoto,
                 recopilacionDatos:args.recopilacionDatos,
                 comunidad:"",
-                fechaDeSolicitud:Date().toLocaleDateString()
             }
             await updateDoc(doc(usersRef,args.uid),dataUserUpdate);
             const docRef = doc(db, "users", args.uid);

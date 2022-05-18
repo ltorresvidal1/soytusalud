@@ -5,57 +5,73 @@ import { LayoutMain } from '../components/layouts/LayoutMain'
 
 export default function Home() {
   
- 
   return (
     <LayoutMain>
-      <div>
-          <Box sx={{backgroundColor:"#F9F7F6"}}id="about">
-            <Container maxWidth="xl">
-                <div className="flex mt-20 justify-center space-x-32">
-                  <div>
-                    <span className='text-gray-400 font-semibold text-xl'>Sobre Nosotros</span>
-                        <Typography fontFamily={'Quicksand'} sx={{color:'#4A4C70'}} className='text-5xl font-extrabold'>Soy Tú Salud</Typography>
-                      <div>
-                        <h1 className="max-w-2xl mt-8 mb-4">Conoces a algún familiar, amigo, persona o tú que necesite algún servicio médico y se encuentre en situación de vulnerabilidad? En www.soytusalud.org informa tu historia o su historia, aplica y Listo!!.<p> <br/>En la Fundación <a href="">www.soytusalud.org</a> una vez has demostrado que estás en una situación de vulnerabilidad, podrás acceder :</p></h1>
-                          <ul className="list-disc list-inside">
-                            <li>Consulta Médica General por Telemedicina.</li>
-                            <li>Consulta Médica Especializada por Telemedicina.</li>
-                            <li>Medicamentos para enfermedades no crónicas.</li>
-                            <li>Exámenes de Laboratorio Domiciliarios.</li>
-                            <li>Otros servicios para su salud, que estén disponibles.</li>
-                          </ul>
-                          <button className="mt-10 border-2 border-amber-300 hover:bg-amber-300 hover:drop-shadow-md rounded-full p-4 cursor-pointer px-12 uppercase text-xs font-bold" href="#">Más sobre nosotros</button>
-                      </div>
+          <section className="section about-us" id="about">
+            <div className="container mt-6">
+              <div className="row align-items-center">
+                <div className="col-lg-6">
+                  <div className="heading heading--primary"><span className="heading__pre-title" data-lang="nostros">Sobre Nosotros</span>
+                    <h2 className="heading__title"><span>Soy Tú Salud</span></h2>
                   </div>
-                  <div className="">
+                  <p>Conoces a algún familiar, amigo, persona o tú que necesite algún servicio médico y se encuentre en situación de vulnerabilidad? En www.soytusalud.org informa tu historia o su historia, aplica y Listo!!.</p><p> En la Fundación <a href="">www.soytusalud.org</a> una vez has demostrado que estás en una situación de vulnerabilidad, podrás acceder :</p>
+                <div className="row">
+                <div className="col-md-6 col-lg-12">
+                  <ul className="unordered-list">
+                    <li>Consulta Médica General por Telemedicina.</li>
+                    <li>Consulta Médica Especializada por Telemedicina.</li>
+                    <li>Medicamentos para enfermedades no crónicas.</li>
+                    <li>Exámenes de Laboratorio Domiciliarios.</li>
+                    <li>Otros servicios para su salud, que estén disponibles.</li>
+                  </ul>
+                </div>
+                </div>
+                    <a className="button button--primary" href="#">Más sobre nosotros</a>
+                </div>
+                <div className="col-lg-6 col-xl-5 offset-xl-1">
+                  <div className="info-box flex items-center">
                     <div className="absolute">
-                      <Image src="/about_layout.png" alt="img" width={650} height={650}/>
+                      <Image  src="/about_layout.png" alt="img" width={700} height={700}/>
                     </div>
-                    <div className="relative">
-                      <Image src="/gallery_2.png" alt="img" width={380} height={380}/>
+                    <div className="relative box-content m-auto">
+                      <Image src="/gallery_2.png" alt="img" width={350} height={350}/>
                     </div>
                   </div>
-                </div> 
-            </Container>
-          </Box>
-          <Box className=" text-center">
-            <Container>
-                <div> 
-                <div className='mt-20'>
-                  <span className='text-gray-400 font-bold text-xl'>Servicios</span>
                 </div>
-                <Typography fontFamily={'Quicksand'} sx={{color:'#4A4C70'}} className='text-4xl font-extrabold' data-lang="eslogan1">Lo que hacemos <span className='font-light'>para todas</span><br/><span className='font-light'>las personas</span></Typography> 
-                <span className="text-3xl font-light"></span>
-                <div className='mt-12'>
-                  <Image src="/Logo_servicios1.png" alt="img" width={90} height={80}/>
+              </div>
+            </div>
+          </section>
+                    
+          <section className="section icons-section no-padding-top">
+            <div className="container">
+              <div className="row margin-bottom">
+                <div className="col-12">
+                  <div className="heading heading--center"><span className="heading__pre-title">Servicios</span>
+                    <h2 className="heading__title"><span>Lo que hacemos</span> <span>para todas las personas</span> </h2>
+                  </div>
                 </div>
-                </div>
-                <div className="mt-4">
-                  <span className='text-gray-700 font-bold text-xl'>Ayuda Médica</span>
-                </div>
-            </Container>
-          </Box>
-      </div>
+              </div>
+              <div className="row">
+                <div className="col-12 col-lg-12">
+                  <div className="icon-item">
+                    <div className="icon-item__img">
+                    <div className="icon icon-item__icon icon--red"> 
+                    <Image src="/Logo_servicios1.png" alt="img"  width={300} height={300}/>
+                    </div>
+                    
+                    <div  className="img--layout" >
+                      <Image src="/icon_1-1.png" alt="img" width={200} height={200}/>
+                      </div>
+                                                  
+                    </div>
+                    <div className="icon-item__text">
+                      <p>Ayuda Medica</p>
+                    </div>
+                  </div>
+                </div>                             
+              </div>
+            </div>
+          </section>
     </LayoutMain>
   )
 }

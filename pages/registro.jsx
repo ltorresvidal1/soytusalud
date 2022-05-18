@@ -4,55 +4,18 @@ import { registrarUsuario } from "../graphql/user/mutations";
 import { auth  } from '../firebase/initConfig'
 import { useRouter } from 'next/router'
 import {LayoutMain} from '../components/layouts/LayoutMain'
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import FilledInput from '@mui/material/FilledInput';
-import FormControl from '@mui/material/FormControl';
-import FormHelperText from '@mui/material/FormHelperText';
-import Input from '@mui/material/Input';
-import InputLabel from '@mui/material/InputLabel';
-import OutlinedInput from '@mui/material/OutlinedInput';
+
 import Image from 'next/image'
 import useFormData from '../hooks/useFormData';
 import PrivatePages from "../components/PrivatePages";
-import Paper from '@mui/material/Paper';
-import { Container } from "@mui/material";
-import TextField from '@mui/material/TextField';
-import MenuItem from '@mui/material/MenuItem';
 
 const Registro = () => {
-
-    const tipoDocumento = [
-        {
-          value: 'Cedula',
-          label: 'CC',
-        },
-        {
-          value: 'Cedula de extranjería',
-          label: 'CE',
-        },
-        {
-          value: 'BTC',
-          label: '฿',
-        },
-        {
-          value: 'JPY',
-          label: '¥',
-        },
-      ];
 
     const router = useRouter()
     const [crearUsuario] = useMutation(registrarUsuario)
     // const [login , setLogin] = useState(false)
 
     const { form, formData, updateFormData } =useFormData();
-    const [name, setName] = React.useState('Composed TextField');
-
-    const [tipoDoc, setTipoDoc] = React.useState('EUR');
-
-    const handleChange = (event) => {
-      setTipoDoc(event.target.value);
-    };
 
   const submitForm = async (e) => {
     e.preventDefault();
@@ -72,70 +35,16 @@ const Registro = () => {
 
   return (
     <LayoutMain>
-            <Container maxWidth='xl'>
-                <div>
-                    <div>
-                        <div>
-                        <Box
-                        sx={{
-                            display: 'flex',
-                            flexWrap: 'wrap',
-                            '& > :not(style)': {
-                            m: 1,
-                            width: 500,
-                            height: 600,
-                            margin: 'auto'
-                            },
-                        }}
-                    
-                        > 
-                            <Paper elevation={4}>
-                                <Box
-                                    component="form"
-                                    sx={{
-                                        '& > :not(style)': { m: 1 },
-                                    }}
-                                    noValidate
-                                    autoComplete="off"
-                                    >
-                                    <FormControl>
-                                        <InputLabel htmlFor="component-outlined">Name</InputLabel>
-                                        <OutlinedInput
-                                        id="component-outlined"
-                                        value={name}
-                                        onChange={handleChange}
-                                        label="Name"
-                                        />
-                                    </FormControl>
-                                    <div>
-                                    <TextField
-                                        id="outlined-select-tipoDoc"
-                                        select
-                                        label="Select"
-                                        value={tipoDoc}
-                                        onChange={handleChange}
-                                        helperText="Selecciona tipo de documento"
-                                        >
-                                        {tipoDocumento.map((option) => (
-                                            <MenuItem key={option.value} value={option.value}>
-                                            {option.label}
-                                            </MenuItem>
-                                        ))}
-                                        </TextField>
-                                    </div>
-                                </Box>
-                            </Paper>
-                        </Box>
-                        <Box
-component="form"
-sx={{
-    '& .MuiTextField-root': { m: 1, width: '25ch' },
-  }}
-  noValidate
-  autoComplete="off"
->
-</Box>
-{/*                             
+    <PrivatePages login={false}>
+    <main className="main">
+            {/* <!-- section start--> */}
+            <section className="section background--brown">
+                <div className="container">
+                    <div className="row offset-margin">
+                        <div className="col-md-8 offset-md-2 col-lg-6 offset-lg-0 col-xl-2 margin-bottom">                  
+                        </div>
+                        <div className="col-md-8 offset-md-2 col-lg-6 offset-lg-0 col-xl-6 margin-bottom">
+                            
                             <form ref={form} onChange={updateFormData} onSubmit={submitForm} className="form account-form sign-up-form"  id="Form_RegistroPaciente" > 
                                 <div className="form__fieldset">
                                     <h6 className="form__title">Registrate</h6>
@@ -155,7 +64,9 @@ sx={{
                                                         <option value="9">AS</option>
                                                         <option value="10">CN</option>
                                                         <option value="11">SC</option>
+
                                                     </select>
+                                            
                                             </div>
                                                 <div className="row">
                                             <input className="form__field" type="text" name="identificacion"  id="identificacion"  placeholder="Documento"/>
@@ -190,19 +101,19 @@ sx={{
                                 </div>
                             </form>
                                 <button type="submit"  id="showtoast" style={{display: "none"}}></button>
-                                <button type="submit"  id="showtoast2" style={{display: "none"}}></button> */}
+                                <button type="submit"  id="showtoast2" style={{display: "none"}}></button>
                         </div>
                         <div className="col-md-8 offset-md-2 col-lg-6 offset-lg-0 col-xl-2 margin-bottom">
                         </div>
                     </div>
                 </div>
-            </Container>
+            </section>
+        </main>
+    </PrivatePages>
+       
     </LayoutMain>
-)
+  )
 }
 
+
 export default Registro
-
-
-
-

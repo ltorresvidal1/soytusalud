@@ -7,6 +7,7 @@ import { usuariosTablas } from '../../../../graphql/user/queries'
 import { PacientesTablas } from '../../../../components/pacientes/PacientesTablas'
 
 const PacientesPage = ({data}) => {
+  
   const {UsuariosTabla} = data
   return (
     <NewPrivateLayout>

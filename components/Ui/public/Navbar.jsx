@@ -1,211 +1,198 @@
-import { useState, useEffect } from 'react';
-import Link from 'next/link'
+import Image from 'next/image';
+import {useState, useEffect} from 'react'
+import { auth } from '../../../firebase/initConfig';
+import { signOut } from 'firebase/auth';
 import { useAuth } from '../../../context/useAuth';
-import { useRouter } from 'next/dist/client/router';
-import { 
-    AppBar, 
-    Box, 
-    Toolbar, 
-    Typography, 
-    Menu, 
-    Container, 
-    Button,
-    MenuItem,
-    IconButton
-} from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
-import styled from '@emotion/styled';
-import Image from 'next/image'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 import LoginModal from '../../LoginModal';
 
-const pages = ['INICIO', 'COMUNIDADES E INSTITUCIONES', 'FILÁNTROPOS','ALIADOS'];
-
-const NavBarStyles = styled(AppBar)(({ theme }) => ({
-  boxShadow: theme.shadows[3]
-}));
-
 export const Navbar = () => {
-
-  const router = useRouter()
-  const { authUser ,setAuthUser } = useAuth()
-
-  const handlerLogOut=()=>{
-      signOut(auth)
-      .then(()=>{
-          router.push("/")
-          setAuthUser(null) 
-      }  
-      ).catch(error=>{
-          console(error)
-      })
-
-  }
-
-
-  const [anchorElNav, setAnchorElNav] = useState(null);
-  const [anchorElUser, setAnchorElUser] = useState(null);
-  const [navbar, setNavbar] = useState(false);
-  const [color, setColor] = useState(false);
-
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
-
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
     
-  const changeBackground = () => {
-    if (window.scrollY >= 4) {
-      setNavbar(true);
-      setColor('black');
-    } else {
-      setNavbar(false);
-      setColor('white');
+    const router = useRouter()
+    const { authUser ,setAuthUser } = useAuth()
+    const [open, setOpen] = useState(false)
+
+    const handlerLogOut=()=>{
+        signOut(auth)
+        .then(()=>{
+            router.push("/")
+            setAuthUser(null) 
+        }  
+        ).catch(error=>{
+            console(error)
+        })
+
     }
-  };
-    
-  useEffect(() => {
-    window.addEventListener('scroll', changeBackground, true);
-    return () => window.removeEventListener('scroll', changeBackground);
-  }, []);
+
+    const [navbar, setNavbar] = useState(false);
+    const [color, setColor] = useState(false);
   
+    const changeBackground = () => {
+      if (window.scrollY >= 2) {
+        setNavbar(true);
+        setColor('black');
+      } else {
+        setNavbar(false);
+        setColor('white');
+      }
+    };
+  
+    useEffect(() => {
+      window.addEventListener('scroll', changeBackground, true);
+      return () => window.removeEventListener('scroll', changeBackground);
+    }, []);
 
   return (
-    <NavBarStyles position="fixed" sx={navbar?{backgroundColor: '#343878'}:{backgroundColor:'transparent'}}>
-      <Container>
-        <Toolbar disableGutters>
-          <Box sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }}>
-            <Image src="/logo_white.png" width={156.25} quality="100" height={50} alt='logoFundacionSoyTuSalud'  />
-          </Box>
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: 'block', md: 'none' },
-              }}
-            >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
-          <Box sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }}>
-            <Image src="/logo_white.png" width={156.25} quality="100" height={50} alt='logoFundacionSoyTuSalud'  />
-          </Box>
-          <Box className="nav space-x-7 w-full" sx={{flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent:{md:'Center'} }}>
-          <ul className="self-center">
-              <li>
-                Hola
-                <ul className="bg-sky-600">
-                <li>
-                    <Button>
-                          oe
-                    </Button>
-                      </li>
-                      <li>oe</li>
-                      <li>oe</li>
-                      <li>oe</li>
-                    </ul>
+   
+		<>  
+            <header className={navbar? "backgroundNav w-full header ":"header header--front"}>
+            <div className="container-fluid">
+                <div className="row no-gutters justify-content-between">
+                    <div className="col-auto d-flex align-items-center" >
+                        <div className="dropdown-trigger d-none d-sm-block" >
+                            <div className=""></div>
+                        </div>
+                        <div className="w-7/12 pt-3">
+                            <a className="header-logo__link" href="index.php"></a>
+                            <Image className="header-logo__img logo--light" src="/logo_white.png" width={'150px'} height={'50px'} alt="logo"/>
+                        </div>
+                        <div className="col-auto d-flex align-items-center">
+                            <ul className="lang-select lang-select--inner">
+                                <li className="lang-select__item lang-select__item--active"><span className="text-white font-semibold" data-lang="idioma">Es</span>
+                                    <ul className="lang-select__sub-list">
+                                        <li><a href="#" id="translate" data-text="English,Espa&ntilde;ol" data-file="es,en" data-index="1">English</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            {/* <div className="dropdown-trigger d-block d-sm-none" onClick={()=>setOpen(!open)}>
+                                <div className="dropdown-trigger__item"></div>
+                            </div> */}
+                        </div>
+                    </div>
+                    <div className="col-auto">
+                        <nav>
+                            <ul className="main-menu">
+                                <li className="text-black main-menu__item main-menu__item--active">
+                                    <Link href="/" > 
+                                    <a className="text-black main-menu__link font-black">Inicio</a>
+                                    </Link>
+                                </li>
+                                {authUser?(<>
+                                <li className="main-menu__item main-menu__item--has-child">
+                                    <Link href="/" > 
+                                        <a className="main-menu__link">Pacientes</a>
+                                    </Link>
+                                    <ul className="main-menu__sub-list">
+                                        <li>
+                                            <Link href="/tuhistoria" >
+                                                <a>Tu historia</a>
+                                            </Link>
+                                            
+                                        </li>
+                                    </ul>
+                                </li>
+                                </>): null} 
+                                <li className="main-menu__item main-menu__item--has-child">
+                                    <Link href="/" >
+                                        <a className="main-menu__link">Comunidades E Instituciones</a>
+                                    </Link>
+                                    <ul className="main-menu__sub-list">
+                                        <li>
+                                            <Link href="/" >
+                                                <a>Registro</a>
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link href="/" > 
+                                                <a>Inscribir Comunidad</a>
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link href="/" > 
+                                                <a>Inscribir Institución</a>
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link href="/" > 
+                                                <a>Preleccionar Beneficiarios</a>
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link href="/" >
+                                                <a>Seguimiento de Servicios</a>
+                                            </Link>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li className="main-menu__item main-menu__item--has-child">
+                                    <Link href="/" > 
+                                        <a className="main-menu__link">Filántropos</a>
+                                    </Link> 
+                                    <ul className="main-menu__sub-list">
+                                        <li>
+                                            <Link href="/historias" >
+                                                <a>Pacientes Clasificados</a>
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            
+                                        <Link href="/trasabilidad" >
+                                                <a>Trasabilidad Pacientes</a>
+                                            </Link>
+                                        </li>
+                                        <li>
+                                        <Link href="/donaciones" >
+                                                <a>Donaciones</a>
+                                            </Link>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li className="main-menu__item main-menu__item--has-child">
+                                    <Link href="/" >
+                                        <a className="main-menu__link">Aliados</a>
+                                    </Link> 
+                                    <ul className="main-menu__sub-list">
+                                        <li>
+                                            <Link href="/instituciones" >
+                                                <a>Instituciones</a>
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link href="/empresasconproposito" >
+                                                <a>Empresas Con Propósitos</a>
+                                            </Link>
+                                            
+                                        </li>
+                                        <li>
+                                            <Link href="/personasconproposito" >
+                                                <a>Personas Con Propósitos</a>
+                                            </Link>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li className="main-menu__item main-menu__item--has-child">
+                                    {authUser?<span className="text-white mt-8 underline" onClick={handlerLogOut}>Salir</span>
+                                    :(
+                                        <>
+                                            <LoginModal/>
+                                            <Link href="/registro">
+                                                <button className='bg-white text-red-900 border rounded-md h-8 mt-8 px-2'>Registrarme</button>
+                                            </Link>
+                                        </>
+                                    )}
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
                     
-              </li>
-            </ul>
-            <ul className="self-center">
-              <li>
-                Hola
-                <ul className="bg-sky-600">
-                <li>
-                    <Button>
-                          oe
-                    </Button>
-                      </li>
-                      <li>oe</li>
-                      <li>oe</li>
-                      <li>oe</li>
-                    </ul>
-                    
-              </li>
-            </ul>
-            <ul className="self-center" >
-              <li>
-                Hola
-                <ul className="bg-sky-600">
-                <li>
-                    <Button>
-                          oe
-                    </Button>
-                      </li>
-                      <li>oe</li>
-                      <li>oe</li>
-                      <li>oe</li>
-                    </ul>
-                    
-              </li>
-            </ul>
-            <ul className="self-center">
-              <li>
-                Hola
-                <ul className="bg-sky-600">
-                <li>
-                    <Button>
-                          oe
-                    </Button>
-                      </li>
-                      <li>oe</li>
-                      <li>oe</li>
-                      <li>oe</li>
-                    </ul>
-                    
-              </li>
-            </ul>
-            <ul className="self-center" >
-              <li className="flex space-x-5 w-full justify-end ">
-                {authUser?<a className="text-white  underline underline-offset-4" onClick={handlerLogOut}>Salir</a>
-                  :(
-                      <>
-                          <LoginModal/>
-                          <Link href="/registro" passHref>
-                              <button className='bg-white text-red-900 border rounded-md h-8  px-2'>Registrarme</button>
-                          </Link>
-                      </>
-                  )}
-              </li>
-            </ul>
-          </Box>
+                </div>
+            </div>
 
-        </Toolbar>
-      </Container>
-    </NavBarStyles>
-  );
-};
+            
+        </header>
+        
+        </>
+        
+)
+}
