@@ -1,10 +1,10 @@
 import { createUserWithEmailAndPassword } from "firebase/auth"; 
 import { useMutation } from "@apollo/client";
 import { registrarUsuario } from "../graphql/user/mutations";
-import { auth  } from '../firebase/initConfig'
+import { auth } from '../firebase/initConfig'
 import { useRouter } from 'next/router'
 import {LayoutMain} from '../components/layouts/LayoutMain'
-import * as React from 'react';
+import { useState } from 'react';
 import Box from '@mui/material/Box';
 import FilledInput from '@mui/material/FilledInput';
 import FormControl from '@mui/material/FormControl';
@@ -16,7 +16,7 @@ import Image from 'next/image'
 import useFormData from '../hooks/useFormData';
 import PrivatePages from "../components/PrivatePages";
 import Paper from '@mui/material/Paper';
-import { Container } from "@mui/material";
+import { Container, Typography } from "@mui/material";
 import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
 
@@ -46,9 +46,9 @@ const Registro = () => {
     // const [login , setLogin] = useState(false)
 
     const { form, formData, updateFormData } =useFormData();
-    const [name, setName] = React.useState('Composed TextField');
+    const [name, setName] = useState('Composed TextField');
 
-    const [tipoDoc, setTipoDoc] = React.useState('EUR');
+    const [tipoDoc, setTipoDoc] = useState('EUR');
 
     const handleChange = (event) => {
       setTipoDoc(event.target.value);
@@ -75,6 +75,7 @@ const Registro = () => {
             <Container maxWidth='xl'>
                 <div>
                     <div>
+                      
                         <div>
                         <Box
                         sx={{
@@ -90,10 +91,12 @@ const Registro = () => {
                     
                         > 
                             <Paper elevation={4}>
+                            <Typography fontFamily={'Quicksand'} sx={{color:'#4A4C70'}} className='text-lg font-extrabold mt-6 ml-6'>Registro</Typography>
                                 <Box
                                     component="form"
                                     sx={{
                                         '& > :not(style)': { m: 1 },
+                                        margin: 'a'
                                     }}
                                     noValidate
                                     autoComplete="off"
