@@ -65,10 +65,8 @@ export const Navbar = () => {
                                     </ul>
                                 </li>
                             </ul>
-                            {/* <div className="dropdown-trigger d-block d-sm-none" onClick={()=>setOpen(!open)}>
-                                <div className="dropdown-trigger__item"></div>
-                            </div> */}
                         </div>
+                        <div></div>
                     </div>
                     <div className="col-auto">
                         <nav>
@@ -171,21 +169,23 @@ export const Navbar = () => {
                                         </li>
                                     </ul>
                                 </li>
-                                <li className="main-menu__item main-menu__item--has-child">
-                                    {authUser?<span className="text-white mt-8 underline" onClick={handlerLogOut}>Salir</span>
-                                    :(
-                                        <>
-                                            <LoginModal/>
-                                            <Link href="/registro">
-                                                <button className='bg-white text-red-900 border rounded-md h-8 mt-8 px-2'>Registrarme</button>
-                                            </Link>
-                                        </>
-                                    )}
-                                </li>
                             </ul>
+                            
                         </nav>
                     </div>
-                    
+                    <div>
+                    <li className="flex space-x-2 mt-8">
+                            {authUser?<span className="text-white underline" onClick={handlerLogOut}>Salir</span>
+                            :(
+                                <>
+                                    <LoginModal/>
+                                    <Link href="/registro">
+                                        <button className='bg-white text-red-900 border rounded-md h-8 px-2'>Registrarme</button>
+                                    </Link>
+                                </>
+                            )}
+                        </li>
+                    </div>
                 </div>
             </div>
 
