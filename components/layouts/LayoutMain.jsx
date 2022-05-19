@@ -5,7 +5,6 @@ import { useAuth } from '../../context/useAuth'
 import { authUser } from '../../graphql/user/queries';
 import { useRouter } from 'next/router'
 import { useLazyQuery } from '@apollo/client';
-
 import { Navbar,ImageBackground,MenuFooter } from '../Ui/public';
 import { Box, Container } from '@mui/material';
 
@@ -13,7 +12,7 @@ import { Box, Container } from '@mui/material';
 
 export const LayoutMain = ({children}) => {
   const router = useRouter()
-  const { setAuthUser } = useAuth()
+  const { setAuthUser } = useAuth() 
   const [ getUser ] = useLazyQuery(authUser);
 
   useEffect(()=>{

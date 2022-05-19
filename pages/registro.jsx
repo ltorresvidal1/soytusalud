@@ -1,7 +1,7 @@
 import { createUserWithEmailAndPassword } from "firebase/auth"; 
 import { useMutation } from "@apollo/client";
 import { registrarUsuario } from "../graphql/user/mutations";
-import { auth  } from '../firebase/initConfig'
+import { auth } from '../firebase/initConfig'
 import { useRouter } from 'next/router'
 import {LayoutMain} from '../components/layouts/LayoutMain'
 
