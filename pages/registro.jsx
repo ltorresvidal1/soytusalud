@@ -50,19 +50,19 @@ const Registro = () => {
                                     <div className="row">
                                         <div className="col-12">
                                                 <div className="row">
-                                                    <select className="form__field" name="tipoDocumento" id="tipoDocumento">
-                                                        <option value="0">Tipo Documento</option>
-                                                        <option value="1">CC</option>
-                                                        <option value="2">CE</option>
-                                                        <option value="3">TI</option>
-                                                        <option value="4">PA</option>
-                                                        <option value="5">RC</option>
-                                                        <option value="6">CD</option>
-                                                        <option value="7">PT</option>
-                                                        <option value="8">MS</option>
-                                                        <option value="9">AS</option>
-                                                        <option value="10">CN</option>
-                                                        <option value="11">SC</option>
+                                                    <select className="form__field" defaultValue={"Tipo Documento"} name="tipoDocumento" id="tipoDocumento">
+                                                        <option disabled >Tipo Documento</option>
+                                                        <option >CC</option>
+                                                        <option >CE</option>
+                                                        <option >TI</option>
+                                                        <option >PA</option>
+                                                        <option >RC</option>
+                                                        <option >CD</option>
+                                                        <option >PT</option>
+                                                        <option >MS</option>
+                                                        <option >AS</option>
+                                                        <option >CN</option>
+                                                        <option >SC</option>
                                                     </select>
                                             </div>
                                                 <div className="row">

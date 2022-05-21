@@ -1,5 +1,5 @@
 import { db } from "../../firebase/initConfig";
-import { collection , getDocs , getDoc , setDoc , doc , updateDoc } from "firebase/firestore"; 
+import { collection , getDocs , getDoc , setDoc , doc , updateDoc, where, query } from "firebase/firestore"; 
 
 
 export const resolversUsuario = {
@@ -7,6 +7,15 @@ export const resolversUsuario = {
     Query: {
         UsuariosTabla: async (parent, args) => { 
             const querySnapshot  = await getDocs(collection(db, "users"));
+            let usuarios =[]
+            querySnapshot.forEach((doc) => {
+                usuarios.push(doc.data());
+            });
+            return usuarios;
+        },
+        UsuariosTablaTuHistoria: async (parent, args) => { 
+            const q  = await query(collection(db, "users"),where("formularioTuHistoria", "==", true));
+            const querySnapshot = await getDocs(q);
             let usuarios =[]
             querySnapshot.forEach((doc) => {
                 usuarios.push(doc.data());
@@ -31,7 +40,7 @@ export const resolversUsuario = {
                 celular:args.celular,
                 correo: args.correo,
                 formularioTuHistoria:false,
-                
+                comunidad:''    
             }
             await setDoc(doc(usersRef,args.uid),usuarioCreado);
             return usuarioCreado;

@@ -14,8 +14,11 @@ import { LayoutMain } from '../../components/layouts/LayoutMain';
 
 const Tuhistoria = () => {
 	
+
+	const datePick = new Date().toISOString().split("T")[0];
 	const {authUser} = useAuth()
 	const [photo,setPhoto] = useState("/Foto.png")
+	const [ discapacitado, setDiscapacitado ] = useState(false)
 	const { form, formData, updateFormData } =useFormData();
 
 	
@@ -49,8 +52,17 @@ const Tuhistoria = () => {
 			};
 		}	
 	}
-	
 
+
+	const handlerDiscapacitado=(e)=>{
+	
+		if(e.target.value==="Si"){
+			setDiscapacitado(true)
+		}else{
+			setDiscapacitado(false)
+		}
+	}
+  
   return (
     <LayoutMain>
 	<PrivatePages login={true}>
@@ -92,7 +104,7 @@ const Tuhistoria = () => {
 																	<div className="FotoHistoria">
 																		<Image alt='defaultPhoto' className="profile-pic" id='perfil' name='perfil' src={photo} height="150"    width="180"/>
 																		<label className="centrado" htmlFor="logo"><span className="badge badge-primary r-3">Subir Foto</span></label>   
-																		<input type="file" onChange={handlePhoto}   id="foto"  name="foto" accept="image/jpeg,.doc, .docx,.pdf"  className="custom-file-input" />
+																		<input type="file" onChange={handlePhoto}   id="foto"  name="foto" accept="image/*"  className="custom-file-input"  required/>
 																		
 																	</div>
 															</div>
@@ -104,21 +116,21 @@ const Tuhistoria = () => {
 												
 														<div className="col-lg-3">
 																<label>Genero *</label>
-																<select className="form-control" name="genero" id="genero">
-																<option value="0">Seleccionar</option>
-																<option value="1">Femenino</option>
-																<option value="2">Masculino</option>
+																<select  className="form-control" name="genero" id="genero" required>
+																<option value="">Seleccionar</option>
+																<option >Femenino</option>
+																<option >Masculino</option>
 																</select>
 														</div>
 												
 														<div className="col-lg-3">
 															<label >Fecha Nacimiento *</label>
-															<input type="date" min="1920-01-01" name="fechaNacimiento" id="fechaNacimiento" className="form-control"/>
+															<input required   type="date" min="1920-01-01" max={datePick} name="fechaNacimiento" id="fechaNacimiento" className="form-control"/>
 														</div>
 
 														<div className="col-lg-6">
 															<label>Direccion *</label>
-															<input className="form-control" type="text" name="direccion"  id="direccion"/>
+															<input required className="form-control" type="text" name="direccion"  id="direccion"/>
 														</div>
 													</div>  
 									
@@ -128,41 +140,39 @@ const Tuhistoria = () => {
 													
 													<div className="col-lg-4">
 															<label>Discapacitado *</label>
-														<select className="form-control" name="discapacitado" id="discapacitado">
-															<option value="0">Seleccionar</option>
-															<option value="1">No</option>
-															<option value="2">Si</option>
+														<select onChange={handlerDiscapacitado} className="form-control" name="discapacitado" id="discapacitado">
+															<option value="">Seleccionar</option>
+															<option >No</option>
+															<option >Si</option>
 														</select>
 														
 													</div>
-													
+													{discapacitado?(
 													<div className="col-lg-4">
-													<label>Tipo Discapacidad</label>
-														<select className="form-control" name="tipoDiscapacidad" id="tipoDiscapacidad">
-															<option value="0">Seleccionar</option>
-															<option value="1">Permanente</option>
-															<option value="2">Temporal</option>
-															<option value="3">Auditiva</option>
-															<option value="4">Cognitiva</option>
-															<option value="5">Física</option>
-															<option value="6">Mental</option>
-															<option value="7">Visual</option>
-															<option value="8">Múltiple</option>
-															 
+														<label>Tipo Discapacidad</label>
+														<select className="form-control" name="tipoDiscapacidad" id="tipoDiscapacidad" required>
+															<option value="">Seleccionar</option>
+															<option >Permanente</option>
+															<option >Temporal</option>
+															<option >Auditiva</option>
+															<option >Cognitiva</option>
+															<option >Física</option>
+															<option >Mental</option>
+															<option >Visual</option>
+															<option >Múltiple</option>
+																
 														</select>
 															
 													</div>
-													
+													):null}
 													<div className="col-lg-4">
 													
 															<label>Victima de Violencia *</label>
 															
-															<select className="form-control" name="victimaViolencia" id="victimaViolencia">
-															<option value="0">Seleccionar</option>
-															<option value="1">Si</option>
-															<option value="2">No</option>
-
-
+															<select className="form-control" name="victimaViolencia" id="victimaViolencia" required>
+															<option value="">Seleccionar</option>
+															<option >Si</option>
+															<option >No</option>
 														</select> 
 															
 													
@@ -174,41 +184,38 @@ const Tuhistoria = () => {
 											
 											
 													<div className="col-lg-4">
-															<label>Identidad de Genero *</label>
-														<select className="form-control" name="identidadGenero" id="identidadGenero">
-															<option value="0">Seleccionar</option>
-															<option value="1">Masculino</option>
-															<option value="2">Femenino</option>
-															<option value="3">Travesti</option>
-															<option value="4">Transexual</option>
-															<option value="5">Transgénero</option>
-															<option value="6">Ninguna</option>
-															<option value="7">No Binario</option>
+														<label>Identidad de Genero *</label>
+														<select className="form-control" name="identidadGenero" id="identidadGenero" required>
+															<option value="">Seleccionar</option>
+															<option >Masculino</option>
+															<option >Femenino</option>
+															<option >Travesti</option>
+															<option >Transexual</option>
+															<option >Transgénero</option>
+															<option >Ninguna</option>
+															<option >No Binario</option>
 														</select>
 														
 													</div>
-													
 													<div className="col-lg-4">
 													<label>Orientacion Sexual *</label>
-														<select className="form-control" name="orientacionSexual" id="orientacionSexual">
-															<option value="0">Seleccionar</option>
-															<option value="1">Heterosexual</option>
-															<option value="2">Lesbiana</option>
-															<option value="3">Bisexual</option>
-															<option value="4">Gay</option>
-															<option value="5">Asexual</option>
-															<option value="6">Ninguna</option>
-															 
-														</select>
-															
+														<select className="form-control" name="orientacionSexual" id="orientacionSexual" required>
+															<option value="">Seleccionar</option>
+															<option >Heterosexual</option>
+															<option >Lesbiana</option>
+															<option >Bisexual</option>
+															<option >Gay</option>
+															<option >Asexual</option>
+															<option >Ninguna</option>
+														</select>												
 													</div>
 													
 													<div className="col-lg-4">
 													
 															<label>Grupo Poblacional *</label>
 															
-															<select className="form-control" name="grupoPoblacional" id="grupoPoblacional">
-															<option value="0">Seleccionar</option>
+															<select className="form-control" name="grupoPoblacional" id="grupoPoblacional" required>
+															<option value="">Seleccionar</option>
 															<option value="1">Habitantes de la calle</option>
 															<option value="2">Creador o gestor cultural decreto 2283 de 2010</option>
 															<option value="3">Población sisbenizada</option>
@@ -231,9 +238,6 @@ const Tuhistoria = () => {
 															<option value="20">Adultos mayores en centros de protección (subsidiado)</option>
 															<option value="21">Miembros de los grupos armados al margen de la ley que celebren acuerdos de paz con el Gobierno</option>
 															<option value="22">Migrante Venezolano con PEP e hijos menores de edad con documento válido</option>
-															<option value="23">Afiliado de oficio sin encuesta Sisbén ni población especial</option>
-
-
 														</select> 
 															
 													
@@ -244,8 +248,8 @@ const Tuhistoria = () => {
 												
 												<div className="col-12">
 													<label>EPS*</label>	
-													<select className="form-control" name="EPS" id="EPS">
-														<option value="0">Seleccionar</option>
+													<select className="form-control" name="EPS" id="EPS" required>
+														<option value="">Seleccionar</option>
 														<option value="1">AXA COLPATRIA SEGUROS S.A. (EN ADELANTE LA SOCIEDAD)</option>
 														<option value="2">A.R.S. CONVIDA</option>
 														<option value="3">ACE SEGUROS S.A.</option>
@@ -415,7 +419,7 @@ const Tuhistoria = () => {
 														<option value="168">VIVIR S.A</option>
 														<option value="169">ZURICH COLOMBIA SEGUROS S.A. (LA SOCIEDAD)</option>
 
-															</select>
+												</select>
 														
 												</div>
 												</div>
@@ -425,7 +429,7 @@ const Tuhistoria = () => {
 												<div className="row">
 												
 												<div className="col-12">
-													<textarea className="form-control" name="tuHistoria" id="tuHistoria" placeholder=""></textarea>
+													<textarea  required className="form-control" name="tuHistoria" id="tuHistoria" placeholder=""></textarea>
 												
 													<span className="form__text">  <label className="control-label mb-1">Cuéntanos si padeces de alguna enfermedad, si no has tenido acceso a servicios de salud oportunos, actualmente cuentas con tratamiento y todos los detalles que nos permitan saber como Soy Tu puede ayudarte. </label>   </span>
 													
@@ -437,7 +441,7 @@ const Tuhistoria = () => {
 												
 												<div className="col-lg-4">
 														<label className="form__checkbox-label"><span className="form__label-text">Consulta Medica General</span>
-														<input className="form__input-checkbox" type="checkbox" name="serviciosSolicitado" value="1" id="cb1"/><span className="form__checkbox-mask"></span>
+														<input  className="form__input-checkbox" type="checkbox" name="serviciosSolicitado" value="1" id="cb1"/><span className="form__checkbox-mask"></span>
 													
 													</label>
 												</div>

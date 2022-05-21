@@ -18,7 +18,7 @@ import {
 } from '@mui/material';
 import { getInitials } from '../../utils/get-initials';
 
-export const PacientesTablas = ({ UsuariosTabla, customers, ...rest }) => {
+export const PacientesTablasTuHistoria = ({ UsuariosTablaTuHistoria, customers, ...rest }) => {
   
   const [selectedCustomerIds, setSelectedCustomerIds] = useState([]);
   const [limit, setLimit] = useState(10);
@@ -28,7 +28,7 @@ export const PacientesTablas = ({ UsuariosTabla, customers, ...rest }) => {
     let newSelectedCustomerIds;
 
     if (event.target.checked) {
-      newSelectedCustomerIds = UsuariosTabla.map((customer) => customer.identificacion);
+      newSelectedCustomerIds = UsuariosTablaTuHistoria.map((customer) => customer.identificacion);
     } else {
       newSelectedCustomerIds = [];
     }
@@ -73,11 +73,11 @@ export const PacientesTablas = ({ UsuariosTabla, customers, ...rest }) => {
               <TableRow>
                 <TableCell padding="checkbox">
                   <Checkbox
-                    checked={selectedCustomerIds.length === UsuariosTabla.length}
+                    checked={selectedCustomerIds.length === UsuariosTablaTuHistoria.length}
                     color="primary"
                     indeterminate={
                       selectedCustomerIds.length > 0
-                      && selectedCustomerIds.length < UsuariosTabla.length
+                      && selectedCustomerIds.length < UsuariosTablaTuHistoria.length
                     }
                     onChange={handleSelectAll}
                   />
@@ -106,7 +106,7 @@ export const PacientesTablas = ({ UsuariosTabla, customers, ...rest }) => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {UsuariosTabla.slice(0, limit).map((customer) => (
+              {UsuariosTablaTuHistoria.slice(0, limit).map((customer) => (
                 <TableRow
                   hover
                   key={customer.identificacion}
@@ -166,7 +166,7 @@ export const PacientesTablas = ({ UsuariosTabla, customers, ...rest }) => {
       </PerfectScrollbar>
       <TablePagination
         component="div"
-        count={UsuariosTabla.length}
+        count={UsuariosTablaTuHistoria.length}
         onPageChange={handlePageChange}
         onRowsPerPageChange={handleLimitChange}
         page={page}
@@ -177,6 +177,6 @@ export const PacientesTablas = ({ UsuariosTabla, customers, ...rest }) => {
   );
 };
 
-PacientesTablas.propTypes = {
-  UsuariosTabla: PropTypes.array.isRequired
+PacientesTablasTuHistoria.propTypes = {
+  UsuariosTablaTuHistoria: PropTypes.array.isRequired
 };

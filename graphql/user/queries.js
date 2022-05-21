@@ -6,12 +6,23 @@ query Query {
     identificacion
     nombre
     apellidos
-    comunidad
-    grupoPoblacional
+    correo
+    tipoDocumento
+    formularioTuHistoria
   }
 }
  
 `;
+
+export const pacientesTablaTuHistoria = gql`
+query Query {
+  UsuariosTablaTuHistoria {
+    identificacion
+    nombre
+  }
+}
+`;
+
 export const authUser = gql`
   query AuthUser($uid: String!) {
     Usuario(uid: $uid) {

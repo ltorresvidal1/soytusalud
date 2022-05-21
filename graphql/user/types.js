@@ -34,6 +34,7 @@ export const typesUsuario = gql`
     }
     type Query{
         UsuariosTabla: [Usuario]
+        UsuariosTablaTuHistoria: [Usuario]
         Usuario(uid: String!): Usuario
     }
 
