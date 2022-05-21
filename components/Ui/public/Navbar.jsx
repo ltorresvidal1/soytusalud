@@ -54,28 +54,23 @@ export const Navbar = () => {
                             <div className=""></div>
                         </div>
                         <div className="w-7/12 pt-3">
-                            <a className="header-logo__link" href="index.php"></a>
-                            <Image className="header-logo__img logo--light" src="/logo_white.png" width={'150px'} height={'50px'} alt="logo"/>
+                            <a className="" href="index.php"></a>
+                            <Image src="/logo_white.png" width={'150px'} height={'50px'} alt="logo"/>
                         </div>
                         <div className="col-auto d-flex align-items-center">
-                            <ul className="lang-select lang-select--inner">
-                                <li className="lang-select__item lang-select__item--active"><span className="text-white font-semibold" data-lang="idioma">Es</span>
-                                    <ul className="lang-select__sub-list">
-                                        <li><a href="#" id="translate" data-text="English,Espa&ntilde;ol" data-file="es,en" data-index="1">English</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                            {/* <div className="dropdown-trigger d-block d-sm-none" onClick={()=>setOpen(!open)}>
-                                <div className="dropdown-trigger__item"></div>
-                            </div> */}
                         </div>
                     </div>
                     <div className="col-auto">
                         <nav>
                             <ul className="main-menu">
-                                <li className="text-black main-menu__item main-menu__item--active">
+                                <li className="text-black main-menu__item main-menu__item">
                                     <Link href="/" > 
                                     <a className="text-black main-menu__link font-black">Inicio</a>
+                                    </Link>
+                                </li>
+                                <li className="text-black main-menu__item main-menu__item">
+                                    <Link href="/trabajaNosotros">
+                                        <a className="text-black main-menu__link font-black" >Trabaja con Nosotros</a>
                                     </Link>
                                 </li>
                                 {authUser?(<>
@@ -171,12 +166,13 @@ export const Navbar = () => {
                                         </li>
                                     </ul>
                                 </li>
+
                                 <li className="main-menu__item main-menu__item--has-child">
                                     {authUser?<span className="text-white mt-8 underline" onClick={handlerLogOut}>Salir</span>
                                     :(
                                         <>
                                             <LoginModal/>
-                                            <Link href="/registro">
+                                            <Link href="/registro" passHref>
                                                 <button className='bg-white text-red-900 border rounded-md h-8 mt-8 px-2'>Registrarme</button>
                                             </Link>
                                         </>

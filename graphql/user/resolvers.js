@@ -5,7 +5,7 @@ import { collection , getDocs , getDoc , setDoc , doc , updateDoc } from "fireba
 export const resolversUsuario = {
 
     Query: {
-        UsuariosTabla: async (parent, args) => { // es el usuario que se creó en query en types
+        UsuariosTabla: async (parent, args) => { 
             const querySnapshot  = await getDocs(collection(db, "users"));
             let usuarios =[]
             querySnapshot.forEach((doc) => {
@@ -30,6 +30,8 @@ export const resolversUsuario = {
                 tipoDocumento: args.tipoDocumento,
                 celular:args.celular,
                 correo: args.correo,
+                formularioTuHistoria:false,
+                
             }
             await setDoc(doc(usersRef,args.uid),usuarioCreado);
             return usuarioCreado;
@@ -53,7 +55,7 @@ export const resolversUsuario = {
                 serviciosSolicitado: args.serviciosSolicitado,
                 autorizacionFoto:args.autorizacionFoto,
                 recopilacionDatos:args.recopilacionDatos,
-                comunidad:"",
+                comunidad: ''
             }
             await updateDoc(doc(usersRef,args.uid),dataUserUpdate);
             const docRef = doc(db, "users", args.uid);

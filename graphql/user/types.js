@@ -10,6 +10,9 @@ export const typesUsuario = gql`
         tipoDocumento: String!
         celular:String!
         correo: String!
+        formularioTuHistoria:Boolean
+        aplicaEnFundacion: Boolean
+        matchService: String
         foto:String
         genero: String
         fechaNacimiento: String

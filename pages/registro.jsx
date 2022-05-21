@@ -5,7 +5,6 @@ import { auth } from '../firebase/initConfig'
 import { useRouter } from 'next/router'
 import {LayoutMain} from '../components/layouts/LayoutMain'
 
-import Image from 'next/image'
 import useFormData from '../hooks/useFormData';
 import PrivatePages from "../components/PrivatePages";
 
@@ -51,7 +50,7 @@ const Registro = () => {
                                     <div className="row">
                                         <div className="col-12">
                                                 <div className="row">
-                                            <select className="form__field" name="tipoDocumento" id="tipoDocumento">
+                                                    <select className="form__field" name="tipoDocumento" id="tipoDocumento">
                                                         <option value="0">Tipo Documento</option>
                                                         <option value="1">CC</option>
                                                         <option value="2">CE</option>
@@ -64,9 +63,7 @@ const Registro = () => {
                                                         <option value="9">AS</option>
                                                         <option value="10">CN</option>
                                                         <option value="11">SC</option>
-
                                                     </select>
-                                            
                                             </div>
                                                 <div className="row">
                                             <input className="form__field" type="text" name="identificacion"  id="identificacion"  placeholder="Documento"/>
