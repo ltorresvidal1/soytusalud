@@ -58,6 +58,64 @@ background-color: #49C2DF;
   text-align: center;
 }
 
+/* INPUTS */
+
+.inputfile {
+  width: 0.2px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.inputfile + label {
+  max-width: 70%;
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+  display: inline-block;
+  overflow: hidden;
+  padding: 0.25rem 1.25rem;
+}
+
+.inputfile + label svg {
+  width: 1em;
+  height: 1em;
+  vertical-align: middle;
+  fill: currentColor;
+  margin-top: -0.25em;
+  margin-right: 0.25em;
+}
+
+.iborrainputfile {
+font-size:0.65em; 
+font-weight:normal;
+font-family: 'Lato';
+}
+
+/* style 1 */
+
+.inputfile-1 + label {
+  color: #fff;
+  background-color: #bfbfbf;
+  border-color: black;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+}
+
+.inputfile-1 + label:hover {
+  color: #fff;
+  background-color: #257bfc;
+  display: flex;
+  align-items: center;
+  box-shadow: 2px 2px 3px rgba(128, 128, 128, 0.506);
+}
+/* FIN INPUTS */
+
 .centrado{
   position: absolute;
   top: 90%;
@@ -66,7 +124,7 @@ background-color: #49C2DF;
 }
 .custom-file-input{
     height:2px;
-     width: 2px;
+    width: 2px;
 }
 .information_luis {
   padding: 2px 2px 2px 2px;

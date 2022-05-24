@@ -217,28 +217,44 @@ const handleDpto=(e)=>{
 											</div>
 											
 											<div className="row">
-												<div className="col-12 mt-4"><h6 className="form__title">Adjuntar Documentos</h6></div>
-													<div className="col-lg-4">
-														<label>Anexar Distintivo de habilitación *</label>
-														<input type="file" className=" form-control" id="distintivoHabilitacion" name="distintivoHabilitacion" accept=".pdf" required/>
+												<div className="col-12 mt-4"><h6>Adjuntar Documentos</h6></div>
+													<div className="col-lg-3">
+														<label>Distintivo de habilitación *</label>
+														<input type="file" name="distintivoHabilitacion" id="distintivoHabilitacion" class="inputfile inputfile-1" accept=".pdf" required/>
+														<label className="space-x-2" for="distintivoHabilitacion">
+															<svg xmlns="http://www.w3.org/2000/svg" class="iborrainputfile" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"></path></svg>
+															<span class="iborrainputfile">Seleccionar archivo</span>
+														</label>
 													</div>
-													<div className="col-lg-4">
-														<label>Anexar Convalidación ante el ICFES, si aplica </label>
-														<input type="file" className=" form-control" id="icfes" name="icfes" accept=".pdf"/>
+													<div className="col-lg-3">
+														<label>Convalidación ICFES -opcional- </label>
+														<input type="file" name="icfes" id="icfes" class="inputfile inputfile-1" accept=".pdf" />
+														<label className="space-x-2" for="distintivoHabilitacion">
+															<svg xmlns="http://www.w3.org/2000/svg" class="iborrainputfile" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"></path></svg>
+															<span class="iborrainputfile">Seleccionar archivo</span>
+														</label>
 													</div>
-													<div className="col-lg-4">
-														<label>Fotos, logo e imágenes para publicidad</label>
-														<input type="file" className=" form-control" id="fotoLogoPublicidad" name="fotoLogoPublicidad" accept="image/*"/>
+													<div className="col-lg-3">
+														<label>Imágenes para publicidad</label>
+														<input type="file" name="fotoLogoPublicidad" id="fotoLogoPublicidad" class="inputfile inputfile-1" accept="image/*" />
+														<label className="space-x-2" for="distintivoHabilitacion">
+															<svg xmlns="http://www.w3.org/2000/svg" class="iborrainputfile" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"></path></svg>
+															<span class="iborrainputfile">Seleccionar archivo</span>
+														</label>
+													</div>
+													<div className="col-lg-3">
+														<label>Hoja de vida</label>
+														<input type="file" name="hojaDeVida" id="hojaDeVida" class="inputfile inputfile-1" accept=".pdf" required />
+														<label className="space-x-2" for="distintivoHabilitacion">
+															<svg xmlns="http://www.w3.org/2000/svg" class="iborrainputfile" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"></path></svg>
+															<span class="iborrainputfile">Seleccionar archivo</span>
+														</label>
 													</div>
 												</div>
 												<div className="row mt-4">
 												<div className="col-lg-8 ">
 														<label>Resumen de curriculum</label>
 														<textarea required className="form-control" name="resumenDeCurriculum" id="resumenDeCurriculum" placeholder="" required></textarea>
-													</div>
-													<div className="col-lg-4 ">
-														<label>Anexar Hoja de vida</label>
-														<input type="file" className=" form-control" id="hojaDeVida" name="hojaDeVida" accept=".pdf" required/>
 													</div>
 												</div>
 
