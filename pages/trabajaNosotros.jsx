@@ -91,17 +91,17 @@ const handleDpto=(e)=>{
 													</div>
 													
 													<div className="row">
-														<div className="col-12 mt-4"><h6 className="form__title">Datos Personales</h6></div>
-														<div className="col-lg-3">
+														<div className="col-12 mt-12"><h6 className="form__title">Datos Personales</h6></div>
+														<div className="col-lg-3 mt-3">
 																<label>Nombres *</label>
                                                                 <input className="form-control" type="text" name="nombres" id="nombres" required/>
 														</div>
 												
-														<div className="col-lg-3">
+														<div className="col-lg-3 mt-3">
 															<label >Apellidos *</label>
 															<input className="form-control" type="text" name="apellidos" id="apellidos" required/>
 														</div>
-														<div className="col-lg-3">
+														<div className="col-lg-3 mt-3">
 															<label>Tipo documento *</label>
 																<select className="form-control" name="tipoDocumento" id="tipoDocumento required">
 																	<option value="0">Tipo Documento</option>
@@ -118,11 +118,11 @@ const handleDpto=(e)=>{
 																	<option value="11">SC</option>
 																</select>
 														</div>
-														<div className="col-lg-3">
+														<div className="col-lg-3 mt-3">
 															<label >Numero de documento *</label>
 															<input className="form-control" type="text" name="numeroDocumento" id="numeroDocumento" required/>
 														</div>
-														<div className="col-lg-4">
+														<div className="col-lg-4 mt-3">
 															<label>Departamento</label>
 															<select onChange={handleDpto} name="departamento-568" className="form-control" aria-required="true" aria-invalid="false" required>
 																<option value="">Departamento</option>
@@ -131,7 +131,7 @@ const handleDpto=(e)=>{
 																))}
 															</select>
 														</div>
-														<div className="col-lg-4">
+														<div className="col-lg-4 mt-3">
 															<label>Municipio</label>
 															<select name="departamento-568" className="form-control" aria-required="true" aria-invalid="false" required>
 																<option value="">Municipio</option>
@@ -140,32 +140,32 @@ const handleDpto=(e)=>{
 																))}
 															</select>
 														</div>
-														<div className="col-lg-4">
+														<div className="col-lg-4 mt-3">
 															<label>Dirección comercial completa *</label>
 															<input className="form-control" type="text" name="direccion" id="direccion" required/>
 														</div>
-														<div className="col-lg-3">
+														<div className="col-lg-3 mt-3">
 															<label>E-mail *</label>
 															<input className="form-control" type="email" name="e-mail" id="e-mail" required/>
 														</div>
-														<div className="col-lg-3">
+														<div className="col-lg-3 mt-3">
 															<label>Página Web *</label>
 															<input className="form-control" type="url" name="web" id="web" required/>
 														</div>
-														<div className="col-lg-3">
+														<div className="col-lg-3 mt-3">
 														<label>Número celular *</label>
 														<input className="form-control" type="text" name="celular" id="celular" required/>
 													</div>
-													<div className="col-lg-3">
+													<div className="col-lg-3 mt-3">
 														<label>Número celular #2</label>
 														<input className="form-control" type="text" name="celular" id="celular"/>
 													</div>
 												</div> 
 											
 											<div className="row">
-												<div className="col-12 mt-4"><h6 className="form__title">Adjuntar Documentos</h6></div>
+												<div className="col-12 mt-12"><h6 className="form__title">Información de aplicación</h6></div>
 													<div className="col-lg-4">
-														<label>Tipo de Servicio *</label>
+														<label className="mt-3">Tipo de Servicio *</label>
 														<select className="form-control" name="tipoServicio" id="tipoServicio" required>
 															<option value="">Seleccionar</option>
 															<option>Consulta Médica General</option>
@@ -181,7 +181,7 @@ const handleDpto=(e)=>{
 														</select> 
 													</div>
 													<div className="col-lg-4">
-												<label>Especilidad </label>
+												<label className="mt-3">Especilidad </label>
 													<select className="form-control" name="Especialidad" id="Especialidad" required>
 														<option disabled >Tipo Especialidad</option>
 														{especialiades.map((especialidad)=>(
@@ -189,8 +189,8 @@ const handleDpto=(e)=>{
 															))}
 													</select>
 												</div>
-												<div className="col-4">
-													<label>Modalidad de atención*</label>	
+												<div className="col-lg-4">
+													<label className="mt-3">Modalidad de atención*</label>	
 													<select className="form-control" name="modalidad" id="modalidad" required>
 														<option value="">Seleccionar</option>
 														<option>Domiciliaria</option>
@@ -199,60 +199,60 @@ const handleDpto=(e)=>{
 													</select>
 												</div>
 											</div>
-											<div className="row mt-4">
+											<div className="row">
 												<div className="col-lg-4">
-													<label>Disponibilidad horaria</label>
+													<label className="mt-3">Disponibilidad horaria</label>
 													<select className="form-control" name="modalidad" id="modalidad" required>
 														<option value="">Seleccionar</option>
 													</select>
 												</div>
-												<div className="col-4">
-													<label>Valor del servicio *</label>	
+												<div className="col-lg-4">
+													<label className="mt-3">Valor del servicio *</label>	
 													<input className="form-control" name="valorServicio" id="valorServicio" required></input>
 												</div>
-												<div className="col-4">
-													<label>Cuenta de ahorros Bancolombia *</label>	
+												<div className="col-lg-4">
+													<label className="mt-3">Cuenta de ahorros Bancolombia *</label>	
 													<input className="form-control" name="valorServicio" id="valorServicio" required></input>
 												</div>
 											</div>
 											
-											<div className="row">
-												<div className="col-12 mt-4"><h6>Adjuntar Documentos</h6></div>
-													<div className="col-lg-3">
-														<label>Distintivo de habilitación *</label>
+											<div className="">
+												<div className="mt-12"><h6>Adjuntar Documentos</h6></div>
+													<div className="flex mt-4">
 														<input type="file" name="distintivoHabilitacion" id="distintivoHabilitacion" class="inputfile inputfile-1" accept=".pdf" required/>
 														<label className="space-x-2" for="distintivoHabilitacion">
 															<svg xmlns="http://www.w3.org/2000/svg" class="iborrainputfile" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"></path></svg>
 															<span class="iborrainputfile">Seleccionar archivo</span>
 														</label>
+														<label className="ml-3">Distintivo de habilitación* </label>
 													</div>
-													<div className="col-lg-3">
-														<label>Convalidación ICFES -opcional- </label>
+													<div className="flex mt-2">
 														<input type="file" name="icfes" id="icfes" class="inputfile inputfile-1" accept=".pdf" />
 														<label className="space-x-2" for="distintivoHabilitacion">
 															<svg xmlns="http://www.w3.org/2000/svg" class="iborrainputfile" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"></path></svg>
 															<span class="iborrainputfile">Seleccionar archivo</span>
 														</label>
+														<label className="ml-3">Convalidación ICFES -opcional- </label>
 													</div>
-													<div className="col-lg-3">
-														<label>Imágenes para publicidad</label>
+													<div className="flex mt-2">
 														<input type="file" name="fotoLogoPublicidad" id="fotoLogoPublicidad" class="inputfile inputfile-1" accept="image/*" />
 														<label className="space-x-2" for="distintivoHabilitacion">
 															<svg xmlns="http://www.w3.org/2000/svg" class="iborrainputfile" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"></path></svg>
 															<span class="iborrainputfile">Seleccionar archivo</span>
 														</label>
+														<label className="ml-3">Imágenes para publicidad </label>
 													</div>
-													<div className="col-lg-3">
-														<label>Hoja de vida</label>
+													<div className="flex mt-2">
 														<input type="file" name="hojaDeVida" id="hojaDeVida" class="inputfile inputfile-1" accept=".pdf" required />
 														<label className="space-x-2" for="distintivoHabilitacion">
 															<svg xmlns="http://www.w3.org/2000/svg" class="iborrainputfile" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"></path></svg>
 															<span class="iborrainputfile">Seleccionar archivo</span>
 														</label>
+														<label className="ml-3">Hoja de vida*</label>
 													</div>
 												</div>
 												<div className="row mt-4">
-												<div className="col-lg-8 ">
+												<div className="col-lg-12 ">
 														<label>Resumen de curriculum</label>
 														<textarea required className="form-control" name="resumenDeCurriculum" id="resumenDeCurriculum" placeholder="" required></textarea>
 													</div>
@@ -278,6 +278,11 @@ const handleDpto=(e)=>{
 													</div>
 												</div>
 
+												<div className="row">
+													<button type="submit" className="bg-blue-600">SUBMIT</button>
+												</div>
+
+												
 											
 												
 										</form>
