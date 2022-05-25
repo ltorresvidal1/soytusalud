@@ -148,7 +148,7 @@ export const municipios = [
     {"codigo":"832","nombre":"TUBARA","codigodepartamento":"08"},
     {"codigo":"849","nombre":"USIACURI","codigodepartamento":"08"},
     {"codigo":"001","nombre":"USAQUEN","codigodepartamento":"11"},
-    {"codigo":"002","nombre":"CAPINERO","codigodepartamento":"11"},
+    {"codigo":"002","nombre":"CHAPINERO","codigodepartamento":"11"},
     {"codigo":"003","nombre":"SANTA FE ","codigodepartamento":"11"},
     {"codigo":"004","nombre":"SAN CRISTOBAL","codigodepartamento":"11"},
     {"codigo":"005","nombre":"USME","codigodepartamento":"11"},

@@ -111,28 +111,21 @@ const Tuhistoria = () => {
 								<div>
 									<div className="col-xl-12">
 										<form className="form message-form" ref={form} onChange={updateFormData} onSubmit={handleSubmit}  id="Form_TuHistoria" >
-													
 												<h6 className="form__title">Si consideras que eres una persona en situación de vulnerabilidad, que padece una enfermedad y necesita servicios médicos, diligencia este formulario y te pondremos en contacto con un especialista que te ayude a mejorar su estado de salud.</h6>
-												<label className="control-label mb-1">Por favor, verifique los campos obligatorios marcados con un (*) </label>   
-										
+												<label className="control-label mb-1">Por favor, verifique los campos obligatorios marcados con un (*) </label>
 													<div className="row">
 														<div className="col-lg-5"></div>
 														<div className="col-lg-2">
 															<div className="contenedor">
 																<h6 className="form__title">Foto</h6>
-																
-															
 																	<div className="FotoHistoria">
-																		<Image alt='defaultPhoto' className="profile-pic" id='perfil' name='perfil' src={photo} height="150"    width="180"/>
-																		<label className="centrado" htmlFor="logo"><span className="badge badge-primary r-3">Subir Foto</span></label>   
-																		<input type="file" onChange={handlePhoto}   id="foto"  name="foto" accept="image/*"  className="custom-file-input"  required/>
-																		
+																		<Image alt='defaultPhoto' className="profile-pic" id='perfil' name='perfil' src={photo} height="150" width="180"/>
+																		<label className="centrado" htmlFor="logo"><span className="badge badge-primary r-3">Subir Foto</span></label>
+																		<input type="file" onChange={handlePhoto} id="foto" name="foto" accept="image/*" className="custom-file-input" required/>
 																	</div>
 															</div>
-
 														</div>
 													</div>
-													
 													<div className="row">
 												
 														<div className="col-lg-2">
