@@ -114,6 +114,18 @@ font-family: 'Lato';
   align-items: center;
   box-shadow: 2px 2px 3px rgba(128, 128, 128, 0.506);
 }
+
+.button-submit{
+  background-color: #272e98;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.button-submit:hover{
+  background-color: #343bc7;
+  box-shadow: 2px 2px 3px rgba(128, 128, 128, 0.506);
+}
+
 /* FIN INPUTS */
 
 .centrado{
