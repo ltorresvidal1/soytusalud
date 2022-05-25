@@ -16,16 +16,19 @@ export const LayoutMain = ({children}) => {
   const [ getUser ] = useLazyQuery(authUser);
 
   useEffect(()=>{
+    Promise.all([
     onAuthStateChanged(auth,(user)=>{
       if(user){
           getUser({variables:{uid:user.uid}})
             .then(response =>{
             setAuthUser(response.data.Usuario)
         })
+        
       }else{
         setAuthUser(null)
       }
     })
+  ])
   },[])
 
 

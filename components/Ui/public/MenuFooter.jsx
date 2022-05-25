@@ -7,7 +7,7 @@ export const MenuFooter = () => {
     <div className="container">
       <div className="row">
         <div className="col-12">
-          <div className="bottom-background__img"> <Image alt="footerLogo" src="/bottom-bg.png"  width={500} height={80}  layout="responsive"/></div>
+          <div className="bottom-background__img"> <Image alt="footerLogo" src="/bottom-bg.png" priority={true}  width={500} height={80}  layout="responsive"/></div>
         </div>
       </div>
     </div>

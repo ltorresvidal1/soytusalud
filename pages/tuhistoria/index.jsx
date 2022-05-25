@@ -5,6 +5,9 @@ import Image from 'next/image'
 import { storage } from '../../firebase/initConfig';
 import { ref, uploadBytes } from 'firebase/storage';
 import { useMutation } from '@apollo/client';
+import { tuHistoriaUpdate } from '../../graphql/user/mutations';
+import { departamentos } from '../../utils/deparamentos';
+import { municipios } from '../../utils/municipios';
 
 import PrivatePages from '../../components/PrivatePages';
 import useFormData from '../../hooks/useFormData';
@@ -14,17 +17,21 @@ import { LayoutMain } from '../../components/layouts/LayoutMain';
 
 const Tuhistoria = () => {
 	
-
+	const [tuHistoria] = useMutation(tuHistoriaUpdate)
 	const datePick = new Date().toISOString().split("T")[0];
+	const [filterMunicipios,setFilterMunicipios]= useState([])
 	const {authUser} = useAuth()
 	const [photo,setPhoto] = useState("/Foto.png")
 	const [ discapacitado, setDiscapacitado ] = useState(false)
+	const [servicios,setServicios] = useState([])
 	const { form, formData, updateFormData } =useFormData();
+	let municipiosFiltrado 
 
 	
 	const handleSubmit =async(e)=>{
-		formData["uid"] =authUser.uid
 		e.preventDefault();
+		formData["uid"] =authUser.uid
+		formData["serviciosSolicitado"] = servicios
 		const imagRef = ref(storage,`${authUser.identificacion}/perfil.jpg`)
 		const historiaClinicaRef = ref(storage ,`${authUser.identificacion}/historiaClinica.pdf`)
 		const sisbenRef = ref(storage,`${authUser.identificacion}/sisben.pdf`)
@@ -40,7 +47,7 @@ const Tuhistoria = () => {
 		.then((ref)=>{
 			formData.historiaClinica=ref.metadata.fullPath
 		})
-		console.log(formData)
+		tuHistoria({variables: formData})
 	}
 
 	const handlePhoto = async (e)=>{
@@ -61,6 +68,20 @@ const Tuhistoria = () => {
 		}else{
 			setDiscapacitado(false)
 		}
+	}
+	const handleDpto=(e)=>{
+		console.log(e.target.value)
+		municipiosFiltrado = municipios.filter(municipio=> municipio.codigodepartamento === e.target.value)
+		setFilterMunicipios(municipiosFiltrado)
+	}
+
+	const handleCheckBox=(e)=>{
+		if(e.currentTarget.checked && !servicios.includes(e.target.value) ){
+			setServicios((after)=>[...after,e.target.value])
+		}
+		if(!e.currentTarget.checked && servicios.includes(e.target.value) ){
+			setServicios((after)=>after.filter(value=> value !== e.target.value ))
+		}	
 	}
   
   return (
@@ -114,30 +135,45 @@ const Tuhistoria = () => {
 													
 													<div className="row">
 												
-														<div className="col-lg-3">
+														<div className="col-lg-2">
 																<label>Genero *</label>
-																<select  className="form-control" name="genero" id="genero" required>
+																<select className="form-control" name="genero" id="genero" required>
 																<option value="">Seleccionar</option>
 																<option >Femenino</option>
 																<option >Masculino</option>
 																</select>
 														</div>
 												
-														<div className="col-lg-3">
+														<div className="col-lg-2">
 															<label >Fecha Nacimiento *</label>
 															<input required   type="date" min="1920-01-01" max={datePick} name="fechaNacimiento" id="fechaNacimiento" className="form-control"/>
 														</div>
 
-														<div className="col-lg-6">
+														<div className="col-lg-4">
 															<label>Direccion *</label>
 															<input required className="form-control" type="text" name="direccion"  id="direccion"/>
 														</div>
-													</div>  
-									
-													
+														<div className="col-lg-2">
+															<label>Departamento</label>
+															<select onChange={handleDpto} defaultValue={"Departamento"} name="departamento" className="form-control" aria-required="true" aria-invalid="false" >
+																<option disabled>Departamento</option>
+																{departamentos.map((depatamento)=>(
+																	<option value={depatamento.codigo} key={depatamento.codigo}>{depatamento.nombre}</option>
+																))}
+															</select>
+														</div>
+														<div className="col-lg-2">
+															<label>Municipio</label>
+															<select name="municipio" className="form-control" defaultValue={"Municipio"} aria-required="true" aria-invalid="false" >
+																<option disabled value="0">Municipio</option>
+																{filterMunicipios.map((municipio,index)=>(
+																	<option key={index}>{municipio.nombre}</option>
+																))}
+
+															</select>
+														</div>
+													</div>  				
 											<div className="row">
-													
-													
 													<div className="col-lg-4">
 															<label>Discapacitado *</label>
 														<select onChange={handlerDiscapacitado} className="form-control" name="discapacitado" id="discapacitado">
@@ -178,8 +214,7 @@ const Tuhistoria = () => {
 													
 													</div>
 											</div>
-										
-
+									
 											<div className="row">
 											
 											
@@ -214,7 +249,7 @@ const Tuhistoria = () => {
 													
 															<label>Grupo Poblacional *</label>
 															
-															<select className="form-control" name="grupoPoblacional" id="grupoPoblacional" required>
+														<select className="form-control" name="grupoPoblacional" id="grupoPoblacional" required>
 															<option value="">Seleccionar</option>
 															<option value="1">Habitantes de la calle</option>
 															<option value="2">Creador o gestor cultural decreto 2283 de 2010</option>
@@ -441,62 +476,62 @@ const Tuhistoria = () => {
 												
 												<div className="col-lg-4">
 														<label className="form__checkbox-label"><span className="form__label-text">Consulta Medica General</span>
-														<input  className="form__input-checkbox" type="checkbox" name="serviciosSolicitado" value="1" id="cb1"/><span className="form__checkbox-mask"></span>
-													
+														<input  className="form__input-checkbox" type="checkbox" value="Consulta Medica General" onChange={handleCheckBox} id="cb1"/>
+														<span className="form__checkbox-mask"></span>
 													</label>
 												</div>
 												<div className="col-lg-4">
 														<label className="form__checkbox-label"><span className="form__label-text">Consulta Medica Especializada</span>
-														<input className="form__input-checkbox" type="checkbox" name="serviciosSolicitado" value="2" id="cb2"/><span className="form__checkbox-mask"></span>
+														<input className="form__input-checkbox" type="checkbox" onChange={handleCheckBox} value="Consulta Medica Especializada" id="cb2"/>
+														<span className="form__checkbox-mask"></span>
 													
 												</label>
 												</div>
 												<div className="col-lg-4">
 														<label className="form__checkbox-label"><span className="form__label-text">Otros Profesionales de la Salud</span>
-														<input className="form__input-checkbox" type="checkbox" name="serviciosSolicitado" value="3" id="cb3"/><span className="form__checkbox-mask"></span>
+														<input className="form__input-checkbox" type="checkbox" onChange={handleCheckBox}  value="Otros Profesionales de la Salud" id="cb3"/><span className="form__checkbox-mask"></span>
 													
 												</label>
 												</div>											
 												<div className="col-lg-4">
 														<label className="form__checkbox-label"><span className="form__label-text">Medicamento</span>
-														<input className="form__input-checkbox" type="checkbox" name="serviciosSolicitado" value="4" id="cb4"/><span className="form__checkbox-mask"></span>
+														<input className="form__input-checkbox" type="checkbox" onChange={handleCheckBox}  value="Medicamento" id="cb4"/><span className="form__checkbox-mask"></span>
 													
 												</label>
 												</div>											
 												<div className="col-lg-4">
 														<label className="form__checkbox-label"><span className="form__label-text">Exámenes de Laboratorios</span>
-														<input className="form__input-checkbox" type="checkbox" name="serviciosSolicitado" value="5" id="cb5"/><span className="form__checkbox-mask"></span>
+														<input className="form__input-checkbox" type="checkbox" onChange={handleCheckBox}  value="Exámenes de Laboratorios" id="cb5"/><span className="form__checkbox-mask"></span>
 													
 												</label>
 												</div>
 												<div className="col-lg-4">
 														<label className="form__checkbox-label"><span className="form__label-text">Rayos X</span>
-														<input className="form__input-checkbox" type="checkbox" name="serviciosSolicitado" value="6" id="cb6"/><span className="form__checkbox-mask"></span>
+														<input className="form__input-checkbox" type="checkbox" onChange={handleCheckBox}  value="Rayos X" id="cb6"/><span className="form__checkbox-mask"></span>
 													
 												</label>
 												</div>											
 												<div className="col-lg-4">
 														<label className="form__checkbox-label"><span className="form__label-text">Ayudas Diagnósticas</span>
-														<input className="form__input-checkbox" type="checkbox" name="serviciosSolicitado" value="7" id="cb7"/><span className="form__checkbox-mask"></span>
+														<input className="form__input-checkbox" type="checkbox" onChange={handleCheckBox} value="Ayudas Diagnósticas" id="cb7"/><span className="form__checkbox-mask"></span>
 													
 												</label>
 												</div>		
 												
 												<div className="col-lg-4">
 														<label className="form__checkbox-label"><span className="form__label-text">Terapias</span>
-														<input className="form__input-checkbox" type="checkbox" name="serviciosSolicitado" value="8" id="cb8"/><span className="form__checkbox-mask"></span>
+														<input className="form__input-checkbox" type="checkbox" onChange={handleCheckBox}  value="Terapias" id="cb8"/><span className="form__checkbox-mask"></span>
 													
 												</label>
 												</div>	
 													<div className="col-lg-4">
 														<label className="form__checkbox-label"><span className="form__label-text">Cirugia Ambulatoria Y Otros Servicios</span>
-														<input className="form__input-checkbox" type="checkbox" name="serviciosSolicitado" value="9" id="cb9"/><span className="form__checkbox-mask"></span>
+														<input className="form__input-checkbox" type="checkbox" onChange={handleCheckBox}  value="Cirugia Ambulatoria Y Otros Servicios" id="cb9"/><span className="form__checkbox-mask"></span>
 													
 												</label>
 												</div>	
 											
-											
-
+										
 												</div>
 
 												<div className="row">
@@ -507,28 +542,28 @@ const Tuhistoria = () => {
 												
 												</div>
 												<div className="col-lg-6">
-												<label className="form__checkbox-label"/><span className="form__label-text">Anexar Consulta Sisben</span>
-												
-												<input type="file" className="form-control" id="sisben" name="sisben" accept=".pdf"/>
-												<br/>
-													<a className="centrado" href="https://www.sisben.gov.co/Paginas/consulta-tu-grupo.aspx" target="_blank" rel="noreferrer">Consulta Tu Sisben</a>
+													<label className="form__checkbox-label"/><span className="form__label-text">Anexar Consulta Sisben</span>
+													
+													<input type="file" className="form-control" id="sisben" name="sisben" accept=".pdf" required/>
+													<br/>
+														<a className="centrado" href="https://www.sisben.gov.co/Paginas/consulta-tu-grupo.aspx" target="_blank" rel="noreferrer">Consulta Tu Sisben</a>
 												</div>
 												</div>
 												
 												<div className="row">
-												<div className="col-12">
-															
-												<label className="form__checkbox-label"><span  name="autorizacionFoto" id="autorizacionFoto" className="form__label-text"> Autorizo de manera voluntaria, mostrar mi nombre y mi foto</span>
-												<input className="form__input-checkbox" type="checkbox" name="autorizacionFoto" id="autorizacionFoto" value="1"/><span className="form__checkbox-mask"></span>
-													</label>
-												</div>
+													<div className="col-12">
+																
+														<label className="form__checkbox-label"><span  name="autorizacionFoto" id="autorizacionFoto" value={true} className="form__label-text"> Autorizo de manera voluntaria, mostrar mi nombre y mi foto</span>
+															<input className="form__input-checkbox" type="checkbox" name="autorizacionFoto" id="autorizacionFoto" required/>
+															<span className="form__checkbox-mask"></span>
+														</label>
+													</div>
 												
 												<div className="col-12">
 															
-												<label className="form__checkbox-label" ><span  id="recopilacionDatos" className="form__label-text" >Autorizo de manera voluntaria, previa, expresa e informada a Soy Tú para la recolección y posterior análisis de los datos aquí suministrados, con la finalidad de ser contactado y atender mis necesidades. Así mismo, declaro que he sido informado sobre el derecho que tengo a conocer, actualizar y rectificar mis datos personales, solicitar prueba de la autorización, ser informado sobre el tratamiento que se ha dado a mis datos personales, presentar quejas ante la Superintendencia de Industria y Comercio (SIC), revocar la autorización otorgada y/o solicitar la supresión de mis datos en los casos en que sea procedente</span>
-												
-														<input className="form__input-checkbox" type="checkbox" name="recopilacionDatos" id="recopilacionDatos"/><span className="form__checkbox-mask"></span>
-														
+												<label className="form__checkbox-label" ><span  id="recopilacionDatos" className="form__label-text" value={true} >Autorizo de manera voluntaria, previa, expresa e informada a Soy Tú para la recolección y posterior análisis de los datos aquí suministrados, con la finalidad de ser contactado y atender mis necesidades. Así mismo, declaro que he sido informado sobre el derecho que tengo a conocer, actualizar y rectificar mis datos personales, solicitar prueba de la autorización, ser informado sobre el tratamiento que se ha dado a mis datos personales, presentar quejas ante la Superintendencia de Industria y Comercio (SIC), revocar la autorización otorgada y/o solicitar la supresión de mis datos en los casos en que sea procedente</span>
+														<input className="form__input-checkbox" type="checkbox" name="recopilacionDatos" id="recopilacionDatos" required/>
+														<span className="form__checkbox-mask"></span>
 													</label>
 												</div>
 												

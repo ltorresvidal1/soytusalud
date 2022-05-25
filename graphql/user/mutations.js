@@ -15,11 +15,10 @@ mutation Mutation($uid: ID!, $identificacion: String!, $nombre: String!, $apelli
 `;
 
 export const tuHistoriaUpdate = gql`
-mutation TuHistoria($uid: ID!, $foto: String!, $genero: String!, $fechaNacimiento: String!, $direccion: String!, $discapacitado: String!, $grupoPoblacional: String!, $EPS: String!, $serviciosSolicitado: String!, $historiaClinica: String!, $sisben: String!, $autorizacionFoto: String!, $recopilacionDatos: String!, $tipoDiscapacidad: String, $tuHistoria: String) {
-  tuHistoria(uid: $uid, foto: $foto, genero: $genero, fechaNacimiento: $fechaNacimiento, direccion: $direccion, discapacitado: $discapacitado,victimaviolencia:$victimaviolencia, identidadgenero:$identidadgenero, orientacionsexial:$orientacionsexial, grupoPoblacional: $grupoPoblacional, EPS: $EPS, serviciosSolicitado: $serviciosSolicitado, historiaClinica: $historiaClinica, sisben: $sisben, autorizacionFoto: $autorizacionFoto, recopilacionDatos: $recopilacionDatos, tipoDiscapacidad: $tipoDiscapacidad, tuHistoria: $tuHistoria) {
+mutation Mutation($uid: ID!, $foto: String!, $genero: String!, $fechaNacimiento: String!, $direccion: String!, $discapacitado: String!, $victimaViolencia: String!, $identidadGenero: String!, $orientacionSexual: String!, $grupoPoblacional: String!, $municipio: String!, $departamento: String!, $EPS: String!, $tuHistoria: String!, $serviciosSolicitado: [String]!, $historiaClinica: String!, $sisben: String!, $autorizacionFoto: String!, $recopilacionDatos: String!, $tipoDiscapacidad: String) {
+  tuHistoria(uid: $uid, foto: $foto, genero: $genero, fechaNacimiento: $fechaNacimiento, direccion: $direccion, discapacitado: $discapacitado, victimaViolencia: $victimaViolencia, identidadGenero: $identidadGenero, orientacionSexual: $orientacionSexual, grupoPoblacional: $grupoPoblacional, municipio: $municipio, departamento: $departamento, EPS: $EPS, tuHistoria: $tuHistoria, serviciosSolicitado: $serviciosSolicitado, historiaClinica: $historiaClinica, sisben: $sisben, autorizacionFoto: $autorizacionFoto, recopilacionDatos: $recopilacionDatos, tipoDiscapacidad: $tipoDiscapacidad) {
+    uid
     identificacion
-    nombre
-    apellidos
   }
 }
 

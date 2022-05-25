@@ -17,8 +17,11 @@ query Query {
 export const pacientesTablaTuHistoria = gql`
 query Query {
   UsuariosTablaTuHistoria {
-    identificacion
     nombre
+    apellidos
+    comunidad
+    fechaSolicitud
+    grupoPoblacional
   }
 }
 `;

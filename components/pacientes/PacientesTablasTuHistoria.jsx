@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import PropTypes from 'prop-types';
+import { grupoPoblacional } from '../../utils/grupoPoblacional';
 import {
   Avatar,
   Box,
@@ -92,16 +93,10 @@ export const PacientesTablasTuHistoria = ({ UsuariosTablaTuHistoria, customers, 
                   Comunidad
                 </TableCell>
                 <TableCell>
-                  Documento
+                  grupo Poblacional 
                 </TableCell>
                 <TableCell>
-                  Tipo de Documento
-                </TableCell>
-                <TableCell>
-                  Correo Electronico
-                </TableCell>
-                <TableCell>
-                  Formulario Tu Historia
+                  fecha Solicitud
                 </TableCell>
               </TableRow>
             </TableHead>
@@ -147,16 +142,11 @@ export const PacientesTablasTuHistoria = ({ UsuariosTablaTuHistoria, customers, 
                     {customer.comunidad?customer.comunidad:'N/A'}
                   </TableCell>
                   <TableCell>
-                    {customer.identificacion}
+                    {grupoPoblacional
+                    .filter((valueFilter)=> valueFilter.value === customer.grupoPoblacional)[0].grupo}
                   </TableCell>
                   <TableCell>
-                    {customer.tipoDocumento}
-                  </TableCell>
-                  <TableCell>
-                    {customer.correo}
-                  </TableCell>
-                  <TableCell>
-                    {customer.formularioTuHistoria?"SI":"NO"}
+                    {customer.fechaSolicitud}
                   </TableCell>
                 </TableRow>
               ))}

@@ -64,7 +64,11 @@ export const resolversUsuario = {
                 serviciosSolicitado: args.serviciosSolicitado,
                 autorizacionFoto:args.autorizacionFoto,
                 recopilacionDatos:args.recopilacionDatos,
-                comunidad: ''
+                departamento:args.departamento,
+                municipio:args.municipio,
+                comunidad: '',
+                formularioTuHistoria:true,
+                fechaSolicitud: new Date().toISOString().split("T")[0],
             }
             await updateDoc(doc(usersRef,args.uid),dataUserUpdate);
             const docRef = doc(db, "users", args.uid);
