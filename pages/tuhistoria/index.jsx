@@ -3,7 +3,7 @@ import Head from 'next/head'
 import { useState } from 'react';
 import Image from 'next/image'
 import { storage } from '../../firebase/initConfig';
-import { ref, uploadBytes } from 'firebase/storage';
+import { ref, uploadBytes , getDownloadURL  } from 'firebase/storage';
 import { useMutation } from '@apollo/client';
 import { tuHistoriaUpdate } from '../../graphql/user/mutations';
 import { departamentos } from '../../utils/deparamentos';
@@ -26,26 +26,31 @@ const Tuhistoria = () => {
 	const [servicios,setServicios] = useState([])
 	const { form, formData, updateFormData } =useFormData();
 	let municipiosFiltrado 
-
+	const imagRef = ref(storage,`${authUser.identificacion}/perfil.jpg`)
+	const historiaClinicaRef = ref(storage ,`${authUser.identificacion}/historiaClinica.pdf`)
+	const sisbenRef = ref(storage,`${authUser.identificacion}/sisben.pdf`)
 	
 	const handleSubmit =async(e)=>{
 		e.preventDefault();
 		formData["uid"] =authUser.uid
 		formData["serviciosSolicitado"] = servicios
-		const imagRef = ref(storage,`${authUser.identificacion}/perfil.jpg`)
-		const historiaClinicaRef = ref(storage ,`${authUser.identificacion}/historiaClinica.pdf`)
-		const sisbenRef = ref(storage,`${authUser.identificacion}/sisben.pdf`)
+
 		await uploadBytes(imagRef, formData.foto)
-			.then((ref)=>{
-			formData.foto=ref.metadata.fullPath
+		await getDownloadURL(imagRef)
+		.then((url)=>{
+			formData.foto= url
 		})
+		
 		await uploadBytes(sisbenRef, formData.sisben)
-		.then((ref)=>{
-			formData.sisben=ref.metadata.fullPath
+		await getDownloadURL(sisbenRef)
+		.then((url)=>{
+			formData.sisben= url
 		})
+
 		await uploadBytes(historiaClinicaRef, formData.historiaClinica)
-		.then((ref)=>{
-			formData.historiaClinica=ref.metadata.fullPath
+		await getDownloadURL(historiaClinicaRef)
+		.then((url)=>{
+			formData.historiaClinica= url
 		})
 		tuHistoria({variables: formData})
 	}
@@ -57,7 +62,8 @@ const Tuhistoria = () => {
 			reader.onload = e => {
 				setPhoto(e.target.result);
 			};
-		}	
+		}
+
 	}
 
 

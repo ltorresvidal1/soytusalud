@@ -46,7 +46,7 @@ import {
                   )
                 }}
                 placeholder="Buscar Paciente"
-                variant="outlined"
+                variant="standard"
               />
             </Box>
           </CardContent>

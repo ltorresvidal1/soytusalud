@@ -17,6 +17,7 @@ query Query {
 export const pacientesTablaTuHistoria = gql`
 query Query {
   UsuariosTablaTuHistoria {
+    uid
     nombre
     apellidos
     comunidad
@@ -38,4 +39,43 @@ export const authUser = gql`
       uid
     }
   }
+`
+
+
+export const userData = gql`
+  query Usuario($uid: String!) {
+    Usuario(uid: $uid) {
+      uid
+      identificacion
+      nombre
+      apellidos
+      tipoDocumento
+      foto
+      celular
+      correo
+      formularioTuHistoria
+      aplicaEnFundacion
+      matchService
+      genero
+      fechaNacimiento
+      direccion
+      discapacitado
+      tipoDiscapacidad
+      victimaViolencia
+      identidadGenero
+      grupoPoblacional
+      orientacionSexual
+      municipio
+      departamento
+      EPS
+      tuHistoria
+      serviciosSolicitado
+      historiaClinica
+      sisben
+      autorizacionFoto
+      recopilacionDatos
+      comunidad
+      fechaSolicitud
+  }
+}
 `

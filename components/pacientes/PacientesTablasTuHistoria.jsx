@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Link from 'next/link'
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import PropTypes from 'prop-types';
 import { grupoPoblacional } from '../../utils/grupoPoblacional';
@@ -98,6 +99,9 @@ export const PacientesTablasTuHistoria = ({ UsuariosTablaTuHistoria, customers, 
                 <TableCell>
                   fecha Solicitud
                 </TableCell>
+                <TableCell>
+                  Acciones
+                </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -147,6 +151,11 @@ export const PacientesTablasTuHistoria = ({ UsuariosTablaTuHistoria, customers, 
                   </TableCell>
                   <TableCell>
                     {customer.fechaSolicitud}
+                  </TableCell>
+                  <TableCell>
+                    <Link href={`/private/admin/pacientes/${customer.uid}`}>
+                      <a className="text-blue-500">Ver mas</a>
+                    </Link>
                   </TableCell>
                 </TableRow>
               ))}
