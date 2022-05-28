@@ -70,21 +70,23 @@ const handleDpto=(e)=>{
 								<div>
 									<div className="col-xl-12">
 										<form className="form message-form" ref={form} onChange={updateFormData} onSubmit={handleSubmit}  id="Form_TuHistoria" >
-													
-												<h6 className="form__title">Si consideras que eres una persona en situación de vulnerabilidad, que padece una enfermedad y necesita servicios médicos, diligencia este formulario y te pondremos en contacto con un especialista que te ayude a mejorar su estado de salud.</h6>
-												<label className="control-label mb-1">Por favor, verifique los campos obligatorios marcados con un (*) </label>   
-										
+												<div className="row mt-10">
+													<h6 className="form__title">Si consideras que eres una persona en situación de vulnerabilidad, que padece una enfermedad y necesita servicios médicos, diligencia este formulario y te pondremos en contacto con un especialista que te ayude a mejorar su estado de salud.</h6>
+													<label className="control-label mb-1">Por favor, verifique los campos obligatorios marcados con un (*) </label>   
+												</div>	
+												
 													<div className="row">
 														<div className="col-lg-5"></div>
 														<div className="col-lg-2">
-															<div className="contenedor">
+															<div className="contenedor mt-8">
 																<h6 className="form__title">Foto</h6>
 														
 																	<div className="FotoHistoria">
-																		<Image alt='defaultPhoto' className="profile-pic" id='perfil' name='perfil' src={photo} height="150"    width="180"/>
-																		<label className="centrado" htmlFor="logo"><span className="badge badge-primary r-3">Subir Foto</span></label>   
-																		<input type="file" onChange={handlePhoto} id="foto" name="foto" accept="image/*" className="custom-file-input" required/>
-																		
+																		<Image style={{cursor:"pointer"}} alt='defaultPhoto' className="profile-pic" id='perfil' name='perfil' src={photo} height="150" width="180"/>
+																		<label className="centrado" htmlFor="logo">
+																			<span className="badge badge-primary r-3">Subir Foto</span>
+																		</label>
+																		<input type="file" onChange={handlePhoto} id="foto" name="foto" accept="image/*" className="custom-file-input  " required/>
 																	</div>
 															</div>
 														</div>
@@ -123,9 +125,9 @@ const handleDpto=(e)=>{
 															<input className="form-control" type="text" name="numeroDocumento" id="numeroDocumento" required/>
 														</div>
 														<div className="col-lg-4 mt-3">
-															<label>Departamento</label>
+															<label>Departamento *</label>
 															<select onChange={handleDpto} name="departamento-568" className="form-control" aria-required="true" aria-invalid="false" required>
-																<option value="">Departamento</option>
+																<option value="">Departamento *</option>
 																{departamentos.map((depatamento)=>(
 																	<option value={depatamento.codigo} key={depatamento.codigo}>{depatamento.nombre}</option>
 																))}
@@ -134,7 +136,7 @@ const handleDpto=(e)=>{
 														<div className="col-lg-4 mt-3">
 															<label>Municipio</label>
 															<select name="departamento-568" className="form-control" aria-required="true" aria-invalid="false" required>
-																<option value="">Municipio</option>
+																<option value="">Municipio *</option>
 																{filterMunicipios.map((municipio,index)=>(
 																	<option key={index}>{municipio.nombre}</option>
 																))}
@@ -181,7 +183,7 @@ const handleDpto=(e)=>{
 														</select> 
 													</div>
 													<div className="col-lg-4">
-												<label className="mt-3">Especilidad </label>
+												<label className="mt-3">Especilidad *</label>
 													<select className="form-control" name="Especialidad" id="Especialidad" required>
 														<option disabled >Tipo Especialidad</option>
 														{especialiades.map((especialidad)=>(
@@ -190,7 +192,7 @@ const handleDpto=(e)=>{
 													</select>
 												</div>
 												<div className="col-lg-4">
-													<label className="mt-3">Modalidad de atención*</label>	
+													<label className="mt-3">Modalidad de atención *</label>	
 													<select className="form-control" name="modalidad" id="modalidad" required>
 														<option value="">Seleccionar</option>
 														<option>Domiciliaria</option>
@@ -201,7 +203,7 @@ const handleDpto=(e)=>{
 											</div>
 											<div className="row">
 												<div className="col-lg-4">
-													<label className="mt-3">Disponibilidad horaria</label>
+													<label className="mt-3">Disponibilidad horaria *</label>
 													<select className="form-control" name="modalidad" id="modalidad" required>
 														<option value="">Seleccionar</option>
 													</select>
@@ -218,38 +220,39 @@ const handleDpto=(e)=>{
 											
 											<div>
 												<div className="mt-12"><h6>Adjuntar Documentos</h6></div>
-												<div className="row">
+												<div className="row mt-6">
 													<div className="col-lg-4">
+														<label className="">Distintivo de habilitación* </label>
 														<input type="file" name="distintivoHabilitacion" id="distintivoHabilitacion" class="inputfile inputfile-1" accept=".pdf" required/>
 														<label className="space-x-2" for="distintivoHabilitacion">
 															<svg xmlns="http://www.w3.org/2000/svg" class="iborrainputfile" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"></path></svg>
 															<span class="iborrainputfile">Seleccionar archivo</span>
 														</label>
-														<label className="ml-3">Distintivo de habilitación* </label>
 													</div>
 													<div className="col-lg-4">
+														<label className="">Convalidación ICFES - opcional - </label>
 														<input type="file" name="icfes" id="icfes" class="inputfile inputfile-1" accept=".pdf" />
 														<label className="space-x-2" for="distintivoHabilitacion">
 															<svg xmlns="http://www.w3.org/2000/svg" class="iborrainputfile" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"></path></svg>
 															<span class="iborrainputfile">Seleccionar archivo</span>
 														</label>
-														<label className="ml-3">Convalidación ICFES -opcional- </label>
 													</div>
 													<div className="col-lg-4">
-														<input type="file" name="fotoLogoPublicidad" id="fotoLogoPublicidad" class="inputfile inputfile-1" accept="image/*" />
+														<label className="">Imagen para publicidad </label>
+														<input type="file" name="imagenPublicidad" id="imagenPublicidad" class="inputfile inputfile-1" accept="image/*" />
 														<label className="space-x-2" for="distintivoHabilitacion">
 															<svg xmlns="http://www.w3.org/2000/svg" class="iborrainputfile" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"></path></svg>
 															<span class="iborrainputfile">Seleccionar archivo</span>
 														</label>
-														<label className="ml-3">Imágenes para publicidad </label>
 													</div>
 													<div className="col-lg-4">
+														<label className="">Hoja de vida *</label>
 														<input type="file" name="hojaDeVida" id="hojaDeVida" class="inputfile inputfile-1" accept=".pdf" required />
 														<label className="space-x-2" for="distintivoHabilitacion">
 															<svg xmlns="http://www.w3.org/2000/svg" class="iborrainputfile" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"></path></svg>
 															<span class="iborrainputfile">Seleccionar archivo</span>
 														</label>
-														<label className="ml-3">Hoja de vida*</label>
+														
 													</div>
 												</div>
 												</div>
@@ -262,7 +265,7 @@ const handleDpto=(e)=>{
 												</div>
 
 												<div className="row mt-10">
-													<div className=" flex flex-col ml-3 mt-12">
+													<div className=" flex flex-col ml-3 mt-6">
 														<label className="form__checkbox-label"><span name="convenioProfesionales" id="convenioProfesionales" className="form__label-text">Acepta <a href="https://firebasestorage.googleapis.com/v0/b/quetions-app.appspot.com/o/Terminos%2FContrato%20de%20acceso%20a%20la%20Plataforma%20Fundaci%C3%B3n%20Soy%20T%C3%BA%20Salud%20Profesionales.pdf?alt=media&token=6de426d2-45a9-4edd-9b1c-bab313aaca60" target='_blank' required>Convenio Profesionales</a></span>
 															<input className="form__input-checkbox" type="checkbox" name="checkConvenioProfesionales" id="checkConvenioProfesionales" value="1"/><span className="form__checkbox-mask"></span>
 														</label>
