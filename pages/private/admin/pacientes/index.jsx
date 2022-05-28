@@ -24,7 +24,7 @@ const PacientesPage = ({data}) => {
       }}
     >
       <Container maxWidth={false}>
-        <PacientesToolbar />
+        <PacientesToolbar tab={0} />
         <Box sx={{ mt: 3 }}>
           <PacientesTablas UsuariosTabla={UsuariosTabla} />
         </Box>

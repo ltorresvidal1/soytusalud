@@ -9,6 +9,7 @@ query Query {
     correo
     tipoDocumento
     formularioTuHistoria
+    foto
   }
 }
  
@@ -23,6 +24,7 @@ query Query {
     comunidad
     fechaSolicitud
     grupoPoblacional
+    foto
   }
 }
 `;

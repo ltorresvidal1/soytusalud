@@ -26,9 +26,9 @@ const Tuhistoria = () => {
 	const [servicios,setServicios] = useState([])
 	const { form, formData, updateFormData } =useFormData();
 	let municipiosFiltrado 
-	const imagRef = ref(storage,`${authUser.identificacion}/perfil.jpg`)
-	const historiaClinicaRef = ref(storage ,`${authUser.identificacion}/historiaClinica.pdf`)
-	const sisbenRef = ref(storage,`${authUser.identificacion}/sisben.pdf`)
+	const imagRef = ref(storage,`pacientes/${authUser.identificacion}/perfil.jpg`)
+	const historiaClinicaRef = ref(storage ,`pacientes/${authUser.identificacion}/historiaClinica.pdf`)
+	const sisbenRef = ref(storage,`pacientes/${authUser.identificacion}/sisben.pdf`)
 	
 	const handleSubmit =async(e)=>{
 		e.preventDefault();
@@ -560,7 +560,8 @@ const Tuhistoria = () => {
 												
 												<div className="col-12">
 															
-												<label className="form__checkbox-label" ><span  id="recopilacionDatos" className="form__label-text" value={true} >Autorizo de manera voluntaria, previa, expresa e informada a Soy Tú para la recolección y posterior análisis de los datos aquí suministrados, con la finalidad de ser contactado y atender mis necesidades. Así mismo, declaro que he sido informado sobre el derecho que tengo a conocer, actualizar y rectificar mis datos personales, solicitar prueba de la autorización, ser informado sobre el tratamiento que se ha dado a mis datos personales, presentar quejas ante la Superintendencia de Industria y Comercio (SIC), revocar la autorización otorgada y/o solicitar la supresión de mis datos en los casos en que sea procedente</span>
+													<label className="form__checkbox-label" >
+														<span  id="recopilacionDatos" className="form__label-text" value={true} >Autorizo de manera voluntaria, previa, expresa e informada a Soy Tú para la recolección y posterior análisis de los datos aquí suministrados, con la finalidad de ser contactado y atender mis necesidades. Así mismo, declaro que he sido informado sobre el derecho que tengo a conocer, actualizar y rectificar mis datos personales, solicitar prueba de la autorización, ser informado sobre el tratamiento que se ha dado a mis datos personales, presentar quejas ante la Superintendencia de Industria y Comercio (SIC), revocar la autorización otorgada y/o solicitar la supresión de mis datos en los casos en que sea procedente</span>
 														<input className="form__input-checkbox" type="checkbox" name="recopilacionDatos" id="recopilacionDatos" required/>
 														<span className="form__checkbox-mask"></span>
 													</label>

@@ -17,7 +17,7 @@ const DetallePaciente = ({Usuario}) => {
       <NewPrivateLayout>
         <Head>
           <title>
-            Account | Material Kit
+            Paciente
           </title>
         </Head>
         <Box

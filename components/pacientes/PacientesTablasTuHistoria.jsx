@@ -126,7 +126,7 @@ export const PacientesTablasTuHistoria = ({ UsuariosTablaTuHistoria, customers, 
                       }}
                     >
                       <Avatar
-                        src={customer.avatarUrl}
+                        src={customer.foto}
                         sx={{ mr: 2 }}
                       >
                         {getInitials(customer.nombre)}

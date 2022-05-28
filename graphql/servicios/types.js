@@ -30,10 +30,20 @@ export const typesUsuario = gql`
         celular2:String
     }
     type Query{
-     
+        ServicioTabla: [Servicio]
+        Servicio(uid: Servicio!): Servicio
     }
 
     type Mutation {
+        crearServicio(
+        uid: ID!
+        identificacion: String!
+        nombre: String!
+        apellidos: String!
+        tipoDocumento: String!
+        celular:String!
+        correo: String!
+    ): Usuario
 
     }
     

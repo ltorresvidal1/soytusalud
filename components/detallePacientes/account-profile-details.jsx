@@ -327,7 +327,7 @@ export const AccountProfileDetails = ({user}) => {
                 <Typography
                   variant="outlined"
                 >
-                  <a target="_blank" href={user.sisben} rel="noreferrer">Ver SISBEN</a>
+                  <a className='text-blue-500' target="_blank" href={user.sisben} rel="noreferrer">Ver SISBEN</a>
                 </Typography>
               </Grid>
             </Grid>
@@ -346,7 +346,7 @@ export const AccountProfileDetails = ({user}) => {
                 <Typography
                   variant="outlined"
                 >
-                  <a target="_blank" href={user.historiaClinica} rel="noreferrer">Ver historia clinica</a>
+                  <a className='text-blue-500'  target="_blank" href={user.historiaClinica} rel="noreferrer">Ver historia clinica</a>
                 </Typography>
               </Grid>
             </Grid>
@@ -365,7 +365,7 @@ export const AccountProfileDetails = ({user}) => {
                 <Typography
                   variant="outlined"
                 >
-                  <a target="_blank" href={user.foto} rel="noreferrer">Ver foto</a>
+                  <a className='text-blue-500' target="_blank" href={user.foto} rel="noreferrer">Ver foto</a>
                 </Typography>
               </Grid>
             </Grid>

@@ -1,16 +1,18 @@
 import {
     Box,
-    Button,
     Card,
     CardContent,
     TextField,
     InputAdornment,
-    SvgIcon, Typography
+    SvgIcon,
+    Typography,
   } from '@mui/material';
   import { Search as SearchIcon } from '../icons/search';
+import NavTabs from "./NavTabs";
+
   
-  export const PacientesToolbar = (props) => (
-    <Box {...props}>
+  export const PacientesToolbar = ({tab}) => (
+    <Box>
       <Box
         sx={{
           alignItems: 'center',
@@ -51,6 +53,7 @@ import {
             </Box>
           </CardContent>
         </Card>
+        <NavTabs tab={tab}/>
       </Box>
     </Box>
   );

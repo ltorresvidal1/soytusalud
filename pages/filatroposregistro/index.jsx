@@ -10,7 +10,7 @@ import Image from 'next/image'
 import useFormData from '/hooks/useFormData';
 import PrivatePages from "/components/PrivatePages";
 
-const filatroposregistro = () => {
+const Filatroposregistro = () => {
 
     const router = useRouter()
     const [crearFilantropo] = useMutation(registrarFilantropo)
@@ -129,4 +129,4 @@ const filatroposregistro = () => {
 }
 
 
-export default filatroposregistro
+export default Filatroposregistro

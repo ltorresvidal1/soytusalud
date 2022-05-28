@@ -25,7 +25,7 @@ const PacientesTuHistoria = ({data}) => {
       }}
     >
       <Container maxWidth={false}>
-        <PacientesToolbar />
+        <PacientesToolbar tab={1} />
         <Box sx={{ mt: 3 }}>
           <PacientesTablasTuHistoria UsuariosTablaTuHistoria={UsuariosTablaTuHistoria} />
         </Box>
