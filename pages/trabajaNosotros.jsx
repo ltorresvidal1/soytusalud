@@ -88,21 +88,23 @@ const TrabajaNosotros = () => {
 								<div>
 									<div className="col-xl-12">
 										<form className="form message-form" ref={form} onChange={updateFormData} onSubmit={handleSubmit}  id="Form_TuHistoria" >
-													
-												<h6 className="form__title">Si consideras que eres una persona en situación de vulnerabilidad, que padece una enfermedad y necesita servicios médicos, diligencia este formulario y te pondremos en contacto con un especialista que te ayude a mejorar su estado de salud.</h6>
-												<label className="control-label mb-1">Por favor, verifique los campos obligatorios marcados con un (*) </label>   
-										
+												<div className="row mt-10">
+													<h6 className="form__title">Si consideras que eres una persona en situación de vulnerabilidad, que padece una enfermedad y necesita servicios médicos, diligencia este formulario y te pondremos en contacto con un especialista que te ayude a mejorar su estado de salud.</h6>
+													<label className="control-label mb-1">Por favor, verifique los campos obligatorios marcados con un (*) </label>   
+												</div>	
+												
 													<div className="row">
 														<div className="col-lg-5"></div>
 														<div className="col-lg-2">
-															<div className="contenedor">
+															<div className="contenedor mt-8">
 																<h6 className="form__title">Foto</h6>
 														
 																	<div className="FotoHistoria">
-																		<Image alt='defaultPhoto' className="profile-pic" id='perfil' name='perfil' src={photo} height="150"    width="180"/>
-																		<label className="centrado" htmlFor="logo"><span className="badge badge-primary r-3">Subir Foto</span></label>   
-																		<input type="file" onChange={handlePhoto} id="foto" name="foto" accept="image/*" className="custom-file-input" required/>
-																		
+																		<Image style={{cursor:"pointer"}} alt='defaultPhoto' className="profile-pic" id='perfil' name='perfil' src={photo} height="150" width="180"/>
+																		<label className="centrado" htmlFor="logo">
+																			<span className="badge badge-primary r-3">Subir Foto</span>
+																		</label>
+																		<input type="file" onChange={handlePhoto} id="foto" name="foto" accept="image/*" className="custom-file-input  " required/>
 																	</div>
 															</div>
 														</div>
@@ -143,7 +145,7 @@ const TrabajaNosotros = () => {
 														<div className="col-lg-4 mt-3">
 															<label>Departamento *</label>
 															<select onChange={handleDpto} name="departamento-568" className="form-control" aria-required="true" aria-invalid="false" required>
-																<option value="">Departamento</option>
+																<option value="">Departamento *</option>
 																{departamentos.map((depatamento)=>(
 																	<option value={depatamento.codigo} key={depatamento.codigo}>{depatamento.nombre}</option>
 																))}
@@ -152,7 +154,7 @@ const TrabajaNosotros = () => {
 														<div className="col-lg-4 mt-3">
 															<label>Municipio *</label>
 															<select name="departamento-568" className="form-control" aria-required="true" aria-invalid="false" required>
-																<option value="">Municipio</option>
+																<option value="">Municipio *</option>
 																{filterMunicipios.map((municipio,index)=>(
 																	<option key={index}>{municipio.nombre}</option>
 																))}
@@ -283,7 +285,7 @@ const TrabajaNosotros = () => {
 													</div>
 												</div>
 												<div className="mt-12"><h6>Adjuntar Documentos</h6></div>
-												<div className="row">
+												<div className="row mt-6">
 													<div className="col-lg-4">
 														<input type="file" name="distintivoHabilitacion" id="distintivoHabilitacion" className="inputfile inputfile-1" accept=".pdf" required/>
 														<label className="space-x-2" htmlFor="distintivoHabilitacion">
@@ -292,7 +294,6 @@ const TrabajaNosotros = () => {
 															</svg>
 															<span className="iborrainputfile">Seleccionar archivo</span>
 														</label>
-														<label className="ml-3">Distintivo de habilitación* </label>
 													</div>
 													<div className="col-lg-4">
 														<input type="file" name="convalidaciónICFES" id="convalidaciónICFES" className="inputfile inputfile-1" accept=".pdf" />
@@ -302,7 +303,6 @@ const TrabajaNosotros = () => {
 															</svg>
 															<span className="iborrainputfile">Seleccionar archivo</span>
 														</label>
-														<label className="ml-3">Convalidación ICFES -opcional- </label>
 													</div>
 													<div className="col-lg-4">
 														<input type="file" name="fotoLogoPublicidad" id="fotoLogoPublicidad" className="inputfile inputfile-1" accept="image/*" />
