@@ -69,11 +69,6 @@ export const Navbar = () => {
                                     <a className="text-black main-menu__link font-black">Inicio</a>
                                     </Link>
                                 </li>
-                                <li className="text-black main-menu__item main-menu__item">
-                                    <Link href="/trabajaNosotros">
-                                        <a className="text-black main-menu__link font-black" >Trabaja con Nosotros</a>
-                                    </Link>
-                                </li>
                                 {authUser?(<>
                                 <li className="main-menu__item main-menu__item--has-child">
                                     <Link href="/" > 
@@ -166,6 +161,11 @@ export const Navbar = () => {
                                             </Link>
                                         </li>
                                     </ul>
+                                </li>
+                                <li className="text-black main-menu__item main-menu__item">
+                                    <Link href="/trabajaNosotros">
+                                        <a className="text-black main-menu__link font-black" >Trabaja con Nosotros</a>
+                                    </Link>
                                 </li>
                             </ul>
                             

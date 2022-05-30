@@ -94,23 +94,6 @@ const Tuhistoria = () => {
     <LayoutMain>
 	<PrivatePages login={true}>
 		<main className="main">
-					<section className="promo-primary">
-						<picture>
-						<Image src="/promo_3.jpg" alt="img" layout="fill" objectFit='cover' objectPosition="50% 25%"/>
-						</picture>
-						<div className="promo-primary__description"> <span>Te Escuchamos</span></div>
-						<div className="container">
-							<div className="row">
-								<div className="col-auto">
-									<div className="align-container">
-										<div className="align-container__item"><span className="promo-primary__pre-title">Soy Tú</span>
-											<h1 className="promo-primary__title"><span>Tu </span> <span>Historia</span></h1>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</section>
 					<section className="section contacts no-padding-top">
 						<div className="contacts-wrapper">
 							<div className="container">

@@ -1,49 +1,82 @@
 import {  gql } from 'apollo-server-micro'
 
 
-export const typesUsuario = gql`
-    type Servicio{
-        uid: ID!
-        identificacion:String!
-        nombre: String!
-        apellidos: String!
-        tipoDocumento: String!
-        celular: String!
-        correo: String!
-        direccion: String!
-        tipoDeServicio: String!
+export const typesServicios = gql`
+
+    type Services{
+        tipoServicio: String!
         especialidad: String!
-        modalidadDeAtencion: String!
-        disponibilidadHoraria: String!
-        valorDelServicio: String!
-        cuentaDeAhorros: String!
-        distintivoDeHabilitacion: String!
-        resumeneCurriculum: String!
-        hojaVida: String!
-        foto:String!
-        aceptaConvenio: String!
-        aceptaTratamientoDatos: Boolean!
-        aceptaDocumentoSARLAFT: Boolean!
-        AceptaCodigoEticaSoyTuSalud: Boolean!
-        convalidacionICFES: String
-        paginaWeb: String
-        celular2:String
+        modalidad: String!
+        horaInicio: String!
+        horaFin: String!
+        dias: [String]!
+        valorServicio: String!
     }
+    input crearServices {
+        tipoServicio: String!
+        especialidad: String!
+        modalidad: String!
+        horaInicio: String!
+        horaFin: String!
+        dias: [String]!
+        valorServicio: String!
+    }
+    
+    type Servicio{
+        identificacion: ID!
+        foto:String!
+        nombreCompleto: String!
+        tipoDocumento: String!
+        numeroDocumento: String!
+        celular: String!
+        departamento: String!
+        municipio: String!
+        direccion: String!
+        correo: String!
+        paginaWeb: String
+        servicios: [Services]!
+        cuentaDeAhorros: String!
+        distintivoHabilitacion: String!
+        convalidacionIcfes: String
+        fotoLogoPublicidad: String!
+        hojaVida: String!
+        resumenCurriculum: String!
+        aceptaConvenio: String!
+        aceptaTratamientoDatos: String!
+        aceptaDocumentoSARLAFT: String!
+        aceptaCodigoEticaSoyTuSalud: String!
+    }
+
+   
     type Query{
-        ServicioTabla: [Servicio]
-        Servicio(uid: Servicio!): Servicio
+        ServiciosTabla: [Servicio]
+        Servicio(identificacion: String!): Servicio
     }
 
     type Mutation {
         crearServicio(
-        uid: ID!
-        identificacion: String!
-        nombre: String!
-        apellidos: String!
+        foto: String!,
+        nombreCompleto: String!
         tipoDocumento: String!
+        identificacion: String!
         celular:String!
+        departamento: String!
+        municipio: String!
+        direccion: String!
         correo: String!
-    ): Usuario
+        paginaWeb: String
+        servicios: [crearServices   ]!
+        cuentaDeAhorros: String!
+        distintivoHabilitacion: String!
+        convalidacionIcfes: String
+        fotoLogoPublicidad: String!
+        hojaVida: String!
+        resumenCurriculum: String!
+        aceptaConvenio: String!
+        aceptaTratamientoDatos: String!
+        aceptaDocumentoSARLAFT: String!
+        aceptaCodigoEticaSoyTuSalud: String!
+    ): Servicio
 
     }
     
