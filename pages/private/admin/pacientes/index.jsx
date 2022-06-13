@@ -6,6 +6,18 @@ import { client } from '../../../../graphql/initClientSide'
 import { usuariosTablas } from '../../../../graphql/user/queries'
 import { PacientesTablas } from '../../../../components/pacientes/PacientesTablas'
 
+export const getServerSideProps = async (ctx) => {
+  const {data} = await client.query({
+    query: usuariosTablas
+  })
+  const {UsuariosTabla} = data
+  console.log(data)
+  return {
+      props: {
+        UsuariosTabla
+      }
+  }
+}
 const PacientesPage = ({UsuariosTabla}) => {
   
   return (
@@ -34,17 +46,6 @@ const PacientesPage = ({UsuariosTabla}) => {
 }
 
 
-export const getServerSideProps = async (ctx) => {
-  const {data} = await client.query({
-    query: usuariosTablas
-  })
-  const {UsuariosTabla} = data
-  console.log(data)
-  return {
-      props: {
-        UsuariosTabla
-      }
-  }
-}
+
 
 export default PacientesPage
