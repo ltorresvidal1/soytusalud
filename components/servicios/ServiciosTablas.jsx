@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import PropTypes from 'prop-types';
+import { departamentos } from '../../utils/deparamentos';
+import Link from 'next/link';
 import {
   Avatar,
   Box,
@@ -18,7 +20,7 @@ import {
 } from '@mui/material';
 import { getInitials } from '../../utils/get-initials';
 
-export const ServiciosTablas = ({ UsuariosTabla, ...rest }) => {
+export const ServiciosTablas = ({ serviciosData, ...rest }) => {
   
   const [selectedCustomerIds, setSelectedCustomerIds] = useState([]);
   const [limit, setLimit] = useState(10);
@@ -28,7 +30,7 @@ export const ServiciosTablas = ({ UsuariosTabla, ...rest }) => {
     let newSelectedCustomerIds;
 
     if (event.target.checked) {
-      newSelectedCustomerIds = UsuariosTabla.map((customer) => customer.identificacion);
+      newSelectedCustomerIds = serviciosData.map((service) => service.identificacion);
     } else {
       newSelectedCustomerIds = [];
     }
@@ -73,11 +75,11 @@ export const ServiciosTablas = ({ UsuariosTabla, ...rest }) => {
               <TableRow>
                 <TableCell padding="checkbox">
                   <Checkbox
-                    checked={selectedCustomerIds.length === UsuariosTabla.length}
+                    checked={selectedCustomerIds.length === serviciosData.length}
                     color="primary"
                     indeterminate={
                       selectedCustomerIds.length > 0
-                      && selectedCustomerIds.length < UsuariosTabla.length
+                      && selectedCustomerIds.length < serviciosData.length
                     }
                     onChange={handleSelectAll}
                   />
@@ -89,27 +91,30 @@ export const ServiciosTablas = ({ UsuariosTabla, ...rest }) => {
                   identificacion
                 </TableCell>
                 <TableCell>
-                  Comunidad
+                  Departamento
                 </TableCell>
                 <TableCell>
-                  grupo Poblacional
+                  Municipio
                 </TableCell>
                 <TableCell>
-                  Fecha de Solicitud
+                  Direccion
+                </TableCell>
+                <TableCell>
+                  Detalle
                 </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {UsuariosTabla.slice(0, limit).map((customer) => (
+              {serviciosData.slice(0, limit).map((service) => (
                 <TableRow
                   hover
-                  key={customer.identificacion}
-                  selected={selectedCustomerIds.indexOf(customer.identificacion) !== -1}
+                  key={serviciosData.identificacion}
+                  selected={selectedCustomerIds.indexOf(service.identificacion) !== -1}
                 >
                   <TableCell padding="checkbox">
                     <Checkbox
-                      checked={selectedCustomerIds.indexOf(customer.identificacion) !== -1}
-                      onChange={(event) => handleSelectOne(event, customer.identificacion)}
+                      checked={selectedCustomerIds.indexOf(service.identificacion) !== -1}
+                      onChange={(event) => handleSelectOne(event, service.identificacion)}
                       value="true"
                     />
                   </TableCell>
@@ -121,30 +126,35 @@ export const ServiciosTablas = ({ UsuariosTabla, ...rest }) => {
                       }}
                     >
                       <Avatar
-                        src={customer.avatarUrl}
+                        src={service.foto}
                         sx={{ mr: 2 }}
                       >
-                        {getInitials(customer.nombre)}
+                        {getInitials(service.nombre)}
                       </Avatar>
                       <Typography
                         color="textPrimary"
                         variant="body1"
                       >
-                        {customer.nombre}
+                        {service.nombreCompleto}
                       </Typography>
                     </Box>
                   </TableCell>
                   <TableCell>
-                    {customer.identificacion}
+                    {service.identificacion}
                   </TableCell>
                   <TableCell>
-                    {customer.comunidad?customer.comunidad:'N/A'}
+                    {departamentos.filter((dpto)=> dpto.codigo===service.departamento)[0].nombre}
                   </TableCell>
                   <TableCell>
-                    {customer.grupoPoblacional}
+                    {service.municipio}
                   </TableCell>
                   <TableCell>
-                    format
+                    {service.direccion}
+                  </TableCell>
+                  <TableCell>
+                    <Link href={`servicios/detalleServicio/${service.identificacion}`}>
+                      <a className='text-blue-500'>Detalles</a>
+                    </Link>
                   </TableCell>
                 </TableRow>
               ))}
@@ -154,7 +164,7 @@ export const ServiciosTablas = ({ UsuariosTabla, ...rest }) => {
       </PerfectScrollbar>
       <TablePagination
         component="div"
-        count={UsuariosTabla.length}
+        count={serviciosData.length}
         onPageChange={handlePageChange}
         onRowsPerPageChange={handleLimitChange}
         page={page}
@@ -166,5 +176,5 @@ export const ServiciosTablas = ({ UsuariosTabla, ...rest }) => {
 };
 
 // ServiciosTablas.propTypes = {
-//   UsuariosTabla: PropTypes.array.isRequired
+//   serviciosData: PropTypes.array.isRequired
 // };

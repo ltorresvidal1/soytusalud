@@ -9,17 +9,18 @@ import { especialiades } from '../utils/especialidades';
 import { departamentos } from '../utils/deparamentos';
 import { municipios } from '../utils/municipios';
 import AddBoxIcon from '@mui/icons-material/AddBox';
-import { CrearServicio } from '../graphql/servicios/mutations';
+import { crearServicios } from '../graphql/servicios/mutations';
 import useFormData from '../hooks/useFormData';
 import { LayoutMain } from '../components/layouts/LayoutMain';
-
+import {useRouter} from 'next/router';
 const valuesEspacialiad=[
 	"especialidad","modalidad","horaInicio","horaFin","valorServicio","tipoServicio"
 ]
 
 
 const TrabajaNosotros = () => {
-	const [crearServicio] = useMutation(CrearServicio)
+	const router = useRouter();
+	const [crearServicio] = useMutation(crearServicios)
 	const [filterMunicipios,setFilterMunicipios]= useState([])
 	const [photo,setPhoto] = useState("/Foto.png")
 	const { form, formData, updateFormData } =useFormData();
@@ -27,17 +28,17 @@ const TrabajaNosotros = () => {
 	const [securities,setSecurities]=useState(true)
 	let municipiosFiltrado 
 	const [serviciosLista,setServiciosLista]=useState([])
-	formData.servicios=[]
 	const regex = /(\d+)/g;
 
 	const handleSubmit =async(e)=>{
+		formData.servicios=[]
 		e.preventDefault();
 		if(securities){
-			const foto = ref(storage,`servicios/${formData.numeroDocumento}/foto.jpg`)
-			const distintivoHabilitacion = ref(storage,`servicios/${formData.numeroDocumento}/distintivoHabilitacion.pdf`)
-			const convalidacionIcfes = ref(storage ,`servicios/${formData.numeroDocumento}/convalidacionIcfes.pdf`)
-			const fotoLogoPublicidad = ref(storage ,`servicios/${formData.numeroDocumento}/fotoLogoPublicidad.jpg`)
-			const hojaVida = ref(storage,`servicios/${formData.numeroDocumento}/hojaVida.pdf`)
+			const foto = ref(storage,`servicios/${formData.identificacion}/foto.jpg`)
+			const distintivoHabilitacion = ref(storage,`servicios/${formData.identificacion}/distintivoHabilitacion.pdf`)
+			const convalidacionIcfes = ref(storage ,`servicios/${formData.identificacion}/convalidacionIcfes.pdf`)
+			const fotoLogoPublicidad = ref(storage ,`servicios/${formData.identificacion}/fotoLogoPublicidad.jpg`)
+			const hojaVida = ref(storage,`servicios/${formData.identificacion}/hojaVida.pdf`)
 
 			await uploadBytes(foto,formData.foto)
 			await uploadBytes(distintivoHabilitacion,formData.distintivoHabilitacion)
@@ -66,17 +67,23 @@ const TrabajaNosotros = () => {
 				formData.hojaVida=url
 			})
 
-			valuesEspacialiad.forEach((special)=>{
-				Object.keys(formData).filter(value=> value.includes(`${special}`)).map(value=>{
+			const listaKeys = Object.keys(formData)
 
-					serviciosLista[value.match(regex)[0]][`${special}`]=formData[`${special}${value.match(regex)[0]}`]
+			valuesEspacialiad.forEach((special)=>{
+				const listaFiltrada = listaKeys.filter(value=> value.includes(`${special}`))
+				listaFiltrada.forEach((value)=>{
+					const position = value.match(regex)[0]
+					serviciosLista[position][`${special}`]=formData[`${special}${position}`]
 					formData.servicios=serviciosLista
-					delete formData[`${special}${value.match(regex)[0]}`]
 				})
 			})
+			console.log(formData)
+			crearServicio({variables: formData}).then(res=>{
+				router.push("/")
+			}).catch(err=>{
+				console.log(err)
+			})
 			
-			crearServicio({variables: formData})
-
 		}else{
 			console.log("error")
 		}

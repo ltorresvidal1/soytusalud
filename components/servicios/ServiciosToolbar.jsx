@@ -56,7 +56,7 @@ import {
                   )
                 }}
                 placeholder="Buscar Servicio"
-                variant="outlined"
+                variant="standard"
               />
             </Box>
           </CardContent>

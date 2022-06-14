@@ -2,10 +2,9 @@ import { useState } from 'react'
 import Head from 'next/head'
 import { client } from '../../../../graphql/initClientSide'
 import { userData  } from '../../../../graphql/user/queries'
-import { AccountProfile } from '../../../../components/detallePacientes/account-profile'
 import { AccountProfileDetails } from '../../../../components/detallePacientes/account-profile-details'
 import NewPrivateLayout from '../../../../components/layouts/NewPrivateLayout/NewPrivateLayout'
-import { Box, Container, Grid, Typography } from '@mui/material'
+import { Box, Container, Grid } from '@mui/material'
 
 
 const DetallePaciente = ({Usuario}) => {

@@ -27,7 +27,6 @@ export const typesServicios = gql`
         foto:String!
         nombreCompleto: String!
         tipoDocumento: String!
-        numeroDocumento: String!
         celular: String!
         departamento: String!
         municipio: String!
@@ -65,7 +64,7 @@ export const typesServicios = gql`
         direccion: String!
         correo: String!
         paginaWeb: String
-        servicios: [crearServices   ]!
+        servicios: [crearServices]!
         cuentaDeAhorros: String!
         distintivoHabilitacion: String!
         convalidacionIcfes: String
