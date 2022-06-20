@@ -6,13 +6,9 @@ import PropTypes from 'prop-types';
 import { Box, Button, Divider, Drawer, Typography, useMediaQuery } from '@mui/material';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import { ChartBar as ChartBarIcon } from '../icons/chart-bar';
-import { Cog as CogIcon } from '../icons/cog';
-import { Lock as LockIcon } from '../icons/lock';
 import { ShoppingBag as ShoppingBagIcon } from '../icons/shopping-bag';
 import { User as UserIcon } from '../icons/user';
-import { UserAdd as UserAddIcon } from '../icons/user-add';
 import { Users as UsersIcon } from '../icons/users';
-import { XCircle as XCircleIcon } from '../icons/x-circle';
 import { NavItem } from './nav-item';
 
 
@@ -33,30 +29,10 @@ const items = [
     title: 'Servicios'
   },
   {
-    href: '/account',
+    href: '/private/admin/filantropos',
     icon: (<UserIcon fontSize="small" />),
-    title: 'Account'
+    title: 'Filantropos'
   },
-  {
-    href: '/settings',
-    icon: (<CogIcon fontSize="small" />),
-    title: 'Settings'
-  },
-  {
-    href: '/login',
-    icon: (<LockIcon fontSize="small" />),
-    title: 'Login'
-  },
-  {
-    href: '/register',
-    icon: (<UserAddIcon fontSize="small" />),
-    title: 'Register'
-  },
-  {
-    href: '/404',
-    icon: (<XCircleIcon fontSize="small" />),
-    title: 'Error'
-  }
 ];
 
 export const DashboardSidebar = (props) => {
@@ -97,7 +73,7 @@ export const DashboardSidebar = (props) => {
               passHref
             >
               <a>
-                <Image src={"/logo_dark.png"} alt="soyTuLogo" width={156.25} height={50} />
+                <Image src={"/Logo_P4.png"} alt="soyTuLogo" width={156.25} height={156.25} quality={"100"} />
               </a>
             </Link>
           </Box>
@@ -133,7 +109,7 @@ export const DashboardSidebar = (props) => {
               sx={{ mt: 2 }}
               variant="contained"
             >
-              Pro Live Preview
+              Cerrar sesion
             </Button>
         </Box>
       </Box>

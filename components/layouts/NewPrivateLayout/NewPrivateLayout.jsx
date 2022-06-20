@@ -13,7 +13,7 @@ const NewPrivateLayout = ({children}) => {
 
   return (
       <>
-         <DashboardLayoutRoot>
+        <DashboardLayoutRoot>
             <Box
             sx={{
                 display: 'flex',

@@ -4,23 +4,13 @@ import { gql } from "apollo-server-micro";
 export const serviciosTablaData = gql`
     query ServiciosTabla {
         ServiciosTabla {
-            identificacion
             foto
             nombreCompleto
-            tipoDocumento
-            celular
             departamento
             municipio
             direccion
-            correo
             servicios {
                 tipoServicio
-                especialidad
-                modalidad
-                horaInicio
-                horaFin
-                dias
-                valorServicio
             }
         }
     }

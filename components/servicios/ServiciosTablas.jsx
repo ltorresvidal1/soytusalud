@@ -16,8 +16,11 @@ import {
   TableRow,
   Typography,
   TableContainer,
-  Paper
+  Paper,
+  Stack,
+  FormControlLabel
 } from '@mui/material';
+import { AntSwitch , IOSSwitch } from './ServiciosTabla.css';
 import { getInitials } from '../../utils/get-initials';
 
 export const ServiciosTablas = ({ serviciosData, ...rest }) => {
@@ -88,9 +91,6 @@ export const ServiciosTablas = ({ serviciosData, ...rest }) => {
                   Nombre
                 </TableCell>
                 <TableCell>
-                  identificacion
-                </TableCell>
-                <TableCell>
                   Departamento
                 </TableCell>
                 <TableCell>
@@ -100,7 +100,13 @@ export const ServiciosTablas = ({ serviciosData, ...rest }) => {
                   Direccion
                 </TableCell>
                 <TableCell>
+                  Servicios Principales
+                </TableCell>
+                <TableCell>
                   Detalle
+                </TableCell>
+                <TableCell>
+                  Habilitado
                 </TableCell>
               </TableRow>
             </TableHead>
@@ -140,9 +146,6 @@ export const ServiciosTablas = ({ serviciosData, ...rest }) => {
                     </Box>
                   </TableCell>
                   <TableCell>
-                    {service.identificacion}
-                  </TableCell>
-                  <TableCell>
                     {departamentos.filter((dpto)=> dpto.codigo===service.departamento)[0].nombre}
                   </TableCell>
                   <TableCell>
@@ -152,9 +155,17 @@ export const ServiciosTablas = ({ serviciosData, ...rest }) => {
                     {service.direccion}
                   </TableCell>
                   <TableCell>
+                    {service.servicios.map((servicio) => (servicio.tipoServicio + ', '))}
+                  </TableCell>
+                  <TableCell>
                     <Link href={`servicios/detalleServicio/${service.identificacion}`}>
                       <a className='text-blue-500'>Detalles</a>
                     </Link>
+                  </TableCell>
+                  <TableCell>
+                  <FormControlLabel
+                      control={<IOSSwitch sx={{ m: 1 }} defaultChecked />}
+                  />
                   </TableCell>
                 </TableRow>
               ))}
