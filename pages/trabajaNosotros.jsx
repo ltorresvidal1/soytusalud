@@ -2,9 +2,11 @@
 import Head from 'next/head'
 import { useState } from 'react';
 import Image from 'next/image'
+import { client } from '../graphql/initClientSide';
 import { storage } from '../firebase/initConfig';
 import { ref, uploadBytes,getDownloadURL } from 'firebase/storage';
-import { useMutation } from '@apollo/client';
+import { useMutation  } from '@apollo/client';
+import { CodeServices } from '../graphql/servicesCodes/queries'
 import { especialiades } from '../utils/especialidades';
 import { departamentos } from '../utils/deparamentos';
 import { municipios } from '../utils/municipios';
@@ -13,21 +15,27 @@ import { crearServicios } from '../graphql/servicios/mutations';
 import useFormData from '../hooks/useFormData';
 import { LayoutMain } from '../components/layouts/LayoutMain';
 import {useRouter} from 'next/router';
+import { async } from '@firebase/util';
+import { useEffect } from 'react';
 const valuesEspacialiad=[
 	"especialidad","modalidad","horaInicio","horaFin","valorServicio","tipoServicio"
 ]
 
+let filtrosCode = {
+	TIPO_DE_SERVICIO: "",
+	DESCRIPCION_SERVICIO:""
+}
 
 const TrabajaNosotros = () => {
 	const router = useRouter();
-	const [crearServicio] = useMutation(crearServicios)
-	const [filterMunicipios,setFilterMunicipios]= useState([])
-	const [photo,setPhoto] = useState("/Foto.png")
-	const { form, formData, updateFormData } =useFormData();
-	const [servicios,setServicios]=useState([0])
-	const [securities,setSecurities]=useState(true)
-	let municipiosFiltrado 
-	const [serviciosLista,setServiciosLista]=useState([])
+	const [ crearServicio ] = useMutation(crearServicios)
+	const [ filterMunicipios, setFilterMunicipios ] = useState([])
+	const [ photo, setPhoto ] = useState("/Foto.png")
+	const { form, formData, updateFormData } = useFormData();
+	const [ servicios, setServicios ] = useState([0])
+	const [ securities, setSecurities ] = useState(true)
+	const [ serviciosLista, setServiciosLista ] = useState([])
+	const [ codigoServicios, setCodigoServicios ] = useState([])
 	const regex = /(\d+)/g;
 
 	const handleSubmit =async(e)=>{
@@ -89,6 +97,25 @@ const TrabajaNosotros = () => {
 		}
 	
 	}
+
+	const handleCodeSelector = (e) => {
+		
+		filtrosCode.TIPO_DE_SERVICIO = e.target.value
+	}
+
+	const handleSearch = async ()=> {
+		console.log(filtrosCode)
+		const {data} = await client.query({
+			query: CodeServices,
+			variables:{TIPO_DE_SERVICIO: filtrosCode.TIPO_DE_SERVICIO ,
+				 DESCRIPCION_SERVICIO: filtrosCode.DESCRIPCION_SERVICIO }
+		  })
+		setCodigoServicios(data)
+
+
+		
+	}
+
 
 	const handlePhoto = async (e)=>{
 		const reader = new FileReader();
@@ -246,37 +273,39 @@ const TrabajaNosotros = () => {
 															<div className="col-12 mt-12"><h6 className="form__title">{`Servicio ${index +1}`}</h6></div>
 														</div>
 														<div className="row">
-															<div className="col-lg-4">
+															<div className="col-lg-5">
 																<label className="mt-3">Tipo de servicio *</label>
-																	<select className="form-control" name={`tipoServicio${index}`} id="especialidad" required>
+																	<select className="form-control" onChange={handleCodeSelector} name={`tipoServicio${index}`} id="especialidad" required>
 																		<option value="" >Tipo de servicio</option>
-																		<option >Consulta Médica General</option>
-																		<option >Consulta Médica Especializada</option>
-																		<option >Ayudas diagnósticas</option>
-																		<option >Rayos x</option>
+																		<option >Consulta Medica General</option>
+																		<option >Consulta Medica Especializada</option>
+																		<option >Otros Profesionales de la salud</option>
+																		<option >Ayudas diagnosticas</option>
+																		<option >Medicamentos</option>
+																		<option	>Examenes de Laboratorio</option>
+																		<option >Rayos X</option>
 																		<option >Terapias</option>
-																		<option >Cirugía Ambulatoria</option>
-																		<option >Otros servicios adicionales</option>
+																		<option >Cirugia Ambulatoria y Otros Servicios</option>
 																	</select>
 															</div>
-															<div className="col-lg-4">
-																<label className="mt-3">Especilidad *</label>
+															<div className="col-lg-5">
+																<label className="mt-3">Nombre Servicio *</label>
+																<input onChange={ (e)=> filtrosCode.DESCRIPCION_SERVICIO = e.target.value } className="form-control" type="text" />
+															</div>
+														<div className="col-lg-2">
+															<div onClick={handleSearch}>oe</div>
+														</div>
+														</div>
+														<div className='row'>
+															<div className='col-12'>
+																<laber>Resultados</laber>
 																<select className="form-control" name={`especialidad${index}`} id="especialidad" required>
 																	<option value="" >Tipo Especialidad</option>
-																	{especialiades.map((especialidad)=>(
-																		<option key={especialidad} value={especialidad}>{especialidad}</option>
+																	{codigoServicios?.CodeService &&  codigoServicios?.CodeService.map((codigo ,index)=>(
+																		<option key={index} value={codigo.DESCRIPCION_SERVICIO}>{codigo.DESCRIPCION_SERVICIO} {codigo.CODIGO}</option>
 																		))}
 																</select>
 															</div>
-														<div className="col-lg-4">
-															<label className="mt-3">Modalidad de atención *</label>	
-															<select className="form-control" name={`modalidad${index}`} id="modalidad" required>
-																<option value="">Seleccionar</option>
-																<option>Domiciliaria</option>
-																<option>Presencial</option>
-																<option>Telemedicina</option>
-															</select>
-														</div>
 														</div>
 														<div className='row' >
 															<div className="col-12 mt-4 text-sm font-bold"><span>Disponibilidad Horaria</span></div>

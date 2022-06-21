@@ -9,7 +9,9 @@ export const typesServiciosCodes = gql`
         TIPO_DE_SERVICIO: String!
     } 
     type Query{
-        CodeService(TIPO_DE_SERVICIO: String!): [ServicesCodes]
+        CodeService(TIPO_DE_SERVICIO: String!
+        DESCRIPCION_SERVICIO: String!
+        ): [ServicesCodes]
     }
     type Mutation{
         crearCode(DESCRIPCION_SERVICIO: String!
