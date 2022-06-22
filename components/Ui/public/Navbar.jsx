@@ -7,90 +7,95 @@ import { signOut } from 'firebase/auth';
 import { useAuth } from '../../../context/useAuth';
 import { useRouter } from 'next/router'
 import LoginModal from '../../LoginModal';
+import HandshakeIcon from '@mui/icons-material/Handshake';
 
 import {
   BookmarkAltIcon,
   CalendarIcon,
   ChartBarIcon,
+  UserIcon,
   CursorClickIcon,
   MenuIcon,
+  HomeIcon,
   PhoneIcon,
   PlayIcon,
+  BriefcaseIcon,
+  UserGroupIcon,
   RefreshIcon,
   ShieldCheckIcon,
   SupportIcon,
   ViewGridIcon,
+  OfficeBuildingIcon,
   XIcon,
 } from '@heroicons/react/outline'
-import { ChevronDownIcon } from '@heroicons/react/solid'
+import { ChevronDownIcon} from '@heroicons/react/solid'
 
 const solutions = [
   {
-    name: 'Analytics',
+    name: 'Incio',
     description: 'Get a better understanding of where your traffic is coming from.',
-    href: '#',
-    icon: ChartBarIcon,
+    href: '/',
+    icon: HomeIcon  ,
   },
   {
-    name: 'Engagement',
+    name: 'Pacientes',
     description: 'Speak directly to your customers in a more meaningful way.',
-    href: '#',
-    icon: CursorClickIcon,
+    subNav:[
+        {
+            link:"tuhistoria",
+            label:"Tu historia"
+        }
+    ],
+    icon: UserIcon,
   },
-  { name: 'Security', description: "Your customers' data will be safe and secure.", href: '#', icon: ShieldCheckIcon },
+  { 
+    name: 'Filantropos', 
+    description: "Your customers' data will be safe and secure.", 
+    subNav:[
+        {
+            link:"historias",
+            label:"Pacientes Clasificados"
+        },
+        {
+            link:"trasabilidad",
+            label:"Trasabilidad Pacientes"
+        },
+        {
+            link:"donaciones",
+            label:"Donaciones"
+        }
+    ],
+    icon: UserGroupIcon
+  },
   {
-    name: 'Integrations',
+    name: 'Aliados',
     description: "Connect with third-party tools that you're already using.",
-    href: '#',
-    icon: ViewGridIcon,
+    subNav:[
+        {
+            link:"instituciones",
+            label:"Instituciones"
+        },
+        {
+            link:"empresasconproposito",
+            label:"Empresas con proposito"
+        },
+        {
+            link:"personasconproposito",
+            label:"Personas con proposito"
+        }
+    ],
+    icon: OfficeBuildingIcon,
   },
   {
-    name: 'Automations',
-    description: 'Build strategic funnels that will drive your customers to convert',
-    href: '#',
-    icon: RefreshIcon,
+    name: 'Trabaja con nosotros',
+    href: '/trabajaNosotros',
+    icon: BriefcaseIcon,
   },
 ]
-const callsToAction = [
-  { name: 'Watch Demo', href: '#', icon: PlayIcon },
-  { name: 'Contact Sales', href: '#', icon: PhoneIcon },
-]
-const resources = [
-  {
-    name: 'Help Center',
-    description: 'Get all of your questions answered in our forums or contact support.',
-    href: '#',
-    icon: SupportIcon,
-  },
-  {
-    name: 'Guides',
-    description: 'Learn how to maximize our platform to get the most out of it.',
-    href: '#',
-    icon: BookmarkAltIcon,
-  },
-  {
-    name: 'Events',
-    description: 'See what meet-ups and other events we might be planning near you.',
-    href: '#',
-    icon: CalendarIcon,
-  },
-  { name: 'Security', description: 'Understand how we take your privacy seriously.', href: '#', icon: ShieldCheckIcon },
-]
-const recentPosts = [
-  { id: 1, name: 'Boost your conversion rate', href: '#' },
-  { id: 2, name: 'How to use search engine optimization to drive traffic to your site', href: '#' },
-  { id: 3, name: 'Improve your customer experience', href: '#' },
-]
-
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
-}
 
 export const Navbar = () => {
     const router = useRouter()
     const { authUser ,setAuthUser } = useAuth()
-    const [open, setOpen] = useState(false)
-    
     const handlerLogOut=()=>{
         signOut(auth)
         .then(()=>{
@@ -122,15 +127,8 @@ export const Navbar = () => {
         <Popover className="container-fluid relative bg-transparent">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
             <div className="flex justify-between items-center py-6 lg:justify-start lg:space-x-10">
-            <div className="flex justify-start sm:w-0 sm:flex-1">
-                <a href="#">
-                <span className="sr-only">Workflow</span>
-                <img
-                    className="h-8 w-auto sm:h-10"
-                    src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
-                    alt=""
-                />
-                </a>
+            <div className="flex justify-start items-center sm:w-0 sm:flex-1">
+            <Image src="/Logo_P4.png" width={'70px'} height={'70px'} alt="logo"/>
             </div>
             <div className="-mr-2 -my-2 lg:hidden">
                 <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
@@ -139,6 +137,7 @@ export const Navbar = () => {
                 </Popover.Button>
             </div>
             <Popover.Group as="nav" className="hidden lg:flex space-x-10">
+
                 <nav>
                     <ul className="main-menu">
                         <li className="text-black main-menu__item main-menu__item">
@@ -161,7 +160,7 @@ export const Navbar = () => {
                             </ul>
                         </li>
                         </>): null} 
-                        <li className="main-menu__item main-menu__item--has-child">
+                        {/* <li className="main-menu__item main-menu__item--has-child">
                             <Link href="/" >
                                 <a className="main-menu__link">Comunidades E Instituciones</a>
                             </Link>
@@ -192,7 +191,7 @@ export const Navbar = () => {
                                     </Link>
                                 </li>
                             </ul>
-                        </li>
+                        </li> */}
                         <li className="main-menu__item main-menu__item--has-child">
                             <Link href="/" > 
                                 <a className="main-menu__link">Filántropos</a>
@@ -245,17 +244,17 @@ export const Navbar = () => {
                             </Link>
                         </li>
                         <li className="text-black main-menu__item main-menu__item">
-                            {/* <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0"> */}
                                 <a href="#" className="whitespace-nowrap main-menu__link  text-base font-medium text-gray-500 hover:text-gray-900">
                                 Sign in
                                 </a>
+                        </li>
+                        <li className="text-black main-menu__item main-menu__item">
                                 <a
                                 href="#"
-                                className="main-menu__link ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
+                                className="main-menu__link whitespace-nowrap"
                                 >
-                                Sign up
+                                    <span className='items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700'> Sign up </span> 
                                 </a>
-                            {/* </div> */}
 
                         </li>
                         
@@ -277,16 +276,12 @@ export const Navbar = () => {
             leaveFrom="opacity-100 scale-100"
             leaveTo="opacity-0 scale-95"
         >
-            <Popover.Panel focus className="absolute z-30 top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden">
+            <Popover.Panel focus className=" overscroll-y-auto absolute z-30 top-0 inset-x-0 p-2 transition transform origin-top-right lg:hidden">
             <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-white divide-y-2 divide-gray-50">
                 <div className="pt-5 pb-6 px-5">
                 <div className="flex items-center justify-between">
                     <div>
-                    <img
-                        className="h-8 w-auto"
-                        src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
-                        alt="Workflow"
-                    />
+                    <Image src="/logo_dark.png" width={'150px'} height={'50px'} alt="logo"/>
                     </div>
                     <div className="-mr-2">
                     <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
@@ -298,37 +293,12 @@ export const Navbar = () => {
                 <div className="mt-6">
                     <nav className="grid gap-y-8">
                     {solutions.map((item) => (
-                        <a
-                        key={item.name}
-                        href={item.href}
-                        className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50"
-                        >
-                        <item.icon className="flex-shrink-0 h-6 w-6 text-indigo-600" aria-hidden="true" />
-                        <span className="ml-3 text-base font-medium text-gray-900">{item.name}</span>
-                        </a>
+                        <SubMenu key={item.name} item={item}/>
                     ))}
                     </nav>
                 </div>
                 </div>
                 <div className="py-6 px-5 space-y-6">
-                <div className="grid grid-cols-2 gap-y-4 gap-x-8">
-                    <a href="#" className="text-base font-medium text-gray-900 hover:text-gray-700">
-                    Pricing
-                    </a>
-
-                    <a href="#" className="text-base font-medium text-gray-900 hover:text-gray-700">
-                    Docs
-                    </a>
-                    {resources.map((item) => (
-                    <a
-                        key={item.name}
-                        href={item.href}
-                        className="text-base font-medium text-gray-900 hover:text-gray-700"
-                    >
-                        {item.name}
-                    </a>
-                    ))}
-                </div>
                 <div>
                     <a
                     href="#"
@@ -352,6 +322,46 @@ export const Navbar = () => {
   )
 }
 
+
+const SubMenu =({item})=>{
+    const [open, setOpen] = useState(false)
+
+    return(
+        <li key={item.name} className='-m-3 p-3 list-none items-center rounded-md hover:bg-gray-50 '>
+        {item.href?
+        (
+            <>
+                <Link href={item.href} passHref>
+                    <div className='flex cursor-pointer' onClick={()=>setOpen(!open)}>
+                        <item.icon className="flex-shrink-0 h-6 w-6 text-indigo-600" aria-hidden="true" />
+                        <span className="ml-3 text-base font-medium text-gray-900">{item.name}</span>    
+                    </div>
+                </Link>
+            </>
+        )
+        :
+        (
+            <>
+                <div className='flex cursor-pointer' onClick={()=>setOpen(!open)}>
+                    <item.icon className="flex-shrink-0 h-6 w-6 text-indigo-600" aria-hidden="true" />
+                    <span className="ml-3 text-base font-medium text-gray-900">{item.name}</span>    
+                </div>
+                <ul className={open?'ml-5':"ml-5 hidden"}>
+                    {item.subNav.map(sub=>(
+                        <li key={sub.link}>
+                            <Link href={sub.link}>
+                                <a className='text-blue-500'>{sub.label}</a>
+                            </Link>
+                        </li>
+                    ))}
+
+                </ul>
+            </>     
+        )}
+
+        </li>
+    )
+}
 
 
 // import Image from 'next/image';
