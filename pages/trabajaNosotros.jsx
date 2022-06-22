@@ -7,7 +7,6 @@ import { storage } from '../firebase/initConfig';
 import { ref, uploadBytes,getDownloadURL } from 'firebase/storage';
 import { useMutation  } from '@apollo/client';
 import { CodeServices } from '../graphql/servicesCodes/queries'
-import { especialiades } from '../utils/especialidades';
 import { departamentos } from '../utils/deparamentos';
 import { municipios } from '../utils/municipios';
 import AddBoxIcon from '@mui/icons-material/AddBox';
@@ -15,8 +14,7 @@ import { crearServicios } from '../graphql/servicios/mutations';
 import useFormData from '../hooks/useFormData';
 import { LayoutMain } from '../components/layouts/LayoutMain';
 import {useRouter} from 'next/router';
-import { async } from '@firebase/util';
-import { useEffect } from 'react';
+
 const valuesEspacialiad=[
 	"especialidad","modalidad","horaInicio","horaFin","valorServicio","tipoServicio"
 ]
@@ -293,7 +291,12 @@ const TrabajaNosotros = () => {
 																<input onChange={ (e)=> filtrosCode.DESCRIPCION_SERVICIO = e.target.value } className="form-control" type="text" />
 															</div>
 														<div className="col-lg-2">
-															<div onClick={handleSearch}>oe</div>
+														<label className="mt-3">*</label>
+															{/* <div className='cursor-pointer bg-blue-500 text-white rounded-lg flex justify-center py-1 ' onClick={handleSearch}>Buscar</div> */}
+															<input onClick={handleSearch} className="inputfile inputfile-1" />
+															<label className="space-x-2" onClick={handleSearch} >
+																<span className="iborrainputfile">Buscar</span>
+															</label>
 														</div>
 														</div>
 														<div className='row'>
@@ -302,7 +305,7 @@ const TrabajaNosotros = () => {
 																<select className="form-control" name={`especialidad${index}`} id="especialidad" required>
 																	<option value="" >Tipo Especialidad</option>
 																	{codigoServicios?.CodeService &&  codigoServicios?.CodeService.map((codigo ,index)=>(
-																		<option key={index} value={codigo.DESCRIPCION_SERVICIO}>{codigo.DESCRIPCION_SERVICIO} {codigo.CODIGO}</option>
+																		<option key={index} value={codigo.DESCRIPCION_SERVICIO}>{codigo.DESCRIPCION_SERVICIO} REF:{codigo.CODIGO}</option>
 																		))}
 																</select>
 															</div>

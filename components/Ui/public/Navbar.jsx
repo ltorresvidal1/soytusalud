@@ -177,7 +177,7 @@ export const Navbar = () => {
                             :(
                                 <>
                                     <LoginModal/>
-                                    <Link href="/registro">
+                                    <Link href="/registro" passHref>
                                         <button className='bg-white text-red-900 border rounded-md h-8 px-2'>Registrarme</button>
                                     </Link>
                                 </>
