@@ -105,8 +105,10 @@ const TrabajaNosotros = () => {
 		console.log(filtrosCode)
 		const {data} = await client.query({
 			query: CodeServices,
-			variables:{TIPO_DE_SERVICIO: filtrosCode.TIPO_DE_SERVICIO ,
-				 DESCRIPCION_SERVICIO: filtrosCode.DESCRIPCION_SERVICIO }
+			variables:{
+				TIPO_DE_SERVICIO: filtrosCode.TIPO_DE_SERVICIO,
+				DESCRIPCION_SERVICIO: filtrosCode.DESCRIPCION_SERVICIO 
+				}
 		  })
 		setCodigoServicios(data)
 

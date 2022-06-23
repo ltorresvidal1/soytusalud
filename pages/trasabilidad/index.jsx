@@ -8,16 +8,7 @@ const Historia = () => {
   return (
     <LayoutMain>
 
-{/* <main className="main">
-
-				<section className="promo-primary">
-					<picture>
-					<Image src="/promo_5.png" alt="img" layout="fill" objectFit='cover' objectPosition="30% 40%"/>
-					</picture>
-					<div className="promo-primary__description"> <span className="self ">Filantropos</span></div>
-				
-				
-				</section>
+<main className="main">
 				<section className="section events-inner">
 					<div className="container">
 						<div className="row offset-30">
@@ -55,7 +46,7 @@ const Historia = () => {
 						</div>
 					</div>
 				</section>
-			</main> */}
+			</main>
 
     </LayoutMain>
 

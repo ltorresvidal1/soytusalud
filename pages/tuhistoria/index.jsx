@@ -26,9 +26,9 @@ const Tuhistoria = () => {
 	const [servicios,setServicios] = useState([])
 	const { form, formData, updateFormData } =useFormData();
 	let municipiosFiltrado 
-	const imagRef = ref(storage,`pacientes/${authUser.identificacion}/perfil.jpg`)
-	const historiaClinicaRef = ref(storage ,`pacientes/${authUser.identificacion}/historiaClinica.pdf`)
-	const sisbenRef = ref(storage,`pacientes/${authUser.identificacion}/sisben.pdf`)
+	const imagRef = ref(storage,`pacientes/${authUser?.identificacion}/perfil.jpg`)
+	const historiaClinicaRef = ref(storage ,`pacientes/${authUser?.identificacion}/historiaClinica.pdf`)
+	const sisbenRef = ref(storage,`pacientes/${authUser?.identificacion}/sisben.pdf`)
 	
 	const handleSubmit =async(e)=>{
 		e.preventDefault();

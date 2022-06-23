@@ -10,25 +10,6 @@ const Historia = () => {
     <LayoutMain>
 
 <main className="main">
-
-				<section className="promo-primary">
-					<picture>
-					<Image src="/promo_5.png" alt="img" layout="fill" objectFit='cover' objectPosition="50% 40%"/>
-					</picture>
-					<div className="promo-primary__description"> <span>Te Escuchamos</span></div>
-					<div className="container">
-						<div className="row">
-							<div className="col-auto">
-								<div className="align-container">
-									<div className="align-container__item"><span className="promo-primary__pre-title">Soy Tú</span>
-										<h1 className="promo-primary__title"><span>Tu </span> <span>Historia</span></h1>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</section>
-
 				<section className="section causes-inner">
 					<div className="container">
 						<div className="row offset-margin">

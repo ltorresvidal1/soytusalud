@@ -36,8 +36,36 @@ export const ImageBackground = ({}) => {
                     title:"Aliados"
                 })
                 break
+            case '/donaciones':
+                setImagePath('/promo_5.png')
+                    setText({
+                        title:"Donaciones"
+                })
+                break
+                case '/historias':
+                    setImagePath('/promo_5.png')
+                        setText({
+                            title:"Nuestras Historias"
+                    })
+                    break
+                case '/personasconproposito':
+                    setImagePath('/promo_4.png')
+                        setText({
+                            title:"Personas con Proposito"
+                    })
+                break
+                case '/empresasconproposito':
+                    setImagePath('/promo_4.png')
+                        setText({
+                            title:"Empresas con Proposito"
+                    })
+                break
             default:
                 setImagePath('/promo_c1.png')
+                setText({
+                    title:""
+                })
+                
                 break
         }
     },[router])
