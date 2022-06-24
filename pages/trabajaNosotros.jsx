@@ -16,7 +16,16 @@ import { LayoutMain } from '../components/layouts/LayoutMain';
 import {useRouter} from 'next/router';
 
 const valuesEspacialiad=[
-	"especialidad","modalidad","horaInicio","horaFin","valorServicio","tipoServicio"
+	"especialidad",
+	"modalidad",
+	"horaInicio",
+	"horaFin",
+	"valorServicio",
+	"tipoServicio",
+	"nombreResponsable",
+	"celularServicio",
+	"whatsAppServicio",
+	"direccionServicio"
 ]
 
 let filtrosCode = {
@@ -72,6 +81,7 @@ const TrabajaNosotros = () => {
 			.then(url=>{
 				formData.hojaVida=url
 			})
+			console.log(formData)
 
 			const listaKeys = Object.keys(formData)
 
@@ -229,15 +239,11 @@ const TrabajaNosotros = () => {
 															<label>Dirección comercial completa *</label>
 															<input className="form-control" type="text" name="direccion" id="direccion" required/>
 														</div>
-														<div className="col-lg-3 mt-3">
-															<label>E-mail *</label>
-															<input className="form-control" type="email" name="correo" id="correo" required/>
-														</div>
-														<div className="col-lg-3 mt-3">
+														<div className="col-lg-4 mt-3">
 															<label>Página Web</label>
 															<input className="form-control" type="url" name="paginaWeb" id="paginaWeb" />
 														</div>									
-												</div>
+													</div>
 												<div className="row">
 													<div className="col-12 mt-12"><h6 className="form__title">Información de aplicación</h6></div>
 												</div>
@@ -506,9 +512,27 @@ const ListServices = ({index , handleCheckBox}) => {
 				</div>
 			</div>
 			<div className='row'>
-				<div className="col-lg-4">
+				<div className="col-lg-3">
 					<label className="mt-3">Valor del servicio *</label>	
 					<input type="number" className="form-control" name={`valorServicio${index}`} id="valorServicio" required></input>
+				</div>
+				<div className="col-lg-3">
+					<label className="mt-3">Nombre del prestador de servicio *</label>	
+					<input type="text" className="form-control" name={`nombreResponsable${index}`}  required></input>
+				</div>
+				<div className="col-lg-3 mt-3">
+					<label>Celular del resposable del servicio *</label>
+					<input className="form-control" type="text" name={`celularServicio${index}`} required />
+				</div>
+				<div className="col-lg-3 mt-3">
+					<label>Linea WhatsApp *</label>
+					<input className="form-control" type="number" name={`whatsAppServicio${index}`} required />
+				</div>		
+			</div>
+			<div className='row'>
+				<div className="col-lg-6">
+					<label className="mt-3">Dirrecion donde se presta el servicio *</label>	
+					<input type="text" className="form-control" name={`direccionServicio${index}`} required></input>
 				</div>
 			</div>
 		</div>

@@ -9,6 +9,10 @@ export const typesServicios = gql`
         modalidad: String!
         horaInicio: String!
         horaFin: String!
+        celularServicio: String!
+        whatsAppServicio: String!
+        nombreResponsable: String!
+        direccionServicio: String!
         dias: [String]!
         valorServicio: String!
     }
@@ -18,6 +22,10 @@ export const typesServicios = gql`
         modalidad: String!
         horaInicio: String!
         horaFin: String!
+        celularServicio: String!
+        whatsAppServicio: String!
+        nombreResponsable: String!
+        direccionServicio: String!
         dias: [String]!
         valorServicio: String!
     }
@@ -27,11 +35,9 @@ export const typesServicios = gql`
         foto:String!
         nombreCompleto: String!
         tipoDocumento: String!
-        celular: String!
         departamento: String!
         municipio: String!
         direccion: String!
-        correo: String!
         paginaWeb: String
         servicios: [Services]!
         cuentaDeAhorros: String!
@@ -63,7 +69,6 @@ export const typesServicios = gql`
         departamento: String!
         municipio: String!
         direccion: String!
-        correo: String!
         paginaWeb: String
         servicios: [crearServices]!
         cuentaDeAhorros: String!

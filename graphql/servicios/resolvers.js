@@ -40,7 +40,6 @@ export const resolversServicios = {
                 departamento: args.departamento,
                 municipio: args.municipio,
                 direccion: args.direccion,
-                correo: args.correo,
                 paginaWeb: args.paginaWeb,
                 servicios: args.servicios,
                 cuentaDeAhorros: args.cuentaDeAhorros,

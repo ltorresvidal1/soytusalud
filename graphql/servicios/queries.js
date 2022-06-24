@@ -20,23 +20,25 @@ export const serviciosTablaData = gql`
 
 export const servicioDetalle = gql`
     query Servicio($identificacion: String!) {
-        Servicio(identificacion: $identificacion) {
+            Servicio(identificacion: $identificacion) {
             identificacion
             foto
             nombreCompleto
             tipoDocumento
-            celular
             departamento
-            municipio
             direccion
-            correo
+            municipio
             paginaWeb
             servicios {
                 tipoServicio
                 especialidad
-                modalidad
                 horaInicio
+                modalidad
                 horaFin
+                celularServicio
+                whatsAppServicio
+                nombreResponsable
+                direccionServicio
                 dias
                 valorServicio
             }
@@ -50,6 +52,7 @@ export const servicioDetalle = gql`
             aceptaTratamientoDatos
             aceptaDocumentoSARLAFT
             aceptaCodigoEticaSoyTuSalud
+            habilitado
         }
     }
 `
