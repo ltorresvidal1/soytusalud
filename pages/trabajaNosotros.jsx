@@ -33,7 +33,7 @@ const TrabajaNosotros = () => {
 	const [ servicios, setServicios ] = useState([0])
 	const [ securities, setSecurities ] = useState(true)
 	const [ serviciosLista, setServiciosLista ] = useState([])
-	const [ codigoServicios, setCodigoServicios ] = useState([])
+	let municipiosFiltrado = []
 	const regex = /(\d+)/g;
 
 	const handleSubmit =async(e)=>{
@@ -96,22 +96,7 @@ const TrabajaNosotros = () => {
 	
 	}
 
-	const handleCodeSelector = (e) => {
-		
-		filtrosCode.TIPO_DE_SERVICIO = e.target.value
-	}
 
-	const handleSearch = async ()=> {
-		console.log(filtrosCode)
-		const {data} = await client.query({
-			query: CodeServices,
-			variables:{
-				TIPO_DE_SERVICIO: filtrosCode.TIPO_DE_SERVICIO,
-				DESCRIPCION_SERVICIO: filtrosCode.DESCRIPCION_SERVICIO 
-				}
-		  })
-		setCodigoServicios(data)		
-	}
 	
 	const handlePhoto = async (e)=>{
 		const reader = new FileReader();
@@ -261,111 +246,9 @@ const TrabajaNosotros = () => {
 												{servicios.map((servicio,index)=>{
 
 												return (
-													<div key={index}>
-														<div className='row' >
-															<div className="col-12 mt-12"><h6 className="form__title">{`Servicio ${index +1}`}</h6></div>
-														</div>
-														<div className="row">
-															<div className="col-lg-5">
-																<label className="mt-3">Tipo de servicio *</label>
-																	<select className="form-control" onChange={handleCodeSelector} name={`tipoServicio${index}`} id="especialidad" required>
-																		<option value="" >Tipo de servicio</option>
-																		<option >Consulta Medica General</option>
-																		<option >Consulta Medica Especializada</option>
-																		<option >Otros Profesionales de la salud</option>
-																		<option >Ayudas diagnosticas</option>
-																		<option >Medicamentos</option>
-																		<option	>Examenes de Laboratorio</option>
-																		<option >Rayos X</option>
-																		<option >Terapias</option>
-																		<option >Cirugia Ambulatoria y Otros Servicios</option>
-																	</select>
-															</div>
-															<div className="col-lg-5">
-																<label className="mt-3">Nombre Servicio *</label>
-																<input onChange={ (e)=> filtrosCode.DESCRIPCION_SERVICIO = e.target.value } className="form-control" type="text" />
-															</div>
-														<div className="col-lg-2">
-														<label className="mt-3">*</label>
-															{/* <div className='cursor-pointer bg-blue-500 text-white rounded-lg flex justify-center py-1 ' onClick={handleSearch}>Buscar</div> */}
-															<input onClick={handleSearch} className="inputfile inputfile-1" />
-															<label className="space-x-2" onClick={handleSearch} >
-																<span className="iborrainputfile">Buscar</span>
-															</label>
-														</div>
-														</div>
-														<div className='row'>
-															<div className='col-12'>
-																<laber>Resultados</laber>
-																<select className="form-control" name={`especialidad${index}`} id="especialidad" required>
-																	<option value="" >Tipo Especialidad</option>
-																	{codigoServicios?.CodeService &&  codigoServicios?.CodeService.map((codigo ,index)=>(
-																		<option key={index} value={codigo.DESCRIPCION_SERVICIO}>{codigo.DESCRIPCION_SERVICIO} REF:{codigo.CODIGO}</option>
-																		))}
-																</select>
-															</div>
-														</div>
-														<div className='row' >
-															<div className="col-12 mt-4 text-sm font-bold"><span>Disponibilidad Horaria</span></div>
-														</div>
-														<div className="row">
-															<div className="col-lg-2">
-																<label className="mt-3"> Hora inicio *</label>
-																<input type="time" className="form-control" name={`horaInicio${index}`} id="disponibilidadHoraria"/>
-															</div>
-															<div className="col-lg-2">
-																<label className="mt-3"> Hora Fin *</label>
-																<input type="time" className="form-control" name={`horaFin${index}`} id="disponibilidadHoraria"/>
-															</div>
-															<div className="col-lg-8">
-																<label className="mt-3">Dias de disponibilidad*</label>
-																<div className="col-12 space-x-6">
-																	<label className="form__checkbox-label" >
-																		<span className="form__label-text "  >Lunes</span>
-																		<input className="form__input-checkbox" type="checkbox" value={`lunes`} onChange={(e)=>handleCheckBox(e,index)} />
-																		<span className="form__checkbox-mask"></span>
-																	</label>
-																	<label className="form__checkbox-label" >
-																		<span className="form__label-text" >Martes</span>
-																		<input className="form__input-checkbox" type="checkbox" value={`martes`} onChange={(e)=>handleCheckBox(e,index)} />
-																		<span className="form__checkbox-mask"></span>
-																	</label>
-																	<label className="form__checkbox-label" >
-																		<span className="form__label-text" >Mircoles</span>
-																		<input className="form__input-checkbox" type="checkbox" onChange={(e)=>handleCheckBox(e,index)} value={`miercoles`} />
-																		<span className="form__checkbox-mask"></span>
-																	</label>
-																	<label className="form__checkbox-label" >
-																		<span className="form__label-text"  >Jueves</span>
-																		<input className="form__input-checkbox" type="checkbox" onChange={(e)=>handleCheckBox(e,index)} value={`jueves`} />
-																		<span className="form__checkbox-mask"></span>
-																	</label>
-																	<label className="form__checkbox-label" >
-																		<span className="form__label-text">Viernes</span>
-																		<input className="form__input-checkbox" type="checkbox"  value={`viernes`} onChange={(e)=>handleCheckBox(e,index)} />
-																		<span className="form__checkbox-mask"></span>
-																	</label>
-																	<label className="form__checkbox-label" >
-																		<span className="form__label-text"  >Sabado</span>
-																		<input className="form__input-checkbox" type="checkbox" onChange={(e)=>handleCheckBox(e,index)} value={`sabado`} />
-																		<span className="form__checkbox-mask"></span>
-																	</label>
-																	<label className="form__checkbox-label" >
-																		<span className="form__label-text" >Domingo</span>
-																		<input className="form__input-checkbox" type="checkbox" onChange={(e)=>handleCheckBox(e,index)} value={`domingo`} />
-																		<span className="form__checkbox-mask"></span>
-																	</label>
-																</div>
-															</div>
-														</div>
-														<div className='row'>
-															<div className="col-lg-4">
-																<label className="mt-3">Valor del servicio *</label>	
-																<input type="number" className="form-control" name={`valorServicio${index}`} id="valorServicio" required></input>
-															</div>
-														</div>
-													</div>
+													<ListServices  key={index} index={index} handleCheckBox={handleCheckBox}/>
 													)})}
+
 													{Object.keys(serviciosLista).equals(servicios)?(
 													<div className='row'>
 														<div  className="col-lg-4 mt-3 ">
@@ -484,6 +367,152 @@ const TrabajaNosotros = () => {
 
     </LayoutMain>
   )
+}
+
+
+const ListServices = ({index , handleCheckBox}) => {
+
+	const [ codigoServicios, setCodigoServicios ] = useState([])
+
+	const handleCodeSelector = (e) => {
+		
+		filtrosCode.TIPO_DE_SERVICIO = e.target.value
+	}
+
+	const handleSearch = async ()=> {
+		
+		const {data} = await client.query({
+			query: CodeServices,
+			variables:{
+				TIPO_DE_SERVICIO: filtrosCode.TIPO_DE_SERVICIO,
+				DESCRIPCION_SERVICIO: filtrosCode.DESCRIPCION_SERVICIO 
+				}
+		  })
+		 setCodigoServicios(data)
+
+			 
+	}
+
+	return(
+	<div >
+			<div className='row' >
+				<div className="col-12 mt-12"><h6 className="form__title">{`Servicio ${index +1}`}</h6></div>
+			</div>
+			<div className="row">
+				<div className="col-lg-5">
+					<label className="mt-3">Tipo de servicio *</label>
+						<select className="form-control" onChange={handleCodeSelector} name={`tipoServicio${index}`} id="especialidad" required>
+							<option value="" >Tipo de servicio</option>
+							<option >Consulta Medica General</option>
+							<option >Consulta Medica Especializada</option>
+							<option >Otros Profesionales de la salud</option>
+							<option >Ayudas diagnosticas</option>
+							<option >Medicamentos</option>
+							<option	>Examenes de Laboratorio</option>
+							<option >Rayos X</option>
+							<option >Terapias</option>
+							<option >Cirugia Ambulatoria y Otros Servicios</option>
+						</select>
+				</div>
+				<div className="col-lg-5">
+					<label className="mt-3">Nombre Servicio *</label>
+					<input onChange={ (e)=> filtrosCode.DESCRIPCION_SERVICIO = e.target.value } className="form-control" type="text" />
+				</div>
+			<div className="col-lg-2">
+				<label className="mt-3">*</label>
+					{/* <div className='cursor-pointer bg-blue-500 text-white rounded-lg flex justify-center py-1 ' onClick={handleSearch}>Buscar</div> */}
+					<input onClick={handleSearch} className="inputfile inputfile-1" />
+					<label className="space-x-2" onClick={()=>handleSearch(index)} >
+						<span className="iborrainputfile">Buscar</span>
+				</label>
+			</div>
+			</div>
+			<div className='row'>
+				<div className='col-12'>
+					{codigoServicios?.CodeService?(<>
+							<laber>Resultados</laber>
+						<select	select className="form-control" name={`especialidad${index}`} id="especialidad" required>
+							<option value="" >Tipo Especialidad</option>
+							{codigoServicios?.CodeService &&  codigoServicios?.CodeService.map((codigo ,index)=>(
+								<option key={index} value={codigo.DESCRIPCION_SERVICIO}>{codigo.DESCRIPCION_SERVICIO} REF:{codigo.CODIGO}</option>
+								))}
+						</select>
+				<div className='row'>
+				<div className="col-lg-4">
+						<label className="mt-3">Modalidad de atención *</label>	
+						<select className="form-control" name={`modalidad${index}`} id="modalidad" required>
+							<option value="">Seleccionar</option>
+							<option>Domiciliaria</option>
+							<option>Presencial</option>
+							<option>Telemedicina</option>
+						</select>
+					</div>
+				</div>
+					</>)
+					:null}
+				</div>
+			</div>
+			<div className='row' >
+				<div className="col-12 mt-4 text-sm font-bold"><span>Disponibilidad Horaria</span></div>
+			</div>
+			<div className="row">
+				<div className="col-lg-2">
+					<label className="mt-3"> Hora inicio *</label>
+					<input type="time" className="form-control" name={`horaInicio${index}`} id="disponibilidadHoraria"/>
+				</div>
+				<div className="col-lg-2">
+					<label className="mt-3"> Hora Fin *</label>
+					<input type="time" className="form-control" name={`horaFin${index}`} id="disponibilidadHoraria"/>
+				</div>
+				<div className="col-lg-8">
+					<label className="mt-3">Dias de disponibilidad*</label>
+					<div className="col-12 space-x-6">
+						<label className="form__checkbox-label" >
+							<span className="form__label-text "  >Lunes</span>
+							<input className="form__input-checkbox" type="checkbox" value={`lunes`} onChange={(e)=>handleCheckBox(e,index)} />
+							<span className="form__checkbox-mask"></span>
+						</label>
+						<label className="form__checkbox-label" >
+							<span className="form__label-text" >Martes</span>
+							<input className="form__input-checkbox" type="checkbox" value={`martes`} onChange={(e)=>handleCheckBox(e,index)} />
+							<span className="form__checkbox-mask"></span>
+						</label>
+						<label className="form__checkbox-label" >
+							<span className="form__label-text" >Mircoles</span>
+							<input className="form__input-checkbox" type="checkbox" onChange={(e)=>handleCheckBox(e,index)} value={`miercoles`} />
+							<span className="form__checkbox-mask"></span>
+						</label>
+						<label className="form__checkbox-label" >
+							<span className="form__label-text"  >Jueves</span>
+							<input className="form__input-checkbox" type="checkbox" onChange={(e)=>handleCheckBox(e,index)} value={`jueves`} />
+							<span className="form__checkbox-mask"></span>
+						</label>
+						<label className="form__checkbox-label" >
+							<span className="form__label-text">Viernes</span>
+							<input className="form__input-checkbox" type="checkbox"  value={`viernes`} onChange={(e)=>handleCheckBox(e,index)} />
+							<span className="form__checkbox-mask"></span>
+						</label>
+						<label className="form__checkbox-label" >
+							<span className="form__label-text"  >Sabado</span>
+							<input className="form__input-checkbox" type="checkbox" onChange={(e)=>handleCheckBox(e,index)} value={`sabado`} />
+							<span className="form__checkbox-mask"></span>
+						</label>
+						<label className="form__checkbox-label" >
+							<span className="form__label-text" >Domingo</span>
+							<input className="form__input-checkbox" type="checkbox" onChange={(e)=>handleCheckBox(e,index)} value={`domingo`} />
+							<span className="form__checkbox-mask"></span>
+						</label>
+					</div>
+				</div>
+			</div>
+			<div className='row'>
+				<div className="col-lg-4">
+					<label className="mt-3">Valor del servicio *</label>	
+					<input type="number" className="form-control" name={`valorServicio${index}`} id="valorServicio" required></input>
+				</div>
+			</div>
+		</div>
+	)
 }
 
 export default TrabajaNosotros
