@@ -33,6 +33,7 @@ const LoginModal=()=>{
           uid:usuarioId
           }
         })
+        console.log(data)
       setAuthUser(data.Usuario)
   }
  
