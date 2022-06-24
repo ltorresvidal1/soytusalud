@@ -5,6 +5,7 @@ export const serviciosTablaData = gql`
     query ServiciosTabla {
         ServiciosTabla {
             foto
+            identificacion
             nombreCompleto
             departamento
             municipio

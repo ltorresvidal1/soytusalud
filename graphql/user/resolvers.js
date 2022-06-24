@@ -70,6 +70,7 @@ export const resolversUsuario = {
                 formularioTuHistoria:true,
                 fechaSolicitud: new Date().toISOString().split("T")[0],
             }
+            //todo: formulario historia no update en la base de datos
             await updateDoc(doc(usersRef,args.uid),dataUserUpdate);
             const docRef = doc(db, "users", args.uid);
             const docSnap = await getDoc(docRef);
