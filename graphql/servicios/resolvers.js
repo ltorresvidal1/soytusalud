@@ -49,6 +49,7 @@ export const resolversServicios = {
                 fotoLogoPublicidad: args.fotoLogoPublicidad,
                 hojaVida: args.hojaVida,
                 resumenCurriculum: args.resumenCurriculum,
+                habilitado: false,
                 aceptaConvenio: args.aceptaConvenio,
                 aceptaTratamientoDatos: args.aceptaTratamientoDatos,
                 aceptaDocumentoSARLAFT: args.aceptaDocumentoSARLAFT,

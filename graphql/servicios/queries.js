@@ -8,6 +8,7 @@ export const serviciosTablaData = gql`
             identificacion
             nombreCompleto
             departamento
+            habilitado
             municipio
             direccion
             servicios {

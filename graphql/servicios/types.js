@@ -44,6 +44,7 @@ export const typesServicios = gql`
         aceptaTratamientoDatos: String!
         aceptaDocumentoSARLAFT: String!
         aceptaCodigoEticaSoyTuSalud: String!
+        habilitado: Boolean!
     }
 
    

@@ -1,6 +1,4 @@
-import { useState } from 'react';
-import PerfectScrollbar from 'react-perfect-scrollbar';
-import PropTypes from 'prop-types';
+import { useState } from 'react';;
 import { departamentos } from '../../utils/deparamentos';
 import Link from 'next/link';
 import {
@@ -71,7 +69,6 @@ export const ServiciosTablas = ({ serviciosData, ...rest }) => {
 
   return (
     <Card {...rest}>
-      <PerfectScrollbar >
         <TableContainer>
           <Table>
             <TableHead>
@@ -111,10 +108,10 @@ export const ServiciosTablas = ({ serviciosData, ...rest }) => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {serviciosData.slice(0, limit).map((service) => (
+              {serviciosData.slice(0, limit).map((service , index) => (
                 <TableRow
                   hover
-                  key={serviciosData.identificacion}
+                  key={index}
                   selected={selectedCustomerIds.indexOf(service.identificacion) !== -1}
                 >
                   <TableCell padding="checkbox">
@@ -158,13 +155,13 @@ export const ServiciosTablas = ({ serviciosData, ...rest }) => {
                     {service.servicios.map((servicio) => (servicio.tipoServicio + ', '))}
                   </TableCell>
                   <TableCell>
-                    <Link href={`servicios/detalleServicio/${service.identificacion}`}>
+                    <Link href={`/private/admin/servicios/detalleServicio/${service.identificacion}`}>
                       <a className='text-blue-500'>Detalles</a>
                     </Link>
                   </TableCell>
                   <TableCell>
                   <FormControlLabel
-                      control={<IOSSwitch sx={{ m: 1 }} defaultChecked />}
+                      control={<IOSSwitch sx={{ m: 1 }} defaultChecked={service.habilitado} />}
                   />
                   </TableCell>
                 </TableRow>
@@ -172,7 +169,6 @@ export const ServiciosTablas = ({ serviciosData, ...rest }) => {
             </TableBody>
           </Table>
         </TableContainer>
-      </PerfectScrollbar>
       <TablePagination
         component="div"
         count={serviciosData.length}
