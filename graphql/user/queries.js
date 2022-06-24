@@ -39,6 +39,7 @@ export const authUser = gql`
       celular
       correo
       uid
+      formularioTuHistoria
     }
   }
 `

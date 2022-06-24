@@ -18,7 +18,7 @@ export const MenuFooter = () => {
         <div className="row">
             <div className="col-sm-6 col-lg-2">
                  <div className='text-center'>
-                     <div className="footer-logo"><a className="footer-logo__link"><Image className="" src="/Logo_P4.png"  width="150" height="150" alt="logo"/></a></div>
+                     <div className="footer-logo"><a className="footer-logo__link"><Image className="" src="/Tusaludlogo_letrasBlancas_Mesa_de_trabajo_1_copia.png"  width="150" height="150" alt="logo"/></a></div>
                       </div> 
                 <ul className="footer-socials">
                     <li className="footer-socials__item"><a className="footer-socials__link" href="https://www.facebook.com/Fundación-Soy-Tú-Salud-107327561900263" target="_blank" rel="noreferrer"><i className="fa fa-facebook" aria-hidden="true"></i></a></li>

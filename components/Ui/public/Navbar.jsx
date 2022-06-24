@@ -116,7 +116,7 @@ export const Navbar = () => {
             <div className="max-w-7xl mx-auto px-4 sm:px-6">
                 <div className="flex justify-between items-center py-6 lg:justify-start lg:space-x-10">
                     <div className="flex justify-start items-center sm:w-0 sm:flex-1">
-                        <Image src="/Logo_P4.png" width={'70px'} height={'70px'} alt="logo"/>
+                        <Image src="/Tusaludlogo_letrasBlancas_Mesa_de_trabajo_1_copia.png" width={'70px'} height={'70px'} alt="logo"/>
                     </div>
                     <Popover.Button className="-mr-2 -my-2 lg:hidden">
                         <div className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
@@ -132,20 +132,21 @@ export const Navbar = () => {
                                     <a className="text-black main-menu__link font-black">Inicio</a>
                                     </Link>
                                 </li>
-                                {authUser?(<>
-                                <li className="main-menu__item main-menu__item--has-child">
-                                    <Link href="/" > 
-                                        <a className="main-menu__link">Pacientes</a>
-                                    </Link>
-                                    <ul className="main-menu__sub-list">
-                                        <li>
-                                            <Link href="/tuhistoria" >
-                                                <a>Tu historia</a>
-                                            </Link>
-                                                    
-                                        </li>
-                                    </ul>
-                                </li>
+                                {authUser && !authUser.formularioTuHistoria?(
+                                <>
+                                    <li className="main-menu__item main-menu__item--has-child">
+                                        <Link href="/" > 
+                                            <a className="main-menu__link">Pacientes</a>
+                                        </Link>
+                                        <ul className="main-menu__sub-list">
+                                            <li>
+                                                <Link href="/tuhistoria" >
+                                                    <a>Tu historia</a>
+                                                </Link>
+                                                        
+                                            </li>
+                                        </ul>
+                                    </li>
                                 </>): null} 
                                 {/* <li className="main-menu__item main-menu__item--has-child">
                                     <Link href="/" >
