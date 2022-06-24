@@ -1,12 +1,26 @@
-import React from 'react'
 import PrivateLayout from '../../../../components/layouts/PrivateLayout'
+import TablaFilantropos from '../../../../components/Ui/private/TablaFilantropos'
+import { client } from '../../../../graphql/initClientSide' 
+import { Filantropos } from '../../../../graphql/filantropos/queries' 
 
-const index = () => {
+const FilantroposPage = ({data}) => {
   return (
     <PrivateLayout>
-        <div>index</div>
-    </PrivateLayout>
+        <TablaFilantropos data={data}/>
+    </PrivateLayout>  
   )
 }
 
-export default index
+
+export const getServerSideProps = async (ctx) => {
+  const {data} = await client.query({
+    query: Filantropos
+  })
+  return {
+      props: {
+          data
+      }
+  }
+}
+
+export default FilantroposPage

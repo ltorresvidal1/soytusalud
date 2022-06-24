@@ -1,8 +1,8 @@
 import {gql} from '@apollo/client';
 
-export const usuarios = gql`
-query Query {
-  Usuarios {
+export const filantropos = gql`
+query Filantropos {
+  Filantropos {
     uid
     tipoDocumento
     identificacion
@@ -11,11 +11,11 @@ query Query {
     direccion
     correo
   }
-}   
+}
 `;
 export const authUser = gql`
   query AuthUser($uid: String!) {
-    Usuario(uid: $uid) {
+    Filantropo(uid: $uid) {
       uid
       tipoDocumento
       identificacion
