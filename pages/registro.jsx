@@ -1,15 +1,14 @@
 import { createUserWithEmailAndPassword } from "firebase/auth"; 
 import { useMutation } from "@apollo/client";
 import { registrarUsuario } from "../graphql/user/mutations";
-import { auth  } from '../firebase/initConfig'
+import { auth } from '../firebase/initConfig'
 import { useRouter } from 'next/router'
 import {LayoutMain} from '../components/layouts/LayoutMain'
 
-import Image from 'next/image'
 import useFormData from '../hooks/useFormData';
 import PrivatePages from "../components/PrivatePages";
 
-const Registro = () => {
+const Registro = () => { 
 
     const router = useRouter()
     const [crearUsuario] = useMutation(registrarUsuario)
@@ -18,45 +17,25 @@ const Registro = () => {
     const { form, formData, updateFormData } =useFormData();
 
   const submitForm = async (e) => {
-    e.preventDefault();
-    await createUserWithEmailAndPassword(auth,formData.correo, formData.password)
-    .then((user) => {
-            delete formData.password
-            formData["uid"] = user.user.uid
-            console.log(formData)
-            crearUsuario({variables: formData})
-            router.push("/")
-    })
-    .catch((error)=>{
-      console.log(error)
+        e.preventDefault();
+        await createUserWithEmailAndPassword(auth,formData.correo, formData.password)
+        .then((user) => {
+                delete formData.password
+                formData["uid"] = user.user.uid
+                console.log(formData)
+                crearUsuario({variables: formData})
+                router.push("/")
+        })
+        .catch((error) => {
+            console.log(error)
 
-    })
+        })
     }
 
   return (
     <LayoutMain>
     <PrivatePages login={false}>
     <main className="main">
-            <section className="promo-primary promo-primary--shop">
-                <picture>
-                    <source srcSet="img/counter.jpg" media="(min-width: 992px)"/>
-        <picture  className="img--bg">
-            <Image src="/promo_c1.png" alt="img"  layout="fill" objectFit='cover' objectPosition="50% 25%"/>
-        </picture>
-                </picture>
-                <div className="promo-primary__description"> <span></span></div>
-                <div className="container">
-                    <div className="row">
-                        <div className="col-auto">
-                            <div className="align-container">
-                                            <div className="align-container__item"><span className="promo-primary__pre-title">Soy Tú Salud</span>
-                                    <h1 className="promo-primary__title"><span>Registrate</span><span></span></h1>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
             {/* <!-- section start--> */}
             <section className="section background--brown">
                 <div className="container">
@@ -71,22 +50,20 @@ const Registro = () => {
                                     <div className="row">
                                         <div className="col-12">
                                                 <div className="row">
-                                            <select className="form__field" name="tipoDocumento" id="tipoDocumento">
-                                                        <option value="0">Tipo Documento</option>
-                                                        <option value="1">CC</option>
-                                                        <option value="2">CE</option>
-                                                        <option value="3">TI</option>
-                                                        <option value="4">PA</option>
-                                                        <option value="5">RC</option>
-                                                        <option value="6">CD</option>
-                                                        <option value="7">PT</option>
-                                                        <option value="8">MS</option>
-                                                        <option value="9">AS</option>
-                                                        <option value="10">CN</option>
-                                                        <option value="11">SC</option>
-
+                                                    <select className="form__field" defaultValue={"Tipo Documento"} name="tipoDocumento" id="tipoDocumento">
+                                                        <option disabled >Tipo Documento</option>
+                                                        <option >CC</option>
+                                                        <option >CE</option>
+                                                        <option >TI</option>
+                                                        <option >PA</option>
+                                                        <option >RC</option>
+                                                        <option >CD</option>
+                                                        <option >PT</option>
+                                                        <option >MS</option>
+                                                        <option >AS</option>
+                                                        <option >CN</option>
+                                                        <option >SC</option>
                                                     </select>
-                                            
                                             </div>
                                                 <div className="row">
                                             <input className="form__field" type="text" name="identificacion"  id="identificacion"  placeholder="Documento"/>

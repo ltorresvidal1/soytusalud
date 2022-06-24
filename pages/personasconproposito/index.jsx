@@ -8,17 +8,7 @@ const Aliados= () => {
   return (
     <LayoutMain>
 
-			<main className="main">
-
-			<section className="promo-primary">
-					<picture>
-						<Image src="/promo_4.png" alt="img" layout="fill" objectFit='cover' objectPosition="50% 50%"/>
-					</picture>
-					<div className="promo-primary__description"> <span>Aliados</span></div>
-			
-			</section>	
-			
-				
+			<main className="main">				
 				
 				<section className="section statistics no-padding-top">
 					<div className="container">

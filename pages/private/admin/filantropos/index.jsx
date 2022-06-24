@@ -1,13 +1,11 @@
-import PrivateLayout from '../../../../components/layouts/PrivateLayout'
-import TablaFilantropos from '../../../../components/Ui/private/TablaFilantropos'
-import { client } from '../../../../graphql/initClientSide' 
-import { Filantropos } from '../../../../graphql/filantropos/queries' 
+import React from 'react'
+import NewPrivateLayout from '../../../../components/layouts/NewPrivateLayout/NewPrivateLayout'
 
 const FilantroposPage = ({data}) => {
   return (
-    <PrivateLayout>
-        <TablaFilantropos data={data}/>
-    </PrivateLayout>  
+    <NewPrivateLayout>
+        <div>index</div>
+    </NewPrivateLayout>
   )
 }
 

@@ -1,12 +1,21 @@
 import { db } from "../../firebase/initConfig";
-import { collection , getDocs , getDoc , setDoc , doc , updateDoc } from "firebase/firestore"; 
+import { collection , getDocs , getDoc , setDoc , doc , updateDoc, where, query } from "firebase/firestore"; 
 
 
 export const resolversUsuario = {
 
     Query: {
-        UsuariosTabla: async (parent, args) => { // es el usuario que se creó en query en types
+        UsuariosTabla: async (parent, args) => { 
             const querySnapshot  = await getDocs(collection(db, "users"));
+            let usuarios =[]
+            querySnapshot.forEach((doc) => {
+                usuarios.push(doc.data());
+            });
+            return usuarios;
+        },
+        UsuariosTablaTuHistoria: async (parent, args) => { 
+            const q  = await query(collection(db, "users"),where("formularioTuHistoria", "==", true));
+            const querySnapshot = await getDocs(q);
             let usuarios =[]
             querySnapshot.forEach((doc) => {
                 usuarios.push(doc.data());
@@ -30,6 +39,8 @@ export const resolversUsuario = {
                 tipoDocumento: args.tipoDocumento,
                 celular:args.celular,
                 correo: args.correo,
+                formularioTuHistoria:false,
+                comunidad:''    
             }
             await setDoc(doc(usersRef,args.uid),usuarioCreado);
             return usuarioCreado;
@@ -53,7 +64,11 @@ export const resolversUsuario = {
                 serviciosSolicitado: args.serviciosSolicitado,
                 autorizacionFoto:args.autorizacionFoto,
                 recopilacionDatos:args.recopilacionDatos,
-                comunidad:"",
+                departamento:args.departamento,
+                municipio:args.municipio,
+                comunidad: '',
+                formularioTuHistoria:true,
+                fechaSolicitud: new Date().toISOString().split("T")[0],
             }
             await updateDoc(doc(usersRef,args.uid),dataUserUpdate);
             const docRef = doc(db, "users", args.uid);

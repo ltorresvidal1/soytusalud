@@ -3,8 +3,11 @@ import Head from 'next/head'
 import { useState } from 'react';
 import Image from 'next/image'
 import { storage } from '../../firebase/initConfig';
-import { ref, uploadBytes } from 'firebase/storage';
+import { ref, uploadBytes , getDownloadURL  } from 'firebase/storage';
 import { useMutation } from '@apollo/client';
+import { tuHistoriaUpdate } from '../../graphql/user/mutations';
+import { departamentos } from '../../utils/deparamentos';
+import { municipios } from '../../utils/municipios';
 
 import PrivatePages from '../../components/PrivatePages';
 import useFormData from '../../hooks/useFormData';
@@ -14,30 +17,42 @@ import { LayoutMain } from '../../components/layouts/LayoutMain';
 
 const Tuhistoria = () => {
 	
+	const [tuHistoria] = useMutation(tuHistoriaUpdate)
+	const datePick = new Date().toISOString().split("T")[0];
+	const [filterMunicipios,setFilterMunicipios]= useState([])
 	const {authUser} = useAuth()
 	const [photo,setPhoto] = useState("/Foto.png")
+	const [ discapacitado, setDiscapacitado ] = useState(false)
+	const [servicios,setServicios] = useState([])
 	const { form, formData, updateFormData } =useFormData();
-
+	let municipiosFiltrado 
+	const imagRef = ref(storage,`pacientes/${authUser?.identificacion}/perfil.jpg`)
+	const historiaClinicaRef = ref(storage ,`pacientes/${authUser?.identificacion}/historiaClinica.pdf`)
+	const sisbenRef = ref(storage,`pacientes/${authUser?.identificacion}/sisben.pdf`)
 	
 	const handleSubmit =async(e)=>{
-		formData["uid"] =authUser.uid
 		e.preventDefault();
-		const imagRef = ref(storage,`${authUser.identificacion}/perfil.jpg`)
-		const historiaClinicaRef = ref(storage ,`${authUser.identificacion}/historiaClinica.pdf`)
-		const sisbenRef = ref(storage,`${authUser.identificacion}/sisben.pdf`)
+		formData["uid"] =authUser.uid
+		formData["serviciosSolicitado"] = servicios
+
 		await uploadBytes(imagRef, formData.foto)
-			.then((ref)=>{
-			formData.foto=ref.metadata.fullPath
+		await getDownloadURL(imagRef)
+		.then((url)=>{
+			formData.foto= url
 		})
+		
 		await uploadBytes(sisbenRef, formData.sisben)
-		.then((ref)=>{
-			formData.sisben=ref.metadata.fullPath
+		await getDownloadURL(sisbenRef)
+		.then((url)=>{
+			formData.sisben= url
 		})
+
 		await uploadBytes(historiaClinicaRef, formData.historiaClinica)
-		.then((ref)=>{
-			formData.historiaClinica=ref.metadata.fullPath
+		await getDownloadURL(historiaClinicaRef)
+		.then((url)=>{
+			formData.historiaClinica= url
 		})
-		console.log(formData)
+		tuHistoria({variables: formData})
 	}
 
 	const handlePhoto = async (e)=>{
@@ -47,168 +62,177 @@ const Tuhistoria = () => {
 			reader.onload = e => {
 				setPhoto(e.target.result);
 			};
+		}
+
+	}
+
+
+	const handlerDiscapacitado=(e)=>{
+	
+		if(e.target.value==="Si"){
+			setDiscapacitado(true)
+		}else{
+			setDiscapacitado(false)
+		}
+	}
+	const handleDpto=(e)=>{
+		console.log(e.target.value)
+		municipiosFiltrado = municipios.filter(municipio=> municipio.codigodepartamento === e.target.value)
+		setFilterMunicipios(municipiosFiltrado)
+	}
+
+	const handleCheckBox=(e)=>{
+		if(e.currentTarget.checked && !servicios.includes(e.target.value) ){
+			setServicios((after)=>[...after,e.target.value])
+		}
+		if(!e.currentTarget.checked && servicios.includes(e.target.value) ){
+			setServicios((after)=>after.filter(value=> value !== e.target.value ))
 		}	
 	}
-	
-
+  
   return (
     <LayoutMain>
 	<PrivatePages login={true}>
 		<main className="main">
-					<section className="promo-primary">
-						<picture>
-						<Image src="/promo_3.jpg" alt="img" layout="fill" objectFit='cover' objectPosition="50% 25%"/>
-						</picture>
-						<div className="promo-primary__description"> <span>Te Escuchamos</span></div>
-						<div className="container">
-							<div className="row">
-								<div className="col-auto">
-									<div className="align-container">
-										<div className="align-container__item"><span className="promo-primary__pre-title">Soy Tú</span>
-											<h1 className="promo-primary__title"><span>Tu </span> <span>Historia</span></h1>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</section>
 					<section className="section contacts no-padding-top">
 						<div className="contacts-wrapper">
 							<div className="container">
 								<div>
 									<div className="col-xl-12">
 										<form className="form message-form" ref={form} onChange={updateFormData} onSubmit={handleSubmit}  id="Form_TuHistoria" >
-													
 												<h6 className="form__title">Si consideras que eres una persona en situación de vulnerabilidad, que padece una enfermedad y necesita servicios médicos, diligencia este formulario y te pondremos en contacto con un especialista que te ayude a mejorar su estado de salud.</h6>
-												<label className="control-label mb-1">Por favor, verifique los campos obligatorios marcados con un (*) </label>   
-										
+												<label className="control-label mb-1">Por favor, verifique los campos obligatorios marcados con un (*) </label>
 													<div className="row">
 														<div className="col-lg-5"></div>
 														<div className="col-lg-2">
 															<div className="contenedor">
 																<h6 className="form__title">Foto</h6>
-																
-															
 																	<div className="FotoHistoria">
-																		<Image alt='defaultPhoto' className="profile-pic" id='perfil' name='perfil' src={photo} height="150"    width="180"/>
-																		<label className="centrado" htmlFor="logo"><span className="badge badge-primary r-3">Subir Foto</span></label>   
-																		<input type="file" onChange={handlePhoto}   id="foto"  name="foto" accept="image/jpeg,.doc, .docx,.pdf"  className="custom-file-input" />
-																		
+																		<Image alt='defaultPhoto' className="profile-pic" id='perfil' name='perfil' src={photo} height="150" width="180"/>
+																		<label className="centrado" htmlFor="logo"><span className="badge badge-primary r-3">Subir Foto</span></label>
+																		<input type="file" onChange={handlePhoto} id="foto" name="foto" accept="image/*" className="custom-file-input" required/>
 																	</div>
 															</div>
-
 														</div>
 													</div>
-													
 													<div className="row">
 												
-														<div className="col-lg-3">
+														<div className="col-lg-2">
 																<label>Genero *</label>
-																<select className="form-control" name="genero" id="genero">
-																<option value="0">Seleccionar</option>
-																<option value="1">Femenino</option>
-																<option value="2">Masculino</option>
+																<select className="form-control" name="genero" id="genero" required>
+																<option value="">Seleccionar</option>
+																<option >Femenino</option>
+																<option >Masculino</option>
 																</select>
 														</div>
 												
-														<div className="col-lg-3">
+														<div className="col-lg-2">
 															<label >Fecha Nacimiento *</label>
-															<input type="date" min="1920-01-01" name="fechaNacimiento" id="fechaNacimiento" className="form-control"/>
+															<input required   type="date" min="1920-01-01" max={datePick} name="fechaNacimiento" id="fechaNacimiento" className="form-control"/>
 														</div>
 
-														<div className="col-lg-6">
+														<div className="col-lg-4">
 															<label>Direccion *</label>
-															<input className="form-control" type="text" name="direccion"  id="direccion"/>
+															<input required className="form-control" type="text" name="direccion"  id="direccion"/>
 														</div>
-													</div>  
-									
-													
+														<div className="col-lg-2">
+															<label>Departamento</label>
+															<select onChange={handleDpto} defaultValue={"Departamento"} name="departamento" className="form-control" aria-required="true" aria-invalid="false" >
+																<option disabled>Departamento</option>
+																{departamentos.map((depatamento)=>(
+																	<option value={depatamento.codigo} key={depatamento.codigo}>{depatamento.nombre}</option>
+																))}
+															</select>
+														</div>
+														<div className="col-lg-2">
+															<label>Municipio</label>
+															<select name="municipio" className="form-control" defaultValue={"Municipio"} aria-required="true" aria-invalid="false" >
+																<option disabled value="0">Municipio</option>
+																{filterMunicipios.map((municipio,index)=>(
+																	<option key={index}>{municipio.nombre}</option>
+																))}
+
+															</select>
+														</div>
+													</div>  				
 											<div className="row">
-													
-													
 													<div className="col-lg-4">
 															<label>Discapacitado *</label>
-														<select className="form-control" name="discapacitado" id="discapacitado">
-															<option value="0">Seleccionar</option>
-															<option value="1">No</option>
-															<option value="2">Si</option>
+														<select onChange={handlerDiscapacitado} className="form-control" name="discapacitado" id="discapacitado">
+															<option value="">Seleccionar</option>
+															<option >No</option>
+															<option >Si</option>
 														</select>
 														
 													</div>
-													
+													{discapacitado?(
 													<div className="col-lg-4">
-													<label>Tipo Discapacidad</label>
-														<select className="form-control" name="tipoDiscapacidad" id="tipoDiscapacidad">
-															<option value="0">Seleccionar</option>
-															<option value="1">Permanente</option>
-															<option value="2">Temporal</option>
-															<option value="3">Auditiva</option>
-															<option value="4">Cognitiva</option>
-															<option value="5">Física</option>
-															<option value="6">Mental</option>
-															<option value="7">Visual</option>
-															<option value="8">Múltiple</option>
-															 
+														<label>Tipo Discapacidad</label>
+														<select className="form-control" name="tipoDiscapacidad" id="tipoDiscapacidad" required>
+															<option value="">Seleccionar</option>
+															<option >Permanente</option>
+															<option >Temporal</option>
+															<option >Auditiva</option>
+															<option >Cognitiva</option>
+															<option >Física</option>
+															<option >Mental</option>
+															<option >Visual</option>
+															<option >Múltiple</option>
+																
 														</select>
 															
 													</div>
-													
+													):null}
 													<div className="col-lg-4">
 													
 															<label>Victima de Violencia *</label>
 															
-															<select className="form-control" name="victimaViolencia" id="victimaViolencia">
-															<option value="0">Seleccionar</option>
-															<option value="1">Si</option>
-															<option value="2">No</option>
-
-
+															<select className="form-control" name="victimaViolencia" id="victimaViolencia" required>
+															<option value="">Seleccionar</option>
+															<option >Si</option>
+															<option >No</option>
 														</select> 
 															
 													
 													</div>
 											</div>
-										
-
+									
 											<div className="row">
 											
 											
 													<div className="col-lg-4">
-															<label>Identidad de Genero *</label>
-														<select className="form-control" name="identidadGenero" id="identidadGenero">
-															<option value="0">Seleccionar</option>
-															<option value="1">Masculino</option>
-															<option value="2">Femenino</option>
-															<option value="3">Travesti</option>
-															<option value="4">Transexual</option>
-															<option value="5">Transgénero</option>
-															<option value="6">Ninguna</option>
-															<option value="7">No Binario</option>
+														<label>Identidad de Genero *</label>
+														<select className="form-control" name="identidadGenero" id="identidadGenero" required>
+															<option value="">Seleccionar</option>
+															<option >Masculino</option>
+															<option >Femenino</option>
+															<option >Travesti</option>
+															<option >Transexual</option>
+															<option >Transgénero</option>
+															<option >Ninguna</option>
+															<option >No Binario</option>
 														</select>
 														
 													</div>
-													
 													<div className="col-lg-4">
 													<label>Orientacion Sexual *</label>
-														<select className="form-control" name="orientacionSexual" id="orientacionSexual">
-															<option value="0">Seleccionar</option>
-															<option value="1">Heterosexual</option>
-															<option value="2">Lesbiana</option>
-															<option value="3">Bisexual</option>
-															<option value="4">Gay</option>
-															<option value="5">Asexual</option>
-															<option value="6">Ninguna</option>
-															 
-														</select>
-															
+														<select className="form-control" name="orientacionSexual" id="orientacionSexual" required>
+															<option value="">Seleccionar</option>
+															<option >Heterosexual</option>
+															<option >Lesbiana</option>
+															<option >Bisexual</option>
+															<option >Gay</option>
+															<option >Asexual</option>
+															<option >Ninguna</option>
+														</select>												
 													</div>
 													
 													<div className="col-lg-4">
 													
 															<label>Grupo Poblacional *</label>
 															
-															<select className="form-control" name="grupoPoblacional" id="grupoPoblacional">
-															<option value="0">Seleccionar</option>
+														<select className="form-control" name="grupoPoblacional" id="grupoPoblacional" required>
+															<option value="">Seleccionar</option>
 															<option value="1">Habitantes de la calle</option>
 															<option value="2">Creador o gestor cultural decreto 2283 de 2010</option>
 															<option value="3">Población sisbenizada</option>
@@ -231,9 +255,6 @@ const Tuhistoria = () => {
 															<option value="20">Adultos mayores en centros de protección (subsidiado)</option>
 															<option value="21">Miembros de los grupos armados al margen de la ley que celebren acuerdos de paz con el Gobierno</option>
 															<option value="22">Migrante Venezolano con PEP e hijos menores de edad con documento válido</option>
-															<option value="23">Afiliado de oficio sin encuesta Sisbén ni población especial</option>
-
-
 														</select> 
 															
 													
@@ -244,8 +265,8 @@ const Tuhistoria = () => {
 												
 												<div className="col-12">
 													<label>EPS*</label>	
-													<select className="form-control" name="EPS" id="EPS">
-														<option value="0">Seleccionar</option>
+													<select className="form-control" name="EPS" id="EPS" required>
+														<option value="">Seleccionar</option>
 														<option value="1">AXA COLPATRIA SEGUROS S.A. (EN ADELANTE LA SOCIEDAD)</option>
 														<option value="2">A.R.S. CONVIDA</option>
 														<option value="3">ACE SEGUROS S.A.</option>
@@ -415,7 +436,7 @@ const Tuhistoria = () => {
 														<option value="168">VIVIR S.A</option>
 														<option value="169">ZURICH COLOMBIA SEGUROS S.A. (LA SOCIEDAD)</option>
 
-															</select>
+												</select>
 														
 												</div>
 												</div>
@@ -425,7 +446,7 @@ const Tuhistoria = () => {
 												<div className="row">
 												
 												<div className="col-12">
-													<textarea className="form-control" name="tuHistoria" id="tuHistoria" placeholder=""></textarea>
+													<textarea  required className="form-control" name="tuHistoria" id="tuHistoria" placeholder=""></textarea>
 												
 													<span className="form__text">  <label className="control-label mb-1">Cuéntanos si padeces de alguna enfermedad, si no has tenido acceso a servicios de salud oportunos, actualmente cuentas con tratamiento y todos los detalles que nos permitan saber como Soy Tu puede ayudarte. </label>   </span>
 													
@@ -437,62 +458,62 @@ const Tuhistoria = () => {
 												
 												<div className="col-lg-4">
 														<label className="form__checkbox-label"><span className="form__label-text">Consulta Medica General</span>
-														<input className="form__input-checkbox" type="checkbox" name="serviciosSolicitado" value="1" id="cb1"/><span className="form__checkbox-mask"></span>
-													
+														<input  className="form__input-checkbox" type="checkbox" value="Consulta Medica General" onChange={handleCheckBox} id="cb1"/>
+														<span className="form__checkbox-mask"></span>
 													</label>
 												</div>
 												<div className="col-lg-4">
 														<label className="form__checkbox-label"><span className="form__label-text">Consulta Medica Especializada</span>
-														<input className="form__input-checkbox" type="checkbox" name="serviciosSolicitado" value="2" id="cb2"/><span className="form__checkbox-mask"></span>
+														<input className="form__input-checkbox" type="checkbox" onChange={handleCheckBox} value="Consulta Medica Especializada" id="cb2"/>
+														<span className="form__checkbox-mask"></span>
 													
 												</label>
 												</div>
 												<div className="col-lg-4">
 														<label className="form__checkbox-label"><span className="form__label-text">Otros Profesionales de la Salud</span>
-														<input className="form__input-checkbox" type="checkbox" name="serviciosSolicitado" value="3" id="cb3"/><span className="form__checkbox-mask"></span>
+														<input className="form__input-checkbox" type="checkbox" onChange={handleCheckBox}  value="Otros Profesionales de la Salud" id="cb3"/><span className="form__checkbox-mask"></span>
 													
 												</label>
 												</div>											
 												<div className="col-lg-4">
 														<label className="form__checkbox-label"><span className="form__label-text">Medicamento</span>
-														<input className="form__input-checkbox" type="checkbox" name="serviciosSolicitado" value="4" id="cb4"/><span className="form__checkbox-mask"></span>
+														<input className="form__input-checkbox" type="checkbox" onChange={handleCheckBox}  value="Medicamento" id="cb4"/><span className="form__checkbox-mask"></span>
 													
 												</label>
 												</div>											
 												<div className="col-lg-4">
 														<label className="form__checkbox-label"><span className="form__label-text">Exámenes de Laboratorios</span>
-														<input className="form__input-checkbox" type="checkbox" name="serviciosSolicitado" value="5" id="cb5"/><span className="form__checkbox-mask"></span>
+														<input className="form__input-checkbox" type="checkbox" onChange={handleCheckBox}  value="Exámenes de Laboratorios" id="cb5"/><span className="form__checkbox-mask"></span>
 													
 												</label>
 												</div>
 												<div className="col-lg-4">
 														<label className="form__checkbox-label"><span className="form__label-text">Rayos X</span>
-														<input className="form__input-checkbox" type="checkbox" name="serviciosSolicitado" value="6" id="cb6"/><span className="form__checkbox-mask"></span>
+														<input className="form__input-checkbox" type="checkbox" onChange={handleCheckBox}  value="Rayos X" id="cb6"/><span className="form__checkbox-mask"></span>
 													
 												</label>
 												</div>											
 												<div className="col-lg-4">
 														<label className="form__checkbox-label"><span className="form__label-text">Ayudas Diagnósticas</span>
-														<input className="form__input-checkbox" type="checkbox" name="serviciosSolicitado" value="7" id="cb7"/><span className="form__checkbox-mask"></span>
+														<input className="form__input-checkbox" type="checkbox" onChange={handleCheckBox} value="Ayudas Diagnósticas" id="cb7"/><span className="form__checkbox-mask"></span>
 													
 												</label>
 												</div>		
 												
 												<div className="col-lg-4">
 														<label className="form__checkbox-label"><span className="form__label-text">Terapias</span>
-														<input className="form__input-checkbox" type="checkbox" name="serviciosSolicitado" value="8" id="cb8"/><span className="form__checkbox-mask"></span>
+														<input className="form__input-checkbox" type="checkbox" onChange={handleCheckBox}  value="Terapias" id="cb8"/><span className="form__checkbox-mask"></span>
 													
 												</label>
 												</div>	
 													<div className="col-lg-4">
 														<label className="form__checkbox-label"><span className="form__label-text">Cirugia Ambulatoria Y Otros Servicios</span>
-														<input className="form__input-checkbox" type="checkbox" name="serviciosSolicitado" value="9" id="cb9"/><span className="form__checkbox-mask"></span>
+														<input className="form__input-checkbox" type="checkbox" onChange={handleCheckBox}  value="Cirugia Ambulatoria Y Otros Servicios" id="cb9"/><span className="form__checkbox-mask"></span>
 													
 												</label>
 												</div>	
 											
-											
-
+										
 												</div>
 
 												<div className="row">
@@ -503,28 +524,29 @@ const Tuhistoria = () => {
 												
 												</div>
 												<div className="col-lg-6">
-												<label className="form__checkbox-label"/><span className="form__label-text">Anexar Consulta Sisben</span>
-												
-												<input type="file" className="form-control" id="sisben" name="sisben" accept=".pdf"/>
-												<br/>
-													<a className="centrado" href="https://www.sisben.gov.co/Paginas/consulta-tu-grupo.aspx" target="_blank" rel="noreferrer">Consulta Tu Sisben</a>
+													<label className="form__checkbox-label"/><span className="form__label-text">Anexar Consulta Sisben</span>
+													
+													<input type="file" className="form-control" id="sisben" name="sisben" accept=".pdf" required/>
+													<br/>
+														<a className="centrado" href="https://www.sisben.gov.co/Paginas/consulta-tu-grupo.aspx" target="_blank" rel="noreferrer">Consulta Tu Sisben</a>
 												</div>
 												</div>
 												
 												<div className="row">
-												<div className="col-12">
-															
-												<label className="form__checkbox-label"><span  name="autorizacionFoto" id="autorizacionFoto" className="form__label-text"> Autorizo de manera voluntaria, mostrar mi nombre y mi foto</span>
-												<input className="form__input-checkbox" type="checkbox" name="autorizacionFoto" id="autorizacionFoto" value="1"/><span className="form__checkbox-mask"></span>
-													</label>
-												</div>
+													<div className="col-12">
+																
+														<label className="form__checkbox-label"><span  name="autorizacionFoto" id="autorizacionFoto" value={true} className="form__label-text"> Autorizo de manera voluntaria, mostrar mi nombre y mi foto</span>
+															<input className="form__input-checkbox" type="checkbox" name="autorizacionFoto" id="autorizacionFoto" required/>
+															<span className="form__checkbox-mask"></span>
+														</label>
+													</div>
 												
 												<div className="col-12">
 															
-												<label className="form__checkbox-label" ><span  id="recopilacionDatos" className="form__label-text" >Autorizo de manera voluntaria, previa, expresa e informada a Soy Tú para la recolección y posterior análisis de los datos aquí suministrados, con la finalidad de ser contactado y atender mis necesidades. Así mismo, declaro que he sido informado sobre el derecho que tengo a conocer, actualizar y rectificar mis datos personales, solicitar prueba de la autorización, ser informado sobre el tratamiento que se ha dado a mis datos personales, presentar quejas ante la Superintendencia de Industria y Comercio (SIC), revocar la autorización otorgada y/o solicitar la supresión de mis datos en los casos en que sea procedente</span>
-												
-														<input className="form__input-checkbox" type="checkbox" name="recopilacionDatos" id="recopilacionDatos"/><span className="form__checkbox-mask"></span>
-														
+													<label className="form__checkbox-label" >
+														<span  id="recopilacionDatos" className="form__label-text" value={true} >Autorizo de manera voluntaria, previa, expresa e informada a Soy Tú para la recolección y posterior análisis de los datos aquí suministrados, con la finalidad de ser contactado y atender mis necesidades. Así mismo, declaro que he sido informado sobre el derecho que tengo a conocer, actualizar y rectificar mis datos personales, solicitar prueba de la autorización, ser informado sobre el tratamiento que se ha dado a mis datos personales, presentar quejas ante la Superintendencia de Industria y Comercio (SIC), revocar la autorización otorgada y/o solicitar la supresión de mis datos en los casos en que sea procedente</span>
+														<input className="form__input-checkbox" type="checkbox" name="recopilacionDatos" id="recopilacionDatos" required/>
+														<span className="form__checkbox-mask"></span>
 													</label>
 												</div>
 												

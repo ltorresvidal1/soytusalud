@@ -1,7 +1,7 @@
 import { useState , useEffect , useRef } from 'react';
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../firebase/initConfig';
-import { useLazyQuery } from '@apollo/client';
+import { client } from '../graphql/initClientSide';
 import { authUser } from '../graphql/user/queries';
 import { useAuth } from '../context/useAuth';
 import  useFormData  from '../hooks/useFormData'
@@ -11,23 +11,30 @@ import DialogTitle from '@mui/material/DialogTitle';
 import Typography from '@mui/material/Typography';
 
 
+let usuarioId = {}
 
 const LoginModal=()=>{
   const { setAuthUser } = useAuth()
-  const [ getUser,{loading, error, data} ] = useLazyQuery(authUser);
   const { form, formData, updateFormData } =useFormData();
   const [open, setOpen] = useState(false);
   const [scroll, setScroll] = useState('paper');
   const descriptionElementRef = useRef(null);
+  
 
-  const handleSubmit = (e)=>{
+  const handleSubmit = async (e)=>{
     e.preventDefault();
-    signInWithEmailAndPassword(auth, formData.email , formData.password)
+     await signInWithEmailAndPassword(auth, formData.email , formData.password)
       .then(user=>{
-        getUser({variables:{uid:user.uid}})
-          .then(response =>{
-          setAuthUser(response.data.Usuario)})
+        usuarioId = user.user.uid
       })
+      const {data} = await client.query({
+        query: authUser,
+        variables:{
+          uid:usuarioId
+          }
+        })
+        console.log(data)
+      setAuthUser(data.Usuario)
   }
  
   const handleClickOpen = (scrollType) => () => {
@@ -39,7 +46,6 @@ const LoginModal=()=>{
     setOpen(false);
   };
 
- 
   useEffect(() => {
     if (open) {
       const { current: descriptionElement } = descriptionElementRef;
@@ -51,9 +57,11 @@ const LoginModal=()=>{
 
   
 
-  return (
+  return (   
     <div>
-       <span className='text-white cursor-pointer' onClick={handleClickOpen('paper')} >Iniciar sesión</span>
+       <a className="main-menu__link whitespace-nowrap " onClick={handleClickOpen('paper')}>
+          <span  className=' underline items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 cursor-pointer '> Iniciar sesión </span> 
+        </a>
       <Dialog
         className= "bg-black bg-opacity-50"
         open={open}
@@ -64,7 +72,7 @@ const LoginModal=()=>{
       > 
             <DialogTitle align='center' sx={{}}>
                 <Typography id="modal-modal-title" variant="h5" component="div">
-                    Iniciar sesión
+                    Inicio de sesión
                 </Typography>
             </DialogTitle>
             <DialogContent>

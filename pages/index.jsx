@@ -1,33 +1,12 @@
+import { Box, Container, Typography } from '@mui/material'
 import Head from 'next/head'
 import Image from 'next/image'
 import { LayoutMain } from '../components/layouts/LayoutMain'
 
 export default function Home() {
   
- 
   return (
     <LayoutMain>
-      <div>
-        
-          <section className="promo-primary">
-              <div className="container">
-              <picture  className="img--bg">
-                <Image src="/promo_c1.png" alt="img" layout="fill" objectFit='cover' objectPosition="50% 25%" priority={true}/>
-              </picture>
-                <div className="row">
-                  <div className="col-auto">
-                    <div className="align-container">
-                      <div className="align-container__item">
-                        <h1 className="promo-primary__title pt-2 mb-4">
-                          <span className='' data-lang="eslogan1">Mejoramos la Salud de personas en situación de vulnerabilidad </span> 
-                          <span data-lang="eslogan2">con recursos de Responsabilidad Social</span>
-                        </h1>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-          </section>
           <section className="section about-us" id="about">
             <div className="container mt-6">
               <div className="row align-items-center">
@@ -93,7 +72,6 @@ export default function Home() {
               </div>
             </div>
           </section>
-      </div>
     </LayoutMain>
   )
 }
