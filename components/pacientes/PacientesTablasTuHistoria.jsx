@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import Link from 'next/link'
-import PerfectScrollbar from 'react-perfect-scrollbar';
 import PropTypes from 'prop-types';
 import { grupoPoblacional } from '../../utils/grupoPoblacional';
 import {
@@ -16,7 +15,6 @@ import {
   TableRow,
   Typography,
   TableContainer,
-  Paper
 } from '@mui/material';
 import { getInitials } from '../../utils/get-initials';
 
@@ -68,7 +66,6 @@ export const PacientesTablasTuHistoria = ({ UsuariosTablaTuHistoria, customers, 
 
   return (
     <Card {...rest}>
-      <PerfectScrollbar >
         <TableContainer>
           <Table>
             <TableHead>
@@ -162,7 +159,6 @@ export const PacientesTablasTuHistoria = ({ UsuariosTablaTuHistoria, customers, 
             </TableBody>
           </Table>
         </TableContainer>
-      </PerfectScrollbar>
       <TablePagination
         component="div"
         count={UsuariosTablaTuHistoria.length}

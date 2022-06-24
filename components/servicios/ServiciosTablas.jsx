@@ -14,11 +14,9 @@ import {
   TableRow,
   Typography,
   TableContainer,
-  Paper,
-  Stack,
   FormControlLabel
 } from '@mui/material';
-import { AntSwitch , IOSSwitch } from './ServiciosTabla.css';
+import {  IOSSwitch } from './ServiciosTabla.css';
 import { getInitials } from '../../utils/get-initials';
 
 export const ServiciosTablas = ({ serviciosData, ...rest }) => {
