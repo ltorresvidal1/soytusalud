@@ -1,4 +1,9 @@
 import Head from 'next/head';
+import { useAuth } from '../context/useAuth';
+import { auth } from '../firebase/initConfig';
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { client } from '../graphql/initClientSide';
+import useFormData from '../hooks/useFormData';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import { useFormik } from 'formik';
@@ -7,7 +12,27 @@ import { Box, Button, Container, Link, TextField, Typography } from '@mui/materi
 import { LayoutMain } from '../components/layouts/LayoutMain';
 
 const Login = () => {
+
+  const { setAuthUser } = useAuth()
+  const { form, formData, updateFormData } =useFormData();
   const router = useRouter();
+  
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+     await signInWithEmailAndPassword(auth, formData.email , formData.password)
+      .then(user => {
+        usuarioId = user.user.uid
+      })
+      const { data } = await client.query({
+        query: authUser,
+        variables:{
+          uid:usuarioId
+          }
+        })
+      setAuthUser(data.Usuario)
+  }
+ 
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -49,7 +74,7 @@ const Login = () => {
             }}
         >
             <Container maxWidth="md" className='mb-5'>
-            <form onSubmit={formik.handleSubmit}>
+            <form ref={form} onChange={updateFormData} onSubmit={handleSubmit} >
                 <Box sx={{ my: 3 }}>
                     <Typography
                         color="textPrimary"

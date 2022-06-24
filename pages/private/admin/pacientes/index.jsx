@@ -39,15 +39,13 @@ export const getServerSideProps = async (ctx) => {
   const {data} = await client.query({
     query: usuariosTablas
   })
-  const {UsuariosTabla} = data
+  const { UsuariosTabla } = data
   return {
       props: {
         UsuariosTabla
       }
   }
 }
-
-
 
 
 export default PacientesPage

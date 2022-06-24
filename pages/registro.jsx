@@ -8,7 +8,7 @@ import {LayoutMain} from '../components/layouts/LayoutMain'
 import useFormData from '../hooks/useFormData';
 import PrivatePages from "../components/PrivatePages";
 
-const Registro = () => {
+const Registro = () => { 
 
     const router = useRouter()
     const [crearUsuario] = useMutation(registrarUsuario)
@@ -17,19 +17,19 @@ const Registro = () => {
     const { form, formData, updateFormData } =useFormData();
 
   const submitForm = async (e) => {
-    e.preventDefault();
-    await createUserWithEmailAndPassword(auth,formData.correo, formData.password)
-    .then((user) => {
-            delete formData.password
-            formData["uid"] = user.user.uid
-            console.log(formData)
-            crearUsuario({variables: formData})
-            router.push("/")
-    })
-    .catch((error)=>{
-      console.log(error)
+        e.preventDefault();
+        await createUserWithEmailAndPassword(auth,formData.correo, formData.password)
+        .then((user) => {
+                delete formData.password
+                formData["uid"] = user.user.uid
+                console.log(formData)
+                crearUsuario({variables: formData})
+                router.push("/")
+        })
+        .catch((error) => {
+            console.log(error)
 
-    })
+        })
     }
 
   return (

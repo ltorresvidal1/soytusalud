@@ -110,13 +110,9 @@ const TrabajaNosotros = () => {
 				DESCRIPCION_SERVICIO: filtrosCode.DESCRIPCION_SERVICIO 
 				}
 		  })
-		setCodigoServicios(data)
-
-
-		
+		setCodigoServicios(data)		
 	}
-
-
+	
 	const handlePhoto = async (e)=>{
 		const reader = new FileReader();
 		if(e.target.files[0]){
@@ -156,9 +152,6 @@ const TrabajaNosotros = () => {
 		}
 		return true;
 	  };
-
-
-  
 
 	const handleDpto=(e)=>{
 		console.log(e.target.value)

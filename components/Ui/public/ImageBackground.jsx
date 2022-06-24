@@ -14,7 +14,7 @@ export const ImageBackground = ({}) => {
     const [ImagePath,setImagePath] = useState('/promo_c1.png')
     const [text,setText] = useState(initialState)
     const router = useRouter()
-    useEffect(()=>{
+    useEffect( () => {
         console.log(router.pathname)
         switch(router.pathname){
             case '/':

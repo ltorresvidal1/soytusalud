@@ -7,7 +7,8 @@ import NewPrivateLayout from '../../../../components/layouts/NewPrivateLayout/Ne
 import { Box, Container, Grid } from '@mui/material'
 
 
-const DetallePaciente = ({Usuario}) => {
+const DetallePaciente = ({ Usuario }) => {
+
   const [user,setUser]=useState(Usuario)
   console.log(user)
 
@@ -47,7 +48,7 @@ const DetallePaciente = ({Usuario}) => {
 export const getServerSideProps = async ({ params }) => {
 
   const { uid } = params 
-  const {data} = await client.query({
+  const { data } = await client.query({
     query: userData,
     variables:{uid}
   })

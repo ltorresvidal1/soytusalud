@@ -233,9 +233,9 @@ export const Navbar = () => {
                                     {authUser?
                                     (
                                         <>
-                                            <li className="text-black main-menu__item main-menu__item">
+                                            <li className="text-black main-menu__item main-menu__item ">
                                                 <a onClick={handlerLogOut} className="main-menu__link whitespace-nowrap ">
-                                                    <span className='items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700'> Cerrar sesión </span> 
+                                                    <span className='items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 cursor-pointer '> Cerrar sesión </span> 
                                                 </a>
                                             </li>
                                         </>
