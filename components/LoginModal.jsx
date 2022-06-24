@@ -45,7 +45,6 @@ const LoginModal=()=>{
     setOpen(false);
   };
 
- 
   useEffect(() => {
     if (open) {
       const { current: descriptionElement } = descriptionElementRef;
