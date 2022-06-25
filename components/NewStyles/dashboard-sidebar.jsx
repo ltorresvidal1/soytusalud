@@ -73,7 +73,7 @@ export const DashboardSidebar = (props) => {
               passHref
             >
               <a>
-                <Image src={"/logo_vertical-white.png"} alt="soyTuLogo" width={156.25} height={156.25} quality={"100"} />
+                <Image src={"/Tusaludlogo_letrasBlancas_Mesa_de_trabajo_1_copia.png"} alt="soyTuLogo" width={156.25} height={156.25} quality={"100"} />
               </a>
             </Link>
           </Box>
