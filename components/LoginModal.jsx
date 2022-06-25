@@ -60,7 +60,7 @@ const LoginModal=()=>{
   return (   
     <div>
        <a className="main-menu__link whitespace-nowrap " onClick={handleClickOpen('paper')}>
-          <span  className=' underline items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 cursor-pointer '> Iniciar sesión </span> 
+          <span  className=' items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 cursor-pointer '> Iniciar sesión </span> 
         </a>
       <Dialog
         className= "bg-black bg-opacity-50"

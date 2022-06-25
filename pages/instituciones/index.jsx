@@ -29,60 +29,68 @@ const Aliados= () => {
 							</div>
 						</div>
 						<div className="row offset-margin">
-							<div className="col-sm-6 col-lg-3">
-								<div className="icon-item">
-									<div className="icon-item__img">
-									<div className="aliados">
-									<Image src="/aliados/1.jpeg" alt="img" width={500} height={300}/>
-									</div>
-									</div>
-								
-								</div>
-							</div>
-							<div className="col-sm-6 col-lg-3">
-								<div className="icon-item">
-									<div className="icon-item__img">
-									<div className="aliados">
-									<Image src="/aliados/2.jpeg" alt="img" width={500} height={300}/>
-									</div>
-									</div>
-								
-								</div>
-							</div>
-							<div className="col-sm-6 col-lg-3">
-								<div className="icon-item">
-									<div className="icon-item__img">
-									<div className="aliados">
-									<Image src="/aliados/3.jpeg" alt="img" width={500} height={300}/>
-									</div>	</div>
-								</div>
-							</div>
-							<div className="col-sm-6 col-lg-3">
-								<div className="icon-item">
-									<div className="icon-item__img">
-									<div className="aliados">
-										<Image src="/aliados/4.png" alt="img" width={500} height={300}/>
-									</div>	</div>
-								</div>
-							</div>
-							<div className="col-sm-6 col-lg-3">
-								<div className="icon-item">
-									<div className="icon-item__img">
-									<div className="aliados">
-										<Image src="/aliados/5.jpeg" alt="img" width={500} height={300}/>
-									</div>
-									</div>
-								</div>
-							</div>
-							<div className="col-sm-6 col-lg-3">
-								<div className="icon-item">
-									<div className="icon-item__img">
-										<div className="aliados">
-										<Image src="/aliados/6.jpeg" alt="img" width={500} height={300}/>
+							<span class="w-full md:grid grid-cols-3 gap-4 items-center">
+								<div className="col-sm-6 col-lg-3">
+									<div className="icon-item">
+										<div className="icon-item__img">
+											<div className="aliados">
+											<Image src="/aliados/1.jpeg" alt="img" width={500} height={300}/>
+											</div>
 										</div>
 									</div>
 								</div>
-							</div>
+								<div className="col-sm-6 col-lg-3">
+									<div className="icon-item">
+										<div className="icon-item__img">
+										<div className="aliados">
+										<Image src="/aliados/2.jpeg" alt="img" width={500} height={300}/>
+										</div>
+										</div>
+									</div>
+								</div>
+								<div className="col-sm-6 col-lg-3">
+									<div className="icon-item">
+										<div className="icon-item__img">
+											<div className="aliados">
+											<Image src="/aliados/3.jpeg" alt="img" width={600} height={300}/>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div className="col-sm-6 col-lg-3">
+									<div className="icon-item ">
+										<div className="icon-item__img">
+											<div className="aliados">
+												<Image src="/aliados/4.png" alt="img" width={600} height={300}/>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div className="col-sm-6 col-lg-3">
+									<div className="icon-item">
+										<div className="icon-item__img">
+										<div className="aliados">
+											<Image src="/aliados/5.jpeg" alt="img" width={500} height={300}/>
+										</div>
+										</div>
+									</div>
+								</div>
+								<div className="col-sm-6 col-lg-3">
+									<div className="icon-item">
+										<div className="icon-item__img">
+											<div className="aliados">
+											<Image src="/aliados/6.jpeg" alt="img" width={500} height={300}/>
+											</div>
+										</div>
+									</div>
+								</div>
+							</span>
+								
+							
+							
+							
+							
+							
 						</div>
 					</div>
 				</section>

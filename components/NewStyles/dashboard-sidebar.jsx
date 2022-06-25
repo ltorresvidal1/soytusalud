@@ -109,7 +109,7 @@ export const DashboardSidebar = (props) => {
               sx={{ mt: 2 }}
               variant="contained"
             >
-              Cerrar sesion
+              Cerrar sesión
             </Button>
         </Box>
       </Box>

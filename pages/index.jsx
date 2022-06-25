@@ -14,7 +14,7 @@ export default function Home() {
                   <div className="heading heading--primary"><span className="heading__pre-title" data-lang="nostros">Sobre Nosotros</span>
                     <h2 className="heading__title"><span>Soy Tú Salud</span></h2>
                   </div>
-                  <p>Conoces a algún familiar, amigo, persona o tú que necesite algún servicio médico y se encuentre en situación de vulnerabilidad? En www.soytusalud.org informa tu historia o su historia, aplica y Listo!!.</p><p> En la Fundación <a href="">www.soytusalud.org</a> una vez has demostrado que estás en una situación de vulnerabilidad, podrás acceder :</p>
+                  <p>Conoces a algún familiar, amigo, persona o tú que necesite algún servicio médico y se encuentre en situación de vulnerabilidad?. En <a href="">www.soytusalud.org</a> informa tu historia o su historia, aplica y Listo!.</p><p className="pb-4"> En la Fundación <a href="">www.soytusalud.org</a> una vez has demostrado que estás en una situación de vulnerabilidad, podrás acceder : </p>
                 <div className="row">
                 <div className="col-md-6 col-lg-12">
                   <ul className="unordered-list">
@@ -65,7 +65,7 @@ export default function Home() {
                                                   
                     </div>
                     <div className="icon-item__text">
-                      <p>Ayuda Medica</p>
+                      <p>Ayuda Médica</p>
                     </div>
                   </div>
                 </div>                             

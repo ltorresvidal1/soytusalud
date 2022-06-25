@@ -247,7 +247,7 @@ export const Navbar = () => {
                                             <li className="text-black main-menu__item main-menu__item">
                                                 <Link href={"/registro"}>
                                                     <a className=" whitespace-nowrap main-menu__link  text-base font-mediumt hover:text-gray-900">
-                                                        <span className='underline '>Regístrate</span>
+                                                        <span className=''>Regístrate</span>
                                                     </a>
                                                 </Link>
                                             </li>

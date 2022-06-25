@@ -24,9 +24,9 @@ export const MenuFooter = () => {
                 
             </div>
             <div className="col-sm-6 col-lg-3">
-                <h4 className="footer__title">Contactos</h4>
+                <h4 className="footer__title">Contáctanos</h4>
                 <div className="footer-contacts">
-                    <p className="footer-contacts__address">Medellin</p>
+                    <p className="footer-contacts__address">Medellín</p>
                     <p className="footer-contacts__phone">Telefono: <a href="tel:+3207148401">+57 320 702 3823</a></p>
                     <p className="footer-contacts__mail">Email: <a href="mailto:soutu@soutu.org">info@soytusalud.org</a></p>
                 </div>
