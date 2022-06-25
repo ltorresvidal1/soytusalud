@@ -8,9 +8,6 @@ function LinkTab(props) {
   return (
     <Tab
       component="a"
-      onClick={(event) => {
-        event.preventDefault();
-      }}
       {...props}
     />
   );
@@ -19,20 +16,16 @@ function LinkTab(props) {
 export default function NavTabs({tab}) {
   const [value, setValue] = useState(tab);
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
-
   return (
     <Box sx={{ width: '100%' }}>
-      <Tabs value={value} onChange={handleChange} aria-label="nav tabs example">
-        <Link href="/private/admin/pacientes" passHref >
-          <LinkTab label="Todos los Pacientes"/>
+        <div className='flex w-full justify-around'>
+          <Link href="/private/admin/pacientes"  passHref>
+                <a className='no-underline '>Todos los Pacientes</a>
+          </Link>
+        <Link href="/private/admin/pacientes/pacientesTuHistoria"  passHref >
+                <a className='no-underline'>Pacientes con Formulario Completado</a>
         </Link>
-       <Link href="/private/admin/pacientes/pacientesTuHistoria" passHref >
-          <LinkTab label="Pacientes con Formulario Completado" />
-       </Link>
-      </Tabs>
+        </div>
     </Box>
   );
 }

@@ -102,10 +102,10 @@ export const PacientesTablasTuHistoria = ({ UsuariosTablaTuHistoria, customers, 
               </TableRow>
             </TableHead>
             <TableBody>
-              {UsuariosTablaTuHistoria.slice(0, limit).map((customer) => (
+              {UsuariosTablaTuHistoria.slice(0, limit).map((customer, index) => (
                 <TableRow
                   hover
-                  key={customer.identificacion}
+                  key={index}
                   selected={selectedCustomerIds.indexOf(customer.identificacion) !== -1}
                 >
                   <TableCell padding="checkbox">
@@ -150,7 +150,7 @@ export const PacientesTablasTuHistoria = ({ UsuariosTablaTuHistoria, customers, 
                     {customer.fechaSolicitud}
                   </TableCell>
                   <TableCell>
-                    <Link href={`/private/admin/pacientes/${customer.uid}`}>
+                    <Link passHref  href={`/private/admin/pacientes/${customer.uid}`}>
                       <a className="text-blue-500">Ver mas</a>
                     </Link>
                   </TableCell>

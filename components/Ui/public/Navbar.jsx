@@ -132,19 +132,27 @@ export const Navbar = () => {
                                     <a className="text-black main-menu__link font-black">Inicio</a>
                                     </Link>
                                 </li>
-                                {authUser && !authUser.formularioTuHistoria?(
+                                {authUser?(
                                 <>
                                     <li className="main-menu__item main-menu__item--has-child">
                                         <Link href="/" > 
                                             <a className="main-menu__link">Pacientes</a>
                                         </Link>
                                         <ul className="main-menu__sub-list">
-                                            <li>
-                                                <Link href="/tuhistoria" >
-                                                    <a>Tu historia</a>
-                                                </Link>
-                                                        
-                                            </li>
+                                            {authUser.formularioTuHistoria?(
+                                                <li>
+                                                    <Link href="/miSolictud" >
+                                                        <a>Mi solicitud</a>
+                                                    </Link>   
+                                                </li>
+                                            ):
+                                            (
+                                                <li>
+                                                    <Link href="/tuhistoria" >
+                                                        <a>Tu historia</a>
+                                                    </Link>   
+                                                </li>
+                                            )}
                                         </ul>
                                     </li>
                                 </>): null} 
@@ -226,11 +234,6 @@ export const Navbar = () => {
                                         </li>
                                     </ul>
                                 </li>
-                                <li className="text-black main-menu__item main-menu__item">
-                                    <Link href="/trabajaNosotros">
-                                        <a className="text-black main-menu__link font-black" >Trabaja con Nosotros</a>
-                                    </Link>
-                                </li>
                                     {authUser?
                                     (
                                         <>
@@ -243,7 +246,12 @@ export const Navbar = () => {
                                     )
                                     :
                                     (
-                                        <>
+                                        <> 
+                                            <li className="text-black main-menu__item main-menu__item">
+                                                <Link href="/trabajaNosotros">
+                                                    <a className="text-black main-menu__link font-black" >Trabaja con Nosotros</a>
+                                                </Link>
+                                            </li>
                                             <li className="text-black main-menu__item main-menu__item">
                                                 <Link href={"/registro"}>
                                                     <a className=" whitespace-nowrap main-menu__link  text-base font-mediumt hover:text-gray-900">
@@ -252,7 +260,11 @@ export const Navbar = () => {
                                                 </Link>
                                             </li>
                                             <li className="text-black main-menu__item main-menu__item">
-                                                <LoginModal/>
+                                                <Link href={"/login"}>
+                                                    <a className="main-menu__link whitespace-nowrap ">
+                                                        <span  className=' underline items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 cursor-pointer '> Iniciar sesión </span> 
+                                                    </a>
+                                                </Link>
                                             </li>
                                         </>
                                     )}
