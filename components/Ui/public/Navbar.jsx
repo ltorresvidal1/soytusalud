@@ -65,11 +65,11 @@ const solutions = [
         },
         {
             link:"empresasconproposito",
-            label:"Empresas con proposito"
+            label:"Empresas con propósito"
         },
         {
             link:"personasconproposito",
-            label:"Personas con proposito"
+            label:"Personas con propósito"
         }
     ],
     icon: OfficeBuildingIcon,

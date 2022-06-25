@@ -7,8 +7,8 @@ export default function Home() {
   
   return (
     <LayoutMain>
-          <section className="section about-us" id="about">
-            <div className="container mt-6">
+          <section className="" id="about">
+            <div className="container mt-12">
               <div className="row align-items-center">
                 <div className="col-lg-6">
                   <div className="heading heading--primary"><span className="heading__pre-title" data-lang="nostros">Sobre Nosotros</span>

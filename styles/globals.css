@@ -344,6 +344,10 @@ progress::-webkit-progress-value {
   border-radius: 8rem;
 }
 
+.background-section{
+  background-color: #FAF7F6;
+}
+
 /* checkboxes */
 
 
