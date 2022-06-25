@@ -29,7 +29,7 @@ const Aliados= () => {
 							</div>
 						</div>
 						<div className="row offset-margin">
-							<span class="w-full md:grid grid-cols-3 gap-4 items-center">
+							<span className="w-full md:grid grid-cols-3 gap-4 items-center">
 								<div className="col-sm-6 col-lg-3">
 									<div className="icon-item">
 										<div className="icon-item__img">
