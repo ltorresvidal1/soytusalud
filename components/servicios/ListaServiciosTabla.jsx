@@ -21,7 +21,7 @@ import { ActualizarEstadoServicio } from '../../graphql/servicios/mutations';
 import { useMutation } from '@apollo/client/react';
 import { getInitials } from '../../utils/get-initials';
 
-export const ServiciosTablas = ({ serviciosData, ...rest }) => {
+export const ListaServiciosTabla = ({ ListaServicios, ...rest }) => {
   
   const [selectedCustomerIds, setSelectedCustomerIds] = useState([]);
   const [ actualizarEstadoServicio, { loading } ] = useMutation(ActualizarEstadoServicio);
@@ -32,7 +32,7 @@ export const ServiciosTablas = ({ serviciosData, ...rest }) => {
     let newSelectedCustomerIds;
 
     if (event.target.checked) {
-      newSelectedCustomerIds = serviciosData.map((service) => service.identificacion);
+      newSelectedCustomerIds = ListaServicios.map((service) => service.identificacion);
     } else {
       newSelectedCustomerIds = [];
     }
@@ -41,9 +41,9 @@ export const ServiciosTablas = ({ serviciosData, ...rest }) => {
   };
 
   const handleState=(e,identificacion) => {
-    actualizarEstadoServicio({
-      variables: {habilitado:e.target.checked,identificacion}
-    })
+    // actualizarEstadoServicio({
+    //   variables: {habilitado:e.target.checked,identificacion}
+    // })
   }
 
   const handleSelectOne = (event, identificacion) => {
@@ -75,39 +75,40 @@ export const ServiciosTablas = ({ serviciosData, ...rest }) => {
   };
 
   return (
-    <Card {...rest}>
+    <Card {...rest} className="mt-5">
         <TableContainer>
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell padding="checkbox">
-                  <Checkbox
-                    checked={selectedCustomerIds.length === serviciosData.length}
-                    color="primary"
-                    indeterminate={
-                      selectedCustomerIds.length > 0
-                      && selectedCustomerIds.length < serviciosData.length
-                    }
-                    onChange={handleSelectAll}
-                  />
+                <TableCell>
+                Nombre completo del servicio
                 </TableCell>
                 <TableCell>
-                  Nombre
+                  Categoria
                 </TableCell>
                 <TableCell>
-                  Departamento
+                  Dias disponibles
                 </TableCell>
                 <TableCell>
-                  Municipio
+                  Horario de atención
                 </TableCell>
                 <TableCell>
                   Direccion
                 </TableCell>
                 <TableCell>
-                  Servicios Principales
+                prestador del servicio
                 </TableCell>
                 <TableCell>
-                  Detalle
+                  Celular
+                </TableCell>
+                <TableCell>
+                  whatsapp
+                </TableCell>
+                <TableCell>
+                  Valor
+                </TableCell>
+                <TableCell>
+                  modalidad
                 </TableCell>
                 <TableCell>
                   Habilitado
@@ -115,61 +116,49 @@ export const ServiciosTablas = ({ serviciosData, ...rest }) => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {serviciosData.slice(0, limit).map((service , index) => (
+              {ListaServicios.slice(0, limit).map((service , index) => (
                 <TableRow
                   hover
                   key={index}
                   selected={selectedCustomerIds.indexOf(service.identificacion) !== -1}
                 >
-                  <TableCell padding="checkbox">
-                    <Checkbox
-                      checked={selectedCustomerIds.indexOf(service.identificacion) !== -1}
-                      onChange={(event) => handleSelectOne(event, service.identificacion)}
-                      value="true"
+                  <TableCell>
+                    {service.especialidad}
+                  </TableCell>
+                  <TableCell>
+                    {service.tipoServicio}
+                  </TableCell>
+                  <TableCell>
+                    {/* {departamentos.filter((dpto)=> dpto.codigo===service.departamento)[0].nombre} */}
+                    {service.dias.map((dia , index)=>(
+                        <span className='font-medium' key={index}>{dia.slice(0,3).toUpperCase()}-</span>
+                    ))}
+                  </TableCell>
+                  <TableCell>
+                    {service.horaInicio} - {service.horaFin}
+                  </TableCell>
+                  <TableCell>
+                    {service.direccionServicio}
+                  </TableCell>
+                  <TableCell>
+                    {service.nombreResponsable}
+                  </TableCell>
+                  <TableCell>
+                    {service.celularServicio}
+                  </TableCell>
+                  <TableCell>
+                    {service.whatsAppServicio}
+                  </TableCell>
+                  <TableCell>
+                    {service.valorServicio}
+                  </TableCell>
+                  <TableCell>
+                    {service.modalidad}
+                  </TableCell>
+                  <TableCell>
+                    <FormControlLabel
+                        control={<IOSSwitch sx={{ m: 1 }} onChange={ (e)=>handleState( e, service.identificacion ) } defaultChecked={service.habilitado} />}
                     />
-                  </TableCell>
-                  <TableCell>
-                    <Box
-                      sx={{
-                        alignItems: 'center',
-                        display: 'flex'
-                      }}
-                    >
-                      <Avatar
-                        src={service.foto}
-                        sx={{ mr: 2 }}
-                      >
-                        {getInitials(service.nombre)}
-                      </Avatar>
-                      <Typography
-                        color="textPrimary"
-                        variant="body1"
-                      >
-                        {service.nombreCompleto}
-                      </Typography>
-                    </Box>
-                  </TableCell>
-                  <TableCell>
-                    {departamentos.filter((dpto)=> dpto.codigo===service.departamento)[0].nombre}
-                  </TableCell>
-                  <TableCell>
-                    {service.municipio}
-                  </TableCell>
-                  <TableCell>
-                    {service.direccion}
-                  </TableCell>
-                  <TableCell>
-                    {service.servicios.map((servicio) => (servicio.tipoServicio + ', '))}
-                  </TableCell>
-                  <TableCell>
-                    <Link href={`/private/admin/servicios/detalleServicio/${service.identificacion}`}>
-                      <a className='text-blue-500'>Detalles</a>
-                    </Link>
-                  </TableCell>
-                  <TableCell>
-                  <FormControlLabel
-                      control={<IOSSwitch sx={{ m: 1 }} onChange={ (e)=>handleState( e, service.identificacion ) } defaultChecked={service.habilitado} />}
-                  />
                   </TableCell>
                 </TableRow>
               ))}
@@ -178,7 +167,7 @@ export const ServiciosTablas = ({ serviciosData, ...rest }) => {
         </TableContainer>
       <TablePagination
         component="div"
-        count={serviciosData.length}
+        count={ListaServicios.length}
         onPageChange={handlePageChange}
         onRowsPerPageChange={handleLimitChange}
         page={page}
@@ -188,7 +177,3 @@ export const ServiciosTablas = ({ serviciosData, ...rest }) => {
     </Card>
   );
 };
-
-// ServiciosTablas.propTypes = {
-//   serviciosData: PropTypes.array.isRequired
-// };

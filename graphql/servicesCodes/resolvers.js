@@ -12,7 +12,6 @@ export const resolversServiciosCodes = {
                 DESCRIPCION_SERVICIO:{$regex: args.DESCRIPCION_SERVICIO, $options: 'i'}
                 
             })
-            console.log(findService)
             return findService
         }
     },

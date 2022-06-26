@@ -5,7 +5,6 @@ import { ServiciosToolbar } from "../../../../components/servicios/ServiciosTool
 import { serviciosTablaData } from "../../../../graphql/servicios/queries"
 import { client } from '../../../../graphql/initClientSide'
 import { ServiciosTablas } from "../../../../components/servicios/ServiciosTablas"
-import {v4 as uuidv4} from 'uuid'
 
 
 const ServiciosPage = ({serviciosData}) => {

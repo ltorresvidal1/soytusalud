@@ -432,7 +432,7 @@ const ListServices = ({index , handleCheckBox}) => {
 					<input onClick={handleSearch} className="inputfile inputfile-1" />
 					<label className="space-x-2" onClick={()=>handleSearch(index)} >
 						<span className="iborrainputfile">Buscar</span>
-				</label>
+					</label>
 			</div>
 			</div>
 			<div className='row'>

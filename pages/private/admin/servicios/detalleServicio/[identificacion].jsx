@@ -6,7 +6,7 @@ import { Box, Container, Grid } from "@mui/material"
 import { ServicioDetails } from "../../../../../components/servicios/ServiceDetails"
 
 const DetalleServicio = ({Servicio}) => {
-    console.log(Servicio)
+  
   return (
       <NewPrivateLayout>
         <Head>
