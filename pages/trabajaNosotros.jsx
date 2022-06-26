@@ -166,8 +166,8 @@ const TrabajaNosotros = () => {
 										<div className="col-xl-12">
 											<form className="form message-form" ref={form} onChange={updateFormData} onSubmit={handleSubmit}  id="Form_TrabajaConNostros" >
 													<div className="row mt-10">
-														<h6 className="form__title">Si consideras que eres una persona en situación de vulnerabilidad, que padece una enfermedad y necesita servicios médicos, diligencia este formulario y te pondremos en contacto con un especialista que te ayude a mejorar su estado de salud.</h6>
-														<label className="control-label mb-1">Por favor, verifique los campos obligatorios marcados con un (*) </label>   
+														<h6 className="form__title">Si consideras que eres una persona en situación de vulnerabilidad, que padece una enfermedad y necesita servicios médicos, diligencia este formulario y te pondremos en contacto con un especialista que te ayude a mejorar tu estado de salud.</h6>
+														<label className="control-label mb-1">Por favor, verifica los campos obligatorios marcados con un (*) </label>   
 													</div>	
 													
 														<div className="row">
@@ -176,10 +176,10 @@ const TrabajaNosotros = () => {
 																<div className="contenedor mt-8">
 																	<h6 className="form__title">Foto</h6>
 															
-																		<div className="FotoHistoria">
+																		<div className="">
 																			<Image style={{cursor:"pointer"}} alt='defaultPhoto' className="profile-pic" id='perfil' name='perfil' src={photo} height="150" width="180"/>
-																			<label className="centrado" htmlFor="logo">
-																				<span className="badge badge-primary r-3">Subir Foto</span>
+																			<label className="" htmlFor="logo">
+																				<button className="bg-blue-400">Subir Foto</button>
 																			</label>
 																			<input type="file" onChange={handlePhoto} id="foto" name="foto" accept="image/*" className="custom-file-input  " required/>
 																		</div>
@@ -286,9 +286,10 @@ const TrabajaNosotros = () => {
 															<input type="number" className="form-control" name="cuentaDeAhorros" id="cuentaDeAhorros" required></input>
 														</div>
 													</div>
-													<div className="mt-12"><h6>Adjuntar Documentos</h6></div>
-													<div className="row mt-6">
-														<div className="col-lg-4">
+													<div className="mt-12 mb-3"><h6>Adjuntar Documentos</h6></div>
+													<div className=" mt-6">
+														<div className="">
+														<label className="">Distintivo Habilitación *</label>
 															<input type="file" name="distintivoHabilitacion" id="distintivoHabilitacion" className="inputfile inputfile-1" accept=".pdf" required/>
 															<label className="space-x-2" htmlFor="distintivoHabilitacion">
 																<svg xmlns="http://www.w3.org/2000/svg" className="iborrainputfile" width="20" height="17" viewBox="0 0 20 17">
@@ -297,7 +298,8 @@ const TrabajaNosotros = () => {
 																<span className="iborrainputfile">Seleccionar archivo</span>
 															</label>
 														</div>
-														<div className="col-lg-4">
+														<div className="">
+															<label className="">Convalidadción Icfes *</label>
 															<input type="file" name="convalidacionIcfes" id="convalidacionIcfes" className="inputfile inputfile-1" accept=".pdf" />
 															<label className="space-x-2" htmlFor="convalidacionIcfes">
 																<svg xmlns="http://www.w3.org/2000/svg" className="iborrainputfile" width="20" height="17" viewBox="0 0 20 17">
@@ -306,15 +308,16 @@ const TrabajaNosotros = () => {
 																<span className="iborrainputfile">Seleccionar archivo</span>
 															</label>
 														</div>
-														<div className="col-lg-4">
+														<div className="">
+															<label className="">imágenes Publicidad *</label>
 															<input type="file" name="fotoLogoPublicidad" id="fotoLogoPublicidad" className="inputfile inputfile-1" accept="image/*" />
 															<label className="space-x-2" htmlFor="fotoLogoPublicidad">
 																<svg xmlns="http://www.w3.org/2000/svg" className="iborrainputfile" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"></path></svg>
 																<span className="iborrainputfile">Seleccionar archivo</span>
 															</label>
-															<label className="ml-3">Imágenes para publicidad *</label>
 														</div>
-														<div className="col-lg-4">
+														<div className="">
+															<label className="">Hoja de vida *</label>
 															<input type="file" name="hojaVida" id="hojaVida" className="inputfile inputfile-1" accept=".pdf" required />
 															<label className="space-x-2" htmlFor="hojaVida">
 																<svg xmlns="http://www.w3.org/2000/svg" className="iborrainputfile" width="20" height="17" viewBox="0 0 20 17">
@@ -322,7 +325,7 @@ const TrabajaNosotros = () => {
 																</svg>
 																<span className="iborrainputfile">Seleccionar archivo *</span>
 															</label>
-															<label className="ml-3">Hoja de vida *</label>
+															
 														</div>
 													</div>
 													</div>
@@ -430,9 +433,9 @@ const ListServices = ({index , handleCheckBox}) => {
 				<label className="mt-3">*</label>
 					{/* <div className='cursor-pointer bg-blue-500 text-white rounded-lg flex justify-center py-1 ' onClick={handleSearch}>Buscar</div> */}
 					<input onClick={handleSearch} className="inputfile inputfile-1" />
-					<label className="space-x-2" onClick={()=>handleSearch(index)} >
-						<span className="iborrainputfile">Buscar</span>
-					</label>
+				<label className="space-x-2" onClick={()=>handleSearch(index)} >
+					<span className="iborrainputfile">Buscar</span>
+				</label>
 			</div>
 			</div>
 			<div className='row'>
@@ -472,44 +475,48 @@ const ListServices = ({index , handleCheckBox}) => {
 					<label className="mt-3"> Hora Fin *</label>
 					<input type="time" className="form-control" name={`horaFin${index}`} id="disponibilidadHoraria"/>
 				</div>
-				<div className="col-lg-8">
-					<label className="mt-3">Dias de disponibilidad*</label>
-					<div className="col-12 space-x-6">
+			</div>
+			<div className="row">
+			<div className="col-lg-12">
+					<label className="mt-3">Dias disponibles*</label>
+					<div className=" space-x-6">
+						<div className="flex flex-col justify-between md:flex-row">
 						<label className="form__checkbox-label" >
-							<span className="form__label-text "  >Lunes</span>
-							<input className="form__input-checkbox" type="checkbox" value={`lunes`} onChange={(e)=>handleCheckBox(e,index)} />
-							<span className="form__checkbox-mask"></span>
-						</label>
-						<label className="form__checkbox-label" >
-							<span className="form__label-text" >Martes</span>
-							<input className="form__input-checkbox" type="checkbox" value={`martes`} onChange={(e)=>handleCheckBox(e,index)} />
-							<span className="form__checkbox-mask"></span>
-						</label>
-						<label className="form__checkbox-label" >
-							<span className="form__label-text" >Mircoles</span>
-							<input className="form__input-checkbox" type="checkbox" onChange={(e)=>handleCheckBox(e,index)} value={`miercoles`} />
-							<span className="form__checkbox-mask"></span>
-						</label>
-						<label className="form__checkbox-label" >
-							<span className="form__label-text"  >Jueves</span>
-							<input className="form__input-checkbox" type="checkbox" onChange={(e)=>handleCheckBox(e,index)} value={`jueves`} />
-							<span className="form__checkbox-mask"></span>
-						</label>
-						<label className="form__checkbox-label" >
-							<span className="form__label-text">Viernes</span>
-							<input className="form__input-checkbox" type="checkbox"  value={`viernes`} onChange={(e)=>handleCheckBox(e,index)} />
-							<span className="form__checkbox-mask"></span>
-						</label>
-						<label className="form__checkbox-label" >
-							<span className="form__label-text"  >Sabado</span>
-							<input className="form__input-checkbox" type="checkbox" onChange={(e)=>handleCheckBox(e,index)} value={`sabado`} />
-							<span className="form__checkbox-mask"></span>
-						</label>
-						<label className="form__checkbox-label" >
-							<span className="form__label-text" >Domingo</span>
-							<input className="form__input-checkbox" type="checkbox" onChange={(e)=>handleCheckBox(e,index)} value={`domingo`} />
-							<span className="form__checkbox-mask"></span>
-						</label>
+								<span className="form__label-text" >Lunes</span>
+								<input className="form__input-checkbox" type="checkbox" value={`lunes`} onChange={(e)=>handleCheckBox(e,index)} />
+								<span className="form__checkbox-mask"></span>
+							</label>
+							<label className="form__checkbox-label" >
+								<span className="form__label-text" >Martes</span>
+								<input className="form__input-checkbox" type="checkbox" value={`martes`} onChange={(e)=>handleCheckBox(e,index)} />
+								<span className="form__checkbox-mask"></span>
+							</label>
+							<label className="form__checkbox-label" >
+								<span className="form__label-text" >Miércoles</span>
+								<input className="form__input-checkbox" type="checkbox" onChange={(e)=>handleCheckBox(e,index)} value={`miercoles`} />
+								<span className="form__checkbox-mask"></span>
+							</label>
+							<label className="form__checkbox-label" >
+								<span className="form__label-text"  >Jueves</span>
+								<input className="form__input-checkbox" type="checkbox" onChange={(e)=>handleCheckBox(e,index)} value={`jueves`} />
+								<span className="form__checkbox-mask"></span>
+							</label>
+							<label className="form__checkbox-label" >
+								<span className="form__label-text">Viernes</span>
+								<input className="form__input-checkbox" type="checkbox"  value={`viernes`} onChange={(e)=>handleCheckBox(e,index)} />
+								<span className="form__checkbox-mask"></span>
+							</label>
+							<label className="form__checkbox-label" >
+								<span className="form__label-text" >Sábado</span>
+								<input className="form__input-checkbox" type="checkbox" onChange={(e)=>handleCheckBox(e,index)} value={`sabado`} />
+								<span className="form__checkbox-mask"></span>
+							</label>
+							<label className="form__checkbox-label" >
+								<span className="form__label-text" >Domingo</span>
+								<input className="form__input-checkbox" type="checkbox" onChange={(e)=>handleCheckBox(e,index)} value={`domingo`} />
+								<span className="form__checkbox-mask"></span>
+							</label>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -519,11 +526,11 @@ const ListServices = ({index , handleCheckBox}) => {
 					<input type="number" className="form-control" name={`valorServicio${index}`} id="valorServicio" required></input>
 				</div>
 				<div className="col-lg-3">
-					<label className="mt-3">Nombre del prestador de servicio *</label>	
+					<label className="mt-3">Prestador del servicio *</label>	
 					<input type="text" className="form-control" name={`nombreResponsable${index}`}  required></input>
 				</div>
 				<div className="col-lg-3 mt-3">
-					<label>Celular del resposable del servicio *</label>
+					<label>Contacto responsable *</label>
 					<input className="form-control" type="text" name={`celularServicio${index}`} required />
 				</div>
 				<div className="col-lg-3 mt-3">

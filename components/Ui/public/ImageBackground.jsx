@@ -50,13 +50,13 @@ export const ImageBackground = ({}) => {
                 case '/personasconproposito':
                     setImagePath('/promo_4.png')
                         setText({
-                            title:"Personas con Proposito"
+                            title:"Personas con Propósito"
                     })
                 break
                 case '/empresasconproposito':
                     setImagePath('/promo_4.png')
                         setText({
-                            title:"Empresas con Proposito"
+                            title:"Empresas con Propósito"
                     })
                 break
             default:

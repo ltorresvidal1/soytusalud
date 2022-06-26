@@ -19,19 +19,63 @@ const Aliados= () => {
 			
 				
 				
-				<section className="section statistics no-padding-top">
+				<section className="background-section">
 					<div className="container">
-						<div className="row margin-bottom">
+						<div className="pt-12">
 							<div className="col-12">
 								<div className="heading heading--primary heading--center">
-								<h2 className="heading__title no-margin-bottom"><span>Instituciones</span></h2>
+								<h2 className="heading__title pb-12"><span>Instituciones</span></h2>
 								</div>
 							</div>
-						</div>
-						<div className="row offset-margin">
-							<span className="w-full md:grid grid-cols-3 gap-4 items-center">
-								<div className="col-sm-6 col-lg-3">
-									<div className="icon-item">
+							<div>
+							  <div className="items-center mb-12">
+								<div>
+								  <div className="grid items-center space-y-0 gap-x-8 gap-y-6 sm:grid-cols-2 lg:grid-cols-3">
+									<div className="group relative">
+									  <div className="relative w-auto h-auto overflow-hidden sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1">
+									  <Image src="/aliados/1.png" alt="img" width={300} height={150}/>
+									  </div>
+									</div>
+
+									<div className="group relative ">
+										<div className="relative w-auto h-auto overflow-hidden sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1">
+										  <Image src="/aliados/2.png" alt="img" width={350} height={100}/>
+										</div>
+									</div>
+
+									<div className="group relative">
+										<div className="relative w-auto h-auto overflow-hidden sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1">
+										  <Image src="/aliados/3.png" alt="img" width={300} height={150}/>
+										</div>
+									</div>
+
+									<div className="group relative">
+										<div className="relative w-auto h-auto overflow-hidden sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1">
+										  <Image src="/aliados/4.png" alt="img" width={300} height={140}/>
+										</div>
+									</div>
+
+									<div className="group relative">
+										<div className="relative w-auto p-2 h-auto overflow-hidden sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1">
+										  <Image src="/aliados/5.png" alt="img" width={300} height={150}/>
+										</div>
+									</div>
+
+									<div className="group relative">
+										<div className="relative w-auto p-2 h-auto overflow-hidden sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1">
+										  <Image src="/aliados/6.png" alt="img" width={300} height={100}/>
+										</div>
+									</div>
+
+								  </div>
+								</div>
+							  </div>
+						  </div>
+						{/* </div>
+						<div className="row">
+							<span className="w-full md:grid grid-cols-3 sm:gap-12 items-center">
+								<div className="col-sm-6 col-lg-3 ">
+									<div className="icon-item ">
 										<div className="icon-item__img">
 											<div className="aliados">
 											<Image src="/aliados/1.jpeg" alt="img" width={500} height={300}/>
@@ -84,7 +128,7 @@ const Aliados= () => {
 										</div>
 									</div>
 								</div>
-							</span>
+							</span> */}
 								
 							
 							

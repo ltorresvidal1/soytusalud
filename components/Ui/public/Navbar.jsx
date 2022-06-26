@@ -45,8 +45,8 @@ const solutions = [
             label:"Pacientes Clasificados"
         },
         {
-            link:"trasabilidad",
-            label:"Trasabilidad Pacientes"
+            link:"trazabilidad",
+            label:"Trazabilidad Pacientes"
         },
         {
             link:"donaciones",
@@ -65,11 +65,11 @@ const solutions = [
         },
         {
             link:"empresasconproposito",
-            label:"Empresas con proposito"
+            label:"Empresas con propósito"
         },
         {
             link:"personasconproposito",
-            label:"Personas con proposito"
+            label:"Personas con propósito"
         }
     ],
     icon: OfficeBuildingIcon,
@@ -200,8 +200,8 @@ export const Navbar = () => {
                                         </li>
                                         <li>
                                                     
-                                        <Link href="/trasabilidad" >
-                                                <a>Trasabilidad Pacientes</a>
+                                        <Link href="/trazabilidad" >
+                                                <a>Trazabilidad Pacientes</a>
                                             </Link>
                                         </li>
                                         <li>
