@@ -113,7 +113,7 @@ export const Navbar = () => {
   return (
     <header className={navbar? "backgroundNav w-full header ":"header header--front"}>
         <Popover className="container-fluid relative bg-transparent">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6">
+            <div className="max-w-7xl mx-auto px-4">
                 <div className="flex justify-between items-center py-6 lg:justify-start lg:space-x-10">
                     <div className="flex justify-start items-center sm:w-0 sm:flex-1">
                         <Image src="/logo_horizontal-white.png" width={'180px'} height={'50px'} alt="logo"/>
@@ -125,6 +125,7 @@ export const Navbar = () => {
                         </div>
                     </Popover.Button>
                     <Popover.Group as="nav" className="hidden lg:flex space-x-10">
+                    <div>
                         <nav>
                             <ul className="main-menu">
                                 <li className="text-black main-menu__item main-menu__item">
@@ -252,28 +253,35 @@ export const Navbar = () => {
                                                     <a className="text-black main-menu__link font-black" >Trabaja con Nosotros</a>
                                                 </Link>
                                             </li>
-                                            <li className="text-black main-menu__item main-menu__item">
-                                                <Link href={"/registro"}>
-                                                    <a className=" whitespace-nowrap main-menu__link  text-base font-mediumt hover:text-gray-900">
-                                                        <span className=''>Regístrate</span>
-                                                    </a>
-                                                </Link>
-                                            </li>
-                                            <li className="text-black main-menu__item main-menu__item">
-                                                <Link href={"/login"}>
-                                                    <a className="main-menu__link whitespace-nowrap ">
-                                                        <span  className=' underline items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 cursor-pointer '> Iniciar sesión </span> 
-                                                    </a>
-                                                </Link>
-                                            </li>
+                                           
                                         </>
                                     )}
                             </ul>
                             
                                     
                         </nav>
+                    </div>
                     </Popover.Group> 
+                    <div className="md:hidden lg:flex space-x-6">
+                      
+                            <Link href={"/registro"}>
+                                <a className="text-white px-2 py-2 border rounded-md no-underline whitespace-nowrap main-menu__link text-base font-mediumt hover:text-gray-900">
+                                    <span className=''>Regístrate</span>
+                                </a>
+                            </Link>
+
+                            <Link href={"/login"}>
+                                <a className="main-menu__link whitespace-nowrap no-underline">
+                                    <span className=' items-center no-underlinejustify-center mt-2 px-2 py-2 border rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 cursor-pointer '> Iniciar sesión </span>
+                                </a>
+                            </Link>
+                    
+           
+                            
+                
+                    </div>
                 </div>
+                
             </div>
 
             <Transition
