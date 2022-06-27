@@ -34,6 +34,7 @@ export const typesServicios = gql`
         identificacion: ID!
         foto:String!
         nombreCompleto: String!
+        celular: String!
         tipoDocumento: String!
         departamento: String!
         municipio: String!
@@ -81,8 +82,8 @@ export const typesServicios = gql`
         aceptaTratamientoDatos: String!
         aceptaDocumentoSARLAFT: String!
         aceptaCodigoEticaSoyTuSalud: String!
-    ): Servicio
-
+        ): Servicio
+        actualizarEstadoServicio(habilitado: Boolean!, identificacion: String!): Servicio
     }
     
 `

@@ -1,5 +1,5 @@
 import { db } from "../../firebase/initConfig";
-import { collection , getDocs , getDoc , setDoc , doc , updateDoc, where, query } from "firebase/firestore"; 
+import { collection , getDocs , getDoc , setDoc , doc , updateDoc } from "firebase/firestore"; 
 
 
 export const resolversServicios = {
@@ -57,35 +57,14 @@ export const resolversServicios = {
             await setDoc(doc(usersRef,args.identificacion),servicioCreado);
             return servicioCreado;
         },
-        // tuHistoria: async(parent, args) => {
-        //     const usersRef = collection(db,"users")
-        //     let dataUserUpdate = {
-        //         genero: args.genero,
-        //         fechaNacimiento: args.fechaNacimiento,
-        //         direccion: args.direccion,
-        //         foto: args.foto,
-        //         sisben: args.sisben,
-        //         historiaClinica: args.historiaClinica,
-        //         discapacitado: args.discapacitado,
-        //         victimaViolencia:args.victimaViolencia,
-        //         identidadGenero:args.identidadGenero,
-        //         orientacionSexual:args.orientacionSexual,
-        //         grupoPoblacional: args.grupoPoblacional,
-        //         EPS:args.EPS,
-        //         tuHistoria:args.tuHistoria,
-        //         serviciosSolicitado: args.serviciosSolicitado,
-        //         autorizacionFoto:args.autorizacionFoto,
-        //         recopilacionDatos:args.recopilacionDatos,
-        //         departamento:args.departamento,
-        //         municipio:args.municipio,
-        //         comunidad: '',
-        //         formularioTuHistoria:true,
-        //         fechaSolicitud: new Date().toISOString().split("T")[0],
-        //     }
-        //     await updateDoc(doc(usersRef,args.uid),dataUserUpdate);
-        //     const docRef = doc(db, "users", args.uid);
-        //     const docSnap = await getDoc(docRef);
-        //     return docSnap.data();
-        // }
+        actualizarEstadoServicio: async (parent, args) => {
+            const docRef = doc(db, "servicios", args.identificacion);
+            const docSnap = await getDoc(docRef);
+            const servicioActualizado = {
+                habilitado: args.habilitado,
+            }
+            await updateDoc(docRef,servicioActualizado);
+            return docSnap.data();
+        }
     }
 }

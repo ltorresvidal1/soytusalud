@@ -1,8 +1,20 @@
-import { Avatar, Box, Button, Card, CardContent, CardHeader, Divider, Grid, Typography } from "@mui/material";
+import { Avatar, Box, Card, CardContent, CardHeader, Divider, FormControlLabel, Grid, Typography } from "@mui/material";
+import { ActualizarEstadoServicio } from "../../graphql/servicios/mutations";
 import { departamentos } from "../../utils/deparamentos";
+import { useMutation } from "@apollo/client/react";
+import { ListaServiciosTabla } from "./ListaServiciosTabla";
+import { IOSSwitch } from "./ServiciosTabla.css";
 
 export const ServicioDetails = ({servicio}) => {
 
+    const [ actualizarEstadoServicio, { loading } ] = useMutation(ActualizarEstadoServicio);
+
+
+    const handleState=(e,identificacion) => {
+        actualizarEstadoServicio({
+          variables: {habilitado:e.target.checked,identificacion}
+        })
+      }
 
     return (
       <form
@@ -36,48 +48,6 @@ export const ServicioDetails = ({servicio}) => {
                 container
                 spacing={3}
                 >
-                <Grid
-                    item
-                    md={3}
-                    xs={12}
-                >
-                    <Typography
-                    variant="outlined"
-                    fontWeight={"bold"}
-                    >
-                    Fecha Solicitud de Servicio :
-                    </Typography>
-                    <Grid>
-                    <Typography
-                        variant="outlined"
-                    >
-                        {servicio.fechaSolicitud}
-                    </Typography>
-                    </Grid>
-                </Grid>
-                <Grid
-                    item
-                    md={3}
-                    xs={12}
-                >
-                    <Typography
-                    
-                    variant="outlined"
-                    fontWeight={"bold"}
-                    >
-                    Correo Electronico :
-                    </Typography>
-                    <Grid
-                    >
-                    <Typography
-                    
-                    variant="outlined"
-                    >
-                    {servicio.correo}
-                    </Typography>
-                    </Grid>
-    
-                </Grid>
                 <Grid
                     item
                     md={3}
@@ -170,103 +140,16 @@ export const ServicioDetails = ({servicio}) => {
                     xs={12}
                 >
                     <Typography
-                    
                     variant="outlined"
                     fontWeight={"bold"}
                     >
-                    Genero:
+                    Distintivo de Habilitacion :
                     </Typography>
                     <Grid>
                     <Typography
-                        
                         variant="outlined"
                     >
-                        {servicio.genero}
-                    </Typography>
-                    </Grid>
-                </Grid>
-                <Grid
-                    item
-                    md={3}
-                    xs={12}
-                >
-                    <Typography
-                    
-                    variant="outlined"
-                    fontWeight={"bold"}
-                    >
-                    Identidad de genero :
-                    </Typography>
-                    <Grid>
-                    <Typography
-                        
-                        variant="outlined"
-                    >
-                        {servicio.identidadGenero}
-                    </Typography>
-                    </Grid>
-                </Grid>
-                <Grid
-                    item
-                    md={3}
-                    xs={12}
-                >
-                    <Typography
-                    
-                    variant="outlined"
-                    fontWeight={"bold"}
-                    >
-                    Orientacion sexual :
-                    </Typography>
-                    <Grid>
-                    <Typography
-                        
-                        variant="outlined"
-                    >
-                        {servicio.orientacionSexual}
-                    </Typography>
-                    </Grid>
-                </Grid>
-                <Grid
-                    item
-                    md={3}
-                    xs={12}
-                >
-                    <Typography
-                    
-                    variant="outlined"
-                    fontWeight={"bold"}
-                    >
-                    Grupo Poblacional :
-                    </Typography>
-                    <Grid>
-                    <Typography
-                        
-                        variant="outlined"
-                    >
-                        {/* {grupoPoblacional
-                        .filter((valueFilter)=> valueFilter.value === servicio.grupoPoblacional)[0].grupo} */}
-                    </Typography>
-                    </Grid>
-                </Grid>
-                <Grid
-                    item
-                    md={3}
-                    xs={12}
-                >
-                    <Typography
-                    
-                    variant="outlined"
-                    fontWeight={"bold"}
-                    >
-                    Comunidad :
-                    </Typography>
-                    <Grid>
-                    <Typography
-                        
-                        variant="outlined"
-                    >
-                        {servicio.comunidad?servicio.comunidad:'N/A'}
+                        <a className='text-blue-500' target="_blank" href={servicio.distintivoHabilitacion} rel="noreferrer">Ver Distintivo</a>
                     </Typography>
                     </Grid>
                 </Grid>
@@ -279,32 +162,13 @@ export const ServicioDetails = ({servicio}) => {
                     variant="outlined"
                     fontWeight={"bold"}
                     >
-                    SISBEN :
+                    Hoja de vida:
                     </Typography>
                     <Grid>
                     <Typography
                         variant="outlined"
                     >
-                        <a className='text-blue-500' target="_blank" href={servicio.sisben} rel="noreferrer">Ver SISBEN</a>
-                    </Typography>
-                    </Grid>
-                </Grid>
-                <Grid
-                    item
-                    md={3}
-                    xs={12}
-                >
-                    <Typography
-                    variant="outlined"
-                    fontWeight={"bold"}
-                    >
-                    Historia Clinica :
-                    </Typography>
-                    <Grid>
-                    <Typography
-                        variant="outlined"
-                    >
-                        <a className='text-blue-500'  target="_blank" href={servicio.historiaClinica} rel="noreferrer">Ver historia clinica</a>
+                        <a className='text-blue-500'  target="_blank" href={servicio.hojaVida} rel="noreferrer">Ver hoja de vida</a>
                     </Typography>
                     </Grid>
                 </Grid>
@@ -336,13 +200,13 @@ export const ServicioDetails = ({servicio}) => {
                     variant="outlined"
                     fontWeight={"bold"}
                     >
-                    Fecha Nacimiento :
+                    Foto publicidad:
                     </Typography>
                     <Grid>
                     <Typography
                         variant="outlined"
                     >
-                        {servicio.fechaNacimiento}
+                        <a className='text-blue-500' target="_blank" href={servicio.fotoLogoPublicidad} rel="noreferrer">Ver foto</a>
                     </Typography>
                     </Grid>
                 </Grid>
@@ -355,13 +219,13 @@ export const ServicioDetails = ({servicio}) => {
                     variant="outlined"
                     fontWeight={"bold"}
                     >
-                    Discapacitado:
+                    Convalidacion ICFES:
                     </Typography>
                     <Grid>
                     <Typography
                         variant="outlined"
                     >
-                        {servicio.discapacitado}
+                        <a className='text-blue-500' target="_blank" href={servicio.convalidacionIcfes} rel="noreferrer">Ver Certificado</a>
                     </Typography>
                     </Grid>
                 </Grid>
@@ -374,33 +238,12 @@ export const ServicioDetails = ({servicio}) => {
                     variant="outlined"
                     fontWeight={"bold"}
                     >
-                    Tipo de Discapacidad:
+                    Habilitado en la fundacion:
                     </Typography>
                     <Grid>
-                    <Typography
-                        variant="outlined"
-                    >
-                        {servicio.tipoDiscapacidad?servicio.tipoDiscapacidad:"No aplica"}
-                    </Typography>
-                    </Grid>
-                </Grid>
-                <Grid
-                    item
-                    md={3}
-                    xs={12}
-                >
-                    <Typography
-                    variant="outlined"
-                    fontWeight={"bold"}
-                    >
-                    Victima de violencia:
-                    </Typography>
-                    <Grid>
-                    <Typography
-                        variant="outlined"
-                    >
-                        {servicio.victimaViolencia}
-                    </Typography>
+                    <FormControlLabel
+                      control={<IOSSwitch sx={{ m: 1 }} onChange={ (e)=>handleState( e, servicio.identificacion ) } defaultChecked={servicio.habilitado} />}
+                  />
                     </Grid>
                 </Grid>
                 <Grid
@@ -413,56 +256,14 @@ export const ServicioDetails = ({servicio}) => {
                     variant="outlined"
                     fontWeight={"bold"}
                     >
-                    EPS :
+                    Resumen Curriculum :
                     </Typography>
                     <Grid>
                     <Typography
                         
                         variant="outlined"
                     >
-                        {/* {eps.filter((ep)=> ep.value===servicio.EPS)[0].eps} */}
-                    </Typography>
-                    </Grid>
-                </Grid>
-                <Grid
-                    item
-                    md={12}
-                    xs={12}
-                >
-                    <Typography
-                    
-                    variant="outlined"
-                    fontWeight={"bold"}
-                    >
-                    Servicios Solicitados :
-                    </Typography>
-                    <Grid>
-                    <Typography
-                        
-                        variant="outlined"
-                    >
-                        {/* {servicio.serviciosSolicitado.toString()} */}
-                    </Typography>
-                    </Grid>
-                </Grid>
-                <Grid
-                    item
-                    md={12}
-                    xs={12}
-                >
-                    <Typography
-                    
-                    variant="outlined"
-                    fontWeight={"bold"}
-                    >
-                    Historia :
-                    </Typography>
-                    <Grid>
-                    <Typography
-                        
-                        variant="outlined"
-                    >
-                        {servicio.tuHistoria}
+                        {servicio.resumenCurriculum}
                     </Typography>
                     </Grid>
                 </Grid>
@@ -474,13 +275,9 @@ export const ServicioDetails = ({servicio}) => {
                 p: 2
                 }}
             >
-                <Button
-                color="primary"
-                >
-                Aplica para Fundacion Soy Tu
-                </Button>
             </Box>
             </Card>
+            <ListaServiciosTabla ListaServicios={servicio.servicios} />
       </form>
     );
   };

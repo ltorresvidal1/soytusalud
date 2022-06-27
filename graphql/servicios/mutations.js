@@ -8,3 +8,11 @@ export const crearServicios = gql`
   }
 `
 
+export const ActualizarEstadoServicio = gql`
+    mutation Mutation($habilitado: Boolean!, $identificacion: String!) {
+    actualizarEstadoServicio(habilitado: $habilitado, identificacion: $identificacion) {
+      nombreCompleto
+    }
+  }
+`
+

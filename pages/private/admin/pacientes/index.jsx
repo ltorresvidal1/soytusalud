@@ -8,8 +8,6 @@ import { PacientesTablas } from '../../../../components/pacientes/PacientesTabla
 
 
 const PacientesPage = ({UsuariosTabla}) => {
-  console.log(UsuariosTabla)
-  
   return (
     <NewPrivateLayout>
     <Head>

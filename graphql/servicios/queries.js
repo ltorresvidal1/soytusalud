@@ -23,6 +23,7 @@ export const servicioDetalle = gql`
             Servicio(identificacion: $identificacion) {
             identificacion
             foto
+            celular
             nombreCompleto
             tipoDocumento
             departamento

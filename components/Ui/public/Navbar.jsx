@@ -45,8 +45,8 @@ const solutions = [
             label:"Pacientes Clasificados"
         },
         {
-            link:"trasabilidad",
-            label:"Trasabilidad Pacientes"
+            link:"trazabilidad",
+            label:"Trazabilidad Pacientes"
         },
         {
             link:"donaciones",
@@ -200,8 +200,8 @@ export const Navbar = () => {
                                         </li>
                                         <li>
                                                     
-                                        <Link href="/trasabilidad" >
-                                                <a>Trasabilidad Pacientes</a>
+                                        <Link href="/trazabilidad" >
+                                                <a>Trazabilidad Pacientes</a>
                                             </Link>
                                         </li>
                                         <li>

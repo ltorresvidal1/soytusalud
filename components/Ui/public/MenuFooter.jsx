@@ -29,7 +29,7 @@ export const MenuFooter = () => {
                 <div className="footer-contacts">
                     <p className="footer-contacts__address">Medellín</p>
                     <p className="footer-contacts__phone">Teléfono: <a href="tel:+3207148401">+57 320 702 3823</a></p>
-                    <p className="footer-contacts__mail">Email: <a href="mailto:soutu@soutu.org">info@soytusalud.org</a></p>
+                    <p className="footer-contacts__mail">Email: <a href="mailto:info@fundacionsoytusalud.org">info@fundacionsoytusalud.org</a></p>
                 </div>
             </div>
             <div className="col-sm-6 col-lg-3">
