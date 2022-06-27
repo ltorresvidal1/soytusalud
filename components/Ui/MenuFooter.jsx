@@ -44,7 +44,7 @@ export const MenuFooter = () => {
         </div>
         <div className="row align-items-baseline">
             <div className="col-md-6">
-                <p className="footer-copyright">Copyrights Soy Tú © 2022. Todos los derechos reservado.</p>
+                <p className="footer-copyright">Copyright © 2022 Soy Tú Salud. Todos los derechos reservados.</p>
             </div>
             
         </div>
