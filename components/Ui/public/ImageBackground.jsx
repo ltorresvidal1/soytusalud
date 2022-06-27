@@ -78,7 +78,7 @@ export const ImageBackground = ({}) => {
                 <Image src={ImagePath} alt="img" layout="fill" objectFit='cover' quality={100} objectPosition="50% 25%" priority={true}/>     
                 <Container className="pt-32">
                     <div className="align-container__item">
-                        <Box position={'relative'} className="text-white text-3xl md:text-4xl lg:text-6xl xl:text-6xl tracking-tight text-left">
+                        <Box position={'relative'} className="text-white mt-12 text-3xl md:text-4xl lg:text-6xl xl:text-6xl tracking-tight text-left">
                             <span className='font-bold' data-lang="eslogan1">{ text.title?text.title:null } </span> 
                             <span className="font-light">{ text.title2?text.title2:null }</span>
                         </Box>
