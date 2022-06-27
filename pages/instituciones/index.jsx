@@ -32,38 +32,38 @@ const Aliados= () => {
 								<div>
 								  <div className="grid items-center space-y-0 gap-x-8 gap-y-6 sm:grid-cols-2 lg:grid-cols-3">
 									<div className="group relative">
-									  <div className="relative w-auto h-auto overflow-hidden sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1">
-									  <Image src="/aliados/1.png" alt="img" width={300} height={150}/>
+									  <div className="flex justify-center w-auto h-auto overflow-hidden sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1">
+									  <Image src="/aliados/1.png" alt="img" width={200} height={100}/>
 									  </div>
 									</div>
 
 									<div className="group relative ">
-										<div className="relative w-auto h-auto overflow-hidden sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1">
-										  <Image src="/aliados/2.png" alt="img" width={350} height={100}/>
+										<div className="flex justify-center w-auto h-auto overflow-hidden sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1">
+										  <Image src="/aliados/2.png" alt="img" width={250} height={50}/>
 										</div>
 									</div>
 
 									<div className="group relative">
-										<div className="relative w-auto h-auto overflow-hidden sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1">
-										  <Image src="/aliados/3.png" alt="img" width={300} height={150}/>
+										<div className="flex justify-center w-auto h-auto overflow-hidden sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1">
+										  <Image src="/aliados/3.png" alt="img" width={250} height={120}/>
 										</div>
 									</div>
 
 									<div className="group relative">
-										<div className="relative w-auto h-auto overflow-hidden sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1">
-										  <Image src="/aliados/4.png" alt="img" width={300} height={140}/>
+										<div className="flex justify-center w-auto h-auto overflow-hidden sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1">
+										  <Image src="/aliados/4.png" alt="img" width={200} height={100}/>
 										</div>
 									</div>
 
 									<div className="group relative">
-										<div className="relative w-auto p-2 h-auto overflow-hidden sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1">
-										  <Image src="/aliados/5.png" alt="img" width={300} height={150}/>
+										<div className="flex justify-center w-auto p-2 h-auto overflow-hidden sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1">
+										  <Image src="/aliados/5.png" alt="img" width={200} height={100}/>
 										</div>
 									</div>
 
 									<div className="group relative">
-										<div className="relative w-auto p-2 h-auto overflow-hidden sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1">
-										  <Image src="/aliados/6.png" alt="img" width={300} height={100}/>
+										<div className="flex justify-center w-auto p-2 h-auto overflow-hidden sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1">
+										  <Image src="/aliados/6.png" alt="img" width={200} height={90}/>
 										</div>
 									</div>
 
