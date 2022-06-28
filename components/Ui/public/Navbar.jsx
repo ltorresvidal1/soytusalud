@@ -114,7 +114,7 @@ export const Navbar = () => {
     <header className={navbar? "backgroundNav w-full header ":"header header--front"}>
         <Popover className="container-fluid relative bg-transparent">
             <div className="max-w-7xl mx-auto px-4">
-                <div className="flex justify-between items-center py-6 lg:justify-start lg:space-x-10">
+                <div className="flex justify-between items-center py-6 lg:justify-start lg:space-x-12">
                     <div className="flex justify-start items-center sm:w-0 sm:flex-1">
                         <Image src="/logo_horizontal-white.png" width={'180px'} height={'50px'} alt="logo"/>
                     </div>
@@ -125,7 +125,7 @@ export const Navbar = () => {
                         </div>
                     </Popover.Button>
                     <Popover.Group as="nav" className="hidden lg:flex space-x-10">
-                    <div>
+                    <div className="items-center mr-14">
                         <nav>
                             <ul className="main-menu">
                                 <li className="text-black main-menu__item main-menu__item">
@@ -257,20 +257,18 @@ export const Navbar = () => {
                                         </>
                                     )}
                             </ul>
-                            
-                                    
                         </nav>
                     </div>
                     </Popover.Group> 
-                    <div className="md:hidden lg:flex space-x-6">
+                    <div className="md:hidden lg:flex space-x-6 lg:mt-3">
                         <Link href={"/registro"}>
                             <a className="main-menu__link whitespace-nowrap no-underline">
-                                <span className='px-2 py-2 items-center no-underlinejustify-center border rounded-md shadow-sm text-base font-medium text-white border-white cursor-pointer     '> Registro </span>
+                                <span className='px-4 py-1.5 items-center no-underlinejustify-center border rounded-md shadow-sm text-base font-medium text-white border-white cursor-pointer hover:bg-white hover:bg-opacity-10'> Registro </span>
                             </a>
                         </Link>
                         <Link href={"/login"}>
                             <a className="main-menu__link whitespace-nowrap no-underline">
-                                <span className='px-2 py-2 items-center no-underlinejustify-center border rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 cursor-pointer '> Iniciar sesión </span>
+                                <span className='px-3 py-1.5 items-center no-underlinejustify-center border rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 cursor-pointer '> Iniciar sesión </span>
                             </a>
                         </Link>
                     </div>
