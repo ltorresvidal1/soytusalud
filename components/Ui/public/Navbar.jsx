@@ -263,22 +263,16 @@ export const Navbar = () => {
                     </div>
                     </Popover.Group> 
                     <div className="md:hidden lg:flex space-x-6">
-                      
-                            <Link href={"/registro"}>
-                                <a className="text-white px-2 py-2 border rounded-md no-underline whitespace-nowrap main-menu__link text-base font-mediumt hover:text-gray-900">
-                                    <span className=''>Regístrate</span>
-                                </a>
-                            </Link>
-
-                            <Link href={"/login"}>
-                                <a className="main-menu__link whitespace-nowrap no-underline">
-                                    <span className=' items-center no-underlinejustify-center mt-2 px-2 py-2 border rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 cursor-pointer '> Iniciar sesión </span>
-                                </a>
-                            </Link>
-                    
-           
-                            
-                
+                        <Link href={"/registro"}>
+                            <a className="main-menu__link whitespace-nowrap no-underline">
+                                <span className='px-2 py-2 items-center no-underlinejustify-center border rounded-md shadow-sm text-base font-medium text-white border-white cursor-pointer     '> Registro </span>
+                            </a>
+                        </Link>
+                        <Link href={"/login"}>
+                            <a className="main-menu__link whitespace-nowrap no-underline">
+                                <span className='px-2 py-2 items-center no-underlinejustify-center border rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 cursor-pointer '> Iniciar sesión </span>
+                            </a>
+                        </Link>
                     </div>
                 </div>
                 
