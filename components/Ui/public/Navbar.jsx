@@ -260,7 +260,7 @@ export const Navbar = () => {
                         </nav>
                     </div>
                     </Popover.Group> 
-                    <div className="md:hidden lg:flex space-x-6 lg:mt-3">
+                    <div className="hidden lg:flex space-x-6 lg:mt-3">
                         <Link href={"/registro"}>
                             <a className="main-menu__link whitespace-nowrap no-underline">
                                 <span className='px-4 py-1.5 items-center no-underlinejustify-center border rounded-md shadow-sm text-base font-medium text-white border-white cursor-pointer hover:bg-white hover:bg-opacity-10'> Registro </span>
@@ -290,7 +290,7 @@ export const Navbar = () => {
                         <div className="pt-5 pb-6 px-5">
                             <div className="flex items-center justify-between">
                                 <div>
-                                    <Image src="/logo_dark.png" width={'150px'} height={'50px'} alt="logo"/>
+                                    <Image src="/logo_horizontal-black.png" width={'190px'} height={'50px'} alt="logo"/>
                                 </div>
                                 <div className="-mr-2">
                                     <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
@@ -329,7 +329,7 @@ export const Navbar = () => {
                                             <div className='mt-3 flex justify-center'>
                                                 <Link href={"/login"}>
                                                     <a className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700">
-                                                        Iniciar Sesion
+                                                        Iniciar sesión
                                                     </a>
                                                 </Link>
                                             </div>

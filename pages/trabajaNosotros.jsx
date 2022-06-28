@@ -179,7 +179,7 @@ const TrabajaNosotros = () => {
 																		<div className="">
 																			<Image style={{cursor:"pointer"}} alt='defaultPhoto' className="profile-pic" id='perfil' name='perfil' src={photo} height="150" width="180"/>
 																			<label className="" htmlFor="logo">
-																				<button className="bg-blue-400">Subir Foto</button>
+																				<button className="bg-blue-600 hover:bg-blue-700 hover:shadow-md text-white mt-2 rounded-md px-12 py-1">Subir Foto</button>
 																			</label>
 																			<input type="file" onChange={handlePhoto} id="foto" name="foto" accept="image/*" className="custom-file-input  " required/>
 																		</div>
@@ -287,9 +287,10 @@ const TrabajaNosotros = () => {
 														</div>
 													</div>
 													<div className="mt-12 mb-3"><h6>Adjuntar Documentos</h6></div>
-													<div className=" mt-6">
+													<div className=" mt-6 max-w-xs">
 														<div className="">
-														<label className="">Distintivo Habilitación *</label>
+															<label className="">Distintivo Habilitación *
+															</label>
 															<input type="file" name="distintivoHabilitacion" id="distintivoHabilitacion" className="inputfile inputfile-1" accept=".pdf" required/>
 															<label className="space-x-2" htmlFor="distintivoHabilitacion">
 																<svg xmlns="http://www.w3.org/2000/svg" className="iborrainputfile" width="20" height="17" viewBox="0 0 20 17">
@@ -299,7 +300,7 @@ const TrabajaNosotros = () => {
 															</label>
 														</div>
 														<div className="">
-															<label className="">Convalidadción Icfes *</label>
+															<label className="">Convalidación Icfes *</label>
 															<input type="file" name="convalidacionIcfes" id="convalidacionIcfes" className="inputfile inputfile-1" accept=".pdf" />
 															<label className="space-x-2" htmlFor="convalidacionIcfes">
 																<svg xmlns="http://www.w3.org/2000/svg" className="iborrainputfile" width="20" height="17" viewBox="0 0 20 17">
@@ -329,7 +330,7 @@ const TrabajaNosotros = () => {
 														</div>
 													</div>
 													</div>
-													<div className="row mt-4">
+													<div className="row mt-12">
 														<div className="col-lg-12">
 															<h6>Resumen de curriculum</h6>
 															<textarea required className="form-control" name="resumenCurriculum" id="resumenCurriculum" placeholder=""></textarea>

@@ -101,7 +101,7 @@ font-family: 'Lato';
 
 .inputfile-1 + label {
   color: #fff;
-  background-color: #498dfc;
+  background-color: #1D4ED8;
   border-color: black;
   display: flex;
   align-items: center;
@@ -110,7 +110,7 @@ font-family: 'Lato';
 
 .inputfile-1 + label:hover {
   color: #fff;
-  background-color: #257bfc;
+  background-color: #1544c5;
   display: flex;
   align-items: center;
   box-shadow: 2px 2px 3px rgba(128, 128, 128, 0.506);
